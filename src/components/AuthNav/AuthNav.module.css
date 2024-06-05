@@ -1,0 +1,16 @@
+.form_header {
+  margin-bottom: 40px;
+  display: flex;
+  column-gap: 14px;
+}
+
+.link {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.link:hover,
+.link:active {
+  color: var(--white);
+}

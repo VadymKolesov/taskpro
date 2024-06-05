@@ -8,27 +8,6 @@
   letter-spacing: 0.02em;
 }
 
-.form_header {
-  margin-bottom: 40px;
-  display: flex;
-  column-gap: 14px;
-}
-
-.form_link {
-  color: rgba(255, 255, 255, 0.3);
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.form_reg:hover,
-.form_reg:focus,
-.form_reg:active,
-.form_login:hover,
-.form_login:focus,
-.form_login:active {
-  color: var(--white);
-}
-
 .input {
   width: 100%;
   padding: 16px 14px;

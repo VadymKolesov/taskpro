@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import LoginForm from "../../components/LoginForm/LoginForm";
-import RegisterForm from "../../components/RegisterForm/RegisterForm";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
+import LoginPage from "../LoginPage/LoginPage";
+import RegisterPage from "../RegisterPage/RegisterPage";
 
 export default function AuthPage() {
   const { id } = useParams();
@@ -10,5 +10,5 @@ export default function AuthPage() {
     return <NotFoundPage />;
   }
 
-  return <div>{id === "login" ? <LoginForm /> : <RegisterForm />}</div>;
+  return <div>{id === "login" ? <LoginPage /> : <RegisterPage />}</div>;
 }

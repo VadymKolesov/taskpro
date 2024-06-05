@@ -1,5 +1,6 @@
 import css from "./PageTitle.module.css";
 import sprite from "../../assets/sprite.svg";
+import user_icon from "../../assets/welcome_m.png";
 
 export default function PageTitle() {
   return (
@@ -8,8 +9,8 @@ export default function PageTitle() {
       <div className={css.welcome_logo}>
         <img
           className={css.welcome_img}
-          aria-label="Welcome user"
-          href="../../assets/welcome_m.svg"
+          alt="Welcome user"
+          src={`${user_icon}`}
         />
         <div className={css.logo}>
           <svg

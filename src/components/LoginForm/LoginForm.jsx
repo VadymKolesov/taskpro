@@ -24,19 +24,10 @@ export default function LoginForm() {
         email: "",
         password: "",
       }}
-      onSubmit={handlerSubmit}
+      // onSubmit={handlerSubmit}
     >
       <Form className={css.form} autoComplete="off">
-        {/* доцільно використати AuthNav */}
-        <div className={css.form_header}>
-          <a href="" className={`${css.form_reg} ${css.form_link}`}>
-            Registration
-          </a>
-          <a href="" className={`${css.form_login} ${css.form_link}`}>
-            Log In
-          </a>
-        </div>
-        {/* --============----- */}
+        <AuthNav />
 
         <Field
           className={css.input}
@@ -54,9 +45,9 @@ export default function LoginForm() {
           <button
             className={css.togglePasswordButton}
             type="button"
-            onClick={togglePasswordVisibility}
+            // onClick={togglePasswordVisibility}
           >
-            {showPassword ? <PiEyeClosed /> : <PiEye />}
+            {/* {showPassword ? <PiEyeClosed /> : <PiEye />} */}
           </button>
         </div>
         <button className={css.btn} type="submit">

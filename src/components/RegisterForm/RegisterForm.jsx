@@ -4,8 +4,9 @@ import css from "./RegisterForm.module.css";
 // import { useDispatch } from "react-redux";
 // import { register } from "../../redux/auth/operations";
 // import { PiEye, PiEyeClosed } from "react-icons/pi";
+import AuthNav from "../AuthNav/AuthNav";
 
-export default function RegistrationForm() {
+export default function RegisterForm() {
   // const dispatch = useDispatch();
   // const [showPassword, setShowPassword] = useState(false);
 
@@ -28,16 +29,7 @@ export default function RegistrationForm() {
       // onSubmit={handlerSubmit}
     >
       <Form className={css.form} autoComplete="off">
-        {/* доцільно використати AuthNav */}
-        <div className={css.form_header}>
-          <a href="" className={`${css.form_reg} ${css.form_link}`}>
-            Registration
-          </a>
-          <a href="" className={`${css.form_login} ${css.form_link}`}>
-            Log In
-          </a>
-        </div>
-        {/* --============----- */}
+        <AuthNav />
 
         <Field
           className={css.input}
