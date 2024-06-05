@@ -1,0 +1,20 @@
+.burger {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  color: var(--white);
+}
+
+.burgerIcon{
+  width: 24px;
+  height: 24px;
+  stroke: var(--white);
+}
+
+@media screen and (min-width: 1180px) {
+  .burger{
+    display: none;
+  }
+}
