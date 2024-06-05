@@ -1,0 +1,99 @@
+.form {
+  margin: auto;
+  width: 335px;
+  padding: 24px;
+  background: var(--dark-modal-bg);
+  border-radius: 8px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+.form_header {
+  margin-bottom: 40px;
+  display: flex;
+  column-gap: 14px;
+}
+
+.form_link {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.form_reg:hover,
+.form_reg:focus,
+.form_reg:active,
+.form_login:hover,
+.form_login:focus,
+.form_login:active {
+  color: var(--white);
+}
+
+.input {
+  width: 287px;
+  padding: 16px 14px;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: var(--white);
+  background-color: var(--dark-bg-easy);
+  border: 1px solid rgba(190, 219, 176, 0.4);
+  border-radius: 8px;
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+}
+
+.input:hover,
+.input:focus,
+.input:active {
+  border: 1px solid var(--green);
+}
+
+.btn {
+  width: 287px;
+  height: 49px;
+  padding: 18px 14px;
+  margin-top: 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  background-color: var(--green);
+  color: var(--dark-bg-medium);
+}
+
+.btn:hover {
+  border: none;
+  background-color: var(--green-hover);
+  transition: 500ms;
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    width: 424px;
+    padding: 40px;
+  }
+
+  .input {
+    width: 344px;
+  }
+
+  .btn {
+    width: 344px;
+  }
+
+  .passwordContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .togglePasswordButton {
+    position: absolute;
+    right: 10px;
+    background: none;
+    color: rgba(190, 219, 176, 0.4);
+    width: 18px;
+  }
+
+  .togglePasswordButton:hover {
+    color: var(--green);
+  }
+}

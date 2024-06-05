@@ -1,0 +1,113 @@
+.welcome {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  width: 335px;
+  height: 390px;
+}
+
+.welcome_logo {
+  display: grid;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.welcome_img {
+  width: 124px;
+  height: 124px;
+  justify-self: center;
+}
+
+.logo {
+  display: flex;
+  column-gap: 14px;
+}
+
+.logo_img {
+  width: 40px;
+}
+
+.logo_text {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1.5;
+  letter-spacing: -0.04em;
+  color: var(--dark-bg-medium);
+  margin: 0;
+}
+
+.welcome_text {
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: 0.02em;
+  color: var(--dark-bg-medium);
+  text-align: center;
+  margin: 0 0 48px;
+}
+
+.welcome_button {
+  display: block;
+  height: 49px;
+  background-color: var(--dark-bg-medium);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: --white;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  /* box-shadow: 0px 4px 4px 0px #00000026; */
+  /* transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1); */
+  margin-bottom: 14px;
+}
+
+.welcome_login {
+  text-align: center;
+  color: var(--dark-bg-medium);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+
+.welcome_button:hover,
+.welcome_button:focus,
+.welcome_login:hover,
+.welcome_login:focus {
+  font-size: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .welcome {
+    width: 473px;
+    height: 438px;
+  }
+
+  .welcome_logo {
+    gap: 24px;
+  }
+
+  .welcome_img {
+    width: 162px;
+    height: 162px;
+  }
+
+  .logo {
+    padding: 6px;
+  }
+
+  .logo_img {
+    width: 48px;
+  }
+
+  .logo_text {
+    font-size: 40px;
+  }
+
+  .welcome_button {
+    width: 344px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
