@@ -1,0 +1,149 @@
+.closeBtn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background-color: transparent;
+  border: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeBtn.dark {
+  color: var(--white);
+}
+
+.closeBtn.light {
+  color: var(--dark-bg-medium);
+}
+
+.closeBtn.violet {
+  color: var(--dark-bg-medium);
+}
+
+.cont {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: fit-content;
+  position: relative;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.cont.dark {
+  background-color: var(--dark-modal-bg);
+}
+
+.cont.light {
+  background-color: var(--white);
+}
+
+.cont.violet {
+  background-color: var(--white);
+}
+
+.text {
+  font-size: 18px;
+  letter-spacing: -2%;
+  font-weight: 500;
+}
+
+.text.dark {
+  color: var(--white);
+}
+
+.text.light {
+  color: var(--dark-bg-medium);
+}
+
+.text.violet {
+  color: var(--dark-bg-medium);
+}
+
+.plusCont {
+  font-size: 20px;
+  font-weight: 100;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plusCont.dark {
+  background-color: var(--dark-bg-medium);
+  color: var(--white);
+}
+
+.plusCont.light {
+  background-color: var(--dark-bg-medium);
+  color: var(--white);
+}
+
+.plusCont.violet {
+  background-color: var(--white);
+  color: var(--dark-bg-medium);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: fit-content;
+}
+
+.input {
+  padding: 14px 0 14px 18px;
+  background-color: transparent;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  font-size: 14px;
+}
+
+.input.dark {
+  border-color: var(--green);
+}
+
+.input.light {
+  border-color: var(--green);
+}
+
+.input.violet {
+  border-color: var(--violet-bg-hard);
+}
+
+.btn {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  width: 288px;
+  height: 48px;
+  letter-spacing: -2%;
+}
+
+.btn.dark {
+  background-color: var(--green);
+  color: var(--dark-bg-medium);
+}
+
+.btn.light {
+  background-color: var(--green);
+  color: var(--dark-bg-medium);
+}
+
+.btn.violet {
+  background-color: var(--violet-bg-hard);
+  color: var(--white);
+}

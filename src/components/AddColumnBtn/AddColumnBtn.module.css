@@ -1,0 +1,56 @@
+/* button */
+
+.btn {
+  display: flex;
+  gap: 8px;
+  width: 344px;
+  height: 56px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.btn.dark {
+  background-color: var(--dark-bg-hard);
+  color: var(--white);
+}
+
+.btn.light {
+  background-color: var(--white);
+  color: var(--dark-bg-medium);
+}
+
+.btn.violet {
+  background-color: var(--white);
+  color: var(--dark-bg-medium);
+}
+
+/* plus container */
+
+.plusCont {
+  font-size: 20px;
+  font-weight: 100;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plusCont.dark {
+  background-color: var(--white);
+  color: var(--dark-bg-hard);
+}
+
+.plusCont.light {
+  background-color: var(--dark-bg-medium);
+  color: var(--white);
+}
+
+.plusCont.violet {
+  background-color: var(--violet-bg-hard);
+  color: var(--white);
+}
