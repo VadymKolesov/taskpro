@@ -4,17 +4,21 @@
   width: 24px;
   height: 24px;
   background-color: transparent;
-  color: var(--white);
 }
 
 .burgerIcon{
   width: 24px;
   height: 24px;
   stroke: var(--white);
+  transition: stroke .3s ease;
 }
 
 @media screen and (min-width: 1180px) {
   .burger{
     display: none;
   }
+}
+
+.burger.light .burgerIcon,  .burger.violet .burgerIcon{
+  stroke: var(--dark-bg-medium);
 }

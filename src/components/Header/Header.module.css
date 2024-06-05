@@ -3,6 +3,7 @@
   height: 60px;
   background-color: var(--dark-bg-medium);
   padding: 0 20px;
+  transition: background-color .3s ease;
 }
 
 .container{
@@ -34,4 +35,8 @@
   .container{
     justify-content: end;
   }
+}
+
+.header.light, .header.violet {
+  background-color: var(--light-bg-medium);
 }
