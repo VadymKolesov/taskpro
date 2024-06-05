@@ -1,2 +1,8 @@
+.title {
+  width: 89px;
+  height: 27px;
+  color: var(--white);
+}
+
 .btn {
 }

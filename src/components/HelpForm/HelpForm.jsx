@@ -1,7 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import css from "./HelpForm.module.css";
 import clsx from "clsx";
-import { useId } from "react";
 import * as Yup from "yup";
 
 const initialValues = {
@@ -24,8 +23,6 @@ export default function HelpForm() {
     console.log(values);
     actions.resetForm();
   };
-  const emailFieldId = useId();
-  const commentFieldId = useId();
 
   return (
     <Formik
@@ -33,12 +30,12 @@ export default function HelpForm() {
       onSubmit={handleSubmit}
       validationSchema={HelpFormSchema}
     >
+      <h2 className={css.title}>Need help</h2>
       <Form className={clsx(css.form, css[theme])}>
         <div>
           <Field
             type="email"
             name="email"
-            id={emailFieldId}
             className={clsx(css.input, css[theme])}
             placeholder="Email address"
           />
@@ -51,9 +48,10 @@ export default function HelpForm() {
         <div>
           <Field
             as="textarea"
+            cols="20"
+            rows="5"
             type="text"
             name="comment"
-            id={commentFieldId}
             className={clsx(css.input, css[theme])}
             placeholder="Comment"
           />
