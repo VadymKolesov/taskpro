@@ -6,13 +6,13 @@ export default function PageTitle() {
       <div className={css.welcome_logo}>
         <img
           className={css.welcome_img}
-          src="/src/img/welcome_m.svg"
+          src="../../assets/welcome_m.svg"
           alt="Welcome user"
         />
         <div className={css.logo}>
           <img
             className={css.logo_img}
-            src="/src/img/logo.svg"
+            src="../../assets/taskpro-logo.svg"
             alt="Task Pro Logo"
           />
           <p className={css.logo_text}>Task Pro</p>
