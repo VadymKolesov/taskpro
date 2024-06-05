@@ -3,7 +3,7 @@ import { Form, Field, Formik } from "formik";
 import css from "./RegisterForm.module.css";
 // import { useDispatch } from "react-redux";
 // import { register } from "../../redux/auth/operations";
-import { PiEye, PiEyeClosed } from "react-icons/pi";
+// import { PiEye, PiEyeClosed } from "react-icons/pi";
 
 export default function RegistrationForm() {
   // const dispatch = useDispatch();
@@ -25,7 +25,7 @@ export default function RegistrationForm() {
         email: "",
         password: "",
       }}
-      onSubmit={handlerSubmit}
+      // onSubmit={handlerSubmit}
     >
       <Form className={css.form} autoComplete="off">
         {/* доцільно використати AuthNav */}
@@ -61,9 +61,9 @@ export default function RegistrationForm() {
           <button
             className={css.togglePasswordButton}
             type="button"
-            onClick={togglePasswordVisibility}
+            // onClick={togglePasswordVisibility}
           >
-            {showPassword ? <PiEyeClosed /> : <PiEye />}
+            {/* {showPassword ? <PiEyeClosed /> : <PiEye />} */}
           </button>
         </div>
         <button className={css.btn} type="submit">

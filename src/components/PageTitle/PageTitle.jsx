@@ -1,20 +1,25 @@
 import css from "./PageTitle.module.css";
+import sprite from "../../assets/sprite.svg";
 
 export default function PageTitle() {
   return (
+    // <div></div>
     <div className={css.welcome}>
       <div className={css.welcome_logo}>
         <img
           className={css.welcome_img}
-          src="../../assets/welcome_m.svg"
-          alt="Welcome user"
+          aria-label="Welcome user"
+          href="../../assets/welcome_m.svg"
         />
         <div className={css.logo}>
-          <img
+          <svg
             className={css.logo_img}
-            src="../../assets/taskpro-logo.svg"
-            alt="Task Pro Logo"
-          />
+            width="40"
+            height="40"
+            aria-label="logo icon"
+          >
+            <use href={`${sprite}#icon-home-logo`}></use>
+          </svg>
           <p className={css.logo_text}>Task Pro</p>
         </div>
       </div>
