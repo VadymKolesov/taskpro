@@ -1,29 +1,26 @@
 import clsx from 'clsx';
 import css from './ThemeDropdown.module.css';
 import sprite from '../../../sprite.svg';
+import DropdownMenu from '../DropdownMenu/DropdownMenu';
 import { useState } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
 
 const getThemaStyles = (theme) => {
-    switch (theme) {
-      case 'light':
-        return css.light;
-      case 'violet':
-        return css.violet;
-      default:
-        return '';
-    }
+  switch (theme) {
+    case 'light':
+      return css.light;
+    case 'violet':
+      return css.violet;
+    default:
+      return '';
   }
+}
 
 export default function ThemeDropdown({theme, setTheme}) {
   // const theme = useSelector(selectTheme);
   // const dispatch = useDispatch();
   const [isDrop, setIsDrop] = useState(false);
-  const dropdown = clsx(css.dropdown, isDrop ? css.active : css.disable);
   const arrowIcon = clsx(css.arrow, isDrop ? css.up : '')
-  const lightTheme = clsx(css.dropdownItem, theme === 'light' && css.active);
-  const darkTheme = clsx(css.dropdownItem, theme === 'dark' && css.active);
-  const violetTheme = clsx(css.dropdownItem, theme === 'violet' && css.active);
   const themeDropdown = clsx(css.themeDropdown, getThemaStyles(theme));
 
   const dropdownSwitch = () => {
@@ -46,13 +43,7 @@ export default function ThemeDropdown({theme, setTheme}) {
           <use href={`${sprite}#icon-arrow-down`} />
         </svg>
       </button>
-      <div className={css.dropdownWrap}>
-        <ul className={dropdown} onClick={selectTheme}>
-          <li className={lightTheme} data-theme="light">Light</li>
-          <li className={darkTheme} data-theme="dark">Dark</li>
-          <li className={violetTheme} data-theme="violet">Violet</li>
-        </ul>
-      </div>
+      <DropdownMenu theme={theme} selectTheme={selectTheme} isDrop={isDrop} />
     </div>
   )
 }
