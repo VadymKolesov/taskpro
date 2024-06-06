@@ -6,7 +6,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 
 export default function EditProfile() {
-  // const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const initialValues = {
     name: "",
@@ -24,9 +24,9 @@ export default function EditProfile() {
     console.log(values);
   };
 
-  // const toggleShowPassword = () => {
-  //   setShowPassword(!showPassword);
-  // };
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
     <div className={css.EPContainer}>
@@ -44,22 +44,39 @@ export default function EditProfile() {
       >
         {({ isSubmitting }) => (
           <Form>
-            <div>
-              <Field type="text" name="name" placeholder="Name" />
-              <ErrorMessage name="name" component="div" />
+            <div className={css.profilePicture}>
+              <img src="path_to_image" alt="Profile" />
+              <button type="button" className={css.uploadButton}>+</button>
             </div>
-            <div>
-              <Field type="email" name="email" placeholder="Email" />
-              <ErrorMessage name="email" component="div" />
+            <div className={css.inputGroup}>
+              <Field 
+                type="text" 
+                name="name" 
+                className={css.inputField} 
+              />
+              <ErrorMessage name="name" component="div" className={css.errorMessage} />
             </div>
-            <div>
-              <Field type="password" name="password" placeholder="Password" />
-
-              <ErrorMessage name="password" component="div" />
+            <div className={css.inputGroup}>
+              <Field 
+                type="email" 
+                name="email" 
+                className={css.inputField} 
+                disabled 
+              />
+              <ErrorMessage name="email" component="div" className={css.errorMessage} />
             </div>
-            <button type="submit" disabled={isSubmitting}>
-              Send
-            </button>
+            <div className="input-group password-group">
+              <Field 
+                type={showPassword ? "text" : "password"} 
+                name="password" 
+                className={css.inputField} 
+              />
+              <button type="button" onClick={toggleShowPassword} className={css.togglePasswordButton}>
+                {showPassword ? 'Hide' : 'Show'}
+              </button>
+              <ErrorMessage name="password" component="div" className={css.errorMessage} />
+            </div>
+            <button type="submit" className={css.submitButton} disabled={isSubmitting}>Send</button>
           </Form>
         )}
       </Formik>
