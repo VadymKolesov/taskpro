@@ -1,10 +1,10 @@
 import css from "./PageTitle.module.css";
 import sprite from "../../assets/sprite.svg";
 import user_icon from "../../assets/welcome_m.png";
+import { NavLink } from "react-router-dom";
 
 export default function PageTitle() {
   return (
-    // <div></div>
     <div className={css.welcome}>
       <div className={css.welcome_logo}>
         <img
@@ -28,10 +28,14 @@ export default function PageTitle() {
         Supercharge your productivity and take control of your tasks with Task
         Pro - Don`t wait, start achieving your goals now!
       </p>
-      <button className={css.welcome_button}>Registration</button>
-      <a href="" className={css.welcome_login}>
-        Log In
-      </a>
+      <div className={css.btns_wrapper}>
+        <NavLink to="/auth/register" className={css.welcome_register}>
+          Registration
+        </NavLink>
+        <NavLink to="/auth/login" className={css.welcome_login}>
+          Log In
+        </NavLink>
+      </div>
     </div>
   );
 }

@@ -1,23 +1,32 @@
-// import { useState } from "react";
-import { Form, Field, Formik } from "formik";
+import { Form, Field, Formik, ErrorMessage } from "formik";
+import sprite from "../../assets/sprite.svg";
 import css from "./RegisterForm.module.css";
-// import { useDispatch } from "react-redux";
-// import { register } from "../../redux/auth/operations";
-// import { PiEye, PiEyeClosed } from "react-icons/pi";
+import clsx from "clsx";
 import AuthNav from "../AuthNav/AuthNav";
+import Button from "../Button/Button";
+import { useState } from "react";
+import * as Yup from "yup";
 
 export default function RegisterForm() {
-  // const dispatch = useDispatch();
-  // const [showPassword, setShowPassword] = useState(false);
+  const [isShown, setIsShown] = useState(false);
 
-  // const handlerSubmit = (values, actions) => {
-  //   dispatch(register(values));
-  //   actions.resetForm();
-  // };
+  const handlerSubmit = (values, actions) => {
+    console.log(values);
+    actions.resetForm();
+  };
 
-  // const togglePasswordVisibility = () => {
-  //   setShowPassword((prevShowPassword) => !prevShowPassword);
-  // };
+  const handleShowPassword = () => {
+    setIsShown(!isShown);
+  };
+
+  const schema = Yup.object({
+    name: Yup.string().required("Name is required"),
+    email: Yup.string().email("Wrong email").required("Email is required"),
+    password: Yup.string()
+      .required("Password is required")
+      .min(8, "Password is too short")
+      .max(64, "Password is too long"),
+  });
 
   return (
     <Formik
@@ -26,41 +35,57 @@ export default function RegisterForm() {
         email: "",
         password: "",
       }}
-      // onSubmit={handlerSubmit}
+      validationSchema={schema}
+      onSubmit={handlerSubmit}
     >
       <Form className={css.form} autoComplete="off">
         <AuthNav />
 
-        <Field
-          className={css.input}
-          type="text"
-          name="name"
-          placeholder="Enter your name"
+        <ul className={css.fieldsList}>
+          <li>
+            <Field
+              className={css.input}
+              type="text"
+              name="name"
+              placeholder="Enter your name"
+            />
+            <ErrorMessage name="name" component="p" className={css.error} />
+          </li>
+          <li>
+            <Field
+              className={css.input}
+              type="text"
+              name="email"
+              placeholder="Enter your email"
+            />
+            <ErrorMessage name="email" component="p" className={css.error} />
+          </li>
+          <li>
+            <span>
+              <Field
+                className={css.input}
+                type={isShown ? "text" : "password"}
+                name="password"
+                placeholder="Create a password"
+              />
+
+              <svg
+                className={clsx(css.iconEye, isShown && css.isShownIcon)}
+                onClick={handleShowPassword}
+              >
+                <use href={`${sprite}#icon-eye`}></use>
+              </svg>
+            </span>
+            <ErrorMessage name="password" component="p" className={css.error} />
+          </li>
+        </ul>
+
+        <Button
+          type="submit"
+          text="Register Now"
+          isIcon={false}
+          verticalPadding="14px"
         />
-        <Field
-          className={css.input}
-          type="email"
-          name="email"
-          placeholder="Enter your email"
-        />
-        <div className={css.passwordContainer}>
-          <Field
-            className={css.input}
-            type="password"
-            name="password"
-            placeholder="Create a password"
-          />
-          <button
-            className={css.togglePasswordButton}
-            type="button"
-            // onClick={togglePasswordVisibility}
-          >
-            {/* {showPassword ? <PiEyeClosed /> : <PiEye />} */}
-          </button>
-        </div>
-        <button className={css.btn} type="submit">
-          Register Now
-        </button>
       </Form>
     </Formik>
   );
