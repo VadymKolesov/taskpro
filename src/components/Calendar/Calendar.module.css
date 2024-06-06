@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.datepicker {
+  background-color: #1c1c1c; /* Темний фон */
+  border: none;
+  border-radius: 8px;
+  color: #fff; /* Білий текст */
+}
