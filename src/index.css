@@ -27,6 +27,7 @@
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 body {
@@ -52,6 +53,7 @@ p {
 }
 
 button {
+  font-family: inherit;
   cursor: pointer;
   margin: 0;
   padding: 0;
