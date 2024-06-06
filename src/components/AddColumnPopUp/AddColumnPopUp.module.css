@@ -47,7 +47,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  max-width: fit-content;
+  width: 100%;
   position: relative;
   border-radius: 8px;
   padding: 24px;
@@ -113,17 +113,24 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  max-width: fit-content;
+  width: 100%;
 }
 
 .input {
-  padding: 14px 0 14px 18px;
-  background-color: transparent;
+  padding: 14px 18px;
   border-width: 1px;
   border-radius: 8px;
   border-style: solid;
   font-size: 14px;
-  width: 288px;
+  width: 100%;
+  opacity: 0.4;
+  transition: opacity 100ms ease-in-out;
+}
+
+.input:hover,
+.input:focus,
+.input:active {
+  opacity: 1;
 }
 
 .input.dark {
@@ -135,16 +142,41 @@
 
 .input.light {
   border-color: var(--green);
+  background-color: transparent;
   color: var(--dark-bg-medium);
 }
 
 .input.violet {
   border-color: var(--violet-bg-hard);
+  background-color: transparent;
   color: var(--dark-bg-medium);
 }
 
+.error {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.error.dark {
+  color: var(--green);
+}
+
+.error.light {
+  color: var(--green-hover);
+}
+
+.error.violet {
+  color: var(--violet-bg-hard);
+}
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .cont {
+    width: 335px;
+  }
+}
+
 @media screen and (min-width: 768px) {
-  .input {
-    width: 302px;
+  .cont {
+    width: 350px;
   }
 }

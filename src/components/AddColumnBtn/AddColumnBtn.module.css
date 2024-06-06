@@ -11,6 +11,7 @@
   font-size: 14px;
   font-weight: 500;
   font-family: inherit;
+  transition: background-color 100ms ease-in-out;
 }
 
 .btn.dark {
@@ -18,9 +19,17 @@
   color: var(--white);
 }
 
+.btn.dark:hover {
+  background-color: var(--dark-bg-medium);
+}
+
 .btn.light {
   background-color: var(--white);
   color: var(--dark-bg-medium);
+}
+
+.btn.light:hover {
+  background-color: var(--light-bg-medium);
 }
 
 .btn.violet {
@@ -28,11 +37,13 @@
   color: var(--dark-bg-medium);
 }
 
+.btn.violet:hover {
+  background-color: var(--violet-bg-easy);
+}
+
 /* plus container */
 
 .plusCont {
-  font-size: 20px;
-  font-weight: 100;
   width: 28px;
   height: 28px;
   border-radius: 6px;
