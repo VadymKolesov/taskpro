@@ -1,0 +1,162 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.form.light,
+.form.violet {
+  background-color: var(--light-bg-medium);
+}
+
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: var(--dark-modal-bg);
+  position: relative;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+.title.dark {
+  color: var(--white);
+}
+
+.title.light {
+  color: var(--dark-bg-medium);
+}
+
+.title.violet {
+  color: var(--dark-bg-medium);
+}
+
+.fieldsList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.input {
+  width: 100%;
+  height: 49px;
+  border-radius: 8px;
+  opacity: 0.4;
+  padding: 14px 18px;
+  transition: opacity 100ms ease-in-out;
+}
+
+.input.dark,
+.textarea.dark {
+  border: 1px solid var(--green);
+  background-color: var(--dark-bg-easy);
+  color: var(--white);
+}
+
+.input.light,
+.textarea.light {
+  border: 1px solid var(--green);
+  background-color: transparent;
+  color: var(--dark-bg-easy);
+}
+
+.input.violet,
+.textarea.violet {
+  border: 1px solid var(--violet-bg-hard);
+  background-color: transparent;
+  color: var(--dark-bg-easy);
+}
+
+.textarea {
+  resize: none;
+  width: 100%;
+  height: 120px;
+  border-radius: 8px;
+  opacity: 0.4;
+  padding: 14px 18px;
+  transition: opacity 100ms ease-in-out;
+}
+
+.textarea::-webkit-scrollbar {
+  width: 5px;
+}
+
+.textarea::-webkit-scrollbar-thumb {
+  background: var(--white);
+  border-radius: 4px;
+}
+
+.fieldsList .input:hover,
+.fieldsList .input:focus,
+.fieldsList .input:active,
+.fieldsList .textarea:hover,
+.fieldsList .textarea:focus,
+.fieldsList .textarea:active {
+  opacity: 1;
+  outline: none;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.closeIcon {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  cursor: pointer;
+}
+
+.closeIcon {
+  stroke: var(--white);
+}
+
+.closeIcon.light,
+.closeIcon.violet {
+  stroke: var(--black);
+}
+
+.error {
+  font-size: 12px;
+  margin-top: 14px;
+  font-weight: 400;
+}
+
+.error.dark {
+  color: var(--green);
+}
+
+.error.light {
+  color: var(--green-hover);
+}
+
+.error.violet {
+  color: var(--violet-bg-hard);
+}
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .form {
+    width: 335px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    width: 400px;
+  }
+}

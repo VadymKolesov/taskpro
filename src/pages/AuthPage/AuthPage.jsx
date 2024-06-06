@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import LoginForm from "../../components/LoginForm/LoginForm";
-import RegisterForm from "../../components/RegisterForm/RegisterForm";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
+import RegisterForm from "../../components/RegisterForm/RegisterForm";
+import LoginForm from "../../components/LoginForm/LoginForm";
 
 export default function AuthPage() {
   const { id } = useParams();
