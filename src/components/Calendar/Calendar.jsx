@@ -12,6 +12,8 @@ export default function Calendar() {
         onChange={(date) => setStartDate(date)}
         inline
         minDate={new Date()}
+        showYearDropdown // перевірити
+        scrollableYearDropdown // перевірити
         calendarClassName={css.datepicker}
       />
     </div>
