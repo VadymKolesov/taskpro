@@ -1,0 +1,33 @@
+.EPContainer {
+  background-color: var(--dark-modal-bg);
+  width: 400px;
+  height: 440px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid #bedbb080;
+  border-radius: 8px;
+  padding: 24px;
+  align-items: center;
+  gap: 24px;
+}
+
+.icon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  stroke: var(--white);
+}
+
+.closeBtn {
+  background-color: transparent;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  letter-spacing: -0.02em;
+  align-self: flex-start;
+  color: var(--white);
+}

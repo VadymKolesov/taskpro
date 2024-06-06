@@ -8,6 +8,7 @@ const ScreensPage = lazy(() => import("../../pages/ScreensPage/ScreensPage"));
 const NotFoundPage = lazy(() =>
   import("../../pages/NotFoundPage/NotFoundPage")
 );
+const EditProfile = lazy(() => import("../EditProfile/EditProfile"))
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/home/:boardName" element={<ScreensPage />} />
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="edit" element={<EditProfile />} /> {/* my test route */}
       </Routes>
     </Suspense>
   );
