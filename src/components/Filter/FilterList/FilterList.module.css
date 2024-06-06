@@ -1,0 +1,118 @@
+.filterList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filterList li {
+  line-height: 0;
+}
+
+/* CUSTOM INPUTS */
+
+.colorLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff80;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.0175em;
+  cursor: pointer;
+  transition: color .3 ease;
+}
+
+.colorLabel:has(.colorRadio:checked){
+  color: var(--white);
+}
+
+.colorCustomRadioIcon {
+  width: 14px;
+  height: 14px;
+  overflow: visible;
+}
+
+.colorCustomRadioIcon.gray {
+  fill: var(--white);
+  opacity: 0.3;
+  transition: fill .3s ease;
+}
+
+.colorCustomRadioIcon.blue {
+  fill: var(--indigo);
+}
+
+.colorCustomRadioIcon.red {
+  fill: var(--pink);
+}
+
+.colorCustomRadioIcon.green {
+  fill: var(--green);
+}
+
+.colorCustomRadioIconChecked {
+  display: none;
+  width: 14px;
+  height: 14px;
+  overflow: visible;
+}
+
+.colorCustomRadioIconChecked.gray {
+  fill: var(--white);
+  stroke: var(--white);
+  opacity: 0.3;
+  transition: fill .3s ease, stroke .3s ease;
+}
+
+.colorCustomRadioIconChecked.blue {
+  fill: var(--indigo);
+  stroke: var(--indigo);
+}
+
+.colorCustomRadioIconChecked.red {
+  fill: var(--pink);
+  stroke: var(--pink);
+}
+
+.colorCustomRadioIconChecked.green {
+  fill: var(--green);
+  stroke: var(--green);
+}
+
+.colorRadio {
+  display: none;
+}
+
+.colorRadio:checked~.colorCustomRadioIcon {
+  display: none;
+}
+
+.colorRadio:checked~.colorCustomRadioIconChecked {
+  display: block;
+}
+
+/* Light / violet theme */
+
+.filterList.light .colorLabel,
+.filterList.violet .colorLabel{
+  color: rgba(22, 22, 22, 0.5);
+}
+
+.filterList.light .colorLabel:has(.colorRadio:checked),
+.filterList.violet .colorLabel:has(.colorRadio:checked) {
+  color: var(--dark-bg-medium);
+}
+
+.filterList.light .colorCustomRadioIcon.gray,
+.filterList.violet .colorCustomRadioIcon.gray{
+  fill: var(--dark-bg-medium);
+  opacity: 0.5;
+}
+
+.filterList.light .colorCustomRadioIconChecked.gray,
+.filterList.violet .colorCustomRadioIconChecked.gray{
+  fill: var(--dark-bg-medium);
+  stroke: var(--dark-bg-medium);
+  opacity: 0.5;
+}

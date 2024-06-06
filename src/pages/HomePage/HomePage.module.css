@@ -1,0 +1,8 @@
+.bg{
+  display: flex;
+  justify-content: end;
+  align-items: start;
+  background-color: var(--dark-bg-easy);
+  height: 100vh;
+  padding: 50px;
+}
