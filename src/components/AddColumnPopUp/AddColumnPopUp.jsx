@@ -24,7 +24,12 @@ export default function AddColumnPopUp({ titleValue, inputValue }) {
             className={clsx(css.input, css[theme])}
             placeholder="Title"
           />
-          <Button text={titleValue} isIcon={true} verticalPadding="10px" />
+          <Button
+            text={titleValue}
+            isIcon={true}
+            verticalPadding="10px"
+            type="submit"
+          />
         </Form>
       </Formik>
     </div>

@@ -2,7 +2,7 @@ import css from "./Button.module.css";
 import clsx from "clsx";
 import sprite from "../../assets/sprite.svg";
 
-export default function Button({ text, isIcon, verticalPadding }) {
+export default function Button({ text, isIcon, verticalPadding, type }) {
   const theme = "light";
 
   return (
