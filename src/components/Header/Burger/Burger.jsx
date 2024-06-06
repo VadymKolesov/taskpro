@@ -1,5 +1,5 @@
 import css from './Burger.module.css';
-import sprite from '../../../sprite.svg';
+import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
 
 const getThemaStyles = (theme) => {

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import css from './ThemeDropdown.module.css';
-import sprite from '../../../sprite.svg';
+import sprite from '../../../assets/sprite.svg';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
 import { useState } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
