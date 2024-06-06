@@ -1,6 +1,8 @@
 import css from "./AddColumnPopUp.module.css";
 import clsx from "clsx";
 import { Formik, Form, Field } from "formik";
+import Button from "../Button/Button";
+import sprite from "../../assets/sprite.svg";
 
 export default function AddColumnPopUp({ titleValue, inputValue }) {
   const theme = "violet";
@@ -8,7 +10,11 @@ export default function AddColumnPopUp({ titleValue, inputValue }) {
 
   return (
     <div className={clsx(css.cont, css[theme])}>
-      <button className={clsx(css.closeBtn, css[theme])}>-</button>
+      <button className={clsx(css.closeBtn, css[theme])}>
+        <svg className={clsx(css.closeIcon, css[theme])}>
+          <use href={`${sprite}#icon-x-close`}></use>
+        </svg>
+      </button>
       <p className={clsx(css.text, css[theme])}>{titleText}</p>
       <Formik initialValues={{ name: `${inputValue}` }}>
         <Form className={css.form}>
@@ -18,10 +24,7 @@ export default function AddColumnPopUp({ titleValue, inputValue }) {
             className={clsx(css.input, css[theme])}
             placeholder="Title"
           />
-          <button className={clsx(css.btn, css[theme])}>
-            <div className={clsx(css.plusCont, css[theme])}>+</div>
-            {titleValue}
-          </button>
+          <Button text={titleValue} isIcon={true} verticalPadding="10px" />
         </Form>
       </Formik>
     </div>

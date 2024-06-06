@@ -3,13 +3,14 @@
 .btn {
   display: flex;
   gap: 8px;
-  width: 344px;
+  width: 334px;
   height: 56px;
   justify-content: center;
   align-items: center;
   border-radius: 6px;
   font-size: 14px;
   font-weight: 500;
+  font-family: inherit;
 }
 
 .btn.dark {
@@ -53,4 +54,21 @@
 .plusCont.violet {
   background-color: var(--violet-bg-hard);
   color: var(--white);
+}
+
+.plusIcon {
+  width: 14px;
+  height: 14px;
+}
+
+.plusIcon.dark {
+  stroke: var(--dark-bg-hard);
+}
+
+.plusIcon.light {
+  stroke: var(--white);
+}
+
+.plusIcon.violet {
+  stroke: var(--white);
 }

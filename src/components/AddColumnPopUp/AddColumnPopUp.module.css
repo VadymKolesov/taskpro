@@ -26,6 +26,23 @@
   color: var(--dark-bg-medium);
 }
 
+.closeIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.closeIcon.dark {
+  stroke: var(--white);
+}
+
+.closeIcon.light {
+  stroke: var(--dark-bg-medium);
+}
+
+.closeIcon.violet {
+  stroke: var(--dark-bg-medium);
+}
+
 .cont {
   display: flex;
   flex-direction: column;
@@ -41,11 +58,11 @@
 }
 
 .cont.light {
-  background-color: var(--white);
+  background-color: var(--light-bg-medium);
 }
 
 .cont.violet {
-  background-color: var(--white);
+  background-color: var(--light-bg-medium);
 }
 
 .text {
@@ -106,44 +123,28 @@
   border-radius: 8px;
   border-style: solid;
   font-size: 14px;
+  width: 288px;
 }
 
 .input.dark {
   border-color: var(--green);
+  background-color: var(--dark-bg-easy);
+  caret-color: var(--white);
+  color: var(--white);
 }
 
 .input.light {
   border-color: var(--green);
+  color: var(--dark-bg-medium);
 }
 
 .input.violet {
   border-color: var(--violet-bg-hard);
-}
-
-.btn {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 500;
-  width: 288px;
-  height: 48px;
-  letter-spacing: -2%;
-}
-
-.btn.dark {
-  background-color: var(--green);
   color: var(--dark-bg-medium);
 }
 
-.btn.light {
-  background-color: var(--green);
-  color: var(--dark-bg-medium);
-}
-
-.btn.violet {
-  background-color: var(--violet-bg-hard);
-  color: var(--white);
+@media screen and (min-width: 768px) {
+  .input {
+    width: 302px;
+  }
 }
