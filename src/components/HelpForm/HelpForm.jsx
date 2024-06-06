@@ -2,68 +2,81 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import css from "./HelpForm.module.css";
 import clsx from "clsx";
 import * as Yup from "yup";
+import Button from "../Button/Button";
+import sprite from "../../assets/sprite.svg";
 
-const initialValues = {
-  name: "",
-  comment: "",
-};
-
-const HelpFormSchema = Yup.object().shape({
-  email: Yup.string().email("Please, enter a valid email").required("Required"),
+const HelpFormSchema = Yup.object({
+  email: Yup.string()
+    .email("Please, enter a valid email")
+    .required("Email is required"),
   comment: Yup.string()
-    .min(5, "Too short")
-    .max(50, "Too long")
-    .required("Required"),
+    .min(15, "Message is too short")
+    .max(200, "Message is too long")
+    .required("Comment is required"),
 });
 
 export default function HelpForm() {
-  const theme = "dark";
+  const theme = "light";
 
   const handleSubmit = (values, actions) => {
     console.log(values);
     actions.resetForm();
   };
 
+  const handleClose = () => {
+    console.log("close");
+  };
+
   return (
     <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
+      initialValues={{
+        email: "",
+        comment: "",
+      }}
       validationSchema={HelpFormSchema}
+      onSubmit={handleSubmit}
     >
-      <h2 className={css.title}>Need help</h2>
       <Form className={clsx(css.form, css[theme])}>
-        <div>
-          <Field
-            type="email"
-            name="email"
-            className={clsx(css.input, css[theme])}
-            placeholder="Email address"
-          />
-          <ErrorMessage
-            name="email"
-            as="span"
-            className={clsx(css.error, css[theme])}
-          />
-        </div>
-        <div>
-          <Field
-            as="textarea"
-            cols="20"
-            rows="5"
-            type="text"
-            name="comment"
-            className={clsx(css.input, css[theme])}
-            placeholder="Comment"
-          />
-          <ErrorMessage
-            name="comment"
-            as="span"
-            className={clsx(css.error, css[theme])}
-          />
-        </div>
-        <button type="submit" className={clsx(css.btn, css[theme])}>
-          Send
-        </button>
+        <svg className={clsx(css.closeIcon, css[theme])} onClick={handleClose}>
+          <use href={`${sprite}#icon-x-close`}></use>
+        </svg>
+        <h2 className={clsx(css.title, css[theme])}>Need help</h2>
+
+        <ul className={css.fieldsList}>
+          <li>
+            <Field
+              type="text"
+              name="email"
+              className={clsx(css.input, css[theme])}
+              placeholder="Email address"
+            />
+            <ErrorMessage
+              name="email"
+              component="p"
+              className={clsx(css.error, css[theme])}
+            />
+          </li>
+          <li>
+            <Field
+              as="textarea"
+              name="comment"
+              className={clsx(css.textarea, css[theme])}
+              placeholder="Comment"
+            />
+            <ErrorMessage
+              name="comment"
+              component="p"
+              className={clsx(css.error, css[theme])}
+            />
+          </li>
+        </ul>
+
+        <Button
+          type="submit"
+          text="Send"
+          isIcon={false}
+          verticalPadding="14px"
+        />
       </Form>
     </Formik>
   );
