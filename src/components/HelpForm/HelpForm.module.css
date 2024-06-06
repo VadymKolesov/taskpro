@@ -91,6 +91,10 @@ stroke: var(--white);
 stroke: var(--black);
 }
 
+.error {
+    color: red;
+  }
+
 
 @media screen and (min-width: 768px) {
 .form {
