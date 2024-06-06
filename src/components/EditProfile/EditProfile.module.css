@@ -12,10 +12,14 @@
   gap: 24px;
 }
 
-.icon {
+.closeIcon {
   position: absolute;
   top: 14px;
   right: 14px;
+  stroke: var(--white);
+}
+
+.eyeIcon {
   stroke: var(--white);
 }
 

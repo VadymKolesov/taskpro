@@ -4,21 +4,19 @@ import css from "./EditProfile.module.css";
 import ImageUploader from "./ImageUploader";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import { useParams } from "react-router-dom";
 
 export default function EditProfile() {
-  const [showPassword, setShowPassword] = useState(false);
-  const {name, email, password} = useParams()
+  // const [showPassword, setShowPassword] = useState(false);
 
   const initialValues = {
-    name: name,
-    email: email,
-    password: password,
+    name: "",
+    email: "",
+    password: "",
   };
 
   const validationSchema = Yup.object({
-    name: Yup.string().min(2),
-    email: Yup.string().email().required(),
+    name: Yup.string().min(2, "Too short"),
+    email: Yup.string().email("Invalid format").required(),
     password: Yup.string().min(6),
   });
 
@@ -26,14 +24,14 @@ export default function EditProfile() {
     console.log(values);
   };
 
-  const toggleShowPassword = () => {
-    setShowPassword(!showPassword)
-  }
+  // const toggleShowPassword = () => {
+  //   setShowPassword(!showPassword);
+  // };
 
   return (
     <div className={css.EPContainer}>
       <button className={css.closeBtn} type="button">
-        <svg className={css.icon} width={"18"} height={"18"}>
+        <svg className={css.closeIcon} width={"18"} height={"18"}>
           <use href={`${sprite}#icon-x-close`}></use>
         </svg>
       </button>
@@ -56,9 +54,12 @@ export default function EditProfile() {
             </div>
             <div>
               <Field type="password" name="password" placeholder="Password" />
+
               <ErrorMessage name="password" component="div" />
             </div>
-            <button type="submit" disabled={isSubmitting}>Send</button>
+            <button type="submit" disabled={isSubmitting}>
+              Send
+            </button>
           </Form>
         )}
       </Formik>
