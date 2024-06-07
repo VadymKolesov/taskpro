@@ -1,0 +1,145 @@
+/* cont */
+
+.cont {
+  width: 135px;
+
+  border-radius: 8px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cont.dark {
+  background-color: var(--dark-bg-easy);
+}
+
+.cont.light {
+  background-color: var(--light-bg-medium);
+}
+
+.cont.violet {
+  background-color: var(--light-bg-medium);
+}
+
+/* btn */
+
+.btn {
+  opacity: 50%;
+  background-color: transparent;
+  border: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* dark btn */
+
+.btn.dark {
+  color: var(--white);
+}
+
+.btn.dark:focus {
+  color: var(--green);
+  opacity: 100%;
+}
+
+.btn.dark:hover {
+  color: var(--green-hover);
+  opacity: 100%;
+}
+
+/* light btn */
+
+.btn.light {
+  color: var(--dark-bg-medium);
+  opacity: 100%;
+}
+
+.btn.light:focus {
+  color: var(--green);
+  opacity: 100%;
+}
+
+.btn.light:hover {
+  color: var(--green-hover);
+  opacity: 100%;
+}
+
+/* violet btn */
+
+.btn.violet {
+  color: var(--dark-bg-medium);
+  opacity: 100%;
+}
+
+.btn.violet:focus {
+  color: var(--violet-bg-hard);
+  opacity: 100%;
+}
+
+.btn.violet:hover {
+  color: var(--violet-btn-hover);
+  opacity: 100%;
+}
+
+/* icon */
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* dark icon */
+
+.icon.dark {
+  stroke: var(--white);
+  opacity: 50%;
+}
+
+.btn.dark:focus .icon {
+  stroke: var(--green);
+  opacity: 100%;
+}
+
+.btn.dark:hover .icon {
+  stroke: var(--green-hover);
+  opacity: 100%;
+}
+
+/* light icon */
+
+.icon.light {
+  stroke: var(--dark-bg-medium);
+  opacity: 100%;
+}
+
+.btn.light:focus .icon {
+  stroke: var(--green);
+  opacity: 100%;
+}
+
+.btn.light:hover .icon {
+  stroke: var(--green-hover);
+  opacity: 100%;
+}
+
+/* violet icon */
+
+.icon.violet {
+  stroke: var(--dark-bg-medium);
+  opacity: 100%;
+}
+
+.btn.violet:focus .icon {
+  stroke: var(--violet-bg-hard);
+  opacity: 100%;
+}
+
+.btn.violet:hover .icon {
+  stroke: var(--violet-btn-hover);
+  opacity: 100%;
+}
