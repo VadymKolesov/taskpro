@@ -6,8 +6,92 @@
 }
 
 .datepicker {
-  background-color: #1c1c1c; /* Темний фон */
+  background-color: var(--black);
   border: none;
   border-radius: 8px;
-  color: #fff; /* Білий текст */
+  color: var(--white);
+}
+
+.datepicker__header {
+  background-color:  var(--black);
+  border-bottom: none;
+}
+
+.datepicker__current-month {
+  color: var(--white);
+}
+
+.datepicker__day--selected,
+.datepicker__day--keyboard-selected {
+    background-color: #90ee90 !important;
+    color: #000;
+  }
+
+.datepicker__day-name,
+.datepicker__day,
+.datepicker__time-name {
+  color: var(--white);
+}
+
+.datepicker__day--selected,
+.datepicker__day--keyboard-selected {
+  background-color: var(--green);
+  color: var(--black); 
+}
+
+.datepicker__day--outside-month {
+  color: #555; 
+}
+
+
+.datepicker__week-day {
+  color: #555;
+}
+
+
+
+
+
+
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.calendar {
+  background-color: #1c1c1c;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+} /*ПРАЦЮЄ*/
+
+.datepicker__header {
+  background-color: #1c1c1c;
+  border-bottom: none;
+}
+.datepicker__day-name,
+.datepicker__day,
+.datepicker__time-name {
+  color: #fff;
+}
+
+.datepicker__day--selected,
+.datepicker__day--keyboard-selected {
+  background-color: #90ee90 !important;
+  color: #000;
+}
+
+.datepicker__day--disabled {
+  color: #555;
+}
+
+.datepicker__day--outside-month {
+  color: #555;
 }
