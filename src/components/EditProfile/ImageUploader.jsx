@@ -1,18 +1,8 @@
-import { useState } from 'react';
 
-const ImageUploader = ({ setImageURL }) => {
-  const [image, setImage] = useState(null);
+const ImageUploader = () => {
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setImage(reader.result);
-      setImageURL(reader.result);
-    };
-    if (file) {
-      reader.readAsDataURL(file);
-    }
+  const handleImageChange = () => {
+    console.log("Hello");
   };
 
   return (
@@ -22,13 +12,12 @@ const ImageUploader = ({ setImageURL }) => {
         accept="image/*"
         onChange={handleImageChange}
       />
-      {image && (
+    
         <div>
-          <img src={image} alt="Selected" style={{ width: '68px', height: '68px' }} />
+          <img src={image} alt="Selected" className={} />
         </div>
-      )}
+      
     </div>
-  );
-};
-
+  )
+}
 export default ImageUploader;
