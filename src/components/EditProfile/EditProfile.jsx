@@ -23,8 +23,9 @@ export default function EditProfile() {
     password: Yup.string().min(6),
   });
 
-  const handleSubmit = (values) => {
+  const handleSubmit = (values, actions) => {
     console.log(values);
+    actions.resetForm();
   };
 
   const toggleShowPassword = () => {
@@ -39,7 +40,6 @@ export default function EditProfile() {
         </svg>
       </button>
       <h2 className={css.title}>Edit profile</h2>
-      {/* <ImageUploader setImageURL={``} /> */}
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -50,7 +50,10 @@ export default function EditProfile() {
             <ul className={css.formList}>
               <li className={css.profilePicture}>
                 <img src="path_to_image" alt="Profile" />
-                <button type="button" className={clsx(css.uploadButton, css[theme])}>
+                <button
+                  type="button"
+                  className={clsx(css.uploadButton, css[theme])}
+                >
                   +
                 </button>
               </li>
@@ -63,7 +66,7 @@ export default function EditProfile() {
                 />
                 <ErrorMessage
                   name="name"
-                  component="div"
+                  component="p"
                   className={css.error}
                 />
               </li>
@@ -76,7 +79,7 @@ export default function EditProfile() {
                 />
                 <ErrorMessage
                   name="email"
-                  component="div"
+                  component="p"
                   className={css.error}
                 />
               </li>
@@ -89,7 +92,10 @@ export default function EditProfile() {
                     placeholder="Password"
                   />
                   <svg
-                    className={clsx(css.iconEye, showPassword && css.isShownIcon)}
+                    className={clsx(
+                      css.iconEye,
+                      showPassword && css.isShownIcon
+                    )}
                     onClick={toggleShowPassword}
                   >
                     <use href={`${sprite}#icon-eye`}></use>
@@ -97,7 +103,7 @@ export default function EditProfile() {
                 </span>
                 <ErrorMessage
                   name="password"
-                  component="div"
+                  component="p"
                   className={css.error}
                 />
               </li>
@@ -118,4 +124,3 @@ export default function EditProfile() {
     </div>
   );
 }
-
