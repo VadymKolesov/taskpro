@@ -1,0 +1,22 @@
+.form_header {
+  margin-bottom: 40px;
+  display: flex;
+  gap: 14px;
+}
+
+.link {
+  opacity: 0.3;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--white);
+  transition: opacity 100ms ease-in-out;
+}
+
+.link:hover,
+.link:active {
+  opacity: 1;
+}
+
+.isActive {
+  opacity: 1;
+}
