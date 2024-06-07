@@ -136,7 +136,7 @@
 .error {
   color: var(--green);
   font-size: 12px;
-  margin-top: 8px;
+  margin-top: 2px;
   font-weight: 400;
 }
 
