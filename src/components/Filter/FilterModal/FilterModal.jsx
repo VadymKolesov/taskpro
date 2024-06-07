@@ -1,8 +1,9 @@
-import Modal from 'react-modal';
 import css from './FilterModal.module.css';
 import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
 import FilterList from '../FilterList/FilterList';
+import Modal from 'react-modal';
+import { useState } from 'react';
 
 const customStyles = {
   content: {
@@ -33,11 +34,17 @@ const getThemaStyles = (theme) => {
 }
 
 function FilterModal({ theme, isOpen, setIsOpen }) {
-
+  const [filter, setFilter] = useState('all');
   const modal = clsx(css.modal, getThemaStyles(theme));
+  const showAllBtn = clsx(css.showAllBtn, filter === 'all' && css.active)
 
   function closeModal() {
     setIsOpen(false);
+  }
+
+  function handleFilter() {
+    setFilter('all');
+    console.log('all');
   }
 
   return (
@@ -57,9 +64,9 @@ function FilterModal({ theme, isOpen, setIsOpen }) {
         <div className={css.filterWrapper}>
           <div>
             <p className={css.filterInputsTitle}>Label color</p>
-            <FilterList theme={theme}/>
+            <FilterList theme={theme} setFilter={setFilter} filter={filter}/>
           </div>
-          <button className={css.showAllBtn} type='button'>Show all</button>
+          <button className={showAllBtn} type='button' onClick={handleFilter}>Show all</button>
         </div>
       </div>
     </Modal>

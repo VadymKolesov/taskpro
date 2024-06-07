@@ -13,13 +13,21 @@ const getThemaStyles = (theme) => {
   }
 }
 
-function FilterList({ theme }) {
+function FilterList({ theme, setFilter, filter }) {
   const filterList = clsx(css.filterList, getThemaStyles(theme));
+  const colorLabel = clsx(css.colorLabel, filter !== 'all' && css.active);
+
+  const handleFilter = (event) => {
+    if (event.target.value) {
+      setFilter(event.target.value);
+      console.log(event.target.value);
+    }
+  }
   
   return (
-    <ul className={filterList}>
+    <ul className={filterList} onClick={handleFilter}>
       <li>
-        <label className={css.colorLabel}>
+        <label className={colorLabel}>
           <input className={css.colorRadio} type="radio" name="filter" value="without" />
           <svg className={clsx(css.colorCustomRadioIcon, css.gray)}>
             <use href={`${sprite}#icon-circle`}></use>
@@ -31,7 +39,7 @@ function FilterList({ theme }) {
         </label>
       </li>
       <li>
-        <label className={css.colorLabel}>
+        <label className={colorLabel}>
           <input className={css.colorRadio} type="radio" name="filter" value="low" />
           <svg className={clsx(css.colorCustomRadioIcon, css.blue)}>
             <use href={`${sprite}#icon-circle`}></use>
@@ -43,7 +51,7 @@ function FilterList({ theme }) {
         </label>
       </li>
       <li>
-        <label className={css.colorLabel}>
+        <label className={colorLabel}>
           <input className={css.colorRadio} type="radio" name="filter" value="medium" />
           <svg className={clsx(css.colorCustomRadioIcon, css.red)}>
             <use href={`${sprite}#icon-circle`}></use>
@@ -55,7 +63,7 @@ function FilterList({ theme }) {
         </label>
       </li>
       <li>
-        <label className={css.colorLabel}>
+        <label className={colorLabel}>
           <input className={css.colorRadio} type="radio" name="filter" value="high" />
           <svg className={clsx(css.colorCustomRadioIcon, css.green)}>
             <use href={`${sprite}#icon-circle`}></use>

@@ -23,7 +23,7 @@
   transition: color .3 ease;
 }
 
-.colorLabel:has(.colorRadio:checked){
+.colorLabel.active:has(.colorRadio:checked){
   color: var(--white);
 }
 

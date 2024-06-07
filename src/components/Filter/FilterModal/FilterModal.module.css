@@ -59,7 +59,11 @@
   letter-spacing: -0.0175em;
   text-decoration-line: underline;
   opacity: 0.5;
-  transition: color .3s ease;
+  transition: color .3s ease, opacity .3s ease;
+}
+
+.showAllBtn.active{
+  opacity: 1;
 }
 
 .filterInputsTitle{

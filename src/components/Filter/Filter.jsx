@@ -4,13 +4,13 @@ import FilterModal from "./FilterModal/FilterModal";
 
 function Filter({theme}) {
   //const theme = useSelector(selectTheme());
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <>
+    <div>
       <FilterBtn theme={theme} isOpen={isModalOpen} setIsOpen={setIsModalOpen}/>
-      <FilterModal theme={theme} isOpen={isModalOpen} setIsOpen={setIsModalOpen}/>
-    </>
+      <FilterModal theme={theme} isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+    </div>
   )
 }
 
