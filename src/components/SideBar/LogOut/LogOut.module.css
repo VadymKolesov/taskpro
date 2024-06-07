@@ -1,0 +1,46 @@
+.div {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+}
+
+.out {
+  width: 32px;
+  height: 32px;
+}
+
+.out.dark {
+  stroke: var(--green);
+}
+
+.out.light {
+  stroke: var(--green);
+}
+
+.out.violet {
+  stroke: var(--white);
+}
+
+.text.dark {
+  color: var(--white);
+}
+
+.text.light {
+  color: var(--dark-bg-medium);
+}
+
+.text.violet {
+  color: var(--white);
+}
+
+@media screen and (min-width: 768px) {
+  .div {
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+}

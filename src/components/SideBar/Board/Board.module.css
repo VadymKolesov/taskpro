@@ -1,0 +1,165 @@
+.div {
+  height: 61px;
+  width: 225px;
+  margin-left: -14px;
+  margin-bottom: 4px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  padding-left: 14px;
+}
+
+.div.dark {
+  background-color: var(--dark-bg-hard);
+}
+
+.div.light {
+  background-color: var(--white);
+}
+
+.div.violet {
+  background-color: var(--violet-bg-hard);
+}
+
+.div.chosen.dark {
+  background-color: var(--dark-bg-easy);
+}
+
+.div.chosen.light {
+  background-color: var(--light-bg-easy);
+}
+
+.div.chosen.violet {
+  background-color: rgba(225, 225, 225, 0.5);
+}
+
+/* іконка, обрана користувачем  */
+
+.icon {
+  width: 18px;
+  height: 18px;
+
+  margin-right: 4px;
+}
+
+.icon.dark {
+  stroke: rgba(225, 225, 225, 0.5);
+}
+
+.icon.light {
+  stroke: #16161680;
+}
+
+.icon.violet {
+  stroke: rgba(225, 225, 225, 0.5);
+}
+
+.icon.dark.chosen {
+  stroke: var(--white);
+}
+
+.icon.light.chosen {
+  stroke: var(--dark-bg-medium);
+}
+
+.icon.violet.chosen {
+  stroke: var(--white);
+}
+
+/* текст */
+
+.text {
+  font-size: 14px;
+}
+
+.text.dark {
+  color: rgba(225, 225, 225, 0.5);
+}
+
+.text.light {
+  color: #16161680;
+}
+
+.text.violet {
+  color: rgba(225, 225, 225, 0.5);
+}
+
+.text.dark.chosen {
+  color: var(--white);
+}
+
+.text.light.chosen {
+  color: var(--dark-bg-medium);
+}
+
+.text.violet.chosen {
+  color: var(--white);
+}
+
+.op {
+  width: 16px;
+  height: 16px;
+}
+
+.op.dark {
+  stroke: rgba(225, 225, 225, 0.5);
+}
+
+.op.violet {
+  stroke: rgba(225, 225, 225, 0.5);
+}
+
+.op.light {
+  stroke: #16161680;
+}
+
+.stroke {
+  width: 4px;
+  height: 61px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+
+  position: absolute;
+  right: 0;
+}
+
+.stroke.dark {
+  background-color: var(--green);
+}
+
+.stroke.light {
+  background-color: var(--green);
+}
+
+.stroke.violet {
+  background-color: var(--white);
+}
+
+.opIconsWrapper {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  right: 14px;
+}
+
+.btn {
+  background-color: transparent;
+}
+
+@media screen and (min-width: 768px) {
+  .div {
+    width: 260px;
+    margin-left: -24px;
+    padding-left: 24px;
+  }
+
+  .icon {
+    margin-right: 8px;
+  }
+
+  .opIconsWrapper {
+    right: 24px;
+  }
+}

@@ -1,0 +1,38 @@
+.logoComp {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 70px;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+}
+
+.logo.violet {
+  fill: white;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.name.dark {
+  color: var(--white);
+}
+
+.name.light {
+  color: var(--dark-bg-medium);
+}
+
+.name.violet {
+  color: var(--white);
+}
+
+@media screen and (min-width: 768px) {
+  .logoComp {
+    margin-bottom: 60px;
+  }
+}

@@ -1,4 +1,4 @@
-import css from "./Overflow/module.css";
+import css from "./Overflow/Overflow.module.css";
 
 export default function Overflow() {
   return (
