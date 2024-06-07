@@ -4,22 +4,12 @@ import ThemeDropdown from './ThemeDropdown/ThemeDropdown';
 import Profile from './Profile/Profile';
 import { useState } from 'react';
 import clsx from 'clsx';
-
-const getThemaStyles = (theme) => {
-  switch (theme) {
-    case 'light':
-      return css.light;
-    case 'violet':
-      return css.violet;
-    default:
-      return '';
-  }
-}
+import { getThemeStyle } from '../../scripts/getThemeStyle';
 
 export default function Header() {
   // const theme = useSelector(selectTheme);
   const [theme, setTheme] = useState('dark'); //enum: ['light', 'dark', 'violet']
-  const header = clsx(css.header, getThemaStyles(theme));
+  const header = clsx(css.header, getThemeStyle(theme, css));
   
   return (
     <header className={header}>

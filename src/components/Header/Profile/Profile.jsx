@@ -1,17 +1,7 @@
 import { useEffect, useState } from 'react';
 import css from './Profile.module.css';
 import clsx from 'clsx';
-
-const getThemaStyles = (theme) => {
-  switch (theme) {
-    case 'light':
-      return css.light;
-    case 'violet':
-      return css.violet;
-    default:
-      return '';
-  }
-}
+import { getThemeStyle } from '../../../scripts/getThemeStyle';
 
 const getAvatar = (theme) => {
   switch (theme) {
@@ -28,7 +18,7 @@ export default function Profile({ theme }) {
   // const theme = useSelector(selectTheme());
   // const avatar = useSelector(selectAvatar());
   const [avatar, setAvatar] = useState('user-dark_w1uksl.png')
-  const profile = clsx(css.profile, getThemaStyles(theme));
+  const profile = clsx(css.profile, getThemeStyle(theme, css));
 
   useEffect(() => {
     setAvatar(getAvatar(theme));

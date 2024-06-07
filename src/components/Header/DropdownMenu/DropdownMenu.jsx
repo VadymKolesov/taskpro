@@ -1,16 +1,6 @@
 import clsx from 'clsx';
 import css from './DropdownMenu.module.css';
-
-const getThemaStyles = (theme) => {
-  switch (theme) {
-    case 'light':
-      return css.light;
-    case 'violet':
-      return css.violet;
-    default:
-      return '';
-  }
-}
+import { getThemeStyle } from '../../../scripts/getThemeStyle';
 
 function DropdownMenu({ isDrop, selectTheme, theme }) {
   
@@ -18,7 +8,7 @@ function DropdownMenu({ isDrop, selectTheme, theme }) {
   const lightTheme = clsx(css.dropdownItem, theme === 'light' && css.active);
   const darkTheme = clsx(css.dropdownItem, theme === 'dark' && css.active);
   const violetTheme = clsx(css.dropdownItem, theme === 'violet' && css.active);
-  const dropdownWrap = clsx(css.dropdownWrap, getThemaStyles(theme));
+  const dropdownWrap = clsx(css.dropdownWrap, getThemeStyle(theme, css));
 
   return (
     <div className={dropdownWrap}>

@@ -1,21 +1,11 @@
 import css from './Burger.module.css';
 import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
-
-const getThemaStyles = (theme) => {
-  switch (theme) {
-    case 'light':
-      return css.light;
-    case 'violet':
-      return css.violet;
-    default:
-      return '';
-  }
-}
+import { getThemeStyle } from '../../../scripts/getThemeStyle';
 
 function Burger({ theme }) {
   // const theme = useSelector(selectTheme());
-  const burger = clsx(css.burger, getThemaStyles(theme));
+  const burger = clsx(css.burger, getThemeStyle(theme, css));
 
   const handleOpenSidebar = () => {
     console.log('Open sidebar');
