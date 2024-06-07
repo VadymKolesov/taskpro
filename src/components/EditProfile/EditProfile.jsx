@@ -46,11 +46,11 @@ export default function EditProfile() {
         onSubmit={handleSubmit}
       >
         {({ isSubmitting }) => (
-          <Form>
+          <Form className={css.form}>
             <ul className={css.formList}>
               <li className={css.profilePicture}>
                 <img src="path_to_image" alt="Profile" />
-                <button type="button" className={css.uploadButton}>
+                <button type="button" className={clsx(css.uploadButton, css[theme])}>
                   +
                 </button>
               </li>
@@ -64,7 +64,7 @@ export default function EditProfile() {
                 <ErrorMessage
                   name="name"
                   component="div"
-                  className={css.errorMessage}
+                  className={css.error}
                 />
               </li>
               <li className={css.inputGroup}>
@@ -73,12 +73,11 @@ export default function EditProfile() {
                   name="email"
                   className={css.inputField}
                   placeholder="Email"
-                  disabled
                 />
                 <ErrorMessage
                   name="email"
                   component="div"
-                  className={css.errorMessage}
+                  className={css.error}
                 />
               </li>
               <li className={css.inputGroup}>
@@ -99,7 +98,7 @@ export default function EditProfile() {
                 <ErrorMessage
                   name="password"
                   component="div"
-                  className={css.errorMessage}
+                  className={css.error}
                 />
               </li>
             </ul>
@@ -120,4 +119,3 @@ export default function EditProfile() {
   );
 }
 
-// зробити merge саме гілки main у мою гілку

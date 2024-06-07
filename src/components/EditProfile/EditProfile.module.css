@@ -1,6 +1,6 @@
 .EPContainer {
   background-color: var(--dark-modal-bg);
-  width: 400px;
+  width: 335px;
   height: 440px;
   display: flex;
   flex-direction: column;
@@ -9,7 +9,6 @@
   border-radius: 8px;
   padding: 24px;
   align-items: center;
-  gap: 24px;
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
@@ -40,14 +39,45 @@
   letter-spacing: -0.02em;
   align-self: flex-start;
   color: var(--white);
+  margin-bottom: 24px;
+}
+
+.form {
+  width: 100%;
+}
+
+.uploadButton {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  transition: background-color 100ms ease-in-out;
+}
+
+.uploadButton.light,
+.uploadButton.dark {
+  background-color: var(--green);
+}
+.uploadButton.light:hover,
+.uploadButton.dark:hover {
+  background-color: var(--green-hover);
+}
+
+.uploadButton.violet {
+  background-color: var(--violet-bg-easy);
+  transition: background-color 100ms ease-in-out;
+}
+
+.uploadButton.violet:hover {
+  background-color: var(--violet-plus-hover);
 }
 
 .inputField {
   width: 100%;
   background-color: transparent;
   border: 1px solid var(--green);
+  border-radius: 8px;
   opacity: 0.4;
-  transition: opacity 250ms linear;
+  transition: opacity 100ms ease-in-out;
   padding: 14px;
   font-size: 14px;
   font-weight: 400;
@@ -67,6 +97,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
+  margin-bottom: 24px;
 }
 
 .submitButton {
@@ -100,4 +131,28 @@
 
 .isShownIcon {
   opacity: 1;
+}
+
+.error {
+  color: var(--green);
+  font-size: 12px;
+  margin-top: 8px;
+  font-weight: 400;
+}
+
+.error.dark {
+  color: var(--green);
+}
+
+.error.light {
+  color: var(--green-hover);
+}
+
+.error.violet {
+  color: var(--violet-bg-hard);
+}
+.inputField::placeholder {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
 }
