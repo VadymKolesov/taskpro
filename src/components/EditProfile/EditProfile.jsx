@@ -111,7 +111,6 @@ export default function EditProfile() {
             <div>
               <Button
                 type="submit"
-                className={clsx(css.submitButton, css[theme])}
                 disabled={isSubmitting}
                 isIcon={false}
                 verticalPadding="14px"
