@@ -25,7 +25,8 @@ const getAvatar = (theme) => {
 }
 
 export default function Profile({ theme }) {
-  // const theme = useSelector(selectTheme);
+  // const theme = useSelector(selectTheme());
+  // const avatar = useSelector(selectAvatar());
   const [avatar, setAvatar] = useState('user-dark_w1uksl.png')
   const profile = clsx(css.profile, getThemaStyles(theme));
 
@@ -33,10 +34,14 @@ export default function Profile({ theme }) {
     setAvatar(getAvatar(theme));
   }, [theme]);
 
+  const handleOpenEditProfile = () => {
+    console.log("Open modal Edit profile");
+  }
+
   return (
-    <button className={profile}>
+    <div className={profile} onClick={handleOpenEditProfile}>
       Username
       <img className={css.avatar} src={`https://res.cloudinary.com/dvjg8aoza/image/upload/v1717539986/${avatar}`} alt="User avatar" />
-    </button>
+    </div>
   )
 }

@@ -12,7 +12,8 @@ const getThemaStyles = (theme) => {
   }
 }
 
-function DropdownMenu({isDrop, selectTheme, theme}) {
+function DropdownMenu({ isDrop, selectTheme, theme }) {
+  
   const dropdown = clsx(css.dropdown, isDrop ? css.active : css.disable);
   const lightTheme = clsx(css.dropdownItem, theme === 'light' && css.active);
   const darkTheme = clsx(css.dropdownItem, theme === 'dark' && css.active);

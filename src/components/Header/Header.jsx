@@ -17,9 +17,10 @@ const getThemaStyles = (theme) => {
 }
 
 export default function Header() {
-  const [theme, setTheme] = useState('dark'); //enum: ['light', 'dark', 'violet']
   // const theme = useSelector(selectTheme);
+  const [theme, setTheme] = useState('dark'); //enum: ['light', 'dark', 'violet']
   const header = clsx(css.header, getThemaStyles(theme));
+  
   return (
     <header className={header}>
       <div className={css.container}>

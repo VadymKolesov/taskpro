@@ -31,7 +31,7 @@ export default function ThemeDropdown({theme, setTheme}) {
     if (event.target !== event.currentTarget) {
       setTheme(event.target.dataset.theme);
       setIsDrop(!isDrop);
-      // dispatch(changeTheme(setTheme));
+      // dispatch(changeTheme(event.target.dataset.theme));
     }
   }
 
