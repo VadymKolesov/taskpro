@@ -10,6 +10,12 @@
   padding: 24px;
   align-items: center;
   gap: 24px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: var(--white);
 }
 
 .closeIcon {
@@ -37,17 +43,61 @@
 }
 
 .inputField {
+  width: 100%;
   background-color: transparent;
   border: 1px solid var(--green);
-  opacity: 40%;
+  opacity: 0.4;
   transition: opacity 250ms linear;
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: var(--white);
 }
 
 .inputField:focus,
 .inputField:hover {
-  opacity: 100%;
+  opacity: 1;
 }
 
-/* .submitButton {
-  ba
-} */
+.formList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.submitButton {
+  margin: 24px;
+}
+
+.fieldsList li:last-child span {
+  position: relative;
+}
+
+.fieldsList li:last-child .input {
+  padding-right: calc(18px * 3);
+}
+
+.iconEye {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  stroke: var(--white);
+  width: 18px;
+  height: 18px;
+  opacity: 0.4;
+  cursor: pointer;
+  transition: 100ms ease-in-out;
+}
+
+.iconEye:hover {
+  opacity: 1;
+}
+
+.isShownIcon {
+  opacity: 1;
+}
