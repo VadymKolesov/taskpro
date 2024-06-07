@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  border: 1px solid #bedbb080;
+  border: 1px solid var(--green);
   border-radius: 8px;
   padding: 24px;
   align-items: center;
@@ -35,3 +35,19 @@
   align-self: flex-start;
   color: var(--white);
 }
+
+.inputField {
+  background-color: transparent;
+  border: 1px solid var(--green);
+  opacity: 40%;
+  transition: opacity 250ms linear;
+}
+
+.inputField:focus,
+.inputField:hover {
+  opacity: 100%;
+}
+
+/* .submitButton {
+  ba
+} */

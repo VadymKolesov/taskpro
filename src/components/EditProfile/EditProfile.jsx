@@ -1,7 +1,7 @@
 import { useState } from "react";
 import sprite from "../../assets/sprite.svg";
 import css from "./EditProfile.module.css";
-import ImageUploader from "./ImageUploader";
+// import ImageUploader from "./ImageUploader";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 
@@ -36,7 +36,7 @@ export default function EditProfile() {
         </svg>
       </button>
       <h2 className={css.title}>Edit profile</h2>
-      <ImageUploader setImageURL={``} />
+      {/* <ImageUploader setImageURL={``} /> */}
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -44,42 +44,75 @@ export default function EditProfile() {
       >
         {({ isSubmitting }) => (
           <Form>
-            <div className={css.profilePicture}>
-              <img src="path_to_image" alt="Profile" />
-              <button type="button" className={css.uploadButton}>+</button>
-            </div>
-            <div className={css.inputGroup}>
-              <Field 
-                type="text" 
-                name="name" 
-                className={css.inputField} 
-              />
-              <ErrorMessage name="name" component="div" className={css.errorMessage} />
-            </div>
-            <div className={css.inputGroup}>
-              <Field 
-                type="email" 
-                name="email" 
-                className={css.inputField} 
-                disabled 
-              />
-              <ErrorMessage name="email" component="div" className={css.errorMessage} />
-            </div>
-            <div className="input-group password-group">
-              <Field 
-                type={showPassword ? "text" : "password"} 
-                name="password" 
-                className={css.inputField} 
-              />
-              <button type="button" onClick={toggleShowPassword} className={css.togglePasswordButton}>
-                {showPassword ? 'Hide' : 'Show'}
+            <ul className={css.formList}>
+              <li className={css.profilePicture}>
+                <img src="path_to_image" alt="Profile" />
+                <button type="button" className={css.uploadButton}>
+                  +
+                </button>
+              </li>
+              <li className={css.inputGroup}>
+                <Field
+                  type="text"
+                  name="name"
+                  className={css.inputField}
+                  placeholder="Name"
+                />
+                <ErrorMessage
+                  name="name"
+                  component="div"
+                  className={css.errorMessage}
+                />
+              </li>
+              <li className={css.inputGroup}>
+                <Field
+                  type="email"
+                  name="email"
+                  className={css.inputField}
+                  placeholder="Email"
+                  disabled
+                />
+                <ErrorMessage
+                  name="email"
+                  component="div"
+                  className={css.errorMessage}
+                />
+              </li>
+              <li className={css.inputGroup}>
+                <Field
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  className={css.inputField}
+                  placeholder="Password"
+                />
+                <button
+                  type="button"
+                  onClick={toggleShowPassword}
+                  className={css.togglePasswordButton}
+                >
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+                <ErrorMessage
+                  name="password"
+                  component="div"
+                  className={css.errorMessage}
+                />
+              </li>
+            </ul>
+            <div>
+              <button
+                type="submit"
+                className={css.submitButton}
+                disabled={isSubmitting}
+              >
+                Send
               </button>
-              <ErrorMessage name="password" component="div" className={css.errorMessage} />
             </div>
-            <button type="submit" className={css.submitButton} disabled={isSubmitting}>Send</button>
           </Form>
         )}
       </Formik>
     </div>
   );
 }
+
+// зробити merge саме гілки main у мою гілку
