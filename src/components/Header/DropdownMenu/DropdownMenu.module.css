@@ -16,7 +16,7 @@
   border-radius: 8px;
   background-color: var(--dark-modal-bg);
   transform: translateY(-102%);
-  transition: transform .4s linear, background-color .3s ease;
+  transition: /*transform .4s linear,*/ background-color .3s ease;
 }
 
 .dropdown.active {
