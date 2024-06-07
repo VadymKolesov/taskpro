@@ -73,11 +73,11 @@
   margin: 24px;
 }
 
-.fieldsList li:last-child span {
+.formList li:last-child span {
   position: relative;
 }
 
-.fieldsList li:last-child .input {
+.formList li:last-child .input {
   padding-right: calc(18px * 3);
 }
 
