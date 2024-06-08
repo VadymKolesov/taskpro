@@ -35,9 +35,9 @@
   transition: opacity 100ms ease-in-out;
 }
 
-.fieldsList li:hover .input,
-.fieldsList li:focus .input,
-.fieldsList li:active .input {
+.fieldsList .input:hover,
+.fieldsList .input:focus,
+.fieldsList .input:active {
   opacity: 1;
 }
 
