@@ -9,7 +9,7 @@ import Button from "../Button/Button";
 
 export default function EditProfile() {
   const [showPassword, setShowPassword] = useState(false);
-  const theme = "dark";
+  const theme = "violet";
 
   const initialValues = {
     name: "",
@@ -40,6 +40,12 @@ export default function EditProfile() {
         </svg>
       </button>
       <h2 className={css.title}>Edit profile</h2>
+      <div className={css.profilePicture}>
+        <img src="path_to_image" alt="Profile" />
+        <button type="button" className={clsx(css.uploadButton, css[theme])}>
+          +
+        </button>
+      </div>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -48,15 +54,6 @@ export default function EditProfile() {
         {({ isSubmitting }) => (
           <Form className={css.form}>
             <ul className={css.formList}>
-              <li className={css.profilePicture}>
-                <img src="path_to_image" alt="Profile" />
-                <button
-                  type="button"
-                  className={clsx(css.uploadButton, css[theme])}
-                >
-                  +
-                </button>
-              </li>
               <li className={css.inputGroup}>
                 <Field
                   type="text"
@@ -64,11 +61,7 @@ export default function EditProfile() {
                   className={css.inputField}
                   placeholder="Name"
                 />
-                <ErrorMessage
-                  name="name"
-                  component="p"
-                  className={css.error}
-                />
+                <ErrorMessage name="name" component="p" className={css.error} />
               </li>
               <li className={css.inputGroup}>
                 <Field

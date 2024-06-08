@@ -1,5 +1,4 @@
 .EPContainer {
-  background-color: var(--dark-modal-bg);
   width: 335px;
   height: 440px;
   display: flex;
@@ -15,6 +14,18 @@
   letter-spacing: -0.02em;
   text-align: left;
   color: var(--white);
+}
+
+.EPContainer.dark {
+  background-color: var(--dark-modal-bg);
+}
+
+.EPContainer.light {
+  background-color: var(--light-bg-medium);
+}
+
+.EPContainer.violet {
+  background-color: var(--light-bg-medium);
 }
 
 .closeIcon {
@@ -39,6 +50,11 @@
   letter-spacing: -0.02em;
   align-self: flex-start;
   color: var(--white);
+  margin-bottom: 14px;
+}
+
+.profilePicture {
+  position: relative;
   margin-bottom: 24px;
 }
 
@@ -78,7 +94,10 @@
   border-radius: 8px;
   opacity: 0.4;
   transition: opacity 100ms ease-in-out;
-  padding: 14px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 18px;
+  padding-right: calc(18px * 2);
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
@@ -86,6 +105,19 @@
   text-align: left;
   color: var(--white);
 }
+
+.inputField.dark {
+  border-color: var(--green);
+}
+
+.inputField.light {
+  border-color: var(--green);
+}
+
+.inputField.violet {
+  border-color: var(--violet-bg-hard);
+}
+
 
 .inputField:focus,
 .inputField:hover {
@@ -106,10 +138,6 @@
 
 .formList li:last-child span {
   position: relative;
-}
-
-.formList li:last-child .input {
-  padding-right: calc(18px * 3);
 }
 
 .iconEye {
@@ -155,4 +183,16 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 1.5;
+}
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .EPContainer {
+    width: 335px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .EPContainer {
+    width: 400px;
+  }
 }
