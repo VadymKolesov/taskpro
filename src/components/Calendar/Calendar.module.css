@@ -5,7 +5,6 @@
   padding: 20px;
 }
 
-/*CUSTOM INPUT*/
 .customInput {
   background-color: transparent;
   border: none;
@@ -14,136 +13,26 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 1.5;
-}
-/*CUSTOM INPUT*/
-
-.calendar {
-  background-color: var(--dark-bg-easy); /* Фон календаря */
+  position: relative;
 }
 
-
-
-
-.calendar {
-  background-color: var(--dark-bg-easy); /* Фон календаря */
+.customInput.violet {
+  color: var(--violet-bg-hard);
 }
 
-.calendar .react-datepicker__header {
-background-color: #282828; /* Фон заголовку календаря */
-border-bottom: 1px solid #4a4a4a;
+.icon {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 2px;
+  cursor: pointer;
 }
 
-.calendar .react-datepicker__day {
-color: #c3d5b2; /* Колір чисел */
+.icon.dark,
+.icon.light {
+  stroke: var(--green);
 }
 
-.calendar .react-datepicker__current-month,
-.calendar .react-datepicker__day-name {
-color: #c3d5b2; /* Колір тексту в заголовку */
-}
-
-.calendar .react-datepicker__day--selected {
-background-color: #c3d5b2; /* Колір вибраного числа */
-color: #282828; /* Колір тексту вибраного числа */
-}
-
-.calendar .react-datepicker__day--keyboard-selected {
-background-color: #c3d5b2;
-color: #282828;
-}
-
-.calendar .react-datepicker__navigation--previous,
-.calendar .react-datepicker__navigation--next {
-border: 1px solid #c3d5b2; /* Колір стрілок */
-}
-
-.datepicker {
-  background-color: var(--black);
-  border: none;
-  border-radius: 8px;
-  color: var(--white);
-}
-
-.datepicker__header {
-  background-color:  var(--black);
-  border-bottom: none;
-}
-
-.datepicker__current-month {
-  color: var(--white);
-}
-
-.datepicker__day--selected,
-.datepicker__day--keyboard-selected {
-    background-color: #90ee90 !important;
-    color: #000;
-  }
-
-.datepicker__day-name,
-.datepicker__day,
-.datepicker__time-name {
-  color: var(--white);
-}
-
-.datepicker__day--selected,
-.datepicker__day--keyboard-selected {
-  background-color: var(--green);
-  color: var(--black); 
-}
-
-.datepicker__day--outside-month {
-  color: #555; 
-}
-
-
-.datepicker__week-day {
-  color: #555;
-}
-
-
-
-
-
-
-
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.calendar {
-  background-color: #1c1c1c;
-  border: none;
-  border-radius: 8px;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.2;
-} /*ПРАЦЮЄ*/
-
-.datepicker__header {
-  background-color: #1c1c1c;
-  border-bottom: none;
-}
-.datepicker__day-name,
-.datepicker__day,
-.datepicker__time-name {
-  color: #fff;
-}
-
-.datepicker__day--selected,
-.datepicker__day--keyboard-selected {
-  background-color: #90ee90 !important;
-  color: #000;
-}
-
-.datepicker__day--disabled {
-  color: #555;
-}
-
-.datepicker__day--outside-month {
-  color: #555;
+.icon.violet {
+  stroke: var(--violet-bg-hard);
 }

@@ -1,26 +1,26 @@
-import { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import css from './WelcomePage.module.css' // Підключаємо файл стилів
-import ForwardedCustomInput from './CustomInput';
-import clsx from 'clsx';
+import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import ForwardedCustomInput from "./CustomInput";
+import clsx from "clsx";
+import "./Calendar.css";
 
-export default function CustomDatePicker ()  {
-  const theme = "dark";
+export default function Calendar() {
+  const [theme, setTheme] = useState("dark");
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const datepickerWrapper = clsx(
+    "react-datepicker__custom-wrapper",
+    theme && `${theme}`
+  );
 
   return (
-    <div className={css.container}>
+    <div className={datepickerWrapper}>
       <DatePicker
-      selected={selectedDate}
-      onChange={date => setSelectedDate(date)}
-      dateFormat="eeee, MMMM d"
-      customInput={<ForwardedCustomInput />}
-      className={clsx(css.datePicker, css[theme])}
-      calendarClassName={clsx(css.calendar, css[theme])}
-      popperClassName={clsx(css.popper, css[theme])}
-    />
+        selected={selectedDate}
+        onChange={(date) => setSelectedDate(date)}
+        dateFormat="eeee, MMMM d"
+        customInput={<ForwardedCustomInput />}
+      />
     </div>
-    
   );
 }
