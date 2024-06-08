@@ -9,7 +9,8 @@ import Button from "../Button/Button";
 
 export default function EditProfile() {
   const [showPassword, setShowPassword] = useState(false);
-  const theme = "violet";
+
+  const theme = "light";
 
   const initialValues = {
     name: "",
@@ -32,16 +33,27 @@ export default function EditProfile() {
     setShowPassword(!showPassword);
   };
 
+  const temporaryImage =
+    "https://png.pngtree.com/png-clipart/20190614/original/pngtree-sunny-little-boy-children-cute-little-boy-avatar-brown-big-eyes-png-image_3793761.jpg";
+
   return (
     <div className={clsx(css.EPContainer, css[theme])}>
       <button className={css.closeBtn} type="button">
-        <svg className={css.closeIcon} width={"18"} height={"18"}>
+        <svg
+          className={clsx(css.closeIcon, css[theme])}
+          width={"18"}
+          height={"18"}
+        >
           <use href={`${sprite}#icon-x-close`}></use>
         </svg>
       </button>
       <h2 className={css.title}>Edit profile</h2>
       <div className={css.profilePicture}>
-        <img src="path_to_image" alt="Profile" />
+        <img
+          src={temporaryImage}
+          alt="Profile"
+          className={css.profileImage}
+        />
         <button type="button" className={clsx(css.uploadButton, css[theme])}>
           +
         </button>
@@ -58,22 +70,22 @@ export default function EditProfile() {
                 <Field
                   type="text"
                   name="name"
-                  className={css.inputField}
+                  className={clsx(css.inputField, css[theme])}
                   placeholder="Name"
                 />
-                <ErrorMessage name="name" component="p" className={css.error} />
+                <ErrorMessage name="name" component="p" className={clsx(css.error, css[theme])} />
               </li>
               <li className={css.inputGroup}>
                 <Field
                   type="email"
                   name="email"
-                  className={css.inputField}
+                  className={clsx(css.inputField, css[theme])}
                   placeholder="Email"
                 />
                 <ErrorMessage
                   name="email"
                   component="p"
-                  className={css.error}
+                  className={clsx(css.error, css[theme])}
                 />
               </li>
               <li className={css.inputGroup}>
@@ -81,12 +93,13 @@ export default function EditProfile() {
                   <Field
                     type={showPassword ? "text" : "password"}
                     name="password"
-                    className={css.inputField}
+                    className={clsx(css.inputField, css[theme])}
                     placeholder="Password"
                   />
                   <svg
                     className={clsx(
                       css.iconEye,
+                      css[theme],
                       showPassword && css.isShownIcon
                     )}
                     onClick={toggleShowPassword}
@@ -97,7 +110,7 @@ export default function EditProfile() {
                 <ErrorMessage
                   name="password"
                   component="p"
-                  className={css.error}
+                  className={clsx(css.error, css[theme])}
                 />
               </li>
             </ul>

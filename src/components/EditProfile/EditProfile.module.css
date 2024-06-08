@@ -1,10 +1,10 @@
 .EPContainer {
+  margin: 0 auto;
   width: 335px;
-  height: 440px;
+  min-height: 440px;
   display: flex;
   flex-direction: column;
   position: relative;
-  border: 1px solid var(--green);
   border-radius: 8px;
   padding: 24px;
   align-items: center;
@@ -13,31 +13,45 @@
   line-height: 21px;
   letter-spacing: -0.02em;
   text-align: left;
-  color: var(--white);
+  transition: color/background-color/stroke/fill 0.3s easy;
 }
 
 .EPContainer.dark {
   background-color: var(--dark-modal-bg);
+  border: 1px solid var(--green);
+  color: var(--white);
 }
 
 .EPContainer.light {
   background-color: var(--light-bg-medium);
+  box-shadow: 0px 4px 16px 0px #1616160d;
+  color: var(--dark-bg-medium);
 }
 
 .EPContainer.violet {
   background-color: var(--light-bg-medium);
+  box-shadow: 0px 4px 16px 0px #1616160d;
+  color: var(--dark-bg-medium);
 }
 
 .closeIcon {
   position: absolute;
   top: 14px;
   right: 14px;
+}
+
+.closeIcon.dark {
   stroke: var(--white);
 }
 
-.eyeIcon {
-  stroke: var(--white);
+.closeIcon.light {
+  stroke: var(--dark-bg-medium);
 }
+
+.closeIcon.violet {
+  stroke: var(--dark-bg-medium);
+}
+
 
 .closeBtn {
   background-color: transparent;
@@ -49,26 +63,37 @@
   line-height: 27px;
   letter-spacing: -0.02em;
   align-self: flex-start;
-  color: var(--white);
   margin-bottom: 14px;
-}
-
-.profilePicture {
-  position: relative;
-  margin-bottom: 24px;
 }
 
 .form {
   width: 100%;
 }
 
-.uploadButton {
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
-  transition: background-color 100ms ease-in-out;
+.profilePicture {
+  width: 68px;
+  height: 79px;
+  position: relative;
+  margin-bottom: 24px;
 }
 
+.profileImage {
+  width: 100%;
+  height: 68px;
+  border-radius: 8px;
+}
+
+.uploadButton {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 4px;
+  transition: background-color 100ms ease-in-out;
+  }
+  
 .uploadButton.light,
 .uploadButton.dark {
   background-color: var(--green);
@@ -103,21 +128,22 @@
   line-height: 21px;
   letter-spacing: -0.02em;
   text-align: left;
-  color: var(--white);
 }
 
 .inputField.dark {
   border-color: var(--green);
+  color: var(--white);
 }
 
 .inputField.light {
   border-color: var(--green);
+  color: var(--dark-bg-medium);
 }
 
 .inputField.violet {
   border-color: var(--violet-bg-hard);
+  color: var(--dark-bg-medium);
 }
-
 
 .inputField:focus,
 .inputField:hover {
@@ -145,12 +171,23 @@
   right: 18px;
   top: 50%;
   transform: translateY(-50%);
-  stroke: var(--white);
   width: 18px;
   height: 18px;
   opacity: 0.4;
   cursor: pointer;
   transition: 100ms ease-in-out;
+}
+
+.iconEye.dark {
+  stroke: var(--white);
+}
+
+.iconEye.light {
+  stroke: var(--dark-bg-medium);
+}
+
+.iconEye.violet {
+  stroke: var(--dark-bg-medium);
 }
 
 .iconEye:hover {
@@ -162,7 +199,6 @@
 }
 
 .error {
-  color: var(--green);
   font-size: 12px;
   margin-top: 2px;
   font-weight: 400;
