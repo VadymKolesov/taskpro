@@ -194,9 +194,36 @@
   color: var(--violet-bg-hard);
 }
 
+.imgContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  padding-bottom: 16px;
+}
+
 .iconsContainer {
   display: flex;
   column-gap: 8px;
+}
+
+.groupTitle {
+  font-size: 14px;
+  letter-spacing: -2%;
+  font-weight: 500;
+  padding-bottom: 14px;
+}
+
+.groupTitle.dark {
+  color: var(--white);
+}
+
+.groupTitle.light {
+  color: var(--dark-bg-medium);
+}
+
+.groupTitle.violet {
+  color: var(--dark-bg-medium);
 }
 
 .icon {
@@ -204,10 +231,11 @@
   height: 18px;
   opacity: 0.5;
   transition: opacity 100ms ease-in-out;
+  stroke: var(--white);
 }
 
 .icon.dark {
-  color: var(--white);
+  stroke: var(--white);
 }
 
 .icon.light {
@@ -222,6 +250,7 @@
 .icon:focus,
 .icon:active {
   opacity: 1;
+  transition: opacity 100ms ease-in-out;
 }
 
 .backgroundsContainer {
@@ -233,6 +262,12 @@
 .background {
   width: 28px;
   height: 28px;
+}
+
+.background:hover {
+  width: 110%;
+  height: 110%;
+  transition: 100ms ease-in-out;
 }
 
 @media screen and (min-width: 375px) and (max-width: 767px) {

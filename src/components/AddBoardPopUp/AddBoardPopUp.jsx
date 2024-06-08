@@ -75,25 +75,31 @@ export default function AddBoardPopUp({ isEdit, inputValue }) {
             component="p"
             className={clsx(css.error, css[theme])}
           />
-          <div className={css.iconsContainer}>
-            <p>Icons</p>
-            {icons.map((icon) => (
-              <svg key={icon.id} className={css.icon}>
-                <use href={`${sprite}#${icon.name}`}></use>
-              </svg>
-            ))}
-          </div>
-          <div className={css.backgroundsContainer}>
-            <p>Background</p>
-            {backgrounds.map((background) => (
-              <img
-                key={background.id}
-                src={background.url}
-                alt="Мініатюра фону"
-                className={css.background}
-              />
-            ))}
-          </div>
+          <ul className={css.imgContainer}>
+            <li>
+              <p className={clsx(css.groupTitle, css[theme])}>Icons</p>
+              <div className={css.iconsContainer}>
+                {icons.map((icon) => (
+                  <svg key={icon.id} className={css.icon}>
+                    <use href={`${sprite}#${icon.name}`}></use>
+                  </svg>
+                ))}
+              </div>
+            </li>
+            <li>
+              <p className={clsx(css.groupTitle, css[theme])}>Background</p>
+              <div className={css.backgroundsContainer}>
+                {backgrounds.map((background) => (
+                  <img
+                    key={background.id}
+                    src={background.url}
+                    alt="Background thumbnail"
+                    className={css.background}
+                  />
+                ))}
+              </div>
+            </li>
+          </ul>
           <Button
             text={isEdit ? "Edit" : "Create"}
             isIcon={true}
