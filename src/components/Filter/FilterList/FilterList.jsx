@@ -3,13 +3,12 @@ import { getThemeStyle } from '../../../scripts/getThemeStyle';
 import css from './FilterList.module.css';
 import clsx from 'clsx';
 
-function FilterList({ theme, setFilter, filter }) {
-  const filterList = clsx(css.filterList, getThemeStyle(theme, css));
-  const colorLabel = clsx(css.colorLabel, filter !== 'all' ? css.active : '');
+function FilterList() {
+  const filterList = clsx(css.filterList, getThemeStyle(css));
+  // const colorLabel = clsx(css.colorLabel, filter !== 'all' ? css.active : '');
 
   const handleFilter = (event) => {
     if (event.target.value) {
-      setFilter(event.target.value);
       console.log(event.target.value);
     }
   }
@@ -17,7 +16,7 @@ function FilterList({ theme, setFilter, filter }) {
   return (
     <ul className={filterList} onClick={handleFilter}>
       <li>
-        <label className={colorLabel}>
+        <label className={css.colorLabel}>
           <input className={css.colorRadio} type="radio" name="filter" value="without" />
           <svg className={clsx(css.colorCustomRadioIcon, css.gray)}>
             <use href={`${sprite}#icon-circle`}></use>
@@ -29,7 +28,7 @@ function FilterList({ theme, setFilter, filter }) {
         </label>
       </li>
       <li>
-        <label className={colorLabel}>
+        <label className={css.colorLabel}>
           <input className={css.colorRadio} type="radio" name="filter" value="low" />
           <svg className={clsx(css.colorCustomRadioIcon, css.blue)}>
             <use href={`${sprite}#icon-circle`}></use>
@@ -41,7 +40,7 @@ function FilterList({ theme, setFilter, filter }) {
         </label>
       </li>
       <li>
-        <label className={colorLabel}>
+        <label className={css.colorLabel}>
           <input className={css.colorRadio} type="radio" name="filter" value="medium" />
           <svg className={clsx(css.colorCustomRadioIcon, css.red)}>
             <use href={`${sprite}#icon-circle`}></use>
@@ -53,7 +52,7 @@ function FilterList({ theme, setFilter, filter }) {
         </label>
       </li>
       <li>
-        <label className={colorLabel}>
+        <label className={css.colorLabel}>
           <input className={css.colorRadio} type="radio" name="filter" value="high" />
           <svg className={clsx(css.colorCustomRadioIcon, css.green)}>
             <use href={`${sprite}#icon-circle`}></use>

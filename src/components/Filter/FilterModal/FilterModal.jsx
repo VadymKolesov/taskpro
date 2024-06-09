@@ -1,9 +1,8 @@
-import css from './FilterModal.module.css';
-import sprite from '../../../assets/sprite.svg';
-import clsx from 'clsx';
 import FilterList from '../FilterList/FilterList';
 import Modal from 'react-modal';
-import { useState } from 'react';
+import sprite from '../../../assets/sprite.svg';
+import css from './FilterModal.module.css';
+import clsx from 'clsx';
 import { getThemeStyle } from '../../../scripts/getThemeStyle';
 
 const customStyles = {
@@ -24,28 +23,21 @@ const customStyles = {
   }
 };
 
-function FilterModal({ theme, isOpen, setIsOpen }) {
-  const [filter, setFilter] = useState('all');
-  const modal = clsx(css.modal, getThemeStyle(theme, css));
-  const showAllBtn = clsx(css.showAllBtn, filter === 'all' && css.active)
-
-  function closeModal() {
-    setIsOpen(false);
-  }
+function FilterModal() {
+  const modal = clsx(css.modal, getThemeStyle(css));
+  // const showAllBtn = clsx(css.showAllBtn, filter === 'all' && css.active);
 
   function handleFilter() {
-    setFilter('all');
-    console.log('all');
+    console.log('Filter is all');
   }
 
   return (
     <Modal
-      isOpen={isOpen}
+      isOpen={false}
       style={customStyles}
-      onRequestClose={closeModal}
     >
       <div className={modal}> 
-        <button className={css.closeModalBtn} type="button" onClick={closeModal}>
+        <button className={css.closeModalBtn} type="button">
           <svg className={css.closeModalIcon}>
             <use href={`${sprite}#icon-x-close`}></use>
           </svg>
@@ -55,9 +47,9 @@ function FilterModal({ theme, isOpen, setIsOpen }) {
         <div className={css.filterWrapper}>
           <div>
             <p className={css.filterInputsTitle}>Label color</p>
-            <FilterList theme={theme} setFilter={setFilter} filter={filter}/>
+            <FilterList/>
           </div>
-          <label className={showAllBtn} onClick={handleFilter}>
+          <label className={css.showAllBtn} onClick={handleFilter}>
             Show all
             <input type="radio" name="filter" value="high" />
           </label>
