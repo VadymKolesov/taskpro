@@ -1,9 +1,7 @@
 import { Suspense, lazy, useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import RestrictedRoute from "../RestrictedRoute/RestrictedRoute";
-import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import { current } from "../../redux/auth/operations";
-import { selectisRefreshing } from "../../redux/auth/selectors";
+import { selectIsRefreshing } from "../../redux/auth/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import css from "./App.module.css";
 
@@ -11,17 +9,22 @@ const WelcomePage = lazy(() => import("../../pages/WelcomePage/WelcomePage"));
 const AuthPage = lazy(() => import("../../pages/AuthPage/AuthPage"));
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const ScreensPage = lazy(() => import("../../pages/ScreensPage/ScreensPage"));
+const PrivateRoute = lazy(() => import("../PrivateRoute/PrivateRoute"));
+const RestrictedRoute = lazy(() =>
+  import("../RestrictedRoute/RestrictedRoute")
+);
 const NotFoundPage = lazy(() =>
   import("../../pages/NotFoundPage/NotFoundPage")
 );
 
 export default function App() {
   const dispatch = useDispatch();
-  const isRefreshing = useSelector(selectisRefreshing);
 
   useEffect(() => {
     dispatch(current());
   }, [dispatch]);
+
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   return isRefreshing ? (
     <div className={css.loadBackground}>
