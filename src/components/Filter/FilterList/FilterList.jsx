@@ -1,21 +1,11 @@
 import sprite from '../../../assets/sprite.svg';
+import { getThemeStyle } from '../../../scripts/getThemeStyle';
 import css from './FilterList.module.css';
 import clsx from 'clsx';
 
-const getThemaStyles = (theme) => {
-  switch (theme) {
-    case 'light':
-      return css.light;
-    case 'violet':
-      return css.violet;
-    default:
-      return '';
-  }
-}
-
 function FilterList({ theme, setFilter, filter }) {
-  const filterList = clsx(css.filterList, getThemaStyles(theme));
-  const colorLabel = clsx(css.colorLabel, filter !== 'all' && css.active);
+  const filterList = clsx(css.filterList, getThemeStyle(theme, css));
+  const colorLabel = clsx(css.colorLabel, filter !== 'all' ? css.active : '');
 
   const handleFilter = (event) => {
     if (event.target.value) {

@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import FilterList from '../FilterList/FilterList';
 import Modal from 'react-modal';
 import { useState } from 'react';
+import { getThemeStyle } from '../../../scripts/getThemeStyle';
 
 const customStyles = {
   content: {
@@ -16,26 +17,16 @@ const customStyles = {
     padding: '0',
     backgroundColor: 'transparent',
     border: 'none',
+    borderRadius: '8px',
   },
   overlay: {
     backgroundColor: ''
   }
 };
 
-const getThemaStyles = (theme) => {
-  switch (theme) {
-    case 'light':
-      return css.light;
-    case 'violet':
-      return css.violet;
-    default:
-      return '';
-  }
-}
-
 function FilterModal({ theme, isOpen, setIsOpen }) {
   const [filter, setFilter] = useState('all');
-  const modal = clsx(css.modal, getThemaStyles(theme));
+  const modal = clsx(css.modal, getThemeStyle(theme, css));
   const showAllBtn = clsx(css.showAllBtn, filter === 'all' && css.active)
 
   function closeModal() {
@@ -66,7 +57,10 @@ function FilterModal({ theme, isOpen, setIsOpen }) {
             <p className={css.filterInputsTitle}>Label color</p>
             <FilterList theme={theme} setFilter={setFilter} filter={filter}/>
           </div>
-          <button className={showAllBtn} type='button' onClick={handleFilter}>Show all</button>
+          <label className={showAllBtn} onClick={handleFilter}>
+            Show all
+            <input type="radio" name="filter" value="high" />
+          </label>
         </div>
       </div>
     </Modal>

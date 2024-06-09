@@ -59,7 +59,12 @@
   letter-spacing: -0.0175em;
   text-decoration-line: underline;
   opacity: 0.5;
-  transition: color .3s ease, opacity .3s ease;
+  cursor: pointer;
+  transition: color .3s ease;
+}
+
+.showAllBtn input{
+  display: none;
 }
 
 .showAllBtn.active{
@@ -78,9 +83,15 @@
 
 /* Light / violet theme */
 
+:global(.ReactModal__Content.ReactModal__Content--after-open):has(.modal.light),
+:global(.ReactModal__Content.ReactModal__Content--after-open):has(.modal.violet){
+  border-radius: 25px;
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
+}
+
 .modal.light,
 .modal.violet{
-  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
+  border: none;
   background-color: var(--light-bg-medium);
 }
 

@@ -1,21 +1,11 @@
 import css from './FilterBtn.module.css';
 import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
-
-const getThemaStyles = (theme) => {
-  switch (theme) {
-    case 'light':
-      return css.light;
-    case 'violet':
-      return css.violet;
-    default:
-      return '';
-  }
-}
+import { getThemeStyle } from '../../../scripts/getThemeStyle';
 
 function FilterBtn({ theme, isOpen, setIsOpen }) {
   //const theme = useSelector(selectTheme());
-  const filterBtn = clsx(css.filterBtn, getThemaStyles(theme))
+  const filterBtn = clsx(css.filterBtn, getThemeStyle(theme, css));
   const switchModal = () => {
     setIsOpen(!isOpen)
   }

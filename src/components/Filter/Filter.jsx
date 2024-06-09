@@ -3,7 +3,6 @@ import FilterBtn from "./FilterBtn/FilterBtn";
 import FilterModal from "./FilterModal/FilterModal";
 
 function Filter({theme}) {
-  //const theme = useSelector(selectTheme());
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
