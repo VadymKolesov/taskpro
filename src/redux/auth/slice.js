@@ -11,7 +11,7 @@ const slice = createSlice({
       avatarUrl: null,
     },
     token: null,
-    isLoggedIn: false,
+    isAuth: false,
     isRefreshing: false,
     error: null,
   },
@@ -35,7 +35,7 @@ const slice = createSlice({
           avatarUrl: null,
         };
         state.token = null;
-        state.isLoggedIn = false;
+        state.isAuth = false;
         state.isRefreshing = false;
         state.error = action.payload;
       })
@@ -46,7 +46,7 @@ const slice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
-        state.isLoggedIn = true;
+        state.isAuth = true;
         state.isRefreshing = false;
         state.error = null;
       })
@@ -58,7 +58,7 @@ const slice = createSlice({
           avatarUrl: null,
         };
         state.token = null;
-        state.isLoggedIn = false;
+        state.isAuth = false;
         state.isRefreshing = false;
         state.error = action.payload;
       })
@@ -74,7 +74,7 @@ const slice = createSlice({
           avatarUrl: null,
         };
         state.token = null;
-        state.isLoggedIn = false;
+        state.isAuth = false;
         state.isRefreshing = false;
         state.error = null;
       })
@@ -88,7 +88,7 @@ const slice = createSlice({
       })
       .addCase(current.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.isLoggedIn = true;
+        state.isAuth = true;
         state.isRefreshing = false;
         state.error = null;
       })
@@ -100,11 +100,13 @@ const slice = createSlice({
           avatarUrl: null,
         };
         state.token = null;
-        state.isLoggedIn = false;
+        state.isAuth = false;
         state.isRefreshing = false;
         state.error = action.payload;
       });
   },
 });
+
+export const { setIsAuth } = slice.actions;
 
 export default slice.reducer;
