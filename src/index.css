@@ -7,6 +7,7 @@
 :root {
   font-family: "Poppins", sans-serif;
   --white: #ffffff;
+  --frozen: #f6f6f7;
   --black: #000000;
   --green: #bedbb0;
   --green-hover: #9dc888;
