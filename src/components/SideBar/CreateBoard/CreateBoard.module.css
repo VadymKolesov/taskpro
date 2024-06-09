@@ -1,0 +1,123 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  opacity: 0.5;
+}
+
+.title.dark {
+  color: var(--white);
+}
+
+.title.light {
+  color: var(--dark-bg-medium);
+}
+
+.title.violet {
+  color: var(--white);
+}
+
+.create {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 4px 14px 0;
+}
+
+.create.dark {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.create.light {
+  border-top: 1px solid rgba(22, 22, 22, 0.1);
+  border-bottom: 1px solid rgba(22, 22, 22, 0.1);
+}
+
+.create.violet {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.createText {
+  max-width: 76px;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+}
+
+.createText.dark {
+  color: var(--white);
+}
+
+.createText.light {
+  color: var(--dark-bg-medium);
+}
+
+.createText.violet {
+  color: var(--white);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.icon.dark {
+  stroke: var(--dark-bg-hard);
+}
+
+.icon.light {
+  stroke: var(--dark-bg-hard);
+}
+
+.icon.violet {
+  stroke: var(--white);
+}
+
+.iconWrapper {
+  padding: 8px 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 100ms ease-in-out;
+}
+
+.iconWrapper.dark {
+  background-color: var(--green);
+}
+
+.iconWrapper:hover.dark,
+.iconWrapper:focus.dark,
+.iconWrapper:active.dark {
+  background-color: var(--green-hover);
+}
+
+.iconWrapper.light {
+  background-color: var(--green);
+}
+
+.iconWrapper:hover.light,
+.iconWrapper:focus.light,
+.iconWrapper:active.light {
+  background-color: var(--green-hover);
+}
+
+.iconWrapper.violet {
+  background-color: var(--violet);
+}
+
+.iconWrapper:hover.violet,
+.iconWrapper:focus.violet,
+.iconWrapper:active.violet {
+  background-color: var(--violet-plus-hover);
+}

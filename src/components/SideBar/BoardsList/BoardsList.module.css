@@ -1,0 +1,129 @@
+.list {
+  margin: 0 -14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: 180px;
+  overflow-y: scroll;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
+}
+
+.item {
+  position: relative;
+}
+
+.link {
+  padding: 20px 0 20px 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.5;
+  transition: opacity 100ms ease-in-out;
+}
+
+.link:hover {
+  opacity: 1;
+}
+
+.isActive {
+  opacity: 1;
+}
+
+.isActive.dark {
+  background-color: var(--dark-bg-easy);
+}
+
+.isActive.light {
+  background-color: var(--frozen);
+}
+
+.isActive.violet {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.controls {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.controlsList {
+  display: flex;
+  gap: 8px;
+}
+
+.controlsList li {
+  width: 16px;
+  height: 16px;
+}
+
+.itemBtn {
+  background-color: transparent;
+}
+
+.btnIcon {
+  display: flex;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+  transition: opacity 100ms ease-in-out;
+}
+
+.btnIcon:hover,
+.btnIcon:focus,
+.btnIcon:active {
+  opacity: 1;
+}
+
+.btnIcon.dark {
+  stroke: var(--white);
+}
+
+.btnIcon.light {
+  stroke: var(--dark-bg-medium);
+}
+
+.btnIcon.violet {
+  stroke: var(--white);
+}
+
+.border {
+  width: 4px;
+  height: 61px;
+  border-radius: 4px 0 0 4px;
+}
+
+.border.dark {
+  background-color: var(--green);
+}
+
+.border.light {
+  background-color: var(--green);
+}
+
+.border.violet {
+  background-color: var(--white);
+}
+
+@media screen and (min-width: 1024px) {
+  .list {
+    margin: 0 -24px;
+    height: 280px;
+  }
+
+  .link {
+    padding: 20px 0 20px 24px;
+  }
+
+  .controls {
+    gap: 20px;
+  }
+}

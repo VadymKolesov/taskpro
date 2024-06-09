@@ -1,0 +1,40 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+}
+
+.icon.dark {
+  stroke: var(--white);
+}
+
+.icon.light {
+  stroke: var(--dark-bg-medium);
+}
+
+.icon.violet {
+  stroke: var(--white);
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.name.dark {
+  color: var(--white);
+}
+
+.name.light {
+  color: var(--dark-bg-medium);
+}
+
+.name.violet {
+  color: var(--white);
+}
