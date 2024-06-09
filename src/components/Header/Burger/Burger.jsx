@@ -3,9 +3,8 @@ import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
 import { getThemeStyle } from '../../../scripts/getThemeStyle';
 
-function Burger({ theme }) {
-  // const theme = useSelector(selectTheme());
-  const burger = clsx(css.burger, getThemeStyle(theme, css));
+function Burger() {
+  const burger = clsx(css.burger, getThemeStyle(css));
 
   const handleOpenSidebar = () => {
     console.log('Open sidebar');
