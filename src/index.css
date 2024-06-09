@@ -27,11 +27,16 @@
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 body {
   padding: 0;
   margin: 0;
+}
+
+textarea {
+  font-family: inherit;
 }
 
 input {
@@ -52,6 +57,7 @@ p {
 }
 
 button {
+  font-family: inherit;
   cursor: pointer;
   margin: 0;
   padding: 0;
