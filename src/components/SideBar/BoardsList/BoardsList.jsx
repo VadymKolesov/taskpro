@@ -4,8 +4,19 @@ import { NavLink } from "react-router-dom";
 import { nanoid } from "nanoid";
 import clsx from "clsx";
 import sprite from "../../../assets/sprite.svg";
+import { useDispatch } from "react-redux";
+import { setSideBarClose } from "../../../redux/sidebar/slice";
+import { getThemeStyle } from "../../../scripts/getThemeStyle";
 
-export default function BoardsList({ theme }) {
+export default function BoardsList() {
+  const theme = getThemeStyle(css);
+
+  const dispatch = useDispatch();
+
+  const handleSidebarClose = () => {
+    dispatch(setSideBarClose());
+  };
+
   const handleUpdate = (boardId) => {
     console.log(`Update ${boardId}`);
   };
@@ -126,14 +137,15 @@ export default function BoardsList({ theme }) {
         return (
           <li key={nanoid()} className={css.item}>
             <NavLink
-              to={`/home/${item._id}`}
+              to={`${item._id}`}
               className={({ isActive }) =>
-                clsx(css.link, isActive && css.isActive, css[theme])
+                clsx(css.link, isActive && css.isActive, theme)
               }
+              onClick={handleSidebarClose}
             >
               {({ isActive }) => (
                 <>
-                  <BoardItem theme={theme} board={item} />
+                  <BoardItem board={item} />
 
                   {isActive && (
                     <div className={css.controls}>
@@ -144,7 +156,7 @@ export default function BoardsList({ theme }) {
                             onClick={() => handleUpdate(item._id)}
                             className={css.itemBtn}
                           >
-                            <svg className={clsx(css.btnIcon, css[theme])}>
+                            <svg className={clsx(css.btnIcon, theme)}>
                               <use href={`${sprite}#icon-pencil`}></use>
                             </svg>
                           </button>
@@ -155,13 +167,13 @@ export default function BoardsList({ theme }) {
                             onClick={() => handleDelete(item._id)}
                             className={css.itemBtn}
                           >
-                            <svg className={clsx(css.btnIcon, css[theme])}>
+                            <svg className={clsx(css.btnIcon, theme)}>
                               <use href={`${sprite}#icon-trash`}></use>
                             </svg>
                           </button>
                         </li>
                       </ul>
-                      <div className={clsx(css.border, css[theme])}></div>
+                      <div className={clsx(css.border, theme)}></div>
                     </div>
                   )}
                 </>

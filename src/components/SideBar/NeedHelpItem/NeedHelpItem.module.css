@@ -129,7 +129,7 @@
   stroke: var(--violet-bg-hard);
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1180px) {
   .wrapper {
     padding: 20px;
   }

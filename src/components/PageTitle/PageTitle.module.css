@@ -82,7 +82,7 @@
 
 .welcome_register:hover,
 .welcome_register:focus {
-  background-color: var(--dark-bg-easy);
+  background-color: #2c2c2c;
 }
 
 @media screen and (min-width: 375px) and (max-width: 767px) {

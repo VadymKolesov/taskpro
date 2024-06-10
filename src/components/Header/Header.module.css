@@ -1,12 +1,11 @@
-.header{
+.header {
   width: 100%;
   height: 60px;
-  background-color: var(--dark-bg-medium);
   padding: 0 20px;
-  transition: background-color .3s ease;
+  transition: background-color 0.3s ease;
 }
 
-.container{
+.container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,29 +13,34 @@
   height: 100%;
 }
 
-.profile{
+.profile {
   display: flex;
   align-items: center;
   gap: 14px;
 }
 
 @media screen and (min-width: 768px) {
-  .header{
+  .header {
     height: 68px;
     padding: 0 32px;
   }
 }
 
 @media screen and (min-width: 1180px) {
-  .header{
+  .header {
     padding: 0 24px;
   }
 
-  .container{
+  .container {
     justify-content: end;
   }
 }
 
-.header.light, .header.violet {
+.header.dark {
+  background-color: var(--dark-bg-medium);
+}
+
+.header.light,
+.header.violet {
   background-color: var(--light-bg-medium);
 }
