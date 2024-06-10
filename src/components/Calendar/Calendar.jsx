@@ -4,9 +4,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import ForwardedCustomInput from "./CustomInput";
 import clsx from "clsx";
 import "./Calendar.css";
+import { useSelector } from "react-redux";
+import { selectTheme } from "../../redux/auth/selectors";
 
 export default function Calendar() {
-  const theme = "dark";
+  const theme = useSelector(selectTheme);
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const handleSetDate = (date) => {

@@ -3,12 +3,17 @@ import css from "./ThemeDropdown.module.css";
 import sprite from "../../../assets/sprite.svg";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import { getThemeStyle } from "../../../scripts/getThemeStyle";
+import { useDispatch, useSelector } from "react-redux";
+import { setThemeDropDownOpen } from "../../../redux/controls/slice";
+import { selectTheme } from "../../../redux/auth/selectors";
 
 export default function ThemeDropdown() {
-  const themeDropdown = clsx(css.themeDropdown, getThemeStyle(css));
+  const theme = useSelector(selectTheme);
+  const dispatch = useDispatch();
+  const themeDropdown = clsx(css.themeDropdown, getThemeStyle(css, theme));
 
   const handleOpen = () => {
-    console.log("open");
+    dispatch(setThemeDropDownOpen());
   };
 
   return (

@@ -4,11 +4,13 @@ import css from "./FilterModal.module.css";
 import clsx from "clsx";
 import { getThemeStyle } from "../../scripts/getThemeStyle";
 import { changeFilter } from "../../redux/filter/slice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { selectTheme } from "../../redux/auth/selectors";
 
 export default function FilterModal() {
+  const userTheme = useSelector(selectTheme);
   const dispatch = useDispatch();
-  const theme = getThemeStyle(css);
+  const theme = getThemeStyle(css, userTheme);
 
   function handleFilter() {
     dispatch(changeFilter(null));

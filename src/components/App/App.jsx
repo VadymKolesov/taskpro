@@ -18,7 +18,7 @@ const RestrictedRoute = lazy(() =>
 const NotFoundPage = lazy(() =>
   import("../../pages/NotFoundPage/NotFoundPage")
 );
-const EditProfile = lazy(() => import("../EditProfile/EditProfile"))
+const EditProfile = lazy(() => import("../EditProfile/EditProfile"));
 
 export default function App() {
   const theme = getThemeStyle(css);

@@ -5,6 +5,9 @@ import clsx from "clsx";
 import * as Yup from "yup";
 import css from "./EditProfile.module.css";
 import Button from "../Button/Button";
+import { selectTheme } from "../../redux/auth/selectors";
+import { useSelector } from "react-redux";
+import { getThemeStyle } from "../../scripts/getThemeStyle";
 
 export default function EditProfile() {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,7 +15,9 @@ export default function EditProfile() {
     "https://png.pngtree.com/png-clipart/20190614/original/pngtree-sunny-little-boy-children-cute-little-boy-avatar-brown-big-eyes-png-image_3793761.jpg"
   );
 
-  const theme = "dark";
+  const userTheme = useSelector(selectTheme);
+
+  const theme = getThemeStyle(css, userTheme);
 
   const initialValues = {
     name: "",
@@ -56,9 +61,6 @@ export default function EditProfile() {
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
 
-      const width = 68;
-      const height = 68;
-
       canvas.width = img.width;
       canvas.height = img.height;
 
@@ -81,13 +83,9 @@ export default function EditProfile() {
   };
 
   return (
-    <div className={clsx(css.EPContainer, css[theme])}>
+    <div className={clsx(css.EPContainer, theme)}>
       <button className={css.closeBtn} type="button" onClick={handleClose}>
-        <svg
-          className={clsx(css.closeIcon, css[theme])}
-          width={"18"}
-          height={"18"}
-        >
+        <svg className={clsx(css.closeIcon, theme)} width={"18"} height={"18"}>
           <use href={`${sprite}#icon-x-close`}></use>
         </svg>
       </button>
@@ -102,8 +100,8 @@ export default function EditProfile() {
         />
         <label htmlFor="image-input" className={css.inputLabel}>
           <img src={userAvatar} alt="Profile" className={css.profileImage} />
-          <div className={clsx(css.uploadButton, css[theme])}>
-            <svg className={clsx(css.icon, css[theme])}>
+          <div className={clsx(css.uploadButton, theme)}>
+            <svg className={clsx(css.icon, theme)}>
               <use href={`${sprite}#icon-plus`}></use>
             </svg>
           </div>
@@ -121,26 +119,26 @@ export default function EditProfile() {
                 <Field
                   type="text"
                   name="name"
-                  className={clsx(css.inputField, css[theme])}
+                  className={clsx(css.inputField, theme)}
                   placeholder="Name"
                 />
                 <ErrorMessage
                   name="name"
                   component="p"
-                  className={clsx(css.error, css[theme])}
+                  className={clsx(css.error, theme)}
                 />
               </li>
               <li className={css.inputGroup}>
                 <Field
                   type="email"
                   name="email"
-                  className={clsx(css.inputField, css[theme])}
+                  className={clsx(css.inputField, theme)}
                   placeholder="Email"
                 />
                 <ErrorMessage
                   name="email"
                   component="p"
-                  className={clsx(css.error, css[theme])}
+                  className={clsx(css.error, theme)}
                 />
               </li>
               <li className={css.inputGroup}>
@@ -148,13 +146,13 @@ export default function EditProfile() {
                   <Field
                     type={showPassword ? "text" : "password"}
                     name="password"
-                    className={clsx(css.inputField, css[theme])}
+                    className={clsx(css.inputField, theme)}
                     placeholder="Password"
                   />
                   <svg
                     className={clsx(
                       css.iconEye,
-                      css[theme],
+                      theme,
                       showPassword && css.isShownIcon
                     )}
                     onClick={toggleShowPassword}
@@ -165,7 +163,7 @@ export default function EditProfile() {
                 <ErrorMessage
                   name="password"
                   component="p"
-                  className={clsx(css.error, css[theme])}
+                  className={clsx(css.error, theme)}
                 />
               </li>
             </ul>

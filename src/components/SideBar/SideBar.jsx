@@ -10,11 +10,13 @@ import { selectSideBarIsOpen } from "../../redux/sidebar/selectors";
 import { NavLink } from "react-router-dom";
 import { setSideBarClose } from "../../redux/sidebar/slice";
 import { getThemeStyle } from "../../scripts/getThemeStyle";
+import { selectTheme } from "../../redux/auth/selectors";
 
 export default function SideBar() {
+  const userTheme = useSelector(selectTheme);
   const dispatch = useDispatch();
   const sideBarIsOpen = useSelector(selectSideBarIsOpen);
-  const theme = getThemeStyle(css);
+  const theme = getThemeStyle(css, userTheme);
 
   const handleSideBarClose = () => {
     dispatch(setSideBarClose());

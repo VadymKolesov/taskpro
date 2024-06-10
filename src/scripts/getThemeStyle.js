@@ -1,5 +1,4 @@
-export const getThemeStyle = (css) => {
-  const theme = "dark"; //= useSelector(...);
+export const getThemeStyle = (css, theme) => {
   switch (theme) {
     case "light":
       return css.light;

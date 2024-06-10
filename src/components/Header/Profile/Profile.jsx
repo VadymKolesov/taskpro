@@ -1,13 +1,14 @@
 import css from "./Profile.module.css";
 import clsx from "clsx";
 import { getThemeStyle } from "../../../scripts/getThemeStyle";
-import { selectUser } from "../../../redux/auth/selectors";
+import { selectTheme, selectUser } from "../../../redux/auth/selectors";
 import { useSelector } from "react-redux";
 
 export default function Profile() {
+  const theme = useSelector(selectTheme);
   const user = useSelector(selectUser);
 
-  const profile = clsx(css.profile, getThemeStyle(css));
+  const profile = clsx(css.profile, getThemeStyle(css, theme));
 
   const handleOpenEditProfile = () => {
     console.log("Open modal Edit profile");
