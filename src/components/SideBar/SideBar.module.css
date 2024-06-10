@@ -1,13 +1,13 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   position: absolute;
   top: 0;
   left: 0;
   height: 100vh;
   width: 225px;
   padding: 14px 14px 24px 14px;
+  transition: background-color 0.3s ease;
 }
 
 .wrapper.dark {
@@ -41,6 +41,7 @@
   width: 32px;
   height: 32px;
   border-radius: 8px;
+  transition: fill 0.3s ease, background-color 0.3s ease;
 }
 
 .logo.dark {
@@ -71,6 +72,7 @@
   font-size: 16px;
   font-weight: 600;
   letter-spacing: -0.04em;
+  transition: color 0.3s ease;
 }
 
 .title.dark {
@@ -89,6 +91,8 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  padding-top: 24px;
+  margin-top: auto;
 }
 
 @media screen and (min-width: 1024px) {

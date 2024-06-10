@@ -7,6 +7,7 @@
 .icon {
   width: 18px;
   height: 18px;
+  transition: stroke 0.3s ease;
 }
 
 .icon.dark {
@@ -25,6 +26,7 @@
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.02em;
+  transition: color 0.3s ease;
 }
 
 .name.dark {

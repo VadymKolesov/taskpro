@@ -21,8 +21,8 @@ export default function SideBar() {
           <h1 className={clsx(css.title, css[theme])}>Task Pro</h1>
         </div>
         <CreateBoard theme={theme} />
-        <BoardsList theme={theme} />
       </div>
+      <BoardsList theme={theme} />
       <div className={css.bottom}>
         <NeedHelpItem theme={theme} />
         <LogoutBtn theme={theme} />

@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  height: 180px;
   overflow-y: scroll;
 }
 
@@ -30,6 +29,7 @@
 
 .isActive {
   opacity: 1;
+  transition: background-color 0.3s ease;
 }
 
 .isActive.dark {
@@ -74,7 +74,7 @@
   width: 16px;
   height: 16px;
   opacity: 0.5;
-  transition: opacity 100ms ease-in-out;
+  transition: opacity 100ms ease-in-out, stroke 0.3s ease;
 }
 
 .btnIcon:hover,
@@ -99,6 +99,7 @@
   width: 4px;
   height: 61px;
   border-radius: 4px 0 0 4px;
+  transition: background-color 0.3s ease;
 }
 
 .border.dark {
@@ -116,7 +117,6 @@
 @media screen and (min-width: 1024px) {
   .list {
     margin: 0 -24px;
-    height: 280px;
   }
 
   .link {
