@@ -1,4 +1,4 @@
-.profile{
+.profile {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -9,16 +9,17 @@
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: -0.0175em;
-  cursor: pointer;
-  transition: color .3s ease;
+  transition: color 0.3s ease;
 }
 
-.avatar{
+.avatar {
   width: 32px;
   height: 32px;
   border-radius: 8px;
+  cursor: pointer;
 }
 
-.profile.light, .profile.violet{
+.profile.light,
+.profile.violet {
   color: var(--dark-bg-medium);
 }
