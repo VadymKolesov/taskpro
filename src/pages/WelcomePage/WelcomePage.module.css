@@ -1,0 +1,11 @@
+.background {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(196, 196, 196, 0) 25%,
+    rgba(190, 219, 176, 1) 92%
+  );
+}

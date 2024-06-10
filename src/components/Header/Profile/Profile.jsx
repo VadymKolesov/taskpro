@@ -1,8 +1,12 @@
 import css from "./Profile.module.css";
 import clsx from "clsx";
 import { getThemeStyle } from "../../../scripts/getThemeStyle";
+import { selectUser } from "../../../redux/auth/selectors";
+import { useSelector } from "react-redux";
 
 export default function Profile() {
+  const user = useSelector(selectUser);
+
   const profile = clsx(css.profile, getThemeStyle(css));
 
   const handleOpenEditProfile = () => {
@@ -11,10 +15,10 @@ export default function Profile() {
 
   return (
     <div className={profile}>
-      Username
+      {user.name ? user.name : "Username"}
       <img
         className={css.avatar}
-        src={``}
+        src={`${user.avatarUrl}`}
         alt="User avatar"
         onClick={handleOpenEditProfile}
       />

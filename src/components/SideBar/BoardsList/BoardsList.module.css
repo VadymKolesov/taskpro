@@ -114,7 +114,7 @@
   background-color: var(--white);
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1180px) {
   .list {
     margin: 0 -24px;
   }

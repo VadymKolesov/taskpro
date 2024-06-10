@@ -3,8 +3,11 @@ import clsx from "clsx";
 import sprite from "../../../assets/sprite.svg";
 import { useDispatch } from "react-redux";
 import { logout } from "../../../redux/auth/operations";
+import { getThemeStyle } from "../../../scripts/getThemeStyle";
 
-export default function LogoutBtn({ theme }) {
+export default function LogoutBtn() {
+  const theme = getThemeStyle(css);
+
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -12,8 +15,8 @@ export default function LogoutBtn({ theme }) {
   };
 
   return (
-    <button className={clsx(css.btn, css[theme])} onClick={handleLogout}>
-      <svg className={clsx(css.icon, css[theme])}>
+    <button className={clsx(css.btn, theme)} onClick={handleLogout}>
+      <svg className={clsx(css.icon, theme)}>
         <use href={`${sprite}#icon-logout`}></use>
       </svg>
       <p>Log out</p>
