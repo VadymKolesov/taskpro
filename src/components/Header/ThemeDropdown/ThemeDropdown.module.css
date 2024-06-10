@@ -1,0 +1,39 @@
+.themeDropdown{
+  position: relative;
+}
+
+.themeBtn{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--white);
+  background-color: transparent;
+  opacity: 0.8;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.0175em;
+  transition: color .3s ease;
+}
+
+.arrow{
+  width: 16px;
+  height: 16px;
+  stroke: var(--white);
+  opacity: 0.8;
+  transform: rotate(0deg);
+  transition: transform 0.2s linear, stroke .3s ease;
+}
+
+.arrow.up{
+  transform: rotate(180deg);
+}
+
+.themeDropdown.light .themeBtn, .themeDropdown.violet .themeBtn{
+  color: var(--dark-bg-medium);
+}
+
+.themeDropdown.light .arrow, .themeDropdown.violet .arrow{
+  stroke: var(--dark-bg-medium);
+}
