@@ -1,0 +1,103 @@
+/* cont */
+
+.cont {
+  width: 135px;
+  border-radius: 8px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.cont.dark {
+  background-color: var(--dark-bg-easy);
+}
+
+.cont.light,
+.cont.violet {
+  background-color: var(--light-bg-medium);
+}
+
+/* btn */
+
+.btn {
+  background-color: transparent;
+  border: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  transition: color 100ms ease-in-out, opacity 100ms ease-in-out,
+    stroke 100ms ease-in-out;
+}
+
+.btn.dark {
+  color: var(--white);
+  opacity: 50%;
+}
+
+.btn:focus.dark,
+.btn:hover.dark,
+.btn:active.dark {
+  color: var(--green);
+  opacity: 100%;
+}
+
+.btn.light,
+.btn.violet {
+  color: var(--dark-bg-medium);
+  opacity: 100%;
+}
+
+.btn:focus.light,
+.btn:hover.light,
+.btn:active.light {
+  color: var(--green);
+}
+
+.btn:focus.violet,
+.btn:hover.violet,
+.btn:active.violet {
+  color: var(--violet-bg-hard);
+}
+
+/* icon */
+
+.icon {
+  width: 16px;
+  height: 16px;
+  transition: stroke 100ms ease-in-out, opacity 100ms ease-in-out;
+}
+
+.icon.dark {
+  stroke: var(--white);
+  opacity: 0.5;
+}
+
+.btn:focus.dark .icon,
+.btn:hover.dark .icon,
+.btn:active.dark .icon {
+  stroke: var(--green);
+  opacity: 1;
+}
+
+.icon.light,
+.icon.violet {
+  stroke: var(--dark-bg-medium);
+  opacity: 1;
+}
+
+.btn:focus.light .icon,
+.btn:hover.light .icon,
+.btn:active.light .icon {
+  stroke: var(--green);
+}
+
+.btn:focus.violet .icon,
+.btn:hover .violet.icon,
+.btn:active.violet .icon {
+  stroke: var(--violet-bg-hard);
+}

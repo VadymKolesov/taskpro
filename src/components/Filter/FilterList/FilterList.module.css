@@ -6,6 +6,11 @@
 
 .filterList li {
   line-height: 0;
+  transition: opacity 100ms ease-in-out;
+}
+
+.filterList.dark li:hover {
+  opacity: 0.7;
 }
 
 /* CUSTOM INPUTS */
@@ -14,17 +19,13 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #ffffff80;
+  opacity: 0.8;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: -0.0175em;
   cursor: pointer;
-  transition: color .3 ease;
-}
-
-.colorLabel.active:has(.colorRadio:checked){
-  color: var(--white);
+  transition: color 0.3 ease;
 }
 
 .colorCustomRadioIcon {
@@ -33,22 +34,24 @@
   overflow: visible;
 }
 
-.colorCustomRadioIcon.gray {
-  fill: var(--white);
-  opacity: 0.3;
-  transition: fill .3s ease;
+.filterList .colorCustomRadioIcon.gray {
+  transition: fill 0.3s ease;
+  opacity: 1;
 }
 
-.colorCustomRadioIcon.blue {
+.filterList .colorCustomRadioIcon.blue {
   fill: var(--indigo);
+  opacity: 1;
 }
 
-.colorCustomRadioIcon.red {
+.filterList .colorCustomRadioIcon.red {
   fill: var(--pink);
+  opacity: 1;
 }
 
-.colorCustomRadioIcon.green {
+.filterList .colorCustomRadioIcon.green {
   fill: var(--green);
+  opacity: 1;
 }
 
 .colorCustomRadioIconChecked {
@@ -59,10 +62,7 @@
 }
 
 .colorCustomRadioIconChecked.gray {
-  fill: var(--white);
-  stroke: var(--white);
-  opacity: 0.3;
-  transition: fill .3s ease, stroke .3s ease;
+  transition: fill 0.3s ease, stroke 0.3s ease;
 }
 
 .colorCustomRadioIconChecked.blue {
@@ -84,34 +84,62 @@
   display: none;
 }
 
-.colorRadio:checked~.colorCustomRadioIcon {
+.colorRadio:checked ~ .colorCustomRadioIcon {
   display: none;
 }
 
-.colorRadio:checked~.colorCustomRadioIconChecked {
+.colorRadio:checked ~ .colorCustomRadioIconChecked {
   display: block;
 }
 
 /* Light / violet theme */
 
+.filterList.dark .colorLabel {
+  color: var(--white);
+}
+
 .filterList.light .colorLabel,
-.filterList.violet .colorLabel{
-  color: rgba(22, 22, 22, 0.5);
+.filterList.violet .colorLabel {
+  color: var(--dark-bg-medium);
+  opacity: 0.5;
+  transition: opacity 100ms ease-in-out;
+}
+
+.filterList.light .colorLabel:hover,
+.filterList.violet .colorLabel:hover {
+  opacity: 1;
+}
+
+.filterList.dark .colorLabel:has(.colorRadio:checked) {
+  color: var(--white);
+  opacity: 1;
 }
 
 .filterList.light .colorLabel:has(.colorRadio:checked),
 .filterList.violet .colorLabel:has(.colorRadio:checked) {
   color: var(--dark-bg-medium);
+  opacity: 1;
+}
+
+.filterList.dark .colorCustomRadioIcon.gray {
+  fill: var(--white);
+  opacity: 0.3;
 }
 
 .filterList.light .colorCustomRadioIcon.gray,
-.filterList.violet .colorCustomRadioIcon.gray{
+.filterList.violet .colorCustomRadioIcon.gray {
   fill: var(--dark-bg-medium);
   opacity: 0.5;
 }
 
+.filterList.dark .colorCustomRadioIconChecked.gray {
+  fill: var(--white);
+  stroke: var(--white);
+  opacity: 0.3;
+}
+
 .filterList.light .colorCustomRadioIconChecked.gray,
-.filterList.violet .colorCustomRadioIconChecked.gray{
+.filterList.violet .colorCustomRadioIconChecked.gray {
   fill: var(--dark-bg-medium);
   stroke: var(--dark-bg-medium);
   opacity: 0.5;

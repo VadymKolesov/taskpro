@@ -1,23 +1,32 @@
-import sprite from '../../../assets/sprite.svg';
-import { getThemeStyle } from '../../../scripts/getThemeStyle';
-import css from './FilterList.module.css';
-import clsx from 'clsx';
+import { useDispatch, useSelector } from "react-redux";
+import sprite from "../../../assets/sprite.svg";
+import { getThemeStyle } from "../../../scripts/getThemeStyle";
+import css from "./FilterList.module.css";
+import clsx from "clsx";
+import { selectFilterValue } from "../../../redux/filter/selectors";
+import { changeFilter } from "../../../redux/filter/slice";
 
 function FilterList() {
-  const filterList = clsx(css.filterList, getThemeStyle(css));
-  // const colorLabel = clsx(css.colorLabel, filter !== 'all' ? css.active : '');
+  const dispatch = useDispatch();
+  const filterValue = useSelector(selectFilterValue);
+  const theme = getThemeStyle(css);
 
-  const handleFilter = (event) => {
-    if (event.target.value) {
-      console.log(event.target.value);
-    }
-  }
-  
+  const handleChangeFilter = (event) => {
+    dispatch(changeFilter(event.target.value));
+  };
+
   return (
-    <ul className={filterList} onClick={handleFilter}>
+    <ul className={clsx(css.filterList, theme)}>
       <li>
         <label className={css.colorLabel}>
-          <input className={css.colorRadio} type="radio" name="filter" value="without" />
+          <input
+            className={css.colorRadio}
+            type="radio"
+            name="filter"
+            value="without"
+            checked={filterValue === "without"}
+            onChange={handleChangeFilter}
+          />
           <svg className={clsx(css.colorCustomRadioIcon, css.gray)}>
             <use href={`${sprite}#icon-circle`}></use>
           </svg>
@@ -29,7 +38,14 @@ function FilterList() {
       </li>
       <li>
         <label className={css.colorLabel}>
-          <input className={css.colorRadio} type="radio" name="filter" value="low" />
+          <input
+            className={css.colorRadio}
+            type="radio"
+            name="filter"
+            value="low"
+            checked={filterValue === "low"}
+            onChange={handleChangeFilter}
+          />
           <svg className={clsx(css.colorCustomRadioIcon, css.blue)}>
             <use href={`${sprite}#icon-circle`}></use>
           </svg>
@@ -41,7 +57,14 @@ function FilterList() {
       </li>
       <li>
         <label className={css.colorLabel}>
-          <input className={css.colorRadio} type="radio" name="filter" value="medium" />
+          <input
+            className={css.colorRadio}
+            type="radio"
+            name="filter"
+            value="medium"
+            checked={filterValue === "medium"}
+            onChange={handleChangeFilter}
+          />
           <svg className={clsx(css.colorCustomRadioIcon, css.red)}>
             <use href={`${sprite}#icon-circle`}></use>
           </svg>
@@ -53,7 +76,14 @@ function FilterList() {
       </li>
       <li>
         <label className={css.colorLabel}>
-          <input className={css.colorRadio} type="radio" name="filter" value="high" />
+          <input
+            className={css.colorRadio}
+            type="radio"
+            name="filter"
+            value="high"
+            checked={filterValue === "high"}
+            onChange={handleChangeFilter}
+          />
           <svg className={clsx(css.colorCustomRadioIcon, css.green)}>
             <use href={`${sprite}#icon-circle`}></use>
           </svg>
@@ -64,7 +94,7 @@ function FilterList() {
         </label>
       </li>
     </ul>
-  )
+  );
 }
 
 export default FilterList;

@@ -1,13 +1,13 @@
 export const getThemeStyle = (css) => {
-  const theme = 'dark' //= useSelector(...);
+  const theme = "dark"; //= useSelector(...);
   switch (theme) {
-    case 'light':
+    case "light":
       return css.light;
-    case 'violet':
+    case "violet":
       return css.violet;
-    case 'dark':
+    case "dark":
       return css.dark;
     default:
       return css.dark;
   }
-}
+};

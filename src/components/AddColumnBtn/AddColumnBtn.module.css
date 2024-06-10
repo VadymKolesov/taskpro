@@ -1,0 +1,87 @@
+/* button */
+
+.btn {
+  display: flex;
+  gap: 8px;
+  width: 334px;
+  height: 56px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  transition: background-color 100ms ease-in-out, color 0.3s ease;
+}
+
+.btn.dark {
+  background-color: var(--dark-bg-hard);
+  color: var(--white);
+}
+
+.btn.dark:hover {
+  background-color: var(--dark-bg-medium);
+}
+
+.btn.light {
+  background-color: var(--white);
+  color: var(--dark-bg-medium);
+}
+
+.btn.light:hover {
+  background-color: var(--light-bg-medium);
+}
+
+.btn.violet {
+  background-color: var(--white);
+  color: var(--dark-bg-medium);
+}
+
+.btn.violet:hover {
+  background-color: var(--violet-bg-easy);
+}
+
+/* plus container */
+
+.plusCont {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.plusCont.dark {
+  background-color: var(--white);
+  color: var(--dark-bg-hard);
+}
+
+.plusCont.light {
+  background-color: var(--dark-bg-medium);
+  color: var(--white);
+}
+
+.plusCont.violet {
+  background-color: var(--violet-bg-hard);
+  color: var(--white);
+}
+
+.plusIcon {
+  width: 14px;
+  height: 14px;
+  transition: stroke 0.3s ease;
+}
+
+.plusIcon.dark {
+  stroke: var(--dark-bg-hard);
+}
+
+.plusIcon.light {
+  stroke: var(--white);
+}
+
+.plusIcon.violet {
+  stroke: var(--white);
+}

@@ -1,3 +1,10 @@
+import PageTitle from "../../components/PageTitle/PageTitle";
+import css from "./WelcomePage.module.css";
+
 export default function WelcomePage() {
-  return <h1>Welcome page</h1>;
+  return (
+    <div className={css.background}>
+      <PageTitle />
+    </div>
+  );
 }
