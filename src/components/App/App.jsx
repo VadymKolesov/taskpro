@@ -18,6 +18,7 @@ const RestrictedRoute = lazy(() =>
 const NotFoundPage = lazy(() =>
   import("../../pages/NotFoundPage/NotFoundPage")
 );
+const EditProfile = lazy(() => import("../EditProfile/EditProfile"))
 
 export default function App() {
   const theme = getThemeStyle(css);
@@ -55,6 +56,7 @@ export default function App() {
           />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="edit" element={<EditProfile />} /> {/* my test route */}
       </Routes>
     </Suspense>
   );
