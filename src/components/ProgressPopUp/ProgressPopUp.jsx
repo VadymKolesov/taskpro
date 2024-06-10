@@ -16,7 +16,7 @@ export default function AddColumnBtn({ columns }) {
           type="button"
           className={clsx(css.btn, css[theme])}
           onClick={handleClick}
-          key={column.id}
+          key={column._id}
         >
           <p>{column.name}</p>
           <svg className={clsx(css.icon, css[theme])}>

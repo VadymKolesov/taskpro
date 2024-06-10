@@ -30,7 +30,8 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  transition: color 0.3s ease, opacity 0.3s ease;
+  transition: color 100ms ease-in-out, opacity 100ms ease-in-out,
+    stroke 100ms ease-in-out;
 }
 
 .btn.dark {
@@ -38,12 +39,11 @@
   opacity: 50%;
 }
 
-.btn.dark:focus,
-.btn.dark:hover,
-.btn.dark:active {
+.btn:focus.dark,
+.btn:hover.dark,
+.btn:active.dark {
   color: var(--green);
   opacity: 100%;
-  transition: color 100ms ease-in-out, opacity 100ms ease-in-out;
 }
 
 .btn.light,
@@ -52,18 +52,16 @@
   opacity: 100%;
 }
 
-.btn.light:focus,
-.btn.light:hover,
-.btn.light.btn.light:active {
+.btn:focus.light,
+.btn:hover.light,
+.btn:active.light {
   color: var(--green);
-  transition: color 100ms ease-in-out;
 }
 
-.btn.violet:focus,
-.btn.violet:hover,
-.btn.violet.active {
+.btn:focus.violet,
+.btn:hover.violet,
+.btn:active.violet {
   color: var(--violet-bg-hard);
-  transition: color 100ms ease-in-out;
 }
 
 /* icon */
@@ -71,38 +69,35 @@
 .icon {
   width: 16px;
   height: 16px;
-  transition: stroke 0.3s ease, opacity 0.3s ease;
+  transition: stroke 100ms ease-in-out, opacity 100ms ease-in-out;
 }
 
 .icon.dark {
   stroke: var(--white);
-  opacity: 50%;
+  opacity: 0.5;
 }
 
-.btn.dark:focus .icon,
-.btn.dark:hover .icon,
-.btn.dark:active .icon {
+.btn:focus.dark .icon,
+.btn:hover.dark .icon,
+.btn:active.dark .icon {
   stroke: var(--green);
-  opacity: 100%;
-  transition: stroke 100ms ease-in-out, opacity 100ms ease-in-out;
+  opacity: 1;
 }
 
 .icon.light,
 .icon.violet {
   stroke: var(--dark-bg-medium);
-  opacity: 100%;
+  opacity: 1;
 }
 
-.btn.light:focus .icon,
-.btn.light:hover .icon,
-.btn.light:active .icon {
+.btn:focus.light .icon,
+.btn:hover.light .icon,
+.btn:active.light .icon {
   stroke: var(--green);
-  transition: stroke 100ms ease-in-out;
 }
 
-.btn.violet:focus .icon,
-.btn.violet:hover .icon,
-.btn.violet:active .icon {
+.btn:focus.violet .icon,
+.btn:hover .violet.icon,
+.btn:active.violet .icon {
   stroke: var(--violet-bg-hard);
-  transition: stroke 100ms ease-in-out;
 }
