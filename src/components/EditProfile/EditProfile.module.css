@@ -1,5 +1,4 @@
 .EPContainer {
-  margin: 0 auto;
   width: 335px;
   min-height: 440px;
   display: flex;
@@ -52,7 +51,6 @@
   stroke: var(--dark-bg-medium);
 }
 
-
 .closeBtn {
   background-color: transparent;
 }
@@ -78,13 +76,26 @@
 }
 
 .profileImage {
-  width: 100%;
+  width: 68px;
   height: 68px;
   border-radius: 8px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.input {
+  display: none;
+}
+
+.inputLabel {
+  cursor: pointer;
 }
 
 .uploadButton {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 24px;
   height: 24px;
   bottom: 0;
@@ -92,8 +103,19 @@
   transform: translateX(-50%);
   border-radius: 4px;
   transition: background-color 100ms ease-in-out;
-  }
-  
+}
+
+.icon {
+  width: 10px;
+  height: 10px;
+}
+
+.icon.light,
+.icon.dark,
+.icon.violet {
+  stroke: var(--dark-bg-medium);
+}
+
 .uploadButton.light,
 .uploadButton.dark {
   background-color: var(--green);
@@ -202,6 +224,8 @@
   font-size: 12px;
   margin-top: 2px;
   font-weight: 400;
+  transition: color 100ms ease-in-out;
+  margin-top: 14px;
 }
 
 .error.dark {
