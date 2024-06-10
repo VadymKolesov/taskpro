@@ -7,6 +7,7 @@
 :root {
   font-family: "Poppins", sans-serif;
   --white: #ffffff;
+  --frozen: #f6f6f7;
   --black: #000000;
   --green: #bedbb0;
   --green-hover: #9dc888;
@@ -27,11 +28,16 @@
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 body {
   padding: 0;
   margin: 0;
+}
+
+textarea {
+  font-family: inherit;
 }
 
 input {
@@ -52,6 +58,7 @@ p {
 }
 
 button {
+  font-family: inherit;
   cursor: pointer;
   margin: 0;
   padding: 0;
