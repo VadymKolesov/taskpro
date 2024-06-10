@@ -11,7 +11,7 @@
   font-size: 14px;
   font-weight: 500;
   font-family: inherit;
-  transition: background-color 100ms ease-in-out;
+  transition: background-color 100ms ease-in-out, color 0.3s ease;
 }
 
 .btn.dark {
@@ -50,6 +50,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .plusCont.dark {
@@ -70,6 +71,7 @@
 .plusIcon {
   width: 14px;
   height: 14px;
+  transition: stroke 0.3s ease;
 }
 
 .plusIcon.dark {

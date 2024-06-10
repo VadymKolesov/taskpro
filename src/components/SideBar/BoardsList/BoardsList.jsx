@@ -76,11 +76,43 @@ export default function BoardsList({ theme }) {
       createdAt: "2024-06-08T11:34:34.329Z",
       updatedAt: "2024-06-08T11:34:34.329Z",
     },
-
     {
       _id: "666441ca47f3118a1ds84c93",
       name: "My board 7",
       iconName: "icon-project-7",
+      backgroundUrl:
+        "https://res.cloudinary.com/dvjg8aoza/image/upload/v1717539986/user-dark_w1uksl.png",
+      owner: "666360f436afcfb89fea6e15",
+      createdAt: "2024-06-08T11:34:34.329Z",
+      updatedAt: "2024-06-08T11:34:34.329Z",
+    },
+
+    {
+      _id: "666441ca47f3118a1ddds84c93",
+      name: "My board 8",
+      iconName: "icon-project-8",
+      backgroundUrl:
+        "https://res.cloudinary.com/dvjg8aoza/image/upload/v1717539986/user-dark_w1uksl.png",
+      owner: "666360f436afcfb89fea6e15",
+      createdAt: "2024-06-08T11:34:34.329Z",
+      updatedAt: "2024-06-08T11:34:34.329Z",
+    },
+
+    {
+      _id: "666441ca47f3118a1ds84erec93",
+      name: "My board 9",
+      iconName: "icon-project-1",
+      backgroundUrl:
+        "https://res.cloudinary.com/dvjg8aoza/image/upload/v1717539986/user-dark_w1uksl.png",
+      owner: "666360f436afcfb89fea6e15",
+      createdAt: "2024-06-08T11:34:34.329Z",
+      updatedAt: "2024-06-08T11:34:34.329Z",
+    },
+
+    {
+      _id: "666441ca47f3118a1dsfd84c93",
+      name: "My board 10",
+      iconName: "icon-project-2",
       backgroundUrl:
         "https://res.cloudinary.com/dvjg8aoza/image/upload/v1717539986/user-dark_w1uksl.png",
       owner: "666360f436afcfb89fea6e15",

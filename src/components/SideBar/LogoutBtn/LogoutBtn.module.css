@@ -13,6 +13,7 @@
 .icon {
   width: 32px;
   height: 32px;
+  transition: stroke 0.3s ease;
 }
 
 .icon.dark {
@@ -31,6 +32,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: auto;
+  transition: color 0.3s ease;
 }
 
 .btn.dark p {

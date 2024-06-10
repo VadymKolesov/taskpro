@@ -2,6 +2,10 @@
   width: 100%;
   padding: 14px;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  transition: background-color 0.3s ease;
 }
 
 .wrapper img {
@@ -20,11 +24,22 @@
   background-color: rgba(236, 237, 253, 0.4);
 }
 
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 200ms ease-in-out, margin-bottom 200ms ease-in-out;
+}
+
+.content.visible {
+  margin-bottom: 18px;
+  max-height: 200px;
+}
+
 .description {
   font-weight: 400;
   font-size: 12px;
   line-height: 1.33;
-  margin-bottom: 18px;
+  transition: color 0.3s ease;
 }
 
 .description.dark {
@@ -58,6 +73,7 @@
 .icon {
   width: 20px;
   height: 20px;
+  transition: stroke 0.3s ease;
 }
 
 .icon.dark {
@@ -80,7 +96,7 @@
   font-size: 12px;
   letter-spacing: -0.02em;
   line-height: auto;
-  transition: all 100ms ease-in-out;
+  transition: color 0.3s ease;
 }
 
 .btn.dark {
