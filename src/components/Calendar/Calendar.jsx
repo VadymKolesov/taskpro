@@ -6,8 +6,14 @@ import clsx from "clsx";
 import "./Calendar.css";
 
 export default function Calendar() {
-  const [theme, setTheme] = useState("dark");
+  const theme = "dark";
   const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const handleSetDate = (date) => {
+    setSelectedDate(date);
+    console.log(selectedDate.getTime());
+  };
+
   const datepickerWrapper = clsx(
     "react-datepicker__custom-wrapper",
     theme && `${theme}`
@@ -17,7 +23,7 @@ export default function Calendar() {
     <div className={datepickerWrapper}>
       <DatePicker
         selected={selectedDate}
-        onChange={(date) => setSelectedDate(date)}
+        onChange={(date) => handleSetDate(date)}
         dateFormat="eeee, MMMM d"
         customInput={<ForwardedCustomInput />}
       />

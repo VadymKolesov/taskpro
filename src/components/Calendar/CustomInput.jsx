@@ -4,7 +4,7 @@ import clsx from "clsx";
 import sprite from "../../assets/sprite.svg";
 
 function CustomInput({ value, onClick }, ref) {
-  const theme = "violet";
+  const theme = "dark";
   return (
     <button
       className={clsx(css.customInput, css[theme])}
