@@ -12,6 +12,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import authReducer from "./auth/slice";
 import sideBarReducer from "./sidebar/slice";
+import filterReducer from "./filter/slice";
 
 const authPersistConfig = {
   key: "auth",
@@ -25,6 +26,7 @@ export const store = configureStore({
   reducer: {
     auth: authPersistReducer,
     sidebar: sideBarReducer,
+    filter: filterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
