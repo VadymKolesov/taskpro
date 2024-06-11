@@ -3,6 +3,8 @@
   min-height: 440px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: relative;
   border-radius: 8px;
   padding: 24px;
@@ -120,18 +122,10 @@
 .uploadButton.dark {
   background-color: var(--green);
 }
-.uploadButton.light:hover,
-.uploadButton.dark:hover {
-  background-color: var(--green-hover);
-}
 
 .uploadButton.violet {
   background-color: var(--violet-bg-easy);
   transition: background-color 100ms ease-in-out;
-}
-
-.uploadButton.violet:hover {
-  background-color: var(--violet-plus-hover);
 }
 
 .inputField {
@@ -254,5 +248,66 @@
 @media screen and (min-width: 768px) {
   .EPContainer {
     width: 400px;
+  }
+}
+
+/* LOADER */
+
+.loader {
+  width: 65px;
+  aspect-ratio: 1;
+  position: relative;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  border-radius: 50px;
+  animation: l4 2.5s infinite;
+  transition: box-shadow 0.3s ease;
+}
+.loader:after {
+  animation-delay: -1.25s;
+}
+
+.loader.dark:before,
+.loader.dark:after,
+.loader.light:before,
+.loader.light:after {
+  box-shadow: 0 0 0 3px inset var(--green);
+}
+
+.loader.violet:before,
+.loader.violet:after {
+  box-shadow: 0 0 0 3px inset var(--violet-btn-hover);
+}
+
+@keyframes l4 {
+  0% {
+    inset: 0 35px 35px 0;
+  }
+  12.5% {
+    inset: 0 35px 0 0;
+  }
+  25% {
+    inset: 35px 35px 0 0;
+  }
+  37.5% {
+    inset: 35px 0 0 0;
+  }
+  50% {
+    inset: 35px 0 0 35px;
+  }
+  62.5% {
+    inset: 0 0 0 35px;
+  }
+  75% {
+    inset: 0 0 35px 35px;
+  }
+  87.5% {
+    inset: 0 0 35px 0;
+  }
+  100% {
+    inset: 0 35px 35px 0;
   }
 }

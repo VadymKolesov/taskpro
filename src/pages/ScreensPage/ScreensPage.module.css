@@ -1,29 +1,23 @@
-.icon {
-  stroke: var(--dark-bg-easy);
-}
-
 .container {
-  display: flex;
+  width: 100%;
+  flex-grow: 1;
 }
 
-.backdrop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.container.dark {
   background-color: var(--dark-bg-easy);
-  opacity: 0;
-  pointer-events: none;
-  z-index: 1;
-  transition: opacity 0.3s ease;
+  color: var(--white);
 }
 
-.backdrop.isShown {
-  opacity: 0.8;
-  pointer-events: all;
+.container.light {
+  background-color: var(--frozen);
+  color: var(--dark-bg-easy);
 }
 
-.main {
-  width: 100%;
+.container.violet {
+  background-color: var(--violet-bg-easy);
+  color: var(--dark-bg-easy);
+}
+
+.icon.dark {
+  stroke: var(--white);
 }

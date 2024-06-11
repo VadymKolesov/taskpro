@@ -7,15 +7,17 @@ import { getThemeStyle } from "../../scripts/getThemeStyle";
 import { selectTheme } from "../../redux/auth/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { setThemeDropDownOpen } from "../../redux/controls/slice";
+import { selectIsThemeDropDownOpen } from "../../redux/controls/selectors";
 import ClickOutsideComponent from "../../helpers/ClickOutsideComponent";
 
 export default function Header() {
+  const isOpen = useSelector(selectIsThemeDropDownOpen);
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
   const header = clsx(css.header, getThemeStyle(css, theme));
 
   const handleClose = () => {
-    dispatch(setThemeDropDownOpen(false));
+    isOpen && dispatch(setThemeDropDownOpen(false));
   };
 
   return (

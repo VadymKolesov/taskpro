@@ -4,6 +4,7 @@ import sprite from "../../assets/sprite.svg";
 import { getThemeStyle } from "../../scripts/getThemeStyle";
 import { useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
+import { motion } from "framer-motion";
 
 export default function Button({ text, isIcon, verticalPadding, type }) {
   const userTheme = useSelector(selectTheme);
@@ -11,7 +12,9 @@ export default function Button({ text, isIcon, verticalPadding, type }) {
 
   return (
     <>
-      <button
+      <motion.button
+        whileTap={{ scale: 0.97 }}
+        transition={{ duration: 0.1 }}
         className={clsx(css.button, theme ? theme : css.dark)}
         style={{ padding: `${verticalPadding} 0` }}
         type={type}
@@ -24,7 +27,7 @@ export default function Button({ text, isIcon, verticalPadding, type }) {
           </span>
         )}
         <p>{text}</p>
-      </button>
+      </motion.button>
     </>
   );
 }

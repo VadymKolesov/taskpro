@@ -5,9 +5,10 @@ import { nanoid } from "nanoid";
 import clsx from "clsx";
 import sprite from "../../../assets/sprite.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { setSideBarClose } from "../../../redux/sidebar/slice";
+import { setSideBarOpen } from "../../../redux/controls/slice";
 import { getThemeStyle } from "../../../scripts/getThemeStyle";
 import { selectTheme } from "../../../redux/auth/selectors";
+import { motion } from "framer-motion";
 
 export default function BoardsList() {
   const userTheme = useSelector(selectTheme);
@@ -16,7 +17,7 @@ export default function BoardsList() {
   const dispatch = useDispatch();
 
   const handleSidebarClose = () => {
-    dispatch(setSideBarClose());
+    dispatch(setSideBarOpen(false));
   };
 
   const handleUpdate = (boardId) => {
@@ -137,7 +138,11 @@ export default function BoardsList() {
     <ul className={css.list}>
       {list.map((item) => {
         return (
-          <li key={nanoid()} className={css.item}>
+          <motion.li
+            whileTap={{ scale: 0.9 }}
+            key={nanoid()}
+            className={css.item}
+          >
             <NavLink
               to={`${item._id}`}
               className={({ isActive }) =>
@@ -181,7 +186,7 @@ export default function BoardsList() {
                 </>
               )}
             </NavLink>
-          </li>
+          </motion.li>
         );
       })}
     </ul>
