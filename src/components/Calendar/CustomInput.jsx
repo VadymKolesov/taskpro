@@ -2,17 +2,21 @@ import React from "react";
 import css from "./Calendar.module.css";
 import clsx from "clsx";
 import sprite from "../../assets/sprite.svg";
+import { selectTheme } from "../../redux/auth/selectors";
+import { useSelector } from "react-redux";
+import { getThemeStyle } from "../../scripts/getThemeStyle";
 
 function CustomInput({ value, onClick }, ref) {
-  const theme = "dark";
+  const userTheme = useSelector(selectTheme);
+  const theme = getThemeStyle(css, userTheme);
   return (
     <button
-      className={clsx(css.customInput, css[theme])}
+      className={clsx(css.customInput, theme)}
       onClick={onClick}
       ref={ref}
     >
       {value}
-      <svg className={clsx(css.icon, css[theme])}>
+      <svg className={clsx(css.icon, theme)}>
         <use href={`${sprite}#icon-arrow-down`}></use>
       </svg>
     </button>

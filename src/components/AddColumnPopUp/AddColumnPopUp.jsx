@@ -5,9 +5,12 @@ import Button from "../Button/Button";
 import sprite from "../../assets/sprite.svg";
 import * as Yup from "yup";
 import { getThemeStyle } from "../../scripts/getThemeStyle";
+import { useSelector } from "react-redux";
+import { selectTheme } from "../../redux/auth/selectors";
 
 export default function AddColumnPopUp({ isEdit, inputValue }) {
-  const theme = getThemeStyle(css);
+  const userTheme = useSelector(selectTheme);
+  const theme = getThemeStyle(css, userTheme);
 
   const schema = Yup.object({
     name: Yup.string()

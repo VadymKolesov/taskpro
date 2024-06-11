@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, login, logout, current } from "./operations";
+import { register, login, logout, current, changeTheme } from "./operations";
 
 const slice = createSlice({
   name: "auth",
@@ -102,6 +102,17 @@ const slice = createSlice({
         state.token = null;
         state.isAuth = false;
         state.isRefreshing = false;
+        state.error = action.payload;
+      })
+      .addCase(changeTheme.pending, (state) => {
+        state.error = null;
+      })
+      .addCase(changeTheme.fulfilled, (state, action) => {
+        state.user.theme = action.payload.theme;
+        state.user.avatarUrl = action.payload.avatarUrl;
+        state.error = null;
+      })
+      .addCase(changeTheme.rejected, (state, action) => {
         state.error = action.payload;
       });
   },

@@ -1,12 +1,14 @@
 import css from "./LogoutBtn.module.css";
 import clsx from "clsx";
 import sprite from "../../../assets/sprite.svg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../redux/auth/operations";
 import { getThemeStyle } from "../../../scripts/getThemeStyle";
+import { selectTheme } from "../../../redux/auth/selectors";
 
 export default function LogoutBtn() {
-  const theme = getThemeStyle(css);
+  const userTheme = useSelector(selectTheme);
+  const theme = getThemeStyle(css, userTheme);
 
   const dispatch = useDispatch();
 

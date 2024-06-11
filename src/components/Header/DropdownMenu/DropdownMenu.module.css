@@ -1,6 +1,6 @@
 .dropdownWrap {
   position: absolute;
-  top: 25px;
+  top: 30px;
   overflow: hidden;
   width: 100px;
   filter: drop-shadow(0px 4px 16px #1111111a);
@@ -16,7 +16,7 @@
   border-radius: 8px;
   background-color: var(--dark-modal-bg);
   transform: translateY(-102%);
-  transition: /*transform .4s linear,*/ background-color .3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .dropdown.active {
@@ -36,7 +36,11 @@
   letter-spacing: -0.0175em;
   opacity: 0.5;
   cursor: pointer;
-  transition: color .3s ease;
+  transition: color 0.3s ease, opacity 100ms ease-in-out;
+}
+
+.dropdownItem:hover {
+  opacity: 1;
 }
 
 .dropdownWrap.light .dropdown,
@@ -58,6 +62,7 @@
 .dropdownItem.active {
   color: var(--green);
   opacity: 1;
+  pointer-events: none;
 }
 
 .dropdownWrap.violet .dropdownItem.active {

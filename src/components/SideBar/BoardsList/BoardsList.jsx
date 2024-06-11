@@ -4,12 +4,14 @@ import { NavLink } from "react-router-dom";
 import { nanoid } from "nanoid";
 import clsx from "clsx";
 import sprite from "../../../assets/sprite.svg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSideBarClose } from "../../../redux/sidebar/slice";
 import { getThemeStyle } from "../../../scripts/getThemeStyle";
+import { selectTheme } from "../../../redux/auth/selectors";
 
 export default function BoardsList() {
-  const theme = getThemeStyle(css);
+  const userTheme = useSelector(selectTheme);
+  const theme = getThemeStyle(css, userTheme);
 
   const dispatch = useDispatch();
 

@@ -5,11 +5,13 @@ import css from "./FilterList.module.css";
 import clsx from "clsx";
 import { selectFilterValue } from "../../../redux/filter/selectors";
 import { changeFilter } from "../../../redux/filter/slice";
+import { selectTheme } from "../../../redux/auth/selectors";
 
 function FilterList() {
+  const userTheme = useSelector(selectTheme);
   const dispatch = useDispatch();
   const filterValue = useSelector(selectFilterValue);
-  const theme = getThemeStyle(css);
+  const theme = getThemeStyle(css, userTheme);
 
   const handleChangeFilter = (event) => {
     dispatch(changeFilter(event.target.value));

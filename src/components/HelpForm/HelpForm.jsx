@@ -5,6 +5,8 @@ import * as Yup from "yup";
 import Button from "../Button/Button";
 import sprite from "../../assets/sprite.svg";
 import { getThemeStyle } from "../../scripts/getThemeStyle";
+import { useSelector } from "react-redux";
+import { selectTheme } from "../../redux/auth/selectors";
 
 const HelpFormSchema = Yup.object({
   email: Yup.string()
@@ -17,7 +19,8 @@ const HelpFormSchema = Yup.object({
 });
 
 export default function HelpForm() {
-  const theme = getThemeStyle(css);
+  const userTheme = useSelector(selectTheme);
+  const theme = getThemeStyle(css, userTheme);
 
   const handleSubmit = (values, actions) => {
     console.log(values);

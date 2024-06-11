@@ -2,9 +2,12 @@ import css from "./CreateBoard.module.css";
 import clsx from "clsx";
 import sprite from "../../../assets/sprite.svg";
 import { getThemeStyle } from "../../../scripts/getThemeStyle";
+import { useSelector } from "react-redux";
+import { selectTheme } from "../../../redux/auth/selectors";
 
 export default function CreateBoard() {
-  const theme = getThemeStyle(css);
+  const userTheme = useSelector(selectTheme);
+  const theme = getThemeStyle(css, userTheme);
 
   const handleCreate = () => {
     console.log("create");
