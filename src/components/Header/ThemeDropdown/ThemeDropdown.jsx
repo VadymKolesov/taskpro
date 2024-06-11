@@ -5,15 +5,17 @@ import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import { getThemeStyle } from "../../../scripts/getThemeStyle";
 import { useDispatch, useSelector } from "react-redux";
 import { setThemeDropDownOpen } from "../../../redux/controls/slice";
+import { selectIsThemeDropDownOpen } from "../../../redux/controls/selectors";
 import { selectTheme } from "../../../redux/auth/selectors";
 
 export default function ThemeDropdown() {
   const theme = useSelector(selectTheme);
+  const isOpen = useSelector(selectIsThemeDropDownOpen);
   const dispatch = useDispatch();
   const themeDropdown = clsx(css.themeDropdown, getThemeStyle(css, theme));
 
   const handleOpen = () => {
-    dispatch(setThemeDropDownOpen());
+    dispatch(setThemeDropDownOpen(!isOpen));
   };
 
   return (

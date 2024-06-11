@@ -14,7 +14,7 @@ function DropdownMenu() {
 
   const handleChange = (e) => {
     dispatch(changeTheme({ theme: e.target.id }));
-    dispatch(setThemeDropDownOpen());
+    dispatch(setThemeDropDownOpen(false));
   };
 
   const lightTheme = clsx(css.dropdownItem, theme === "light" && css.active);

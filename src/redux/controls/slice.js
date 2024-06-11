@@ -6,8 +6,8 @@ const slice = createSlice({
     isThemeDropDownOpen: false,
   },
   reducers: {
-    setThemeDropDownOpen(state) {
-      state.isThemeDropDownOpen = !state.isThemeDropDownOpen;
+    setThemeDropDownOpen(state, action) {
+      state.isThemeDropDownOpen = action.payload;
     },
   },
 });
