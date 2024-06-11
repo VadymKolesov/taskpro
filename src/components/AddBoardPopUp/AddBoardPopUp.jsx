@@ -8,6 +8,23 @@ import { setBoardModalOpen } from "../../redux/controls/slice";
 import { selectTheme } from "../../redux/auth/selectors";
 import { useDispatch, useSelector } from "react-redux";
 
+import bg1 from "../../assets/boards-bg/mobile/backgound-mobile-1.jpg";
+import bg2 from "../../assets/boards-bg/mobile/backgound-mobile-2.jpg";
+import bg3 from "../../assets/boards-bg/mobile/backgound-mobile-3.jpg";
+import bg4 from "../../assets/boards-bg/mobile/backgound-mobile-4.jpg";
+import bg5 from "../../assets/boards-bg/mobile/backgound-mobile-5.jpg";
+import bg6 from "../../assets/boards-bg/mobile/backgound-mobile-6.jpg";
+import bg7 from "../../assets/boards-bg/mobile/backgound-mobile-7.jpg";
+import bg8 from "../../assets/boards-bg/mobile/backgound-mobile-8.jpg";
+import bg9 from "../../assets/boards-bg/mobile/backgound-mobile-9.jpg";
+import bg10 from "../../assets/boards-bg/mobile/backgound-mobile-10.jpg";
+import bg11 from "../../assets/boards-bg/mobile/backgound-mobile-11.jpg";
+import bg12 from "../../assets/boards-bg/mobile/backgound-mobile-12.jpg";
+import bg13 from "../../assets/boards-bg/mobile/backgound-mobile-13.jpg";
+import bg14 from "../../assets/boards-bg/mobile/backgound-mobile-14.jpg";
+import bg15 from "../../assets/boards-bg/mobile/backgound-mobile-15.jpg";
+import noBg from "../../assets/boards-bg/no-bg.svg";
+
 export default function AddBoardPopUp({ isEdit }) {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
@@ -19,7 +36,7 @@ export default function AddBoardPopUp({ isEdit }) {
 
   const handleSubmit = (values, actions) => {
     isEdit ? console.log(`Edit ${values}`) : console.log(values);
-    // actions.resetForm();
+    actions.resetForm();
   };
 
   const handleClose = () => {
@@ -38,20 +55,28 @@ export default function AddBoardPopUp({ isEdit }) {
   ];
 
   const backgrounds = [
-    { id: 1, url: "" },
-    { id: 2, url: "" },
-    { id: 3, url: "" },
-    { id: 4, url: "" },
-    { id: 5, url: "" },
-    { id: 6, url: "" },
-    { id: 7, url: "" },
-    { id: 8, url: "" },
-    { id: 9, url: "" },
+    { id: "0", url: noBg },
+    { id: "1", url: bg1 },
+    { id: "2", url: bg2 },
+    { id: "3", url: bg3 },
+    { id: "4", url: bg4 },
+    { id: "5", url: bg5 },
+    { id: "6", url: bg6 },
+    { id: "7", url: bg7 },
+    { id: "8", url: bg8 },
+    { id: "9", url: bg9 },
+    { id: "10", url: bg10 },
+    { id: "11", url: bg11 },
+    { id: "12", url: bg12 },
+    { id: "13", url: bg13 },
+    { id: "14", url: bg14 },
+    { id: "15", url: bg15 },
   ];
 
   const initialValues = {
     name: !isEdit && "",
     iconName: !isEdit && "icon-project-1",
+    backgroundName: !isEdit && "0",
   };
 
   return (
@@ -113,12 +138,28 @@ export default function AddBoardPopUp({ isEdit }) {
                 <p className={clsx(css.groupTitle, css[theme])}>Background</p>
                 <div className={css.backgroundsContainer}>
                   {backgrounds.map((background) => (
-                    <img
-                      key={background.id}
-                      src={background.url}
-                      alt="Background thumbnail"
-                      className={css.background}
-                    />
+                    <label key={background.id}>
+                      <img
+                        src={background.url}
+                        alt="Background thumbnail"
+                        className={clsx(
+                          css.background,
+                          css[theme],
+                          values.backgroundName === background.id &&
+                            css.selectedBg
+                        )}
+                      />
+                      <Field
+                        name="backgroundName"
+                        type="radio"
+                        value={background.id}
+                        className={css.radio}
+                        checked={values.backgroundName === background.id}
+                        onChange={() =>
+                          setFieldValue("backgroundName", background.id)
+                        }
+                      />
+                    </label>
                   ))}
                 </div>
               </li>
