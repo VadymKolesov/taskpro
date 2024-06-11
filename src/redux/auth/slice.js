@@ -1,5 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, login, logout, current, changeTheme } from "./operations";
+import {
+  register,
+  login,
+  logout,
+  current,
+  changeTheme,
+  updateUser,
+  updateAvatar,
+} from "./operations";
 
 const slice = createSlice({
   name: "auth",
@@ -13,6 +21,7 @@ const slice = createSlice({
     token: null,
     isAuth: false,
     isRefreshing: false,
+    isLoading: false,
     error: null,
   },
   extraReducers: (builder) => {
@@ -113,6 +122,32 @@ const slice = createSlice({
         state.error = null;
       })
       .addCase(changeTheme.rejected, (state, action) => {
+        state.error = action.payload;
+      })
+      .addCase(updateUser.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(updateUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(updateAvatar.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(updateAvatar.fulfilled, (state, action) => {
+        state.user.avatarUrl = action.payload.avatarUrl;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(updateAvatar.rejected, (state, action) => {
+        state.isLoading = false;
         state.error = action.payload;
       });
   },

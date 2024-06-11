@@ -3,6 +3,7 @@
   top: 30px;
   overflow: hidden;
   width: 100px;
+  z-index: 1;
   filter: drop-shadow(0px 4px 16px #1111111a);
 }
 
