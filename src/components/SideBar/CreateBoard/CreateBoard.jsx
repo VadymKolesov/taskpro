@@ -2,16 +2,22 @@ import css from "./CreateBoard.module.css";
 import clsx from "clsx";
 import sprite from "../../../assets/sprite.svg";
 import { getThemeStyle } from "../../../scripts/getThemeStyle";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../../redux/auth/selectors";
 import { motion } from "framer-motion";
+import {
+  setBoardModalOpen,
+  setSideBarOpen,
+} from "../../../redux/controls/slice";
 
 export default function CreateBoard() {
+  const dispatch = useDispatch();
   const userTheme = useSelector(selectTheme);
   const theme = getThemeStyle(css, userTheme);
 
   const handleCreate = () => {
-    console.log("create");
+    dispatch(setSideBarOpen(false));
+    dispatch(setBoardModalOpen(true));
   };
 
   return (

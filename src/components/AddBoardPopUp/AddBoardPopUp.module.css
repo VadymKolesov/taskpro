@@ -1,0 +1,292 @@
+.modal {
+  /* Стилі для модального вікна */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 4px;
+  outline: none;
+}
+
+.overlay {
+  /* Стилі для оверлею модального вікна */
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background-color: transparent;
+  border: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeBtn.dark {
+  color: var(--white);
+}
+
+.closeBtn.light {
+  color: var(--dark-bg-medium);
+}
+
+.closeBtn.violet {
+  color: var(--dark-bg-medium);
+}
+
+.closeIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.closeIcon.dark {
+  stroke: var(--white);
+}
+
+.closeIcon.light {
+  stroke: var(--dark-bg-medium);
+}
+
+.closeIcon.violet {
+  stroke: var(--dark-bg-medium);
+}
+
+.cont {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  position: relative;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.cont.dark {
+  background-color: var(--dark-modal-bg);
+}
+
+.cont.light {
+  background-color: var(--light-bg-medium);
+}
+
+.cont.violet {
+  background-color: var(--light-bg-medium);
+}
+
+.text {
+  font-size: 18px;
+  letter-spacing: -2%;
+  font-weight: 500;
+}
+
+.text.dark {
+  color: var(--white);
+}
+
+.text.light {
+  color: var(--dark-bg-medium);
+}
+
+.text.violet {
+  color: var(--dark-bg-medium);
+}
+
+.plusCont {
+  font-size: 20px;
+  font-weight: 100;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plusCont.dark {
+  background-color: var(--dark-bg-medium);
+  color: var(--white);
+}
+
+.plusCont.light {
+  background-color: var(--dark-bg-medium);
+  color: var(--white);
+}
+
+.plusCont.violet {
+  background-color: var(--white);
+  color: var(--dark-bg-medium);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.input {
+  padding: 14px 18px;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  font-size: 14px;
+  width: 100%;
+  opacity: 0.4;
+  transition: opacity 100ms ease-in-out;
+}
+
+.input:hover,
+.input:focus,
+.input:active {
+  opacity: 1;
+}
+
+.input.dark {
+  border-color: var(--green);
+  background-color: var(--dark-bg-easy);
+  caret-color: var(--white);
+  color: var(--white);
+}
+
+.input.light {
+  border-color: var(--green);
+  background-color: transparent;
+  color: var(--dark-bg-medium);
+}
+
+.input.violet {
+  border-color: var(--violet-bg-hard);
+  background-color: transparent;
+  color: var(--dark-bg-medium);
+}
+
+.error {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.error.dark {
+  color: var(--green);
+}
+
+.error.light {
+  color: var(--green-hover);
+}
+
+.error.violet {
+  color: var(--violet-bg-hard);
+}
+
+.imgContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  padding-bottom: 16px;
+}
+
+.iconsContainer {
+  display: flex;
+  column-gap: 8px;
+}
+
+.groupTitle {
+  font-size: 14px;
+  letter-spacing: -2%;
+  font-weight: 500;
+  padding-bottom: 14px;
+}
+
+.groupTitle.dark {
+  color: var(--white);
+}
+
+.groupTitle.light {
+  color: var(--dark-bg-medium);
+}
+
+.groupTitle.violet {
+  color: var(--dark-bg-medium);
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  opacity: 0.5;
+  transition: opacity 100ms ease-in-out;
+  stroke: var(--white);
+  cursor: pointer;
+}
+
+.icon.dark {
+  stroke: var(--white);
+}
+
+.icon.light {
+  stroke: var(--dark-bg-medium);
+}
+
+.icon.violet {
+  stroke: var(--dark-bg-medium);
+}
+
+.icon:hover,
+.icon:focus,
+.icon:active {
+  opacity: 1;
+  transition: opacity 100ms ease-in-out;
+}
+
+.radio {
+  display: none;
+}
+
+.selectedIcon {
+  opacity: 1;
+}
+
+.backgroundsContainer {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 4px;
+}
+
+.background {
+  width: 28px;
+  height: 28px;
+}
+
+.background:hover {
+  width: 110%;
+  height: 110%;
+  transition: 100ms ease-in-out;
+}
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .cont {
+    width: 335px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .cont {
+    width: 350px;
+  }
+}

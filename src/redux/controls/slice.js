@@ -7,6 +7,7 @@ const slice = createSlice({
     isBackdrop: false,
     isThemeDropDownOpen: false,
     isProfileModalOpen: false,
+    isBoardModalOpen: false,
   },
   reducers: {
     setSideBarOpen(state, action) {
@@ -19,6 +20,10 @@ const slice = createSlice({
       state.isProfileModalOpen = action.payload;
       state.isBackdrop = action.payload;
     },
+    setBoardModalOpen(state, action) {
+      state.isBoardModalOpen = action.payload;
+      state.isBackdrop = action.payload;
+    },
   },
 });
 
@@ -26,7 +31,7 @@ export const {
   setThemeDropDownOpen,
   setProfileModalOpen,
   setSideBarOpen,
-  setSideBarClose,
+  setBoardModalOpen,
 } = slice.actions;
 
 export default slice.reducer;
