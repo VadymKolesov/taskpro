@@ -6,12 +6,19 @@ import AuthNav from "../AuthNav/AuthNav";
 import Button from "../Button/Button";
 import { useState } from "react";
 import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { register } from "../../redux/auth/operations";
+import { selectError } from "../../redux/auth/selectors";
 
 export default function RegisterForm() {
+  const dispatch = useDispatch();
+
+  const error = useSelector(selectError);
+
   const [isShown, setIsShown] = useState(false);
 
   const handlerSubmit = (values, actions) => {
-    console.log(values);
+    dispatch(register(values));
     actions.resetForm();
   };
 
@@ -40,7 +47,7 @@ export default function RegisterForm() {
     >
       <Form className={css.form} autoComplete="off">
         <AuthNav />
-
+        {error && <p className={clsx(css.error, css.message)}>{error}</p>}
         <ul className={css.fieldsList}>
           <li>
             <Field

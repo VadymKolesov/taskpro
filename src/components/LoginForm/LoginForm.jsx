@@ -6,12 +6,18 @@ import clsx from "clsx";
 import Button from "../Button/Button";
 import AuthNav from "../AuthNav/AuthNav";
 import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../redux/auth/operations";
+import { selectError } from "../../redux/auth/selectors";
 
 export default function LoginForm() {
+  const dispatch = useDispatch();
+  const error = useSelector(selectError);
+
   const [isShown, setIsShown] = useState(false);
 
   const handlerSubmit = (values, actions) => {
-    console.log(values);
+    dispatch(login(values));
     actions.resetForm();
   };
 
@@ -20,7 +26,7 @@ export default function LoginForm() {
   };
 
   const schema = Yup.object({
-    email: Yup.string().required("Email is required"),
+    email: Yup.string().email("Wrong email").required("Email is required"),
     password: Yup.string().required("Password is required"),
   });
 
@@ -35,7 +41,7 @@ export default function LoginForm() {
     >
       <Form className={css.form} autoComplete="off">
         <AuthNav />
-
+        {error && <p className={clsx(css.error, css.message)}>{error}</p>}
         <ul className={css.fieldsList}>
           <li>
             <Field

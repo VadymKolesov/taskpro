@@ -9,7 +9,7 @@
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.02em;
-  transition: background-color 100ms ease-in-out;
+  transition: background-color 100ms ease-in-out, color 0.3s ease;
 }
 
 .button.dark {
@@ -42,6 +42,7 @@
 .icon {
   width: 14px;
   height: 14px;
+  transition: stroke 0.3s ease;
 }
 
 .icon.dark {
@@ -62,6 +63,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color 0.3s ease;
 }
 
 .iconWrapper.dark {

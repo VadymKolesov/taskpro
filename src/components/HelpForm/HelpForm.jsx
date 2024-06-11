@@ -4,6 +4,9 @@ import clsx from "clsx";
 import * as Yup from "yup";
 import Button from "../Button/Button";
 import sprite from "../../assets/sprite.svg";
+import { getThemeStyle } from "../../scripts/getThemeStyle";
+import { useSelector } from "react-redux";
+import { selectTheme } from "../../redux/auth/selectors";
 
 const HelpFormSchema = Yup.object({
   email: Yup.string()
@@ -16,7 +19,8 @@ const HelpFormSchema = Yup.object({
 });
 
 export default function HelpForm() {
-  const theme = "light";
+  const userTheme = useSelector(selectTheme);
+  const theme = getThemeStyle(css, userTheme);
 
   const handleSubmit = (values, actions) => {
     console.log(values);
@@ -36,37 +40,37 @@ export default function HelpForm() {
       validationSchema={HelpFormSchema}
       onSubmit={handleSubmit}
     >
-      <Form className={clsx(css.form, css[theme])}>
-        <svg className={clsx(css.closeIcon, css[theme])} onClick={handleClose}>
+      <Form className={clsx(css.form, theme)}>
+        <svg className={clsx(css.closeIcon, theme)} onClick={handleClose}>
           <use href={`${sprite}#icon-x-close`}></use>
         </svg>
-        <h2 className={clsx(css.title, css[theme])}>Need help</h2>
+        <h2 className={clsx(css.title, theme)}>Need help</h2>
 
         <ul className={css.fieldsList}>
           <li>
             <Field
               type="text"
               name="email"
-              className={clsx(css.input, css[theme])}
+              className={clsx(css.input, theme)}
               placeholder="Email address"
             />
             <ErrorMessage
               name="email"
               component="p"
-              className={clsx(css.error, css[theme])}
+              className={clsx(css.error, theme)}
             />
           </li>
           <li>
             <Field
               as="textarea"
               name="comment"
-              className={clsx(css.textarea, css[theme])}
+              className={clsx(css.textarea, theme)}
               placeholder="Comment"
             />
             <ErrorMessage
               name="comment"
               component="p"
-              className={clsx(css.error, css[theme])}
+              className={clsx(css.error, theme)}
             />
           </li>
         </ul>

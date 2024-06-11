@@ -1,0 +1,31 @@
+.filterBtn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 64px;
+  background-color: transparent;
+  color: var(--white);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.0175em;
+  opacity: 0.8;
+}
+
+.filterIcon{
+  display: block;
+  width: 16px;
+  height: 16px;
+  stroke: var(--white);
+}
+
+.filterBtn.light, .filterBtn.violet{
+  color: var(--dark-bg-medium);
+}
+
+.filterBtn.light .filterIcon,
+.filterBtn.violet .filterIcon{
+  stroke: var(--dark-bg-medium);
+}

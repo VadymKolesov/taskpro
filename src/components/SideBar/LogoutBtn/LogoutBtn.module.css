@@ -1,0 +1,48 @@
+.btn {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background-color: transparent;
+  transition: opacity 100ms ease-in-out;
+}
+
+.btn:hover {
+  opacity: 0.5;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  transition: stroke 0.3s ease;
+}
+
+.icon.dark {
+  stroke: var(--green);
+}
+
+.icon.light {
+  stroke: var(--green);
+}
+
+.icon.violet {
+  stroke: var(--white);
+}
+
+.btn p {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: auto;
+  transition: color 0.3s ease;
+}
+
+.btn.dark p {
+  color: var(--white);
+}
+
+.btn.light p {
+  color: var(--dark-bg-medium);
+}
+
+.btn.violet p {
+  color: var(--white);
+}
