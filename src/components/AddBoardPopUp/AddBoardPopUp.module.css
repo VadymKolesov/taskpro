@@ -232,6 +232,7 @@
   opacity: 0.5;
   transition: opacity 100ms ease-in-out;
   stroke: var(--white);
+  cursor: pointer;
 }
 
 .icon.dark {
@@ -239,11 +240,11 @@
 }
 
 .icon.light {
-  color: var(--dark-bg-medium);
+  stroke: var(--dark-bg-medium);
 }
 
 .icon.violet {
-  color: var(--dark-bg-medium);
+  stroke: var(--dark-bg-medium);
 }
 
 .icon:hover,
@@ -251,6 +252,14 @@
 .icon:active {
   opacity: 1;
   transition: opacity 100ms ease-in-out;
+}
+
+.radio {
+  display: none;
+}
+
+.selectedIcon {
+  opacity: 1;
 }
 
 .backgroundsContainer {

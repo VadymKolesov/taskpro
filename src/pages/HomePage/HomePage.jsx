@@ -10,6 +10,7 @@ import {
 } from "../../redux/controls/selectors";
 import {
   setProfileModalOpen,
+  setBoardModalOpen,
   setSideBarOpen,
 } from "../../redux/controls/slice";
 import ClickOutsideComponent from "../../helpers/ClickOutsideComponent";
@@ -30,6 +31,9 @@ export default function HomePage() {
   };
   const handleProfileModalClose = () => {
     isProfileModalOpen && dispatch(setProfileModalOpen(false));
+  };
+  const handleBoardModalClose = () => {
+    isBoardModalOpen && dispatch(setBoardModalOpen(false));
   };
 
   return (
@@ -74,9 +78,7 @@ export default function HomePage() {
                 transition={{ duration: 0.17 }}
               >
                 <Backdrop>
-                  <ClickOutsideComponent
-                    onClickOutside={handleProfileModalClose}
-                  >
+                  <ClickOutsideComponent onClickOutside={handleBoardModalClose}>
                     <motion.div
                       animate={{ scale: [1.02, 1.05, 1, 1] }}
                       exit={{ scale: [1, 1.05, 0.9] }}
