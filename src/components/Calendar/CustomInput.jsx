@@ -14,6 +14,7 @@ function CustomInput({ value, onClick }, ref) {
       className={clsx(css.customInput, theme)}
       onClick={onClick}
       ref={ref}
+      type="button"
     >
       {value}
       <svg className={clsx(css.icon, theme)}>

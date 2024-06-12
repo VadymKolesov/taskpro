@@ -1,0 +1,306 @@
+/* CLOSE BTN */
+
+.closeBtn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background-color: transparent;
+  border: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.closeIcon.dark {
+  stroke: var(--white);
+}
+
+.closeIcon.light {
+  stroke: var(--dark-bg-medium);
+}
+
+.closeIcon.violet {
+  stroke: var(--dark-bg-medium);
+}
+
+/* CONTAINER */
+
+.cont {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  position: relative;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.cont.dark {
+  background-color: var(--dark-modal-bg);
+}
+
+.cont.light {
+  background-color: var(--light-bg-medium);
+}
+
+.cont.violet {
+  background-color: var(--light-bg-medium);
+}
+
+.inputCont {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.inputCont:first-of-type {
+  margin-bottom: 24px;
+}
+
+.customInputCont {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.customInputCont:last-of-type {
+  margin-bottom: 40px;
+}
+
+/* CARD NAME */
+
+.title {
+  font-size: 18px;
+  letter-spacing: -2%;
+  font-weight: 500;
+}
+
+.title.dark {
+  color: var(--white);
+}
+
+.title.light {
+  color: var(--dark-bg-medium);
+}
+
+.title.violet {
+  color: var(--dark-bg-medium);
+}
+
+/* FORM */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* TEXT INPUTS */
+
+.input {
+  height: 48px;
+  padding-left: 18px;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  font-size: 14px;
+  width: 100%;
+  opacity: 0.4;
+  transition: opacity 100ms ease-in-out;
+}
+
+.input:hover,
+.input:focus,
+.input:active {
+  opacity: 1;
+}
+
+.input.dark {
+  border-color: var(--green);
+  background-color: var(--dark-bg-easy);
+  caret-color: var(--white);
+  color: var(--white);
+}
+
+.input.light {
+  border-color: var(--green);
+  background-color: transparent;
+  color: var(--dark-bg-medium);
+}
+
+.input.violet {
+  border-color: var(--violet-bg-hard);
+  background-color: transparent;
+  color: var(--dark-bg-medium);
+}
+
+.descInput {
+  height: 154px;
+  padding-top: 14px;
+  outline: none;
+  resize: none;
+}
+
+/* ERR MESSAGE */
+
+.error {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.error.dark {
+  color: var(--green);
+}
+
+.error.light {
+  color: var(--green-hover);
+}
+
+.error.violet {
+  color: var(--violet-bg-hard);
+}
+
+/* LABEL */
+
+.label {
+  font-size: 12px;
+  transition: color 0.3s ease;
+}
+
+.label.dark {
+  color: var(--white);
+  opacity: 0.5;
+  font-weight: 400;
+}
+
+.label.light,
+.label.violet {
+  color: var(--dark-bg-medium);
+  opacity: 0.5;
+}
+
+/* COLORS */
+
+.colorsList {
+  display: flex;
+  gap: 8px;
+}
+
+.radioIcon {
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+.radioIcon.gray {
+  opacity: 0.3;
+}
+
+.radioIcon.gray.dark {
+  fill: var(--white);
+  transition: fill 1000ms ease-in-out, opacity 1000ms ease-in-out;
+}
+
+.radioIcon.gray.light,
+.radioIcon.gray.violet {
+  fill: var(--dark-bg-medium);
+}
+
+.radioIcon.blue {
+  fill: var(--indigo);
+}
+
+.radioIcon.pink {
+  fill: var(--pink);
+}
+
+.radioIcon.green {
+  fill: var(--green);
+}
+
+.radioIconChecked {
+  display: none;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+.radioIconChecked.gray {
+  opacity: 0.3;
+}
+
+.radioIconChecked.gray.dark {
+  fill: var(--white);
+  stroke: var(--white);
+}
+
+.radioIconChecked.gray.light,
+.radioIconChecked.gray.violet {
+  fill: var(--dark-bg-medium);
+  stroke: var(--dark-bg-medium);
+}
+
+.radioIconChecked.blue {
+  fill: var(--indigo);
+  stroke: var(--indigo);
+}
+
+.radioIconChecked.pink {
+  fill: var(--pink);
+  stroke: var(--pink);
+}
+
+.radioIconChecked.green {
+  fill: var(--green);
+  stroke: var(--green);
+}
+
+.radio {
+  display: none;
+}
+
+.radioLabel {
+  display: flex;
+}
+
+.blueRadio:checked + .radioLabel .radioIconChecked,
+.pinkRadio:checked + .radioLabel .radioIconChecked,
+.greenRadio:checked + .radioLabel .radioIconChecked,
+.grayRadio:checked + .radioLabel .radioIconChecked {
+  display: block;
+}
+
+.blueRadio:checked + .radioLabel .radioIcon,
+.pinkRadio:checked + .radioLabel .radioIcon,
+.greenRadio:checked + .radioLabel .radioIcon,
+.grayRadio:checked + .radioLabel .radioIcon {
+  display: none;
+}
+
+/* .radio:checked ~ .radioIcon {
+  display: none;
+}
+
+.radio:checked ~ .radioIconChecked {
+  display: block;
+} */
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .cont {
+    width: 335px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .cont {
+    width: 350px;
+  }
+}

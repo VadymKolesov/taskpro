@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { getThemeStyle } from "../../scripts/getThemeStyle";
 import { useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
+import CardPopUp from "../../components/CardPopUp/CardPopUp";
 
 export default function ScreensPage() {
   const { boardName } = useParams();
@@ -16,6 +17,7 @@ export default function ScreensPage() {
       <svg className={clsx(css.icon, getThemeStyle(css, theme))}>
         <use href={`${sprite}#icon-project-1`}></use>
       </svg>
+      <CardPopUp />
       <h1>Screens Page. Board name: {boardName}</h1>
     </div>
   );
