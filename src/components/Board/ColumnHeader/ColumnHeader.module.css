@@ -7,6 +7,7 @@
   border-radius: 8px;
   background-color: var(--dark-bg-hard);
   padding: 17px 20px;
+  transition: background-color .3s ease;
 }
 
 .columnTitle{
@@ -18,6 +19,7 @@
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: -0.018em;
+  transition: color .3s ease;
 }
 
 .controls {
@@ -56,20 +58,32 @@
   opacity: 1;
 }
 
-.btnIcon.dark {
-  stroke: var(--white);
-}
-
-.btnIcon.light {
-  stroke: var(--dark-bg-medium);
-}
-
-.btnIcon.violet {
-  stroke: var(--white);
-}
-
 @media screen and (min-width: 375px) {
   .columnHeader{
     width: 334px;
   }
+}
+
+.columnHeader.dark{
+  background-color: var(--dark-bg-hard);
+}
+
+.columnHeader.dark .columnTitle{
+  color: var(--white);
+}
+
+.columnHeader.dark .btnIcon {
+  stroke: var(--white);
+}
+
+.columnHeader.light, .columnHeader.violet {
+  background-color: var(--white);
+}
+
+.columnHeader.light .columnTitle, .columnHeader.violet .columnTitle {
+  color: var(--dark-bg-medium);
+}
+
+.columnHeader.light .btnIcon, .columnHeader.violet .btnIcon {
+  stroke: var(--dark-bg-medium);
 }

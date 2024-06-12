@@ -1,7 +1,23 @@
 .columnsList{
   position: absolute;
-  top: 10px;
+  top: 0;
+  left: 0;
   display: flex;
-  gap: 18px;
+  gap: 11px;
   height: 100%;
+  padding: 0 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .columnsList{
+    gap: 18px;
+    padding: 0 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .columnsList {
+    gap: 18px;
+    padding: 0 24px;
+  }
 }

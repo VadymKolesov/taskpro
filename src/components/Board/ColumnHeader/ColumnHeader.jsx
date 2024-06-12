@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import css from "./ColumnHeader.module.css";
 import sprite from "../../../assets/sprite.svg";
-import { getThemeStyle } from "../../../scripts/getThemeStyle";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../../redux/auth/selectors";
 import { deleteColumn } from "../../../redux/board/operations";
@@ -10,8 +9,7 @@ import { setIsAddColumnOpen, setIsColumnEdit } from "../../../redux/controls/sli
 import { setCurrentColumn } from "../../../redux/board/slice";
 
 function ColumnHeader({ column }) {
-  const userTheme = useSelector(selectTheme);
-  const theme = getThemeStyle(css, userTheme);
+  const theme = useSelector(selectTheme);
   const board = useSelector(selectBoard)
   const dispatch = useDispatch();
   
@@ -33,7 +31,7 @@ function ColumnHeader({ column }) {
   };
 
   return (
-    <div className={css.columnHeader}>
+    <div className={clsx(css.columnHeader, css[theme])}>
       <h2 className={css.columnTitle}>
         {column.name}
       </h2>
@@ -44,7 +42,7 @@ function ColumnHeader({ column }) {
               onClick={handleUpdate}
               className={css.itemBtn}
             >
-              <svg className={clsx(css.btnIcon, theme)}>
+              <svg className={css.btnIcon}>
                 <use href={`${sprite}#icon-pencil`}></use>
               </svg>
             </button>
@@ -55,7 +53,7 @@ function ColumnHeader({ column }) {
               onClick={handleDelete}
               className={css.itemBtn}
             >
-              <svg className={clsx(css.btnIcon, theme)}>
+              <svg className={css.btnIcon}>
                 <use href={`${sprite}#icon-trash`}></use>
               </svg>
             </button>
