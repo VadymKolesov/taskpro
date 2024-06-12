@@ -6,6 +6,7 @@ import { getThemeStyle } from "../../scripts/getThemeStyle";
 import { changeFilter } from "../../redux/filter/slice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
+import { setIsFilterModalOpen } from "../../redux/controls/slice";
 
 export default function FilterModal() {
   const userTheme = useSelector(selectTheme);
@@ -17,7 +18,7 @@ export default function FilterModal() {
   }
 
   function handleClose() {
-    console.log("close");
+    dispatch(setIsFilterModalOpen(false));
   }
 
   return (

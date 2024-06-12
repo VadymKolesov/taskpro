@@ -1,22 +1,25 @@
 import { useParams } from "react-router-dom";
-import sprite from "../../assets/sprite.svg";
 import css from "./ScreensPage.module.css";
 import clsx from "clsx";
 import { getThemeStyle } from "../../scripts/getThemeStyle";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
+import { useEffect } from "react";
+import { current } from "../../redux/board/operations";
+import Board from "../../components/Board/Board";
 
 export default function ScreensPage() {
   const { boardName } = useParams();
   const theme = useSelector(selectTheme);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(current(boardName))
+  }, [dispatch, boardName]);
+  
   return (
     <div className={clsx(css.container, getThemeStyle(css, theme))}>
-      <h2>Test icon</h2>
-      <svg className={clsx(css.icon, getThemeStyle(css, theme))}>
-        <use href={`${sprite}#icon-project-1`}></use>
-      </svg>
-      <h1>Screens Page. Board name: {boardName}</h1>
+      <Board/>
     </div>
   );
 }

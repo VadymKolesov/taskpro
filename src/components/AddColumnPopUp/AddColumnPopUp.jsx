@@ -5,28 +5,45 @@ import Button from "../Button/Button";
 import sprite from "../../assets/sprite.svg";
 import * as Yup from "yup";
 import { getThemeStyle } from "../../scripts/getThemeStyle";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
+import { setIsAddColumnOpen } from "../../redux/controls/slice";
+import { selectIsColumnEdit } from "../../redux/controls/selectors";
+import { addColumn } from "../../redux/board/operations";
+import { selectBoard } from "../../redux/board/selectors";
 
-export default function AddColumnPopUp({ isEdit, inputValue }) {
+export default function AddColumnPopUp() {
   const userTheme = useSelector(selectTheme);
   const theme = getThemeStyle(css, userTheme);
+  const dispatch = useDispatch();
+  const isEdit = useSelector(selectIsColumnEdit);
+  const board = useSelector(selectBoard);
 
   const schema = Yup.object({
     name: Yup.string()
       .required("Title is required")
-      .not([inputValue], "This title already use"),
+      // .not([inputValue], "This title already use"),
   });
 
   const handleSubmit = (values, actions) => {
-    isEdit
-      ? console.log(`Edit ${values.name}`)
-      : console.log(`Add ${values.name}`);
+    if (!isEdit) {
+      console.log({
+        id: board._id,
+        ...values
+      });
+      dispatch(addColumn({
+        id: board._id,
+        ...values
+      }))
+    } else {
+      console.log("Edit column");
+    }
+    dispatch(setIsAddColumnOpen(false));
     actions.resetForm();
   };
 
   const handleClose = () => {
-    console.log("close");
+    dispatch(setIsAddColumnOpen(false));
   };
 
   return (
@@ -40,7 +57,7 @@ export default function AddColumnPopUp({ isEdit, inputValue }) {
         {isEdit ? "Edit column" : "Add column"}
       </p>
       <Formik
-        initialValues={{ name: inputValue }}
+        initialValues={{ name: !isEdit ? "" : "Edit" }}
         validationSchema={schema}
         onSubmit={handleSubmit}
       >

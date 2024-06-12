@@ -1,0 +1,66 @@
+.columnHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 334px;
+  height: 56px;
+  border-radius: 8px;
+  background-color: var(--dark-bg-hard);
+  padding: 17px 20px;
+}
+
+.columnTitle{
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.018em;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.controlsList {
+  display: flex;
+  width: 40px;
+  gap: 8px;
+}
+
+.controlsList li {
+  width: 16px;
+  height: 16px;
+}
+
+.itemBtn {
+  background-color: transparent;
+}
+
+.btnIcon {
+  display: flex;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+  transition: opacity 100ms ease-in-out, stroke 0.3s ease;
+}
+
+.btnIcon:hover,
+.btnIcon:focus,
+.btnIcon:active {
+  opacity: 1;
+}
+
+.btnIcon.dark {
+  stroke: var(--white);
+}
+
+.btnIcon.light {
+  stroke: var(--dark-bg-medium);
+}
+
+.btnIcon.violet {
+  stroke: var(--white);
+}

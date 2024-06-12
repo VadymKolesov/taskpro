@@ -1,0 +1,13 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.boardTitle{
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.018em;
+}

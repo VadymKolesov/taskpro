@@ -7,6 +7,7 @@ import { selectTheme } from "../../../redux/auth/selectors";
 import { motion } from "framer-motion";
 import {
   setBoardModalOpen,
+  setIsBoardEdit,
   setSideBarOpen,
 } from "../../../redux/controls/slice";
 
@@ -17,6 +18,7 @@ export default function CreateBoard() {
 
   const handleCreate = () => {
     dispatch(setSideBarOpen(false));
+    dispatch(setIsBoardEdit(false));
     dispatch(setBoardModalOpen(true));
   };
 

@@ -2,22 +2,30 @@ import css from "./FilterBtn.module.css";
 import sprite from "../../../assets/sprite.svg";
 import clsx from "clsx";
 import { getThemeStyle } from "../../../scripts/getThemeStyle";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../../redux/auth/selectors";
+import { setIsFilterModalOpen } from "../../../redux/controls/slice";
+import { motion } from "framer-motion";
 
 function FilterBtn() {
   const userTheme = useSelector(selectTheme);
   const filterBtn = clsx(css.filterBtn, getThemeStyle(css, userTheme));
+  const dispatch = useDispatch();
   const handleOpenModal = () => {
-    console.log("Filter modal is open");
+    dispatch(setIsFilterModalOpen(true));
   };
   return (
-    <button className={filterBtn} onClick={handleOpenModal}>
+    <motion.button
+      whileTap={{ scale: 0.9 }}
+      transition={{ duration: 0.05 }}
+      className={filterBtn}
+      onClick={handleOpenModal}
+    >
       <svg className={css.filterIcon}>
         <use href={`${sprite}#icon-filter`}></use>
       </svg>
       Filter
-    </button>
+    </motion.button>
   );
 }
 

@@ -8,6 +8,11 @@ const slice = createSlice({
     isThemeDropDownOpen: false,
     isProfileModalOpen: false,
     isBoardModalOpen: false,
+    isBoardEdit: false,
+    isColumnEdit: false,
+    isCardEdit: false,
+    isFilterModalOpen: false,
+    isAddColumnOpen: false,
   },
   reducers: {
     setSideBarOpen(state, action) {
@@ -24,6 +29,21 @@ const slice = createSlice({
       state.isBoardModalOpen = action.payload;
       state.isBackdrop = action.payload;
     },
+    setIsBoardEdit(state, action) {
+      state.isBoardEdit = action.payload;
+    },
+    setIsColumnEdit(state, action) {
+      state.isColumnEdit = action.payload;
+    },
+    setIsCardEdit(state, action) {
+      state.isCardEdit = action.payload;
+    },
+    setIsFilterModalOpen(state, action) {
+      state.isFilterModalOpen = action.payload;
+    },
+    setIsAddColumnOpen(state, action) {
+      state.isAddColumnOpen = action.payload;
+    }
   },
 });
 
@@ -32,6 +52,11 @@ export const {
   setProfileModalOpen,
   setSideBarOpen,
   setBoardModalOpen,
+  setIsBoardEdit,
+  setIsColumnEdit,
+  setIsCardEdit,
+  setIsFilterModalOpen,
+  setIsAddColumnOpen,
 } = slice.actions;
 
 export default slice.reducer;

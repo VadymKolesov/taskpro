@@ -5,8 +5,9 @@ import Button from "../Button/Button";
 import sprite from "../../assets/sprite.svg";
 import * as Yup from "yup";
 import { setBoardModalOpen } from "../../redux/controls/slice";
-import { selectTheme } from "../../redux/auth/selectors";
 import { useDispatch, useSelector } from "react-redux";
+import { selectTheme } from "../../redux/auth/selectors";
+import { selectIsBoardEdit } from "../../redux/controls/selectors";
 
 import bg1 from "../../assets/boards-bg/mobile/backgound-mobile-1.jpg";
 import bg2 from "../../assets/boards-bg/mobile/backgound-mobile-2.jpg";
@@ -24,10 +25,16 @@ import bg13 from "../../assets/boards-bg/mobile/backgound-mobile-13.jpg";
 import bg14 from "../../assets/boards-bg/mobile/backgound-mobile-14.jpg";
 import bg15 from "../../assets/boards-bg/mobile/backgound-mobile-15.jpg";
 import noBg from "../../assets/boards-bg/no-bg.svg";
+import { create, update } from "../../redux/board/operations";
+import { boards } from "../../redux/auth/operations";
+import { selectBoard } from "../../redux/board/selectors";
+import { updateBoard } from "../../redux/auth/slice";
 
-export default function AddBoardPopUp({ isEdit }) {
+export default function AddBoardPopUp() {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
+  const isEdit = useSelector(selectIsBoardEdit);
+  const board = useSelector(selectBoard);
 
   const schema = Yup.object({
     name: Yup.string().required("Title is required"),
@@ -35,7 +42,20 @@ export default function AddBoardPopUp({ isEdit }) {
   });
 
   const handleSubmit = (values, actions) => {
-    isEdit ? console.log(`Edit ${values}`) : console.log(values);
+    if (isEdit) {
+      dispatch(update({
+        id: board._id,
+        board: { ...values }
+      }))
+      dispatch(updateBoard({
+        _id: board._id,
+        ...values,
+      }))
+    } else {
+      dispatch(create(values));
+      dispatch(boards());
+    }
+    dispatch(setBoardModalOpen(false));
     actions.resetForm();
   };
 
@@ -74,9 +94,9 @@ export default function AddBoardPopUp({ isEdit }) {
   ];
 
   const initialValues = {
-    name: !isEdit && "",
-    iconName: !isEdit && "icon-project-1",
-    backgroundName: !isEdit && "0",
+    name: !isEdit ? "" : board.name,
+    iconName: !isEdit ? "icon-project-1" : board.iconName,
+    backgroundName: !isEdit ? "0" : board.backgroundName,
   };
 
   return (
