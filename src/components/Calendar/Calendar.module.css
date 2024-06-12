@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.customInput {
+  background-color: transparent;
+  border: none;
+  color: var(--green);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+.customInput.violet {
+  color: var(--violet-bg-hard);
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 2px;
+  cursor: pointer;
+}
+
+.icon.dark,
+.icon.light {
+  stroke: var(--green);
+}
+
+.icon.violet {
+  stroke: var(--violet-bg-hard);
+}

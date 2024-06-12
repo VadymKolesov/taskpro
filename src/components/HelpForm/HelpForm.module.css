@@ -10,6 +10,10 @@
   background-color: var(--light-bg-medium);
 }
 
+.form.dark {
+  background-color: var(--dark-modal-bg);
+}
+
 .form {
   position: relative;
   display: flex;
@@ -18,8 +22,8 @@
   padding: 24px;
   width: 100%;
   border-radius: 8px;
-  background-color: var(--dark-modal-bg);
   position: relative;
+  transition: background-color 0.3s ease;
 }
 
 .title {
@@ -27,6 +31,7 @@
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.02em;
+  transition: color 0.3s ease;
 }
 
 .title.dark {
@@ -53,7 +58,8 @@
   border-radius: 8px;
   opacity: 0.4;
   padding: 14px 18px;
-  transition: opacity 100ms ease-in-out;
+  transition: opacity 100ms ease-in-out, background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .input.dark,
@@ -84,7 +90,8 @@
   border-radius: 8px;
   opacity: 0.4;
   padding: 14px 18px;
-  transition: opacity 100ms ease-in-out;
+  transition: opacity 100ms ease-in-out, background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .textarea::-webkit-scrollbar {
@@ -120,9 +127,10 @@
   right: 14px;
   top: 14px;
   cursor: pointer;
+  transition: stroke 0.3s ease;
 }
 
-.closeIcon {
+.closeIcon.dark {
   stroke: var(--white);
 }
 
@@ -135,6 +143,7 @@
   font-size: 12px;
   margin-top: 14px;
   font-weight: 400;
+  transition: color 0.3s ease;
 }
 
 .error.dark {

@@ -1,0 +1,140 @@
+.wrapper {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  transition: background-color 0.3s ease;
+}
+
+.wrapper img {
+  margin-bottom: 14px;
+}
+
+.wrapper.dark {
+  background-color: var(--dark-bg-easy);
+}
+
+.wrapper.light {
+  background-color: var(--frozen);
+}
+
+.wrapper.violet {
+  background-color: rgba(236, 237, 253, 0.4);
+}
+
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 200ms ease-in-out, margin-bottom 200ms ease-in-out;
+}
+
+.content.visible {
+  margin-bottom: 18px;
+  max-height: 200px;
+}
+
+.description {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.33;
+  transition: color 0.3s ease;
+}
+
+.description.dark {
+  color: var(--white);
+}
+
+.description.light {
+  color: var(--dark-bg-medium);
+}
+
+.description.violet {
+  color: var(--white);
+}
+
+.description.dark span {
+  color: var(--green);
+}
+
+.description.light span {
+  color: var(--green);
+}
+
+.description.violet span {
+  color: var(--violet-bg-hard);
+}
+
+.btn {
+  background-color: transparent;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  transition: stroke 0.3s ease;
+}
+
+.icon.dark {
+  stroke: var(--white);
+}
+
+.icon.light {
+  stroke: var(--dark-bg-medium);
+}
+
+.icon.violet {
+  stroke: var(--white);
+}
+
+.btn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: -0.02em;
+  line-height: auto;
+  transition: color 0.3s ease;
+}
+
+.btn.dark {
+  color: var(--white);
+}
+
+.btn.light {
+  color: var(--dark-bg-medium);
+}
+
+.btn.violet {
+  color: var(--white);
+}
+
+.btn:hover.dark,
+.btn:hover.dark .icon {
+  color: var(--green);
+  stroke: var(--green);
+}
+
+.btn:hover.light,
+.btn:hover.light .icon {
+  color: var(--green);
+  stroke: var(--green);
+}
+
+.btn:hover.violet,
+.btn:hover.violet .icon {
+  color: var(--violet-bg-hard);
+  stroke: var(--violet-bg-hard);
+}
+
+@media screen and (min-width: 1180px) {
+  .wrapper {
+    padding: 20px;
+  }
+
+  .description {
+    line-height: 1.67;
+  }
+}

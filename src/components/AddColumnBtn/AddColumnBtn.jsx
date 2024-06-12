@@ -1,9 +1,13 @@
 import css from "./AddColumnBtn.module.css";
 import clsx from "clsx";
 import sprite from "../../assets/sprite.svg";
+import { getThemeStyle } from "../../scripts/getThemeStyle";
+import { useSelector } from "react-redux";
+import { selectTheme } from "../../redux/auth/selectors";
 
 export default function AddColumnBtn() {
-  const theme = "dark";
+  const userTheme = useSelector(selectTheme);
+  const theme = getThemeStyle(css, userTheme);
 
   const handleClick = () => {
     console.log("hello");
@@ -11,12 +15,12 @@ export default function AddColumnBtn() {
 
   return (
     <button
-      className={clsx(css.btn, css[theme])}
+      className={clsx(css.btn, theme)}
       type="button"
       onClick={handleClick}
     >
-      <div className={clsx(css.plusCont, css[theme])}>
-        <svg className={clsx(css.plusIcon, css[theme])}>
+      <div className={clsx(css.plusCont, theme)}>
+        <svg className={clsx(css.plusIcon, theme)}>
           <use href={`${sprite}#icon-plus`}></use>
         </svg>
       </div>

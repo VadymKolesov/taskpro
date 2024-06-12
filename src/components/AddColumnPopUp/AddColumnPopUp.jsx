@@ -4,9 +4,13 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import Button from "../Button/Button";
 import sprite from "../../assets/sprite.svg";
 import * as Yup from "yup";
+import { getThemeStyle } from "../../scripts/getThemeStyle";
+import { useSelector } from "react-redux";
+import { selectTheme } from "../../redux/auth/selectors";
 
 export default function AddColumnPopUp({ isEdit, inputValue }) {
-  const theme = "dark";
+  const userTheme = useSelector(selectTheme);
+  const theme = getThemeStyle(css, userTheme);
 
   const schema = Yup.object({
     name: Yup.string()
@@ -26,13 +30,13 @@ export default function AddColumnPopUp({ isEdit, inputValue }) {
   };
 
   return (
-    <div className={clsx(css.cont, css[theme])}>
-      <button className={clsx(css.closeBtn, css[theme])} onClick={handleClose}>
-        <svg className={clsx(css.closeIcon, css[theme])}>
+    <div className={clsx(css.cont, theme)}>
+      <button className={clsx(css.closeBtn, theme)} onClick={handleClose}>
+        <svg className={clsx(css.closeIcon, theme)}>
           <use href={`${sprite}#icon-x-close`}></use>
         </svg>
       </button>
-      <p className={clsx(css.text, css[theme])}>
+      <p className={clsx(css.text, theme)}>
         {isEdit ? "Edit column" : "Add column"}
       </p>
       <Formik
@@ -44,13 +48,13 @@ export default function AddColumnPopUp({ isEdit, inputValue }) {
           <Field
             type="text"
             name="name"
-            className={clsx(css.input, css[theme])}
+            className={clsx(css.input, theme)}
             placeholder="Title"
           />
           <ErrorMessage
             name="name"
             component="p"
-            className={clsx(css.error, css[theme])}
+            className={clsx(css.error, theme)}
           />
           <Button
             text={isEdit ? "Edit" : "Add"}

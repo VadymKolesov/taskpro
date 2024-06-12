@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--dark-bg-easy);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+.isShown {
+  opacity: 0.5;
+  pointer-events: all;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}

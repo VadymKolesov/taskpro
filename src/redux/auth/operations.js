@@ -76,3 +76,59 @@ export const current = createAsyncThunk(
     },
   }
 );
+
+export const changeTheme = createAsyncThunk(
+  "auth/change",
+  async (data, thunkApi) => {
+    try {
+      const response = await axios.put("/users/theme", data);
+      return response.data;
+    } catch (error) {
+      const errorMessage =
+        error.response && error.response.data
+          ? error.response.data.message
+          : error.message;
+      return thunkApi.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const updateUser = createAsyncThunk(
+  "auth/update",
+  async (data, thunkApi) => {
+    try {
+      if (!data.password) {
+        delete data.password;
+      }
+
+      const response = await axios.patch("/users", data);
+      return response.data;
+    } catch (error) {
+      const errorMessage =
+        error.response && error.response.data
+          ? error.response.data.message
+          : error.message;
+      return thunkApi.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const updateAvatar = createAsyncThunk(
+  "auth/avatar",
+  async (data, thunkApi) => {
+    try {
+      if (!data.password) {
+        delete data.password;
+      }
+
+      const response = await axios.put("/users/avatar", data);
+      return response.data;
+    } catch (error) {
+      const errorMessage =
+        error.response && error.response.data
+          ? error.response.data.message
+          : error.message;
+      return thunkApi.rejectWithValue(errorMessage);
+    }
+  }
+);

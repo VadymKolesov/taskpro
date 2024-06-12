@@ -1,5 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, login, logout, current } from "./operations";
+import {
+  register,
+  login,
+  logout,
+  current,
+  changeTheme,
+  updateUser,
+  updateAvatar,
+} from "./operations";
 
 const slice = createSlice({
   name: "auth",
@@ -11,8 +19,9 @@ const slice = createSlice({
       avatarUrl: null,
     },
     token: null,
-    isLoggedIn: false,
+    isAuth: false,
     isRefreshing: false,
+    isLoading: false,
     error: null,
   },
   extraReducers: (builder) => {
@@ -35,7 +44,7 @@ const slice = createSlice({
           avatarUrl: null,
         };
         state.token = null;
-        state.isLoggedIn = false;
+        state.isAuth = false;
         state.isRefreshing = false;
         state.error = action.payload;
       })
@@ -46,7 +55,7 @@ const slice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
-        state.isLoggedIn = true;
+        state.isAuth = true;
         state.isRefreshing = false;
         state.error = null;
       })
@@ -58,7 +67,7 @@ const slice = createSlice({
           avatarUrl: null,
         };
         state.token = null;
-        state.isLoggedIn = false;
+        state.isAuth = false;
         state.isRefreshing = false;
         state.error = action.payload;
       })
@@ -74,7 +83,7 @@ const slice = createSlice({
           avatarUrl: null,
         };
         state.token = null;
-        state.isLoggedIn = false;
+        state.isAuth = false;
         state.isRefreshing = false;
         state.error = null;
       })
@@ -88,7 +97,7 @@ const slice = createSlice({
       })
       .addCase(current.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.isLoggedIn = true;
+        state.isAuth = true;
         state.isRefreshing = false;
         state.error = null;
       })
@@ -100,11 +109,50 @@ const slice = createSlice({
           avatarUrl: null,
         };
         state.token = null;
-        state.isLoggedIn = false;
+        state.isAuth = false;
         state.isRefreshing = false;
+        state.error = action.payload;
+      })
+      .addCase(changeTheme.pending, (state) => {
+        state.error = null;
+      })
+      .addCase(changeTheme.fulfilled, (state, action) => {
+        state.user.theme = action.payload.theme;
+        state.user.avatarUrl = action.payload.avatarUrl;
+        state.error = null;
+      })
+      .addCase(changeTheme.rejected, (state, action) => {
+        state.error = action.payload;
+      })
+      .addCase(updateUser.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(updateUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(updateAvatar.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(updateAvatar.fulfilled, (state, action) => {
+        state.user.avatarUrl = action.payload.avatarUrl;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(updateAvatar.rejected, (state, action) => {
+        state.isLoading = false;
         state.error = action.payload;
       });
   },
 });
+
+export const { setIsAuth } = slice.actions;
 
 export default slice.reducer;

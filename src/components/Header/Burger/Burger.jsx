@@ -1,0 +1,34 @@
+import css from "./Burger.module.css";
+import sprite from "../../../assets/sprite.svg";
+import clsx from "clsx";
+import { getThemeStyle } from "../../../scripts/getThemeStyle";
+import { useDispatch, useSelector } from "react-redux";
+import { setSideBarOpen } from "../../../redux/controls/slice";
+import { selectTheme } from "../../../redux/auth/selectors";
+import { motion } from "framer-motion";
+
+function Burger() {
+  const theme = useSelector(selectTheme);
+  const dispatch = useDispatch();
+  const burger = clsx(css.burger, getThemeStyle(css, theme));
+
+  const handleOpenSidebar = () => {
+    console.log("Open sidebar");
+    dispatch(setSideBarOpen(true));
+  };
+
+  return (
+    <motion.button
+      whileTap={{ scale: 0.9 }}
+      transition={{ duration: 0.1 }}
+      className={burger}
+      onClick={handleOpenSidebar}
+    >
+      <svg className={css.burgerIcon}>
+        <use href={`${sprite}#icon-burger-menu`} />
+      </svg>
+    </motion.button>
+  );
+}
+
+export default Burger;

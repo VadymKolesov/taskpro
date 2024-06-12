@@ -4,35 +4,21 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import Button from "../Button/Button";
 import sprite from "../../assets/sprite.svg";
 import * as Yup from "yup";
+import { useSelector } from "react-redux";
+import { selectTheme } from "../../redux/auth/selectors";
+import Calendar from "../Calendar/Calendar";
 
-export default function CardPopUp({ isEdit, titleValue, descriptionValue }) {
-  const theme = "dark";
+export default function CardPopUp({ isEdit }) {
+  const theme = useSelector(selectTheme);
 
   const schema = Yup.object({
     title: Yup.string().required("Title is required"),
-    description: Yup.string(),
-    color: Yup.string().required("Color is required"),
+    description: Yup.string().required("Description is required"),
+    priority: Yup.string().required("Priority is required"),
   });
 
   const handleSubmit = (values, actions) => {
-    if (isEdit === true) {
-      if (
-        titleValue === values.name &&
-        descriptionValue === values.description
-      ) {
-        return console.log(
-          "Just close pop up, no submit because nothing was edited"
-        );
-      } else {
-        console.log(
-          `Edit ${values.title}, ${values.description} and ${values.color}`
-        );
-      }
-    } else {
-      console.log(
-        `Add ${values.title}, ${values.description} and ${values.color}`
-      );
-    }
+    console.log(values);
     actions.resetForm();
   };
 
@@ -40,9 +26,11 @@ export default function CardPopUp({ isEdit, titleValue, descriptionValue }) {
     console.log("close");
   };
 
-  const initialValues = isEdit
-    ? { title: titleValue, description: descriptionValue, color: "" }
-    : { title: "", description: "", color: "" };
+  const initialValues = {
+    title: !isEdit && "",
+    description: !isEdit && "",
+    priority: !isEdit && "low",
+  };
 
   return (
     <div className={clsx(css.cont, css[theme])}>
@@ -58,7 +46,6 @@ export default function CardPopUp({ isEdit, titleValue, descriptionValue }) {
         initialValues={initialValues}
         validationSchema={schema}
         onSubmit={handleSubmit}
-        validateOnBlur={true}
         validateOnChange={true}
       >
         <Form className={css.form}>
@@ -94,10 +81,10 @@ export default function CardPopUp({ isEdit, titleValue, descriptionValue }) {
                 <li>
                   <Field
                     type="radio"
-                    name="color"
+                    name="priority"
                     className={clsx(css.radio, css.blueRadio)}
                     id="blue"
-                    value="blue"
+                    value="low"
                   />
                   <label htmlFor="blue" className={clsx(css.radioLabel)}>
                     <svg className={clsx(css.radioIcon, css.blue)}>
@@ -111,10 +98,10 @@ export default function CardPopUp({ isEdit, titleValue, descriptionValue }) {
                 <li>
                   <Field
                     type="radio"
-                    name="color"
+                    name="priority"
                     className={clsx(css.radio, css.pinkRadio)}
                     id="pink"
-                    value="pink"
+                    value="medium"
                   />
                   <label htmlFor="pink" className={clsx(css.radioLabel)}>
                     <svg className={clsx(css.radioIcon, css.pink)}>
@@ -128,10 +115,10 @@ export default function CardPopUp({ isEdit, titleValue, descriptionValue }) {
                 <li>
                   <Field
                     type="radio"
-                    name="color"
+                    name="priority"
                     className={clsx(css.radio, css.greenRadio)}
                     id="green"
-                    value="green"
+                    value="high"
                   />
                   <label htmlFor="green" className={clsx(css.radioLabel)}>
                     <svg className={clsx(css.radioIcon, css.green)}>
@@ -145,10 +132,10 @@ export default function CardPopUp({ isEdit, titleValue, descriptionValue }) {
                 <li>
                   <Field
                     type="radio"
-                    name="color"
+                    name="priority"
                     className={clsx(css.radio, css.grayRadio)}
                     id="gray"
-                    value="gray"
+                    value="without"
                   />
                   <label htmlFor="gray" className={clsx(css.radioLabel)}>
                     <svg className={clsx(css.radioIcon, css.gray, css[theme])}>
@@ -174,6 +161,7 @@ export default function CardPopUp({ isEdit, titleValue, descriptionValue }) {
             />
             <div className={css.customInputCont}>
               <label className={clsx(css.label, css[theme])}>Deadline</label>
+              <Calendar />
             </div>
           </div>
 
