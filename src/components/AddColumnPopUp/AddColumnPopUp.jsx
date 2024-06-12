@@ -9,8 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
 import { setIsAddColumnOpen } from "../../redux/controls/slice";
 import { selectIsColumnEdit } from "../../redux/controls/selectors";
-import { addColumn } from "../../redux/board/operations";
-import { selectBoard } from "../../redux/board/selectors";
+import { addColumn, updateColumn } from "../../redux/board/operations";
+import { selectBoard, selectCurrentColumn } from "../../redux/board/selectors";
 
 export default function AddColumnPopUp() {
   const userTheme = useSelector(selectTheme);
@@ -18,6 +18,7 @@ export default function AddColumnPopUp() {
   const dispatch = useDispatch();
   const isEdit = useSelector(selectIsColumnEdit);
   const board = useSelector(selectBoard);
+  const column = useSelector(selectCurrentColumn);
 
   const schema = Yup.object({
     name: Yup.string()
@@ -27,16 +28,16 @@ export default function AddColumnPopUp() {
 
   const handleSubmit = (values, actions) => {
     if (!isEdit) {
-      console.log({
-        id: board._id,
-        ...values
-      });
       dispatch(addColumn({
         id: board._id,
         ...values
       }))
     } else {
-      console.log("Edit column");
+      dispatch(updateColumn({
+        id: board._id,
+        columnId: column._id,
+        ...values,
+      }))
     }
     dispatch(setIsAddColumnOpen(false));
     actions.resetForm();
@@ -57,7 +58,7 @@ export default function AddColumnPopUp() {
         {isEdit ? "Edit column" : "Add column"}
       </p>
       <Formik
-        initialValues={{ name: !isEdit ? "" : "Edit" }}
+        initialValues={{ name: !isEdit ? "" : column.name }}
         validationSchema={schema}
         onSubmit={handleSubmit}
       >

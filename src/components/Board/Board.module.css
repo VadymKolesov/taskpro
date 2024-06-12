@@ -1,5 +1,5 @@
 .board{
-  padding: 10px 24px 0;
+  padding: 14px 20px 24px;
 }
 
 .columnsCont{
@@ -9,3 +9,16 @@
   overflow-x: scroll;
   overflow-y: hidden;
 }
+
+::-webkit-scrollbar {
+  border-radius: 12px;
+  background: var(--dark-bg-medium);
+  pointer-events: all;
+}
+
+::-webkit-scrollbar-thumb{
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+

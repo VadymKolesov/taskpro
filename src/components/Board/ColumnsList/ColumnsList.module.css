@@ -1,8 +1,7 @@
 .columnsList{
   position: absolute;
   top: 10px;
-  width: 100%;
-  min-height: 100%;
   display: flex;
   gap: 18px;
+  height: 100%;
 }

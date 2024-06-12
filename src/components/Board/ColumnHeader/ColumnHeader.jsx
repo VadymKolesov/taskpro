@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../../redux/auth/selectors";
 import { deleteColumn } from "../../../redux/board/operations";
 import { selectBoard } from "../../../redux/board/selectors";
+import { setIsAddColumnOpen, setIsColumnEdit } from "../../../redux/controls/slice";
+import { setCurrentColumn } from "../../../redux/board/slice";
 
 function ColumnHeader({ column }) {
   const userTheme = useSelector(selectTheme);
@@ -15,7 +17,12 @@ function ColumnHeader({ column }) {
   
   
   const handleUpdate = () => {
-    console.log("Update column");
+    dispatch(setIsAddColumnOpen(true))
+    dispatch(setIsColumnEdit(true));
+    dispatch(setCurrentColumn({
+        _id: column._id,
+        name: column.name
+    }));
   };
 
   const handleDelete = () => {

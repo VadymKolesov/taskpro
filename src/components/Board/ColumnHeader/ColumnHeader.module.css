@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 334px;
+  width: 87vw;
   height: 56px;
   border-radius: 8px;
   background-color: var(--dark-bg-hard);
@@ -10,6 +10,9 @@
 }
 
 .columnTitle{
+  width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: var(--white);
   font-size: 14px;
   font-weight: 500;
@@ -63,4 +66,10 @@
 
 .btnIcon.violet {
   stroke: var(--white);
+}
+
+@media screen and (min-width: 375px) {
+  .columnHeader{
+    width: 334px;
+  }
 }
