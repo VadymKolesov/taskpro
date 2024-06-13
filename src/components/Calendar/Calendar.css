@@ -4,7 +4,10 @@
 
 /* Wrapper */
 .react-datepicker {
-  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  bottom: 63px;
+  transform: translate(-24%, 0);
   border: 1px solid var(--green);
   border-radius: 8px;
   background-color: var(--dark-bg-easy);

@@ -24,3 +24,9 @@ export const selectIsFilterModalOpen = (state) =>
 
 export const selectIsAddColumnOpen = (state) =>
   state.controls.isAddColumnOpen;
+
+export const selectIsAddCardOpen = (state) =>
+  state.controls.isAddCardOpen;
+
+export const selectIsProgressOpen = (state) =>
+  state.controls.isProgressOpen;

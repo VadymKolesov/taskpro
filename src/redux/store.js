@@ -15,6 +15,8 @@ import sideBarReducer from "./sidebar/slice";
 import filterReducer from "./filter/slice";
 import controlReducer from "./controls/slice";
 import boardReducer from "./board/slice";
+import columnReducer from "./column/slice";
+import cardReducer from "./card/slice";
 
 const authPersistConfig = {
   key: "auth",
@@ -31,6 +33,8 @@ export const store = configureStore({
     filter: filterReducer,
     controls: controlReducer,
     board: boardReducer,
+    column: columnReducer,
+    card: cardReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

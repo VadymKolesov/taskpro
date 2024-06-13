@@ -17,7 +17,6 @@ export default function Profile() {
 
   const handleOpenEditProfile = () => {
     dispatch(setProfileModalOpen(true));
-    console.log("Open modal Edit profile");
   };
 
   return (

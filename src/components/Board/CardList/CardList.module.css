@@ -1,0 +1,61 @@
+.cardListCont{
+  width: 92vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 8px;
+}
+
+.cardListCont::-webkit-scrollbar{
+  width: 8px;
+  border-radius: 12px;
+  background-color: rgb(255, 255, 255, 0.08);
+  transition: background-color 0.3s ease;
+}
+
+.cardListCont::-webkit-scrollbar-thumb{
+  border-radius: 12px;
+  background: var(--dark-bg-hard);
+  transition: background-color 0.3s ease;
+}
+
+.cardList{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@media screen and (min-width: 375px) {
+  .cardListCont{
+    width: 348px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .cardListCont {
+    width: 350px;
+  }
+}
+
+.cardListCont.dark::-webkit-scrollbar{
+  background-color: rgb(255, 255, 255, 0.08);
+}
+
+.cardListCont.dark::-webkit-scrollbar-thumb{
+  background: var(--dark-bg-hard);
+}
+
+.cardListCont.light::-webkit-scrollbar {
+  background-color: #E8E8E8;
+}
+
+.cardListCont.light::-webkit-scrollbar-thumb {
+  background: rgba(22, 22, 22, 0.1);
+}
+
+.cardListCont.violet::-webkit-scrollbar {
+  background-color: var(--white);
+}
+
+.cardListCont.violet::-webkit-scrollbar-thumb {
+  background: var(--violet);
+}

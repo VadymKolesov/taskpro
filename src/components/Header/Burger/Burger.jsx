@@ -8,12 +8,11 @@ import { selectTheme } from "../../../redux/auth/selectors";
 import { motion } from "framer-motion";
 
 function Burger() {
-  const theme = useSelector(selectTheme);
   const dispatch = useDispatch();
+  const theme = useSelector(selectTheme);
   const burger = clsx(css.burger, getThemeStyle(css, theme));
 
   const handleOpenSidebar = () => {
-    console.log("Open sidebar");
     dispatch(setSideBarOpen(true));
   };
 

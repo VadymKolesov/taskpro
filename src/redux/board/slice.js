@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { create, remove, update, current, addColumn, deleteColumn, updateColumn } from "./operations";
+import { create, remove, update, current, addColumn, deleteColumn, updateColumn, addCard, removeCard, updateCard, moveCard } from "./operations";
 
 const slice = createSlice({
   name: "board",
@@ -9,10 +9,6 @@ const slice = createSlice({
       name: null,
       iconName: null,
       backgroundUrl: null,
-    },
-    currentColumn: {
-      _id: null,
-      name: null,
     },
     columns: [],
     isBoardRefreshing: false,
@@ -27,8 +23,6 @@ const slice = createSlice({
       .addCase(create.fulfilled, (state, action) => {
         state.board = action.payload;
         state.columns = [];
-        state.currentColumn._id = null;
-        state.currentColumn.name = null;
         state.isBoardRefreshing = false;
       })
       .addCase(create.rejected, (state, action) => {
@@ -44,8 +38,6 @@ const slice = createSlice({
         state.board.name = null;
         state.board.icon = null;
         state.board.backgroundUrl = null;
-        state.currentColumn._id = null;
-        state.currentColumn.name = null;
         state.columns = [];
         state.isBoardRefreshing = false;
       })
@@ -59,8 +51,6 @@ const slice = createSlice({
       })
       .addCase(update.fulfilled, (state, action) => {
         state.board = action.payload;
-        state.currentColumn._id = null;
-        state.currentColumn.name = null;
         state.isBoardRefreshing = false;
       })
       .addCase(update.rejected, (state, action) => {
@@ -74,8 +64,6 @@ const slice = createSlice({
       .addCase(current.fulfilled, (state, action) => {
         state.board = action.payload.board;
         state.columns = action.payload.columns;
-        state.currentColumn._id = null;
-        state.currentColumn.name = null;
         state.isBoardRefreshing = false;
       })
       .addCase(current.rejected, (state, action) => {
@@ -88,8 +76,6 @@ const slice = createSlice({
       })
       .addCase(addColumn.fulfilled, (state, action) => {
         state.columns = action.payload;
-        state.currentColumn._id = null;
-        state.currentColumn.name = null;
         state.isBoardRefreshing = false;
       })
       .addCase(addColumn.rejected, (state, action) => {
@@ -102,8 +88,6 @@ const slice = createSlice({
       })
       .addCase(deleteColumn.fulfilled, (state, action) => {
         state.columns = action.payload;
-        state.currentColumn._id = null;
-        state.currentColumn.name = null;
         state.isBoardRefreshing = false;
       })
       .addCase(deleteColumn.rejected, (state, action) => {
@@ -116,23 +100,61 @@ const slice = createSlice({
       })
       .addCase(updateColumn.fulfilled, (state, action) => {
         state.columns = action.payload;
-        state.currentColumn._id = null;
-        state.currentColumn.name = null;
         state.isBoardRefreshing = false;
       })
       .addCase(updateColumn.rejected, (state, action) => {
         state.isBoardRefreshing = false;
         state.error = action.payload;
       })
+      .addCase(addCard.pending, (state) => {
+        state.isBoardRefreshing = true;
+        state.error = null;
+      })
+      .addCase(addCard.fulfilled, (state, action) => {
+        state.columns = action.payload;
+        state.isBoardRefreshing = false;
+      })
+      .addCase(addCard.rejected, (state, action) => {
+        state.isBoardRefreshing = false;
+        state.error = action.payload;
+      })
+      .addCase(removeCard.pending, (state) => {
+        state.isBoardRefreshing = true;
+        state.error = null;
+      })
+      .addCase(removeCard.fulfilled, (state, action) => {
+        state.columns = action.payload;
+        state.isBoardRefreshing = false;
+      })
+      .addCase(removeCard.rejected, (state, action) => {
+        state.isBoardRefreshing = false;
+        state.error = action.payload;
+      })
+      .addCase(updateCard.pending, (state) => {
+        state.isBoardRefreshing = true;
+        state.error = null;
+      })
+      .addCase(updateCard.fulfilled, (state, action) => {
+        state.columns = action.payload;
+        state.isBoardRefreshing = false;
+      })
+      .addCase(updateCard.rejected, (state, action) => {
+        state.isBoardRefreshing = false;
+        state.error = action.payload;
+      })
+      .addCase(moveCard.pending, (state) => {
+        state.isBoardRefreshing = true;
+        state.error = null;
+      })
+      .addCase(moveCard.fulfilled, (state, action) => {
+        state.columns = action.payload;
+        state.isBoardRefreshing = false;
+      })
+      .addCase(moveCard.rejected, (state, action) => {
+        state.isBoardRefreshing = false;
+        state.error = action.payload;
+      })
   },
-  reducers: {
-    setCurrentColumn(state, action) {
-      state.currentColumn._id = action.payload._id;
-      state.currentColumn.name = action.payload.name;
-    },
-  }
 })
-
-export const { setCurrentColumn } = slice.actions;
 
 export default slice.reducer;

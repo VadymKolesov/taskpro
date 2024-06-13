@@ -1,5 +1,5 @@
 import BoardHeader from "./BoardHeader/BoardHeader";
-import ColumnsList from "./ColumnsList/ColumnsList";
+import ColumnList from "./ColumnList/ColumnList";
 import FilterBtn from "../Filter/FilterBtn/FilterBtn";
 import { useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
@@ -15,7 +15,7 @@ function Board() {
         <FilterBtn />
       </span>
       <div className={css.columnsCont}>
-        <ColumnsList/>
+        <ColumnList />
       </div>
     </div>
   )

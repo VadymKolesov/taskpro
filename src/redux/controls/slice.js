@@ -13,6 +13,8 @@ const slice = createSlice({
     isCardEdit: false,
     isFilterModalOpen: false,
     isAddColumnOpen: false,
+    isAddCardOpen: false,
+    isProgressOpen: false,
   },
   reducers: {
     setSideBarOpen(state, action) {
@@ -43,6 +45,12 @@ const slice = createSlice({
     },
     setIsAddColumnOpen(state, action) {
       state.isAddColumnOpen = action.payload;
+    },
+    setIsAddCardOpen(state, action) {
+      state.isAddCardOpen = action.payload;
+    },
+    setIsProgressOpen(state, action) {
+      state.isProgressOpen = action.payload;
     }
   },
 });
@@ -57,6 +65,8 @@ export const {
   setIsCardEdit,
   setIsFilterModalOpen,
   setIsAddColumnOpen,
+  setIsAddCardOpen,
+  setIsProgressOpen,
 } = slice.actions;
 
 export default slice.reducer;

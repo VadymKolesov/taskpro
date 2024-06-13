@@ -18,8 +18,7 @@
 .columnsCont{
   position: relative;
   width: 100%;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  overflow-x: auto;
 }
 
 .columnsCont::-webkit-scrollbar {

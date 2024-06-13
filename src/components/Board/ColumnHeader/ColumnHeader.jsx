@@ -6,7 +6,7 @@ import { selectTheme } from "../../../redux/auth/selectors";
 import { deleteColumn } from "../../../redux/board/operations";
 import { selectBoard } from "../../../redux/board/selectors";
 import { setIsAddColumnOpen, setIsColumnEdit } from "../../../redux/controls/slice";
-import { setCurrentColumn } from "../../../redux/board/slice";
+import { setCurrentColumn } from "../../../redux/column/slice";
 
 function ColumnHeader({ column }) {
   const theme = useSelector(selectTheme);

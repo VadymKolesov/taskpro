@@ -1,0 +1,258 @@
+.card{
+  position: relative;
+  overflow: hidden;
+  width: 87vw;
+  padding: 14px 20px 14px 24px;
+  border-radius: 8px;
+  letter-spacing: -0.018em;
+  transition: background-color .3s ease;
+}
+
+.indicator{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 4px;
+  transition: background-color .3s ease;
+}
+
+.indicator.without {
+  background-color: var(--white);
+  opacity: 0.3;
+}
+
+.indicator.low {
+  background-color: var(--indigo);
+}
+
+.indicator.medium {
+  background-color: var(--pink);
+}
+
+.indicator.high {
+  background-color: var(--green);
+}
+
+.title{
+  margin-bottom: 8px;
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  transition: color .3s ease;
+}
+
+.description{
+  display: -webkit-box;
+  width: 100%;
+  min-height: 36px;
+  color: var(--white);
+  opacity: 0.5;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  transition: color .3s ease, opacity .3s ease;
+}
+
+.line{
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 14px 0 15px;
+  transition: border .3s ease;
+}
+
+.cardInfo{
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.infoList{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.infoListItem{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.infoListItem span{
+  color: var(--white);
+  opacity: 0.5;
+  font-size: 8px;
+  font-weight: 400;
+  line-height: 1.5;
+  transition: color .3s ease;
+}
+
+.infoListItem p{
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.5;
+  transition: color .3s ease;
+}
+
+.priority{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-transform: capitalize;
+}
+
+.priorityIcon{
+  width: 13px;
+  height: 13px;
+  transition: fill .3s ease;
+}
+
+.priorityIcon.without{
+  fill: var(--white);
+  opacity: 0.3;
+}
+
+.priorityIcon.low{
+  fill: var(--indigo);
+}
+
+.priorityIcon.medium{
+  fill: var(--pink);
+}
+
+.priorityIcon.high{
+  fill: var(--green);
+}
+
+.controlCont{
+  display: flex;
+  gap: 12px;
+}
+
+.controlList{
+  display: flex;
+  gap: 8px;
+}
+
+.controlList li{
+  line-height: 0;
+}
+
+.controlBtn{
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+}
+
+.controlIcon{
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+  stroke: var(--white);
+  transition: opacity .1s ease-in-out, stroke .3s ease;
+}
+
+.controlIcon:hover, .controlBtn:focus .controlIcon{
+  opacity: 1;
+}
+
+.iconBell{
+  width: 16px;
+  height: 16px;
+  stroke: var(--green);
+  filter: drop-shadow(0px 0px 5px var(--green));
+  transition: stroke 0.3s ease;
+}
+
+@media screen and (min-width: 375px) {
+  .card{
+    width: 334px;
+  }
+}
+
+.card.dark{
+  background-color: var(--dark-bg-hard);
+}
+
+.card.dark .indicator.without{
+  background-color: var(--white);
+}
+
+.card.dark .title{
+  color: var(--white);
+}
+
+.card.dark .description{
+  color: var(--white);
+}
+
+.card.dark .line {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.card.dark .infoListItem span, .card.dark .infoListItem p {
+  color: var(--white);
+}
+
+.card.dark .priorityIcon.without {
+  fill: rgba(255, 255, 255, 0.3);
+}
+
+.card.dark .controlIcon{
+  stroke: var(--white);
+}
+
+.card.dark .iconBell,
+.card.light .iconBell{
+  stroke: var(--green);
+  filter: drop-shadow(0px 0px 5px var(--green));
+}
+
+/* light/violet */
+.card.light, .card.violet{
+  background-color: var(--white);
+}
+
+.card.light .indicator.without, .card.violet .indicator.without{
+  background-color: var(--dark-bg-medium);
+}
+
+.card.light .title, .card.violet .title {
+  color: var(--dark-bg-medium);
+}
+
+.card.light .description, .card.violet .description {
+  color: var(--dark-bg-medium);
+  opacity: 0.7;
+}
+
+.card.light .line, .card.violet .line {
+  border-color: rgba(22, 22, 22, 0.1);
+}
+
+.card.light .infoListItem span,
+.card.light .infoListItem p,
+.card.violet .infoListItem span,
+.card.violet .infoListItem p{
+  color: var(--dark-bg-medium);
+}
+
+.card.light .priorityIcon.without, .card.violet .priorityIcon.without{
+  fill: var(--dark-bg-medium);
+}
+
+.card.light .controlIcon, .card.violet .controlIcon{
+  stroke: var(--dark-bg-medium);
+}
+
+.card.violet .iconBell{
+  stroke: var(--violet-bg-hard);
+  filter: drop-shadow(0px 0px 5px var(--violet-bg-hard))
+}

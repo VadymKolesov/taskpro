@@ -115,3 +115,71 @@ export const deleteColumn = createAsyncThunk(
     }
   }
 );
+
+export const addCard = createAsyncThunk(
+  "board/addCard",
+  async (data, thunkApi) => {
+    try {
+      await axios.post(`/cards/${data.columnId}`, data.card);
+      const response = await axios.get(`/boards/${data.boardId}`);
+      return response.data.columns;
+    } catch (error) {
+      const errorMessage =
+        error.response && error.response.data
+          ? error.response.data.message
+          : error.message;
+      return thunkApi.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const removeCard = createAsyncThunk(
+  "board/removeCard",
+  async (data, thunkApi) => {
+    try {
+      await axios.delete(`/cards/${data.cardId}`);
+      const response = await axios.get(`/boards/${data.boardId}`);
+      return response.data.columns;
+    } catch (error) {
+      const errorMessage =
+        error.response && error.response.data
+          ? error.response.data.message
+          : error.message;
+      return thunkApi.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const updateCard = createAsyncThunk(
+  "board/updateCard",
+  async (data, thunkApi) => {
+    try {
+      await axios.patch(`/cards/${data.cardId}`, data.card);
+      const response = await axios.get(`/boards/${data.boardId}`);
+      return response.data.columns;
+    } catch (error) {
+      const errorMessage =
+        error.response && error.response.data
+          ? error.response.data.message
+          : error.message;
+      return thunkApi.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const moveCard = createAsyncThunk(
+  "board/moveCard",
+  async (data, thunkApi) => {
+    try {
+      await axios.put(`/cards/${data.cardId}/column`, {columnId: data.columnId });
+      const response = await axios.get(`/boards/${data.boardId}`);
+      return response.data.columns;
+    } catch (error) {
+      const errorMessage =
+        error.response && error.response.data
+          ? error.response.data.message
+          : error.message;
+      return thunkApi.rejectWithValue(errorMessage);
+    }
+  }
+);

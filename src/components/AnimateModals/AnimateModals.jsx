@@ -4,6 +4,8 @@ import AddBoardPopUp from "../../components/AddBoardPopUp/AddBoardPopUp";
 import ClickOutsideComponent from "../../helpers/ClickOutsideComponent";
 import FilterModal from "../../components/Filter/FilterModal";
 import AddColumnPopUp from "../AddColumnPopUp/AddColumnPopUp";
+import CardPopUp from "../CardPopUp/CardPopUp";
+import ProgressPopUp from "../../components/ProgressPopUp/ProgressPopUp";
 import { motion, AnimatePresence } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -11,21 +13,29 @@ import {
   setBoardModalOpen,
   setIsAddColumnOpen,
   setIsFilterModalOpen,
-  setProfileModalOpen
+  setProfileModalOpen,
+  setIsAddCardOpen,
+  setIsProgressOpen,
 } from "../../redux/controls/slice";
 
 import {
   selectBoardModalIsOpen,
   selectIsAddColumnOpen,
   selectIsFilterModalOpen,
-  selectIsProfileModalsOpen
+  selectIsProfileModalsOpen,
+  selectIsAddCardOpen,
+  selectIsProgressOpen,
 } from "../../redux/controls/selectors";
+import { resetCurrentColumn } from "../../redux/column/slice";
+import { resetCurrentCard } from "../../redux/card/slice";
 
 function AnimateModals() {
   const isProfileModalOpen = useSelector(selectIsProfileModalsOpen);
   const isBoardModalOpen = useSelector(selectBoardModalIsOpen);
   const isFilterModalOpen = useSelector(selectIsFilterModalOpen);
   const isAddColumnOpen = useSelector(selectIsAddColumnOpen);
+  const isAddCardOpen = useSelector(selectIsAddCardOpen);
+  const isProgressOpen = useSelector(selectIsProgressOpen);
 
   const dispatch = useDispatch();
 
@@ -41,6 +51,16 @@ function AnimateModals() {
 
   const handleAddColumnclose = () => {
     isAddColumnOpen && dispatch(setIsAddColumnOpen(false));
+    isAddColumnOpen && dispatch(resetCurrentColumn());
+  };
+
+  const handleAddCardclose = () => {
+    isAddCardOpen && dispatch(setIsAddCardOpen(false));
+    isAddCardOpen && dispatch(resetCurrentCard());
+  };
+
+  const handleProgressClose = () => {
+    isProgressOpen && dispatch(setIsProgressOpen(false));
   };
 
   return (
@@ -124,6 +144,50 @@ function AnimateModals() {
                 transition={{ duration: 0.15 }}
               >
                 <AddColumnPopUp/>
+              </motion.div>
+            </ClickOutsideComponent>
+          </Backdrop>
+        </motion.div>
+      )}
+      {isAddCardOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.17 }}
+        >
+          <Backdrop>
+            <ClickOutsideComponent
+              onClickOutside={handleAddCardclose}
+            >
+              <motion.div
+                animate={{ scale: [1.02, 1.05, 1, 1] }}
+                exit={{ scale: [1, 1.05, 0.9] }}
+                transition={{ duration: 0.15 }}
+              >
+                <CardPopUp/>
+              </motion.div>
+            </ClickOutsideComponent>
+          </Backdrop>
+        </motion.div>
+      )}
+      {isProgressOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.17 }}
+        >
+          <Backdrop>
+            <ClickOutsideComponent
+              onClickOutside={handleProgressClose}
+            >
+              <motion.div
+                animate={{ scale: [1.02, 1.05, 1, 1] }}
+                exit={{ scale: [1, 1.05, 0.9] }}
+                transition={{ duration: 0.15 }}
+              >
+                <ProgressPopUp/>
               </motion.div>
             </ClickOutsideComponent>
           </Backdrop>

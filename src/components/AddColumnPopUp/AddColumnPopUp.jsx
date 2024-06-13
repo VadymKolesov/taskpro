@@ -10,7 +10,9 @@ import { selectTheme } from "../../redux/auth/selectors";
 import { setIsAddColumnOpen } from "../../redux/controls/slice";
 import { selectIsColumnEdit } from "../../redux/controls/selectors";
 import { addColumn, updateColumn } from "../../redux/board/operations";
-import { selectBoard, selectCurrentColumn } from "../../redux/board/selectors";
+import { selectBoard } from "../../redux/board/selectors";
+import { selectCurrentColumn } from "../../redux/column/selectors";
+import { resetCurrentColumn } from "../../redux/column/slice";
 
 export default function AddColumnPopUp() {
   const userTheme = useSelector(selectTheme);
@@ -38,6 +40,7 @@ export default function AddColumnPopUp() {
         columnId: column._id,
         ...values,
       }))
+      dispatch(resetCurrentColumn());
     }
     dispatch(setIsAddColumnOpen(false));
     actions.resetForm();
@@ -45,6 +48,7 @@ export default function AddColumnPopUp() {
 
   const handleClose = () => {
     dispatch(setIsAddColumnOpen(false));
+    dispatch(resetCurrentColumn());
   };
 
   return (

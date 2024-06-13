@@ -5,7 +5,7 @@ import { getThemeStyle } from "../../scripts/getThemeStyle";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
 import { motion } from "framer-motion";
-import { setIsAddColumnOpen } from "../../redux/controls/slice";
+import { setIsAddColumnOpen, setIsColumnEdit } from "../../redux/controls/slice";
 
 export default function AddColumnBtn() {
   const userTheme = useSelector(selectTheme);
@@ -14,6 +14,7 @@ export default function AddColumnBtn() {
 
   const handleClick = () => {
     dispatch(setIsAddColumnOpen(true));
+    dispatch(setIsColumnEdit(false));
   };
 
   return (
