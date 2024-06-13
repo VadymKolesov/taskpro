@@ -20,9 +20,7 @@ const slice = createSlice({
         state.isBoardRefreshing = true;
         state.error = null;
       })
-      .addCase(create.fulfilled, (state, action) => {
-        state.board = action.payload;
-        state.columns = [];
+      .addCase(create.fulfilled, (state) => {
         state.isBoardRefreshing = false;
       })
       .addCase(create.rejected, (state, action) => {
@@ -155,6 +153,20 @@ const slice = createSlice({
         state.error = action.payload;
       })
   },
+  reducers: {
+    clearBoard(state) {
+      console.log("clear");
+      state.board._id = null;
+      state.board.name = null;
+      state.board.iconName = null;
+      state.board.backgroundUrl = null;
+      state.columns = [];
+      state.isBoardRefreshing = false;
+      state.error = null;
+    }
+  }
 })
+
+export const { clearBoard } = slice.actions;
 
 export default slice.reducer;

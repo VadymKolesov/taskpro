@@ -4,16 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectSideBarIsOpen } from "../../redux/controls/selectors";
 import { setSideBarOpen } from "../../redux/controls/slice";
 import ClickOutsideComponent from "../../helpers/ClickOutsideComponent";
-import { Outlet } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import AnimateModals from "../../components/AnimateModals/AnimateModals";
+import { clearBoard } from "../../redux/board/slice";
 import css from "./HomePage.module.css";
 import clsx from "clsx";
 
 
 export default function HomePage() {
   const dispatch = useDispatch();
+  const { boardName } = useParams();
   const sideBarIsOpen = useSelector(selectSideBarIsOpen);
-
+  !boardName && dispatch(clearBoard());
+  
   const handleCloseSideBar = () => {
     sideBarIsOpen && dispatch(setSideBarOpen(false));
   };

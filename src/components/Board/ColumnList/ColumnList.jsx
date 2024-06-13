@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectColumns } from "../../../redux/board/selectors";
+import { selectColumnsWithFilteredCards } from "../../../redux/board/selectors";
 import AddColumnBtn from "../../AddColumnBtn/AddColumnBtn";
 import ColumnHeader from "../ColumnHeader/ColumnHeader";
 import AddCardBtn from "../AddCardBtn/AddCardBtn";
@@ -7,7 +7,7 @@ import CardList from "../CardList/CardList";
 import css from "./ColumnList.module.css";
 
 function ColumnsList() {
-  const columns = useSelector(selectColumns);
+  const columns = useSelector(selectColumnsWithFilteredCards)
 
   return (
     <ul className={css.columnsList}>

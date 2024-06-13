@@ -29,8 +29,9 @@ export default function BoardsList() {
   };
 
   const handleDelete = (boardId) => {
-    dispatch(remove(boardId));
-    dispatch(removeBoard(boardId));
+    // dispatch(remove(boardId));
+    // dispatch(removeBoard(boardId));
+    console.log("Delete board :" + boardId);
   };
 
   return (
@@ -70,7 +71,7 @@ export default function BoardsList() {
                         <li>
                           <button
                             type="button"
-                            onClick={() => handleDelete(item._id)}
+                            onMouseDown={() => handleDelete(item._id)}
                             className={css.itemBtn}
                           >
                             <svg className={clsx(css.btnIcon, theme)}>
