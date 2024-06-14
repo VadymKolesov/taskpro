@@ -8,7 +8,7 @@ const slice = createSlice({
       _id: null,
       name: null,
       iconName: null,
-      backgroundUrl: null,
+      backgroundName: null,
     },
     columns: [],
     isBoardRefreshing: false,
@@ -20,7 +20,11 @@ const slice = createSlice({
         state.isBoardRefreshing = true;
         state.error = null;
       })
-      .addCase(create.fulfilled, (state) => {
+      .addCase(create.fulfilled, (state, action) => {
+        state.board._id = action.payload._id;
+        state.board.name = action.payload.name;
+        state.board.iconName = action.payload.iconName;
+        state.board.backgroundName = action.payload.backgroundName;
         state.isBoardRefreshing = false;
       })
       .addCase(create.rejected, (state, action) => {

@@ -172,10 +172,14 @@ const slice = createSlice({
     updateBoard(state, action) {
       state.user.boards = state.user.boards
         .map(board => board._id === action.payload._id ? action.payload : board);
+    },
+    addBoard(state, action) {
+      const isExist = state.user.boards.find(board => board._id === action.payload._id);
+      !isExist._id && state.user.boards.push(action.payload);
     }
   }
 });
 
-export const { addBoard,removeBoard, updateBoard } = slice.actions;
+export const { addBoard ,removeBoard, updateBoard } = slice.actions;
 
 export default slice.reducer;

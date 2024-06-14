@@ -10,7 +10,6 @@ import { clearBoard } from "../../redux/board/slice";
 import css from "./HomePage.module.css";
 import clsx from "clsx";
 
-
 export default function HomePage() {
   const dispatch = useDispatch();
   const { boardName } = useParams();
@@ -20,7 +19,6 @@ export default function HomePage() {
   const handleCloseSideBar = () => {
     sideBarIsOpen && dispatch(setSideBarOpen(false));
   };
-
 
   return (
     <div className={css.container}>

@@ -31,8 +31,8 @@ export default function BoardsList() {
   };
 
   const handleDelete = (boardId) => {
-    // dispatch(remove(boardId));
-    // dispatch(removeBoard(boardId));
+    dispatch(remove(boardId));
+    dispatch(removeBoard(boardId));
     console.log("Delete board :" + boardId);
   };
 
