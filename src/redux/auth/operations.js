@@ -132,19 +132,3 @@ export const updateAvatar = createAsyncThunk(
     }
   }
 );
-
-export const boards = createAsyncThunk(
-  "auth/boards",
-  async (_, thunkApi) => {
-    try {
-      const response = await axios.get("/boards");
-      return response.data;
-    } catch (error) {
-      const errorMessage =
-        error.response && error.response.data
-          ? error.response.data.message
-          : error.message;
-      return thunkApi.rejectWithValue(errorMessage);
-    }
-  }
-);

@@ -12,20 +12,12 @@ import { setSideBarOpen } from "../../redux/controls/slice";
 import { getThemeStyle } from "../../scripts/getThemeStyle";
 import { selectTheme } from "../../redux/auth/selectors";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
-import { boards } from "../../redux/auth/operations";
-import { selectBoard } from "../../redux/board/selectors";
 
 export default function SideBar() {
   const userTheme = useSelector(selectTheme);
   const dispatch = useDispatch();
   const sideBarIsOpen = useSelector(selectSideBarIsOpen);
   const theme = getThemeStyle(css, userTheme);
-  const board = useSelector(selectBoard);
-
-  useEffect(() => {
-    dispatch(boards());
-  },[dispatch, board])
 
   const handleSideBarClose = () => {
     dispatch(setSideBarOpen(false));

@@ -1,6 +1,19 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+export const boards = createAsyncThunk("auth/boards", async (_, thunkApi) => {
+  try {
+    const response = await axios.get("/boards");
+    return response.data;
+  } catch (error) {
+    const errorMessage =
+      error.response && error.response.data
+        ? error.response.data.message
+        : error.message;
+    return thunkApi.rejectWithValue(errorMessage);
+  }
+});
+
 export const create = createAsyncThunk(
   "board/create",
   async (data, thunkApi) => {
@@ -17,21 +30,18 @@ export const create = createAsyncThunk(
   }
 );
 
-export const remove = createAsyncThunk(
-  "board/remove",
-  async (id, thunkApi) => {
-    try {
-      const response = await axios.delete(`/boards/${id}`);
-      return response.data;
-    } catch (error) {
-      const errorMessage =
-        error.response && error.response.data
-          ? error.response.data.message
-          : error.message;
-      return thunkApi.rejectWithValue(errorMessage);
-    }
+export const remove = createAsyncThunk("board/remove", async (id, thunkApi) => {
+  try {
+    const response = await axios.delete(`/boards/${id}`);
+    return response.data;
+  } catch (error) {
+    const errorMessage =
+      error.response && error.response.data
+        ? error.response.data.message
+        : error.message;
+    return thunkApi.rejectWithValue(errorMessage);
   }
-);
+});
 
 export const update = createAsyncThunk(
   "board/update",
@@ -171,7 +181,9 @@ export const moveCard = createAsyncThunk(
   "board/moveCard",
   async (data, thunkApi) => {
     try {
-      await axios.put(`/cards/${data.cardId}/column`, {columnId: data.columnId });
+      await axios.put(`/cards/${data.cardId}/column`, {
+        columnId: data.columnId,
+      });
       const response = await axios.get(`/boards/${data.boardId}`);
       return response.data.columns;
     } catch (error) {

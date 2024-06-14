@@ -7,7 +7,6 @@ import {
   changeTheme,
   updateUser,
   updateAvatar,
-  boards,
 } from "./operations";
 
 const slice = createSlice({
@@ -18,7 +17,6 @@ const slice = createSlice({
       email: null,
       theme: null,
       avatarUrl: null,
-      boards: [],
     },
     token: null,
     isAuth: false,
@@ -151,35 +149,10 @@ const slice = createSlice({
       .addCase(updateAvatar.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      })
-      .addCase(boards.pending, (state) => {
-        state.error = null;
-      })
-      .addCase(boards.fulfilled, (state, action) => {
-        state.user.boards = action.payload;
-        state.error = null;
-      })
-      .addCase(boards.rejected, (state, action) => {
-        state.user.boards = [];
-        state.error = action.payload;
-      })
+      });
   },
-  reducers: {
-    removeBoard(state, action) {
-      state.user.boards = state.user.boards
-        .filter(board => board._id !== action.payload);
-    },
-    updateBoard(state, action) {
-      state.user.boards = state.user.boards
-        .map(board => board._id === action.payload._id ? action.payload : board);
-    },
-    addBoard(state, action) {
-      const isExist = state.user.boards.find(board => board._id === action.payload._id);
-      !isExist._id && state.user.boards.push(action.payload);
-    }
-  }
 });
 
-export const { addBoard ,removeBoard, updateBoard } = slice.actions;
+export const { addBoard, removeBoard, updateBoard } = slice.actions;
 
 export default slice.reducer;

@@ -26,34 +26,36 @@ import bg14 from "../../assets/boards-bg/mobile/backgound-mobile-14.jpg";
 import bg15 from "../../assets/boards-bg/mobile/backgound-mobile-15.jpg";
 import noBg from "../../assets/boards-bg/no-bg.svg";
 import { create, update } from "../../redux/board/operations";
-import { boards } from "../../redux/auth/operations";
 import { selectBoard } from "../../redux/board/selectors";
-import { updateBoard } from "../../redux/auth/slice";
+import { useNavigate } from "react-router-dom";
 
 export default function AddBoardPopUp() {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
   const isEdit = useSelector(selectIsBoardEdit);
   const board = useSelector(selectBoard);
+  const navigate = useNavigate();
 
   const schema = Yup.object({
     name: Yup.string().required("Title is required"),
     iconName: Yup.string().required("Icon is required"),
   });
 
-  const handleSubmit = (values, actions) => {
+  const handleSubmit = async (values, actions) => {
     if (isEdit) {
-      dispatch(update({
-        id: board._id,
-        board: { ...values }
-      }))
-      dispatch(updateBoard({
-        _id: board._id,
-        ...values,
-      }))
+      dispatch(
+        update({
+          id: board._id,
+          board: { ...values },
+        })
+      );
     } else {
-      dispatch(create(values));
-      dispatch(boards());
+      const action = await dispatch(create(values));
+
+      if (create.fulfilled.match(action)) {
+        const newBoardId = action.payload._id;
+        navigate(`/home/${newBoardId}`);
+      }
     }
     dispatch(setBoardModalOpen(false));
     actions.resetForm();

@@ -10,21 +10,17 @@ import {
   setIsBoardEdit,
   setSideBarOpen,
 } from "../../../redux/controls/slice";
-import { selectBoard } from "../../../redux/board/selectors";
-import { addBoard } from "../../../redux/auth/slice";
 
 export default function CreateBoard() {
   const dispatch = useDispatch();
   const userTheme = useSelector(selectTheme);
   const theme = getThemeStyle(css, userTheme);
-  const board = useSelector(selectBoard);
 
   const handleCreate = () => {
     setTimeout(() => {
       dispatch(setSideBarOpen(false));
       dispatch(setIsBoardEdit(false));
       dispatch(setBoardModalOpen(true));
-      board._id && dispatch(addBoard(board));
     }, 200);
   };
 

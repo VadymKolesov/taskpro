@@ -12,4 +12,4 @@ export const selectError = (state) => state.auth.error;
 
 export const selectRequestedPath = (state) => state.auth.requestedPath;
 
-export const selectBoards = (state) => state.auth.user.boards;
+export const selectBoards = (state) => state.board.boards;
