@@ -68,7 +68,6 @@ function Card({ card }) {
           {deadlineAlarm(card.deadline) && <button
             className={css.controlBtn}
             type="button"
-            onClick={handleMove}
             >
               <svg className={css.iconBell}>
                 <use href={`${sprite}#icon-bell`}></use>
