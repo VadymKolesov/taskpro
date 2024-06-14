@@ -1,0 +1,101 @@
+.wrapper {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 200px;
+    height: 130px;
+    padding: 24px;
+    border-radius: 8px;
+    z-index: 999;
+    transform: translate(-50%, -50%)
+}
+
+.wrapper.dark {
+    background-color: var(--dark-modal-bg);
+}
+
+.wrapper.light {
+    background-color: var(--white);
+}
+
+.wrapper.violet {
+    background-color: var(--white);
+}
+
+.title {
+    font-size: 18px;
+    margin-bottom: 26px;
+    font-weight: 500;
+}
+
+.title.dark{
+    color: var(--white);
+}
+
+.title.light{
+    color: var(--dark-bg-medium);
+}
+
+.title.violet{
+    color: var(--dark-bg-medium);
+}
+
+
+.btn {
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 500;
+}
+/* dark */
+.btn.dark{
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.btn.dark:hover {
+    color: var(--frozen);
+}
+
+.btn.del.dark {
+    color: var(--green-hover);
+}
+
+.btn.del.dark:hover {
+    color: var(--green);
+}
+/* light */
+.btn.light{
+    color: var(--dark-bg-medium);
+}
+
+.btn.light:hover {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.btn.del.light {
+    color: var(--green-hover);
+}
+
+.btn.del.light:hover {
+    color: var(--green);
+}
+/* violet */
+.btn.violet{
+    color: var(--dark-bg-medium);
+}
+
+.btn.violet:hover {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.btn.del.violet {
+    color: var(--violet-bg-hard);
+}
+
+.btn.del.violet:hover {
+    color: var(--violet-btn-hover);
+}
+
+.list {
+    display: flex;
+    justify-content: space-between;
+}

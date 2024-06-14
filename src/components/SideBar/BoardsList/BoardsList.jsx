@@ -1,3 +1,4 @@
+import { useState } from "react";
 import css from "./BoardsList.module.css";
 import BoardItem from "../BoardItem/BoardItem";
 import { NavLink } from "react-router-dom";
@@ -9,8 +10,18 @@ import { setSideBarOpen } from "../../../redux/controls/slice";
 import { getThemeStyle } from "../../../scripts/getThemeStyle";
 import { selectTheme } from "../../../redux/auth/selectors";
 import { motion } from "framer-motion";
+import ConfirmDelete from "../../ConfirmDelete/ConfirmDelete";
 
 export default function BoardsList() {
+  const [showDeleteConfirmationComp, setDeleteConfirmationComp] = useState(false);
+  const [selectedBoardId, setSelectedBoardId] = useState(null);
+
+  const handleDeleteBtnClick = (boardId) => {
+    setSelectedBoardId(boardId);
+    setDeleteConfirmationComp(true);
+  };
+
+
   const userTheme = useSelector(selectTheme);
   const theme = getThemeStyle(css, userTheme);
 
@@ -26,7 +37,9 @@ export default function BoardsList() {
 
   const handleDelete = (boardId) => {
     console.log(`Delete ${boardId}`);
+    setDeleteConfirmationComp(false);
   };
+
 
   const list = [
     {
@@ -134,13 +147,14 @@ export default function BoardsList() {
       updatedAt: "2024-06-08T11:34:34.329Z",
     },
   ];
+
   return (
     <ul className={css.list}>
       {list.map((item) => {
-        return (
-          <motion.li
+        return (<li key={nanoid()}>
+          <motion.div
             whileTap={{ scale: 0.9 }}
-            key={nanoid()}
+           
             className={css.item}
           >
             <NavLink
@@ -171,7 +185,7 @@ export default function BoardsList() {
                         <li>
                           <button
                             type="button"
-                            onClick={() => handleDelete(item._id)}
+                            onClick={() => handleDeleteBtnClick(item._id)}
                             className={css.itemBtn}
                           >
                             <svg className={clsx(css.btnIcon, theme)}>
@@ -186,7 +200,15 @@ export default function BoardsList() {
                 </>
               )}
             </NavLink>
-          </motion.li>
+          </motion.div>
+          {showDeleteConfirmationComp && selectedBoardId === item._id && (
+            <ConfirmDelete
+              itemId={item._id}
+              onDelete={handleDelete}
+              onCancel={() => setDeleteConfirmationComp(false)}
+            />
+          )}
+        </li>
         );
       })}
     </ul>
