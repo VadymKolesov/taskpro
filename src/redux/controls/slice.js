@@ -42,16 +42,20 @@ const slice = createSlice({
     },
     setIsFilterModalOpen(state, action) {
       state.isFilterModalOpen = action.payload;
+      state.isBackdrop = action.payload;
     },
     setIsAddColumnOpen(state, action) {
       state.isAddColumnOpen = action.payload;
+      state.isBackdrop = action.payload;
     },
     setIsAddCardOpen(state, action) {
       state.isAddCardOpen = action.payload;
+      state.isBackdrop = action.payload;
     },
     setIsProgressOpen(state, action) {
       state.isProgressOpen = action.payload;
-    }
+      state.isBackdrop = action.payload;
+    },
   },
 });
 

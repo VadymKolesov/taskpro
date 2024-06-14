@@ -24,8 +24,10 @@ export default function BoardsList() {
   };
 
   const handleUpdate = () => {
-    dispatch(setIsBoardEdit(true));
-    dispatch(setBoardModalOpen(true));
+    setTimeout(() => {
+      dispatch(setIsBoardEdit(true));
+      dispatch(setBoardModalOpen(true));
+    }, 200);
   };
 
   const handleDelete = (boardId) => {

@@ -49,12 +49,12 @@ function AnimateModals() {
     isFilterModalOpen && dispatch(setIsFilterModalOpen(false));
   };
 
-  const handleAddColumnclose = () => {
+  const handleAddColumnClose = () => {
     isAddColumnOpen && dispatch(setIsAddColumnOpen(false));
     isAddColumnOpen && dispatch(resetCurrentColumn());
   };
 
-  const handleAddCardclose = () => {
+  const handleAddCardClose = () => {
     isAddCardOpen && dispatch(setIsAddCardOpen(false));
     isAddCardOpen && dispatch(resetCurrentCard());
   };
@@ -136,7 +136,7 @@ function AnimateModals() {
         >
           <Backdrop>
             <ClickOutsideComponent
-              onClickOutside={handleAddColumnclose}
+              onClickOutside={handleAddColumnClose}
             >
               <motion.div
                 animate={{ scale: [1.02, 1.05, 1, 1] }}
@@ -158,7 +158,7 @@ function AnimateModals() {
         >
           <Backdrop>
             <ClickOutsideComponent
-              onClickOutside={handleAddCardclose}
+              onClickOutside={handleAddCardClose}
             >
               <motion.div
                 animate={{ scale: [1.02, 1.05, 1, 1] }}

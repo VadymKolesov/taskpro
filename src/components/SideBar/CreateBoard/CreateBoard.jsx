@@ -17,9 +17,11 @@ export default function CreateBoard() {
   const theme = getThemeStyle(css, userTheme);
 
   const handleCreate = () => {
-    dispatch(setSideBarOpen(false));
-    dispatch(setIsBoardEdit(false));
-    dispatch(setBoardModalOpen(true));
+    setTimeout(() => {
+      dispatch(setSideBarOpen(false));
+      dispatch(setIsBoardEdit(false));
+      dispatch(setBoardModalOpen(true));
+    }, 200);
   };
 
   return (

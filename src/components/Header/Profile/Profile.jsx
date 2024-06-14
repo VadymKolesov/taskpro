@@ -16,7 +16,9 @@ export default function Profile() {
   const profile = clsx(css.profile, getThemeStyle(css, theme));
 
   const handleOpenEditProfile = () => {
-    dispatch(setProfileModalOpen(true));
+    setTimeout(() => {
+      dispatch(setProfileModalOpen(true));
+    }, 200);
   };
 
   return (
