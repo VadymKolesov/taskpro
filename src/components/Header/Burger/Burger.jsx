@@ -1,7 +1,6 @@
 import css from "./Burger.module.css";
 import sprite from "../../../assets/sprite.svg";
 import clsx from "clsx";
-import { getThemeStyle } from "../../../scripts/getThemeStyle";
 import { useDispatch, useSelector } from "react-redux";
 import { setSideBarOpen } from "../../../redux/controls/slice";
 import { selectTheme } from "../../../redux/auth/selectors";
@@ -10,7 +9,7 @@ import { motion } from "framer-motion";
 function Burger() {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
-  const burger = clsx(css.burger, getThemeStyle(css, theme));
+  const burger = clsx(css.burger, css[theme]);
 
   const handleOpenSidebar = () => {
     dispatch(setSideBarOpen(true));

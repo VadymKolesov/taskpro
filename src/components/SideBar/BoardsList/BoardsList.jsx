@@ -1,6 +1,6 @@
 import css from "./BoardsList.module.css";
 import BoardItem from "../BoardItem/BoardItem";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { nanoid } from "nanoid";
 import clsx from "clsx";
 import sprite from "../../../assets/sprite.svg";
@@ -10,16 +10,13 @@ import {
   setIsBoardEdit,
   setSideBarOpen,
 } from "../../../redux/controls/slice";
-import { getThemeStyle } from "../../../scripts/getThemeStyle";
 import { selectBoards, selectTheme } from "../../../redux/auth/selectors";
 import { motion } from "framer-motion";
 import { remove } from "../../../redux/board/operations";
 
 export default function BoardsList() {
-  const userTheme = useSelector(selectTheme);
-  const theme = getThemeStyle(css, userTheme);
+  const theme = useSelector(selectTheme);
   const list = useSelector(selectBoards);
-  const { boardName } = useParams();
 
   const navigate = useNavigate();
 
@@ -46,8 +43,6 @@ export default function BoardsList() {
     if (remove.fulfilled.match(action)) {
       previosBoardId ? navigate(`/home/${previosBoardId}`) : navigate(`/home`);
     }
-
-    console.log("Delete board :" + boardId);
   };
 
   return (
@@ -63,7 +58,7 @@ export default function BoardsList() {
               <NavLink
                 to={`${item._id}`}
                 className={({ isActive }) =>
-                  clsx(css.link, isActive && css.isActive, theme)
+                  clsx(css.link, isActive && css.isActive, css[theme])
                 }
                 onClick={handleSidebarClose}
               >
@@ -80,7 +75,7 @@ export default function BoardsList() {
                               onClick={() => handleUpdate(item._id)}
                               className={css.itemBtn}
                             >
-                              <svg className={clsx(css.btnIcon, theme)}>
+                              <svg className={clsx(css.btnIcon, css[theme])}>
                                 <use href={`${sprite}#icon-pencil`}></use>
                               </svg>
                             </button>
@@ -91,13 +86,13 @@ export default function BoardsList() {
                               onMouseDown={() => handleDelete(item._id)}
                               className={css.itemBtn}
                             >
-                              <svg className={clsx(css.btnIcon, theme)}>
+                              <svg className={clsx(css.btnIcon, css[theme])}>
                                 <use href={`${sprite}#icon-trash`}></use>
                               </svg>
                             </button>
                           </li>
                         </ul>
-                        <div className={clsx(css.border, theme)}></div>
+                        <div className={clsx(css.border, css[theme])}></div>
                       </div>
                     )}
                   </>

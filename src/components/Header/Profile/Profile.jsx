@@ -1,6 +1,5 @@
 import css from "./Profile.module.css";
 import clsx from "clsx";
-import { getThemeStyle } from "../../../scripts/getThemeStyle";
 import { selectTheme, selectUser } from "../../../redux/auth/selectors";
 import { selectIsProfileModalsOpen } from "../../../redux/controls/selectors";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +12,7 @@ export default function Profile() {
   const user = useSelector(selectUser);
   const isOpenModal = useSelector(selectIsProfileModalsOpen);
 
-  const profile = clsx(css.profile, getThemeStyle(css, theme));
+  const profile = clsx(css.profile, css[theme]);
 
   const handleOpenEditProfile = () => {
     setTimeout(() => {

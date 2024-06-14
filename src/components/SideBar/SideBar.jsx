@@ -9,22 +9,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectSideBarIsOpen } from "../../redux/controls/selectors";
 import { NavLink } from "react-router-dom";
 import { setSideBarOpen } from "../../redux/controls/slice";
-import { getThemeStyle } from "../../scripts/getThemeStyle";
 import { selectTheme } from "../../redux/auth/selectors";
 import { motion } from "framer-motion";
 
 export default function SideBar() {
-  const userTheme = useSelector(selectTheme);
+  const theme = useSelector(selectTheme);
   const dispatch = useDispatch();
   const sideBarIsOpen = useSelector(selectSideBarIsOpen);
-  const theme = getThemeStyle(css, userTheme);
 
   const handleSideBarClose = () => {
     dispatch(setSideBarOpen(false));
   };
 
   return (
-    <div className={clsx(css.wrapper, theme, sideBarIsOpen && css.isOpen)}>
+    <div className={clsx(css.wrapper, css[theme], sideBarIsOpen && css.isOpen)}>
       <div>
         <NavLink to="/home" onClick={handleSideBarClose}>
           <motion.div
@@ -32,20 +30,20 @@ export default function SideBar() {
             transition={{ duration: 0.1 }}
             className={css.logoItem}
           >
-            <div className={clsx(css.logoWrapper, theme)}>
-              <svg className={clsx(css.logo, theme)}>
+            <div className={clsx(css.logoWrapper, css[theme])}>
+              <svg className={clsx(css.logo, css[theme])}>
                 <use href={`${sprite}#logo`}></use>
               </svg>
             </div>
-            <h1 className={clsx(css.title, theme)}>Task Pro</h1>
+            <h1 className={clsx(css.title, css[theme])}>Task Pro</h1>
           </motion.div>
         </NavLink>
-        <CreateBoard theme={theme} />
+        <CreateBoard/>
       </div>
-      <BoardsList theme={theme} />
+      <BoardsList/>
       <div className={css.bottom}>
-        <NeedHelpItem theme={theme} />
-        <LogoutBtn theme={theme} />
+        <NeedHelpItem/>
+        <LogoutBtn/>
       </div>
     </div>
   );

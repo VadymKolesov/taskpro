@@ -2,16 +2,14 @@ import FilterList from "./FilterList/FilterList";
 import sprite from "../../assets/sprite.svg";
 import css from "./FilterModal.module.css";
 import clsx from "clsx";
-import { getThemeStyle } from "../../scripts/getThemeStyle";
 import { changeFilter } from "../../redux/filter/slice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
 import { setIsFilterModalOpen } from "../../redux/controls/slice";
 
 export default function FilterModal() {
-  const userTheme = useSelector(selectTheme);
+  const theme = useSelector(selectTheme);
   const dispatch = useDispatch();
-  const theme = getThemeStyle(css, userTheme);
 
   function handleFilter() {
     dispatch(changeFilter(null));
@@ -22,7 +20,7 @@ export default function FilterModal() {
   }
 
   return (
-    <div className={clsx(css.wrapper, theme)}>
+    <div className={clsx(css.wrapper, css[theme])}>
       <button className={css.closeModalBtn} type="button" onClick={handleClose}>
         <svg className={css.closeModalIcon}>
           <use href={`${sprite}#icon-x-close`}></use>

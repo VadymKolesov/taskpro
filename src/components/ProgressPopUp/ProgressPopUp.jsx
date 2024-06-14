@@ -3,7 +3,6 @@ import clsx from "clsx";
 import sprite from "../../assets/sprite.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
-import { getThemeStyle } from "../../scripts/getThemeStyle";
 import { selectColumns } from "../../redux/board/selectors";
 import { selectCurrentCard } from "../../redux/card/selectors";
 import { moveCard } from "../../redux/board/operations";
@@ -12,8 +11,7 @@ import { setIsProgressOpen } from "../../redux/controls/slice";
 
 export default function AddColumnBtn() {
   const dispatch = useDispatch();
-  const userTheme = useSelector(selectTheme);
-  const theme = getThemeStyle(css, userTheme);
+  const theme = useSelector(selectTheme);
   const columns = useSelector(selectColumns);
   const card = useSelector(selectCurrentCard);
 
@@ -27,16 +25,16 @@ export default function AddColumnBtn() {
   };
 
   return (
-    <ul className={clsx(css.cont, theme)}>
+    <ul className={clsx(css.cont, css[theme])}>
       {Array.isArray(columns) && columns.map((column) => (
         <li key={column._id}>
           <button
           type="button"
-          className={clsx(css.btn, theme)}
+          className={clsx(css.btn, css[theme])}
           onClick={()=>handleClick(column)}
           >
           <p>{column.name}</p>
-          <svg className={clsx(css.icon, theme)}>
+          <svg className={clsx(css.icon, css[theme])}>
             <use href={`${sprite}#icon-move`}></use>
           </svg>
           </button>

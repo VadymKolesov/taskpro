@@ -1,15 +1,14 @@
 import css from "./FilterBtn.module.css";
 import sprite from "../../../assets/sprite.svg";
 import clsx from "clsx";
-import { getThemeStyle } from "../../../scripts/getThemeStyle";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../../redux/auth/selectors";
 import { setIsFilterModalOpen } from "../../../redux/controls/slice";
 import { motion } from "framer-motion";
 
 function FilterBtn() {
-  const userTheme = useSelector(selectTheme);
-  const filterBtn = clsx(css.filterBtn, getThemeStyle(css, userTheme));
+  const theme = useSelector(selectTheme);
+  const filterBtn = clsx(css.filterBtn, css[theme]);
   const dispatch = useDispatch();
   const handleOpenModal = () => {
     dispatch(setIsFilterModalOpen(true));
