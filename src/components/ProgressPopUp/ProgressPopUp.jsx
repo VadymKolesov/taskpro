@@ -8,11 +8,14 @@ import { selectCurrentCard } from "../../redux/card/selectors";
 import { moveCard } from "../../redux/board/operations";
 import { resetCurrentCard } from "../../redux/card/slice";
 import { setIsProgressOpen } from "../../redux/controls/slice";
+import { selectCurrentColumn } from "../../redux/column/selectors";
+import { resetCurrentColumn } from "../../redux/column/slice";
 
 export default function AddColumnBtn() {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
   const columns = useSelector(selectColumns);
+  const currentColumn = useSelector(selectCurrentColumn);
   const card = useSelector(selectCurrentCard);
 
   const handleClick = (column) => {
@@ -22,12 +25,15 @@ export default function AddColumnBtn() {
     }))
     dispatch(setIsProgressOpen(false));
     dispatch(resetCurrentCard());
+    setTimeout(() => { dispatch(resetCurrentColumn())}, 200);
   };
 
   return (
     <ul className={clsx(css.cont, css[theme])}>
-      {Array.isArray(columns) && columns.map((column) => (
-        <li key={column._id}>
+      {Array.isArray(columns) && columns
+        .filter(column => column._id !== currentColumn._id)
+        .map((column) =>
+        (<li key={column._id}>
           <button
           type="button"
           className={clsx(css.btn, css[theme])}

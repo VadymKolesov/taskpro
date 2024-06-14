@@ -61,6 +61,7 @@ function AnimateModals() {
 
   const handleProgressClose = () => {
     isProgressOpen && dispatch(setIsProgressOpen(false));
+    setTimeout(() => { dispatch(resetCurrentColumn())}, 200);
   };
 
   return (

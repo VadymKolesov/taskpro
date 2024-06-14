@@ -6,6 +6,8 @@ import { removeCard } from "../../../redux/board/operations";
 import { setIsAddCardOpen, setIsCardEdit, setIsProgressOpen } from "../../../redux/controls/slice";
 import { setCurrentCard } from "../../../redux/card/slice";
 import { selectTheme } from "../../../redux/auth/selectors";
+import { selectColumns } from "../../../redux/board/selectors";
+import { setCurrentColumn } from "../../../redux/column/slice";
 
 function deadlineDateFormat(deadline) {
   const date = new Date(+deadline);
@@ -23,9 +25,11 @@ function deadlineAlarm(deadline) {
 
 function Card({ card }) {
   const theme = useSelector(selectTheme)
+  const columns = useSelector(selectColumns);
   const dispatch = useDispatch();
   
   function handleMove() {
+    dispatch(setCurrentColumn({_id: card.columnId }))
     dispatch(setIsProgressOpen(true));
     dispatch(setCurrentCard(card));
   }
@@ -72,7 +76,7 @@ function Card({ card }) {
               </svg>
           </button>}
           <ul className={css.controlList}>
-            <li>
+            {columns.length > 1 && <li>
               <button
                 className={css.controlBtn}
                 type="button"
@@ -82,7 +86,7 @@ function Card({ card }) {
                   <use href={`${sprite}#icon-move`}></use>
                 </svg>
               </button>
-            </li>
+            </li>}
             <li>
               <button
                 className={css.controlBtn}
