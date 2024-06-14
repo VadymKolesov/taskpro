@@ -11,7 +11,6 @@ import { setIsAddCardOpen } from "../../redux/controls/slice";
 import { useEffect, useState } from "react";
 import { selectIsCardEdit } from "../../redux/controls/selectors";
 import { addCard, updateCard } from "../../redux/board/operations";
-import { selectBoard } from "../../redux/board/selectors";
 import { selectCurrentColumn } from "../../redux/column/selectors";
 import { selectCurrentCard } from "../../redux/card/selectors";
 import { resetCurrentCard } from "../../redux/card/slice";
@@ -21,8 +20,7 @@ export default function CardPopUp() {
   const dispatch = useDispatch();
   const [deadline, setDeadline] = useState(Date.now());
   const isEdit = useSelector(selectIsCardEdit);
-  const columnId = useSelector(selectCurrentColumn)._id;
-  const board = useSelector(selectBoard);
+  const column = useSelector(selectCurrentColumn);
   const card = useSelector(selectCurrentCard);
 
   useEffect(() => {
@@ -38,16 +36,9 @@ export default function CardPopUp() {
   const handleSubmit = (values, actions) => {
     const newCard = { ...values, deadline: deadline.toString() };
     if (!isEdit) {
-      dispatch(addCard({ columnId, card: newCard, boardId: board._id }));
+      dispatch(addCard({ columnId: column._id, card: newCard }));
     } else {
-      dispatch(updateCard({
-        boardId: board._id,
-        cardId: card._id,
-        card: {
-          ...values,
-          deadline: deadline.toString(),
-        }
-      }))
+      dispatch(updateCard({ cardId: card._id, card: newCard }))
       dispatch(resetCurrentCard());
     }
     dispatch(setIsAddCardOpen(false));

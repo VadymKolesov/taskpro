@@ -31,14 +31,17 @@ const slice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(boards.pending, (state) => {
+        state.isBoardRefreshing = true;
         state.error = null;
       })
       .addCase(boards.fulfilled, (state, action) => {
         state.boards = action.payload;
+        state.isBoardRefreshing = false;
         state.error = null;
       })
       .addCase(boards.rejected, (state, action) => {
         state.boards = [];
+        state.isBoardRefreshing = false;
         state.error = action.payload;
       })
       .addCase(create.pending, (state) => {
@@ -61,6 +64,7 @@ const slice = createSlice({
         state.boards = state.boards.filter(
           (el) => el._id !== action.payload._id
         );
+        state.isBoardRefreshing = false;
       })
       .addCase(remove.rejected, (state, action) => {
         state.isBoardRefreshing = false;
@@ -71,15 +75,20 @@ const slice = createSlice({
         state.error = null;
       })
       .addCase(update.fulfilled, (state, action) => {
-        const boardIndex = state.boards.findIndex(
-          (el) => el._id === action.payload._id
-        );
-        state.boards[boardIndex] = {
-          ...state.boards[boardIndex],
-          ...action.payload,
-        };
+        // const boardIndex = state.boards.findIndex(
+        //   (el) => el._id === action.payload._id
+        // );
+        // state.boards[boardIndex] = {
+        //   ...state.boards[boardIndex],
+        //   ...action.payload,
+        // };
+        state.boards = state.boards
+          .map(board => board._id === action.payload._id ?
+            action.payload : board
+          );
         state.board = action.payload;
         state.isBoardRefreshing = false;
+        
       })
       .addCase(update.rejected, (state, action) => {
         state.isBoardRefreshing = false;
@@ -103,7 +112,7 @@ const slice = createSlice({
         state.error = null;
       })
       .addCase(addColumn.fulfilled, (state, action) => {
-        state.columns = action.payload;
+        state.columns.push({...action.payload, cards: []});
         state.isBoardRefreshing = false;
       })
       .addCase(addColumn.rejected, (state, action) => {
@@ -115,7 +124,8 @@ const slice = createSlice({
         state.error = null;
       })
       .addCase(deleteColumn.fulfilled, (state, action) => {
-        state.columns = action.payload;
+        state.columns = state.columns
+          .filter(column => column._id !== action.payload._id);
         state.isBoardRefreshing = false;
       })
       .addCase(deleteColumn.rejected, (state, action) => {
@@ -127,7 +137,16 @@ const slice = createSlice({
         state.error = null;
       })
       .addCase(updateColumn.fulfilled, (state, action) => {
-        state.columns = action.payload;
+        state.columns = state.columns
+          .map(column => {
+            if (column._id === action.payload._id) {
+              return({
+                ...column,
+                name: action.payload.name
+              })
+            }
+            return column;
+          });
         state.isBoardRefreshing = false;
       })
       .addCase(updateColumn.rejected, (state, action) => {
@@ -139,7 +158,9 @@ const slice = createSlice({
         state.error = null;
       })
       .addCase(addCard.fulfilled, (state, action) => {
-        state.columns = action.payload;
+        state.columns
+          .find(column => column._id === action.payload.columnId)
+          .cards.push(action.payload);
         state.isBoardRefreshing = false;
       })
       .addCase(addCard.rejected, (state, action) => {
@@ -151,7 +172,12 @@ const slice = createSlice({
         state.error = null;
       })
       .addCase(removeCard.fulfilled, (state, action) => {
-        state.columns = action.payload;
+        state.columns = state.columns
+          .map(column => ({
+            ...column,
+            cards: column.cards
+              .filter(card => card._id !== action.payload._id)
+          }));
         state.isBoardRefreshing = false;
       })
       .addCase(removeCard.rejected, (state, action) => {
@@ -163,7 +189,18 @@ const slice = createSlice({
         state.error = null;
       })
       .addCase(updateCard.fulfilled, (state, action) => {
-        state.columns = action.payload;
+        state.columns = state.columns
+          .map(column => {
+            if (column._id === action.payload.columnId) {
+              return (
+                { ...column,
+                  cards: column.cards
+                    .map(card => card._id === action.payload._id ?
+                      action.payload : card)
+                })
+            }
+            return column;
+          });
         state.isBoardRefreshing = false;
       })
       .addCase(updateCard.rejected, (state, action) => {
@@ -175,7 +212,17 @@ const slice = createSlice({
         state.error = null;
       })
       .addCase(moveCard.fulfilled, (state, action) => {
-        state.columns = action.payload;
+        state.columns = state.columns
+          .map(column => {
+            if (column._id === action.payload.columnId) {
+              column.cards.push(action.payload);
+              return column;
+            } else {
+              return (
+              { ...column,
+                cards: column.cards.filter(card => card._id !== action.payload._id)
+              })
+            }});
         state.isBoardRefreshing = false;
       })
       .addCase(moveCard.rejected, (state, action) => {
@@ -183,20 +230,6 @@ const slice = createSlice({
         state.error = action.payload;
       });
   },
-  reducers: {
-    clearBoard(state) {
-      console.log("clear");
-      state.board._id = null;
-      state.board.name = null;
-      state.board.iconName = null;
-      state.board.backgroundUrl = null;
-      state.columns = [];
-      state.isBoardRefreshing = false;
-      state.error = null;
-    },
-  },
 });
-
-export const { clearBoard } = slice.actions;
 
 export default slice.reducer;

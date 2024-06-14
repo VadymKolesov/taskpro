@@ -7,7 +7,7 @@ import CardList from "../CardList/CardList";
 import css from "./ColumnList.module.css";
 
 function ColumnsList() {
-  const columns = useSelector(selectColumnsWithFilteredCards)
+  const columns = useSelector(selectColumnsWithFilteredCards);
 
   return (
     <ul className={css.columnsList}>

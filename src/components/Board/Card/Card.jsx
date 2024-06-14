@@ -3,7 +3,6 @@ import sprite from "../../../assets/sprite.svg";
 import clsx from "clsx";
 import { useDispatch, useSelector } from "react-redux";
 import { removeCard } from "../../../redux/board/operations";
-import { selectBoard } from "../../../redux/board/selectors";
 import { setIsAddCardOpen, setIsCardEdit, setIsProgressOpen } from "../../../redux/controls/slice";
 import { setCurrentCard } from "../../../redux/card/slice";
 import { selectTheme } from "../../../redux/auth/selectors";
@@ -24,7 +23,6 @@ function deadlineAlarm(deadline) {
 
 function Card({ card }) {
   const theme = useSelector(selectTheme)
-  const board = useSelector(selectBoard);
   const dispatch = useDispatch();
   
   function handleMove() {
@@ -39,7 +37,7 @@ function Card({ card }) {
   }
 
   function handleRemove() {
-    dispatch(removeCard({ cardId: card._id, boardId: board._id}));
+    dispatch(removeCard({ cardId: card._id }));
   }
 
   return (

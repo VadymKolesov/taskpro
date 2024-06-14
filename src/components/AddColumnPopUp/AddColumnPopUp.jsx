@@ -25,18 +25,16 @@ export default function AddColumnPopUp() {
   const schema = Yup.object({
     name: Yup.string()
       .required("Title is required")
-      // .not([inputValue], "This title already use"),
   });
 
   const handleSubmit = (values, actions) => {
     if (!isEdit) {
       dispatch(addColumn({
-        id: board._id,
+        boardId: board._id,
         ...values
       }))
     } else {
       dispatch(updateColumn({
-        id: board._id,
         columnId: column._id,
         ...values,
       }))

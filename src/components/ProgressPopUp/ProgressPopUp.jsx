@@ -4,7 +4,7 @@ import sprite from "../../assets/sprite.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
 import { getThemeStyle } from "../../scripts/getThemeStyle";
-import { selectBoard, selectColumns } from "../../redux/board/selectors";
+import { selectColumns } from "../../redux/board/selectors";
 import { selectCurrentCard } from "../../redux/card/selectors";
 import { moveCard } from "../../redux/board/operations";
 import { resetCurrentCard } from "../../redux/card/slice";
@@ -14,7 +14,6 @@ export default function AddColumnBtn() {
   const dispatch = useDispatch();
   const userTheme = useSelector(selectTheme);
   const theme = getThemeStyle(css, userTheme);
-  const board = useSelector(selectBoard);
   const columns = useSelector(selectColumns);
   const card = useSelector(selectCurrentCard);
 
@@ -22,7 +21,6 @@ export default function AddColumnBtn() {
     dispatch(moveCard({
       cardId: card._id,
       columnId: column._id,
-      boardId: board._id,
     }))
     dispatch(setIsProgressOpen(false));
     dispatch(resetCurrentCard());

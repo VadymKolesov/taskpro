@@ -79,9 +79,8 @@ export const addColumn = createAsyncThunk(
   "board/addColumn",
   async (data, thunkApi) => {
     try {
-      await axios.post(`/columns/${data.id}`, { name: data.name });
-      const response = await axios.get(`/boards/${data.id}`);
-      return response.data.columns;
+      const response = await axios.post(`/columns/${data.boardId}`, { name: data.name });
+      return response.data;
     } catch (error) {
       const errorMessage =
         error.response && error.response.data
@@ -96,9 +95,8 @@ export const updateColumn = createAsyncThunk(
   "board/updateColumn",
   async (data, thunkApi) => {
     try {
-      await axios.patch(`/columns/${data.columnId}`, { name: data.name });
-      const response = await axios.get(`/boards/${data.id}`);
-      return response.data.columns;
+      const response = await axios.patch(`/columns/${data.columnId}`, { name: data.name });
+      return response.data;
     } catch (error) {
       const errorMessage =
         error.response && error.response.data
@@ -113,9 +111,8 @@ export const deleteColumn = createAsyncThunk(
   "board/deleteColumn",
   async (data, thunkApi) => {
     try {
-      await axios.delete(`/columns/${data.columnId}`);
-      const response = await axios.get(`/boards/${data.id}`);
-      return response.data.columns;
+      const response = await axios.delete(`/columns/${data.columnId}`);
+      return response.data;
     } catch (error) {
       const errorMessage =
         error.response && error.response.data
@@ -130,9 +127,8 @@ export const addCard = createAsyncThunk(
   "board/addCard",
   async (data, thunkApi) => {
     try {
-      await axios.post(`/cards/${data.columnId}`, data.card);
-      const response = await axios.get(`/boards/${data.boardId}`);
-      return response.data.columns;
+      const response = await axios.post(`/cards/${data.columnId}`, data.card);
+      return response.data;
     } catch (error) {
       const errorMessage =
         error.response && error.response.data
@@ -147,9 +143,8 @@ export const removeCard = createAsyncThunk(
   "board/removeCard",
   async (data, thunkApi) => {
     try {
-      await axios.delete(`/cards/${data.cardId}`);
-      const response = await axios.get(`/boards/${data.boardId}`);
-      return response.data.columns;
+      const response = await axios.delete(`/cards/${data.cardId}`);
+      return response.data;
     } catch (error) {
       const errorMessage =
         error.response && error.response.data
@@ -164,9 +159,8 @@ export const updateCard = createAsyncThunk(
   "board/updateCard",
   async (data, thunkApi) => {
     try {
-      await axios.patch(`/cards/${data.cardId}`, data.card);
-      const response = await axios.get(`/boards/${data.boardId}`);
-      return response.data.columns;
+      const response = await axios.patch(`/cards/${data.cardId}`, data.card);
+      return response.data;
     } catch (error) {
       const errorMessage =
         error.response && error.response.data
@@ -181,11 +175,10 @@ export const moveCard = createAsyncThunk(
   "board/moveCard",
   async (data, thunkApi) => {
     try {
-      await axios.put(`/cards/${data.cardId}/column`, {
+      const response = await axios.put(`/cards/${data.cardId}/column`, {
         columnId: data.columnId,
       });
-      const response = await axios.get(`/boards/${data.boardId}`);
-      return response.data.columns;
+      return response.data;
     } catch (error) {
       const errorMessage =
         error.response && error.response.data
