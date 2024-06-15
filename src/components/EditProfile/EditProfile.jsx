@@ -12,22 +12,19 @@ import {
   selectIsLoading,
 } from "../../redux/auth/selectors";
 import { useDispatch, useSelector } from "react-redux";
-import { getThemeStyle } from "../../scripts/getThemeStyle";
 import { setProfileModalOpen } from "../../redux/controls/slice";
 import { updateUser, updateAvatar } from "../../redux/auth/operations";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function EditProfile() {
   const user = useSelector(selectUser);
-  const userTheme = useSelector(selectTheme);
+  const theme = useSelector(selectTheme);
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
 
   const [showPassword, setShowPassword] = useState(false);
   const [isSamevalues, setIsSameValues] = useState(false);
   const [userAvatar, setUserAvatar] = useState(user.avatarUrl);
-
-  const theme = getThemeStyle(css, userTheme);
 
   const dispatch = useDispatch();
 
@@ -127,12 +124,12 @@ export default function EditProfile() {
   };
 
   return (
-    <div className={clsx(css.EPContainer, theme)}>
+    <div className={clsx(css.EPContainer, css[theme])}>
       {!isLoading ? (
         <>
           <button className={css.closeBtn} type="button" onClick={handleClose}>
             <svg
-              className={clsx(css.closeIcon, theme)}
+              className={clsx(css.closeIcon, css[theme])}
               width={"18"}
               height={"18"}
             >
@@ -155,8 +152,8 @@ export default function EditProfile() {
                 className={css.profileImage}
               />
 
-              <div className={clsx(css.uploadButton, theme)}>
-                <svg className={clsx(css.icon, theme)}>
+              <div className={clsx(css.uploadButton, css[theme])}>
+                <svg className={clsx(css.icon, css[theme])}>
                   <use href={`${sprite}#icon-plus`}></use>
                 </svg>
               </div>
@@ -164,7 +161,7 @@ export default function EditProfile() {
           </div>
           {error && (
             <p
-              className={clsx(css.error, theme)}
+              className={clsx(css.error, css[theme])}
               style={{ paddingBottom: "14px" }}
             >
               {error}
@@ -172,7 +169,7 @@ export default function EditProfile() {
           )}
           {isSamevalues && (
             <p
-              className={clsx(css.error, theme)}
+              className={clsx(css.error, css[theme])}
               style={{ paddingBottom: "14px" }}
             >
               To change the information, enter a new value
@@ -191,26 +188,26 @@ export default function EditProfile() {
                     <Field
                       type="text"
                       name="name"
-                      className={clsx(css.inputField, theme)}
+                      className={clsx(css.inputField, css[theme])}
                       placeholder="Name"
                     />
                     <ErrorMessage
                       name="name"
                       component="p"
-                      className={clsx(css.error, theme)}
+                      className={clsx(css.error, css[theme])}
                     />
                   </li>
                   <li className={css.inputGroup}>
                     <Field
                       type="text"
                       name="email"
-                      className={clsx(css.inputField, theme)}
+                      className={clsx(css.inputField, css[theme])}
                       placeholder="Email"
                     />
                     <ErrorMessage
                       name="email"
                       component="p"
-                      className={clsx(css.error, theme)}
+                      className={clsx(css.error, css[theme])}
                     />
                   </li>
                   <li className={css.inputGroup}>
@@ -218,13 +215,13 @@ export default function EditProfile() {
                       <Field
                         type={showPassword ? "text" : "password"}
                         name="password"
-                        className={clsx(css.inputField, theme)}
+                        className={clsx(css.inputField, css[theme])}
                         placeholder="Password"
                       />
                       <svg
                         className={clsx(
                           css.iconEye,
-                          theme,
+                          css[theme],
                           showPassword && css.isShownIcon
                         )}
                         onClick={toggleShowPassword}
@@ -235,7 +232,7 @@ export default function EditProfile() {
                     <ErrorMessage
                       name="password"
                       component="p"
-                      className={clsx(css.error, theme)}
+                      className={clsx(css.error, css[theme])}
                     />
                   </li>
                 </ul>
@@ -259,7 +256,7 @@ export default function EditProfile() {
             exit={{ opacity: [1, 0] }}
             transition={{ duration: 0.5 }}
           >
-            <div className={clsx(css.loader, theme)}></div>
+            <div className={clsx(css.loader, css[theme])}></div>
           </motion.div>
         </AnimatePresence>
       )}

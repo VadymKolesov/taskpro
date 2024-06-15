@@ -4,20 +4,18 @@ import clsx from "clsx";
 import sprite from "../../assets/sprite.svg";
 import { selectTheme } from "../../redux/auth/selectors";
 import { useSelector } from "react-redux";
-import { getThemeStyle } from "../../scripts/getThemeStyle";
 
 function CustomInput({ value, onClick }, ref) {
-  const userTheme = useSelector(selectTheme);
-  const theme = getThemeStyle(css, userTheme);
+  const theme = useSelector(selectTheme);
   return (
     <button
-      className={clsx(css.customInput, theme)}
+      className={clsx(css.customInput, css[theme])}
       onClick={onClick}
       ref={ref}
       type="button"
     >
       {value}
-      <svg className={clsx(css.icon, theme)}>
+      <svg className={clsx(css.icon, css[theme])}>
         <use href={`${sprite}#icon-arrow-down`}></use>
       </svg>
     </button>

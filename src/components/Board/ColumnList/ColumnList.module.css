@@ -1,0 +1,29 @@
+.columnsList{
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  gap: 11px;
+  height: 100%;
+  padding: 0 20px 24px;
+}
+
+.column{
+  display: grid;
+  gap: 14px;
+  grid-template-rows: 56px 1fr 56px;
+}
+
+@media screen and (min-width: 768px) {
+  .columnsList{
+    gap: 18px;
+    padding: 0 32px 52px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .columnsList {
+    gap: 18px;
+    padding: 0 24px 16px;
+  }
+}

@@ -5,6 +5,7 @@
   width: 100px;
   z-index: 1;
   filter: drop-shadow(0px 4px 16px #1111111a);
+  pointer-events: none;
 }
 
 .dropdown {
@@ -18,6 +19,7 @@
   background-color: var(--dark-modal-bg);
   transform: translateY(-102%);
   transition: transform 0.3s ease, background-color 0.3s ease;
+  pointer-events: all;
 }
 
 .dropdown.active {

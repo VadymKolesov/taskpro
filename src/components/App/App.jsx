@@ -1,10 +1,9 @@
 import { Suspense, lazy, useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { current } from "../../redux/auth/operations";
-import { selectIsRefreshing } from "../../redux/auth/selectors";
+import { selectIsRefreshing, selectTheme } from "../../redux/auth/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import css from "./App.module.css";
-import { getThemeStyle } from "../../scripts/getThemeStyle";
 import clsx from "clsx";
 
 const WelcomePage = lazy(() => import("../../pages/WelcomePage/WelcomePage"));
@@ -21,7 +20,7 @@ const NotFoundPage = lazy(() =>
 const EditProfile = lazy(() => import("../EditProfile/EditProfile"));
 
 export default function App() {
-  const theme = getThemeStyle(css);
+  const theme = useSelector(selectTheme);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,8 +30,8 @@ export default function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
 
   return isRefreshing ? (
-    <div className={clsx(css.loadBackground, theme)}>
-      <div className={clsx(css.loader, theme)}></div>
+    <div className={clsx(css.loadBackground, css[theme])}>
+      <div className={clsx(css.loader, css[theme])}></div>
     </div>
   ) : (
     <Suspense fallback={null}>

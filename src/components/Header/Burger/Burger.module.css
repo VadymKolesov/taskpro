@@ -13,7 +13,7 @@
   transition: stroke .3s ease;
 }
 
-@media screen and (min-width: 1180px) {
+@media screen and (min-width: 1440px) {
   .burger{
     display: none;
   }

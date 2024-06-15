@@ -153,6 +153,6 @@ const slice = createSlice({
   },
 });
 
-export const { setIsAuth } = slice.actions;
+export const { addBoard, removeBoard, updateBoard } = slice.actions;
 
 export default slice.reducer;

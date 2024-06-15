@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import sprite from "../../../assets/sprite.svg";
-import { getThemeStyle } from "../../../scripts/getThemeStyle";
 import css from "./FilterList.module.css";
 import clsx from "clsx";
 import { selectFilterValue } from "../../../redux/filter/selectors";
@@ -8,17 +7,16 @@ import { changeFilter } from "../../../redux/filter/slice";
 import { selectTheme } from "../../../redux/auth/selectors";
 
 function FilterList() {
-  const userTheme = useSelector(selectTheme);
+  const theme = useSelector(selectTheme);
   const dispatch = useDispatch();
   const filterValue = useSelector(selectFilterValue);
-  const theme = getThemeStyle(css, userTheme);
 
   const handleChangeFilter = (event) => {
     dispatch(changeFilter(event.target.value));
   };
 
   return (
-    <ul className={clsx(css.filterList, theme)}>
+    <ul className={clsx(css.filterList, css[theme])}>
       <li>
         <label className={css.colorLabel}>
           <input

@@ -1,0 +1,80 @@
+.button {
+  width: 87vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  transition: stroke 0.3s ease;
+}
+
+.iconWrapper {
+  padding: 7px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+/* Themes */
+.button.dark {
+  background-color: var(--green);
+  color: var(--dark-bg-medium);
+}
+
+.button:hover.dark {
+  background-color: var(--green-hover);
+}
+
+.button.dark .icon,
+.button.light .icon {
+  stroke: var(--white);
+}
+
+.button.dark .iconWrapper,
+.button.light .iconWrapper{
+  background-color: var(--dark-bg-medium);
+}
+
+.button.light {
+  background-color: var(--green);
+  color: var(--dark-bg-medium);
+}
+
+.button:hover.light {
+  background-color: var(--green-hover);
+}
+
+.button.violet {
+  background-color: var(--violet-bg-hard);
+  color: var(--white);
+}
+
+.button:hover.violet {
+  background-color: var(--violet-btn-hover);
+}
+ 
+.button.violet .icon {
+  stroke: var(--dark-bg-medium);
+}
+
+.button.violet .iconWrapper {
+  background-color: var(--white);
+}
+
+@media screen and (min-width: 375px) {
+  .button{
+    width: 334px;
+  }
+}

@@ -10,6 +10,15 @@
   transition: background-color 0.3s ease;
 }
 
+.columnName{
+  width: 78px;
+  height: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
 .cont.dark {
   background-color: var(--dark-bg-easy);
 }

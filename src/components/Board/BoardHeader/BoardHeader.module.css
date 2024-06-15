@@ -1,0 +1,30 @@
+.boardTitle{
+  padding: 0 20px;
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.018em;
+  transition: color .3s ease;
+}
+
+@media screen and (min-width: 768px) {
+  .boardTitle{
+    padding: 0 32px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .boardTitle {
+    padding: 0 24px;
+  }
+}
+
+.boardTitle.dark{
+  color: var(--white);
+}
+
+.boardTitle.light, .boardTitle.violet {
+  color: var(--dark-bg-medium);
+}

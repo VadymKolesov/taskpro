@@ -1,30 +1,33 @@
 import css from "./AddColumnBtn.module.css";
 import clsx from "clsx";
 import sprite from "../../assets/sprite.svg";
-import { getThemeStyle } from "../../scripts/getThemeStyle";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
+import { motion } from "framer-motion";
+import { setIsAddColumnOpen, setIsColumnEdit } from "../../redux/controls/slice";
 
 export default function AddColumnBtn() {
-  const userTheme = useSelector(selectTheme);
-  const theme = getThemeStyle(css, userTheme);
+  const theme = useSelector(selectTheme);
+  const dispatch = useDispatch();
 
   const handleClick = () => {
-    console.log("hello");
+    dispatch(setIsAddColumnOpen(true));
+    dispatch(setIsColumnEdit(false));
   };
 
   return (
-    <button
-      className={clsx(css.btn, theme)}
+    <motion.button
+      whileTap={{ scale: 0.9 }}
       type="button"
+      className={clsx(css.btn, css[theme])}
       onClick={handleClick}
     >
-      <div className={clsx(css.plusCont, theme)}>
-        <svg className={clsx(css.plusIcon, theme)}>
+      <div className={clsx(css.plusCont, css[theme])}>
+        <svg className={clsx(css.plusIcon, css[theme])}>
           <use href={`${sprite}#icon-plus`}></use>
         </svg>
       </div>
       Add another column
-    </button>
+    </motion.button>
   );
 }

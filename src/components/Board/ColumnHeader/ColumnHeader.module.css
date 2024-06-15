@@ -1,0 +1,92 @@
+.columnHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 87vw;
+  height: 56px;
+  border-radius: 8px;
+  background-color: var(--dark-bg-hard);
+  padding: 17px 20px;
+  transition: background-color .3s ease;
+}
+
+.columnTitle{
+  display: -webkit-box;
+  width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.018em;
+  transition: color .3s ease;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.controlsList {
+  display: flex;
+  width: 40px;
+  gap: 8px;
+}
+
+.controlsList li {
+  width: 16px;
+  height: 16px;
+}
+
+.itemBtn {
+  background-color: transparent;
+}
+
+.btnIcon {
+  display: flex;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+  transition: opacity 100ms ease-in-out, stroke 0.3s ease;
+}
+
+.btnIcon:hover,
+.btnIcon:focus,
+.btnIcon:active {
+  opacity: 1;
+}
+
+@media screen and (min-width: 375px) {
+  .columnHeader{
+    width: 334px;
+  }
+}
+
+.columnHeader.dark{
+  background-color: var(--dark-bg-hard);
+}
+
+.columnHeader.dark .columnTitle{
+  color: var(--white);
+}
+
+.columnHeader.dark .btnIcon {
+  stroke: var(--white);
+}
+
+.columnHeader.light, .columnHeader.violet {
+  background-color: var(--white);
+}
+
+.columnHeader.light .columnTitle, .columnHeader.violet .columnTitle {
+  color: var(--dark-bg-medium);
+}
+
+.columnHeader.light .btnIcon, .columnHeader.violet .btnIcon {
+  stroke: var(--dark-bg-medium);
+}

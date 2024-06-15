@@ -37,7 +37,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  width: 100%;
+  width: 89vw;
   position: relative;
   border-radius: 8px;
   padding: 24px;
@@ -107,7 +107,7 @@
 
 .input {
   height: 48px;
-  padding-left: 18px;
+  padding: 0 18px;
   border-width: 1px;
   border-radius: 8px;
   border-style: solid;
@@ -143,10 +143,51 @@
 }
 
 .descInput {
+  padding: 0;
+  padding-left: 18px;
   height: 154px;
   padding-top: 14px;
   outline: none;
   resize: none;
+}
+
+.descInput::-webkit-scrollbar-track {
+  border-radius: 12px;
+  border: 8px solid var(--dark-bg-easy);
+  transition: background-color 0.3s ease;
+}
+
+.descInput::-webkit-scrollbar {
+  width: 25px;
+  transition: background-color 0.3s ease;
+}
+
+.descInput::-webkit-scrollbar-thumb {
+  border: 8px solid var(--dark-bg-easy);
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.descInput.dark::-webkit-scrollbar-thumb {
+  background: var(--dark-bg-hard);
+}
+
+.descInput.light::-webkit-scrollbar-track {
+  border: 8px solid var(--light-bg-medium);
+}
+
+.descInput.light::-webkit-scrollbar-thumb {
+  border: 8px solid var(--light-bg-medium);
+  background: rgba(22, 22, 22, 0.1);
+}
+
+.descInput.violet::-webkit-scrollbar-track {
+  border: 8px solid var(--light-bg-medium);
+}
+
+.descInput.violet::-webkit-scrollbar-thumb {
+  border: 8px solid var(--light-bg-medium);
+  background: var(--violet);
 }
 
 /* ERR MESSAGE */
@@ -293,7 +334,7 @@
   display: block;
 } */
 
-@media screen and (min-width: 375px) and (max-width: 767px) {
+@media screen and (min-width: 375px) {
   .cont {
     width: 335px;
   }
