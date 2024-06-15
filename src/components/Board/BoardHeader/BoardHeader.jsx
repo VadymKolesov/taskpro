@@ -8,9 +8,19 @@ function BoardHeader() {
   const board = useSelector(selectBoard);
   const theme = useSelector(selectTheme);
 
+  const isLightText = ["1", "2", "6", "8", "13", "15"].includes(
+    board.backgroundName
+  );
+
   return (
-    <h1 className={clsx(css.boardTitle, css[theme])}>{board.name}</h1>
-  )
+    <h1
+      className={clsx(css.boardTitle, css[theme], {
+        [css.lightText]: isLightText,
+      })}
+    >
+      {board.name}
+    </h1>
+  );
 }
 
 export default BoardHeader;
