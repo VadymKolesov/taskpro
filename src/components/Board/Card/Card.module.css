@@ -5,6 +5,7 @@
   padding: 14px 20px 14px 24px;
   border-radius: 8px;
   letter-spacing: -0.018em;
+  cursor: pointer;
   transition: background-color .3s ease;
 }
 
@@ -45,23 +46,55 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  pointer-events: none;
   transition: color .3s ease;
 }
 
 .description{
+  position: relative;
   display: -webkit-box;
   width: 100%;
   min-height: 36px;
+  max-height: 36px;
   color: var(--white);
   opacity: 0.5;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.5;
-  text-overflow: ellipsis;
   overflow: hidden;
-  -webkit-box-orient: vertical;
+  pointer-events: none;
+  transition: color .3s ease, opacity .3s ease, max-height .5s ease-in-out;
+}
+
+.cutDescription{
+  display: -webkit-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
   -webkit-line-clamp: 2;
-  transition: color .3s ease, opacity .3s ease;
+  -webkit-box-orient: vertical;
+  opacity: 1;
+  transition: opacity 0.1s linear .5s, background-color .3s ease;
+}
+
+.card:hover .description,
+.card.active .description{
+  max-height: 150px;
+}
+
+.card:hover .cutDescription,
+.card.active .cutDescription{
+  opacity: 0;
+  transition: opacity 0.1s linear;
+}
+
+@keyframes win {
+  0%{ 
+  }100%{
+    -webkit-line-clamp: 2;
+  }
+  
 }
 
 .line{
@@ -75,6 +108,7 @@
   display: flex;
   justify-content: space-between;
   align-items: end;
+  pointer-events: none;
 }
 
 .infoList{
@@ -139,6 +173,7 @@
 .controlCont{
   display: flex;
   gap: 12px;
+  pointer-events: all;
 }
 
 .controlList{
@@ -182,7 +217,7 @@
   }
 }
 
-.card.dark{
+.card.dark, .card.dark .cutDescription{
   background-color: var(--dark-bg-hard);
 }
 
@@ -221,7 +256,9 @@
 }
 
 /* light/violet */
-.card.light, .card.violet{
+.card.light, .card.violet,
+.card.light .cutDescription,
+.card.violet .cutDescription{
   background-color: var(--white);
 }
 
