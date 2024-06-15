@@ -15,7 +15,7 @@ function BoardHeader() {
   return (
     <h1
       className={clsx(css.boardTitle, css[theme], {
-        [css.lightText]: isLightText,
+        [css.lightText]: isLightText || board.backgroundName === "0",
       })}
     >
       {board.name}
