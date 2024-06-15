@@ -25,19 +25,24 @@ export default function AddColumnPopUp() {
   const schema = Yup.object({
     name: Yup.string()
       .required("Title is required")
+      .max(30, "Title must contain less than 30 characters"),
   });
 
   const handleSubmit = (values, actions) => {
     if (!isEdit) {
-      dispatch(addColumn({
-        boardId: board._id,
-        ...values
-      }))
+      dispatch(
+        addColumn({
+          boardId: board._id,
+          ...values,
+        })
+      );
     } else {
-      dispatch(updateColumn({
-        columnId: column._id,
-        ...values,
-      }))
+      dispatch(
+        updateColumn({
+          columnId: column._id,
+          ...values,
+        })
+      );
       dispatch(resetCurrentColumn());
     }
     dispatch(setIsAddColumnOpen(false));

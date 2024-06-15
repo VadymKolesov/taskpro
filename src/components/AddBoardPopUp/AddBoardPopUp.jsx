@@ -37,7 +37,9 @@ export default function AddBoardPopUp() {
   const navigate = useNavigate();
 
   const schema = Yup.object({
-    name: Yup.string().required("Title is required"),
+    name: Yup.string()
+      .required("Title is required")
+      .max(18, "Title must contain less than 18 characters"),
     iconName: Yup.string().required("Icon is required"),
   });
 

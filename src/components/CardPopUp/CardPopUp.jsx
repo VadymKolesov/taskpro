@@ -24,12 +24,16 @@ export default function CardPopUp() {
   const card = useSelector(selectCurrentCard);
 
   useEffect(() => {
-    isEdit && setDeadline(+card.deadline)
-  },[isEdit, card])
+    isEdit && setDeadline(+card.deadline);
+  }, [isEdit, card]);
 
   const schema = Yup.object({
-    title: Yup.string().required("Title is required"),
-    description: Yup.string().required("Description is required"),
+    title: Yup.string()
+      .required("Title is required")
+      .max(50, "Title must contain less than 50 characters"),
+    description: Yup.string()
+      .required("Description is required")
+      .max(300, "Description must contain less than 300 characters"),
     priority: Yup.string().required("Priority is required"),
   });
 
@@ -38,7 +42,7 @@ export default function CardPopUp() {
     if (!isEdit) {
       dispatch(addCard({ columnId: column._id, card: newCard }));
     } else {
-      dispatch(updateCard({ cardId: card._id, card: newCard }))
+      dispatch(updateCard({ cardId: card._id, card: newCard }));
       dispatch(resetCurrentCard());
     }
     dispatch(setIsAddCardOpen(false));
