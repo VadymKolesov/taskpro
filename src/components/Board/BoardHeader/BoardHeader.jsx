@@ -8,7 +8,7 @@ function BoardHeader() {
   const board = useSelector(selectBoard);
   const theme = useSelector(selectTheme);
 
-  const isLightText = ["1", "2", "6", "8", "13", "15"].includes(
+  const isLightText = ["1", "2", "6", "8", "12", "13", "15"].includes(
     board.backgroundName
   );
 
