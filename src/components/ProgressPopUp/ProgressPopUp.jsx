@@ -39,7 +39,7 @@ export default function AddColumnBtn() {
           className={clsx(css.btn, css[theme])}
           onClick={()=>handleClick(column)}
           >
-          <p>{column.name}</p>
+          <p className={css.columnName}>{column.name}</p>
           <svg className={clsx(css.icon, css[theme])}>
             <use href={`${sprite}#icon-move`}></use>
           </svg>

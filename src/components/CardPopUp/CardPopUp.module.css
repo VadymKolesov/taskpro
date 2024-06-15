@@ -168,17 +168,12 @@
   transition: background-color 0.3s ease;
 }
 
-.descInput.dark::-webkit-scrollbar-track {
-  background-color: rgb(255, 255, 255, 0.08);
-}
-
 .descInput.dark::-webkit-scrollbar-thumb {
   background: var(--dark-bg-hard);
 }
 
 .descInput.light::-webkit-scrollbar-track {
   border: 8px solid var(--light-bg-medium);
-  background-color: #e8e8e8;
 }
 
 .descInput.light::-webkit-scrollbar-thumb {
@@ -188,7 +183,6 @@
 
 .descInput.violet::-webkit-scrollbar-track {
   border: 8px solid var(--light-bg-medium);
-  background-color: var(--white);
 }
 
 .descInput.violet::-webkit-scrollbar-thumb {

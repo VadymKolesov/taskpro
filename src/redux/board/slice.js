@@ -75,20 +75,12 @@ const slice = createSlice({
         state.error = null;
       })
       .addCase(update.fulfilled, (state, action) => {
-        // const boardIndex = state.boards.findIndex(
-        //   (el) => el._id === action.payload._id
-        // );
-        // state.boards[boardIndex] = {
-        //   ...state.boards[boardIndex],
-        //   ...action.payload,
-        // };
         state.boards = state.boards
           .map(board => board._id === action.payload._id ?
             action.payload : board
           );
         state.board = action.payload;
         state.isBoardRefreshing = false;
-        
       })
       .addCase(update.rejected, (state, action) => {
         state.isBoardRefreshing = false;

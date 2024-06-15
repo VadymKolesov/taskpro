@@ -20,8 +20,6 @@ export default function AddColumnPopUp() {
   const board = useSelector(selectBoard);
   const column = useSelector(selectCurrentColumn);
 
-  console.log(column);
-
   const schema = Yup.object({
     name: Yup.string()
       .required("Title is required")

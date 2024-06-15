@@ -11,9 +11,12 @@
 }
 
 .columnTitle{
+  display: -webkit-box;
   width: 180px;
   overflow: hidden;
   text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
   color: var(--white);
   font-size: 14px;
   font-weight: 500;
