@@ -65,14 +65,12 @@ function Board() {
         backgroundImage: `url(${BgImg})`,
       }}
     >
-      <div>
-        <BoardHeader />
-        <span className={css.filter}>
-          <FilterBtn />
-        </span>
-        <div ref={scrollBarRef} className={css.columnsCont}>
-          <ColumnList />
-        </div>
+      <BoardHeader />
+      <span className={css.filter}>
+        <FilterBtn />
+      </span>
+      <div ref={scrollBarRef} className={css.columnsCont}>
+        <ColumnList />
       </div>
     </div>
   );
