@@ -5,11 +5,40 @@ import { useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
 import clsx from "clsx";
 import css from "./Board.module.css";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { background } from "./BoardBg/BoardBg";
+import { selectBoard } from "../../redux/board/selectors";
 
 function Board() {
   const theme = useSelector(selectTheme);
+  const board = useSelector(selectBoard);
   const scrollBarRef = useRef(null);
+  const [BgImg, setBgImg] = useState("");
+
+  const updateBgImg = useCallback(() => {
+    const width = window.innerWidth;
+    let size = "mobile";
+
+    if (width > 767) {
+      size = "tablet";
+    } else if (width > 1439) {
+      size = "desktop";
+    }
+
+    const selectedBackground = background[board.backgroundName];
+    if (selectedBackground) {
+      setBgImg(selectedBackground[size]);
+    }
+  }, [board.backgroundName]);
+
+  useEffect(() => {
+    updateBgImg();
+    window.addEventListener("resize", updateBgImg);
+
+    return () => {
+      window.removeEventListener("resize", updateBgImg);
+    };
+  }, [updateBgImg]);
 
   useEffect(() => {
     const scrollContainer = scrollBarRef.current;
@@ -30,13 +59,20 @@ function Board() {
   }, []);
 
   return (
-    <div className={clsx(css.board, css[theme])}>
-      <BoardHeader />
-      <span className={css.filter}>
-        <FilterBtn />
-      </span>
-      <div ref={scrollBarRef} className={css.columnsCont}>
-        <ColumnList />
+    <div
+      className={clsx(css.board, css.boardWithBg, css[theme])}
+      style={{
+        backgroundImage: `url(${BgImg})`,
+      }}
+    >
+      <div>
+        <BoardHeader />
+        <span className={css.filter}>
+          <FilterBtn />
+        </span>
+        <div ref={scrollBarRef} className={css.columnsCont}>
+          <ColumnList />
+        </div>
       </div>
     </div>
   );
