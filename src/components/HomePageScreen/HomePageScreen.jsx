@@ -3,7 +3,7 @@ import css from "./HomePageScreen.module.css";
 import { selectTheme } from "../../redux/auth/selectors";
 import { useSelector } from "react-redux";
 
-export const HomePageScreen = () => {
+export default function HomePageScreen() {
   const theme = useSelector(selectTheme);
 
   return (
@@ -19,4 +19,4 @@ export const HomePageScreen = () => {
       </p>
     </div>
   );
-};
+}

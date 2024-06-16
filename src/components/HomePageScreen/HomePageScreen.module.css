@@ -14,28 +14,19 @@
   transition: color/background-color 0.3s easy;
 }
 
-.text.dark {
-  opacity: 0.5;
-}
-
-.text.light,
-.text.violet {
-  opacity: 0.7;
-}
-
 .screenCont.dark {
   background-color: var(--dark-bg-easy);
-  color: var(--white);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .screenCont.light {
   background-color: var(--frozen);
-  color: var(--dark-bg-medium);
+  color: rgba(22, 22, 22, 0.7);
 }
 
 .screenCont.violet {
   background-color: var(--violet-bg-easy);
-  color: var(--dark-bg-medium);
+  color: rgba(22, 22, 22, 0.7);
 }
 
 .textSpan {
@@ -52,19 +43,19 @@
 }
 
 @media screen and (max-width: 767px) {
-    .text {
-        margin: 0 20px;
-    }
+  .text {
+    margin: 0 20px;
+  }
 }
 
 @media screen and (min-width: 768px) {
-    .screenCont {
-        font-size: 14px;
-        line-height: 18px;
-    }
+  .screenCont {
+    font-size: 14px;
+    line-height: 18px;
+  }
 
-    .text {
-        width: 486px;
-        height: 72px;
-    }
+  .text {
+    width: 486px;
+    height: 72px;
+  }
 }
