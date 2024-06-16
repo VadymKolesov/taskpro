@@ -54,12 +54,54 @@
   color: var(--black);
 }
 
-.btn {
+.button {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  background-color: var(--green);
+  transition: background-color 100ms ease-in-out, color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--green-hover);
+}
+
+.button.dark {
+  background-color: var(--green);
+  color: var(--dark-bg-medium);
+}
+
+.button:hover.dark {
+  background-color: var(--green-hover);
+}
+
+.button.light {
+  background-color: var(--green);
+  color: var(--dark-bg-medium);
+}
+
+.button:hover.light {
+  background-color: var(--green-hover);
+}
+
+.button.violet {
+  background-color: var(--violet-bg-hard);
+  color: var(--white);
+}
+
+.button:hover.violet {
+  background-color: var(--violet-btn-hover);
 }
 
 @media screen and (min-width: 375px) {
-  .btn {
+  .button {
     width: 335px;
   }
 }

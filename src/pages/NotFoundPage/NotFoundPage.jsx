@@ -21,7 +21,7 @@ export default function NotFoundPage() {
       <p className={clsx(css.text, css[theme])}>Page not found</p>
 
       <Button
-        className={css.btn}
+        className={css.button}
         text="Home"
         isIcon={false}
         verticalPadding="10px"
