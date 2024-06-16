@@ -3,7 +3,13 @@ import sprite from "../../../assets/sprite.svg";
 import clsx from "clsx";
 import { useDispatch, useSelector } from "react-redux";
 import { removeCard } from "../../../redux/board/operations";
-import { setIsAddCardOpen, setIsCardEdit, setIsProgressOpen } from "../../../redux/controls/slice";
+import {
+  setIsAddCardOpen,
+  setIsCardEdit,
+  setIsConfirmCardDelete,
+  setIsConfirmDeleteOpen,
+  setIsProgressOpen,
+} from "../../../redux/controls/slice";
 import { setCurrentCard } from "../../../redux/card/slice";
 import { selectTheme } from "../../../redux/auth/selectors";
 import { selectColumns } from "../../../redux/board/selectors";
@@ -12,8 +18,8 @@ import { useState } from "react";
 
 function deadlineDateFormat(deadline) {
   const date = new Date(+deadline);
-  const day = date.getDate().toString().padStart(2, '0');
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, "0");
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
   const year = date.getFullYear();
 
   return `${day}/${month}/${year}`;
@@ -26,7 +32,7 @@ function deadlineAlarm(deadline) {
 
 function Card({ card }) {
   const [isTextVisible, setIsTextVisible] = useState(false);
-  const theme = useSelector(selectTheme)
+  const theme = useSelector(selectTheme);
   const columns = useSelector(selectColumns);
   const dispatch = useDispatch();
 
@@ -35,9 +41,9 @@ function Card({ card }) {
       setIsTextVisible(!isTextVisible);
     }
   }
-  
+
   function handleMove() {
-    dispatch(setCurrentColumn({_id: card.columnId }))
+    dispatch(setCurrentColumn({ _id: card.columnId }));
     dispatch(setIsProgressOpen(true));
     dispatch(setCurrentCard(card));
   }
@@ -49,7 +55,9 @@ function Card({ card }) {
   }
 
   function handleRemove() {
-    dispatch(removeCard({ cardId: card._id }));
+    dispatch(setCurrentCard(card));
+    dispatch(setIsConfirmDeleteOpen(true));
+    dispatch(setIsConfirmCardDelete(true));
   }
 
   return (
@@ -61,9 +69,7 @@ function Card({ card }) {
       <h3 className={css.title}>{card.title}</h3>
       <p className={css.description}>
         {card.description}
-        <span className={css.cutDescription}>
-          {card.description}
-        </span>
+        <span className={css.cutDescription}>{card.description}</span>
       </p>
       <hr className={css.line} />
       <div className={css.cardInfo}>
@@ -83,26 +89,27 @@ function Card({ card }) {
           </li>
         </ul>
         <div className={css.controlCont}>
-          {deadlineAlarm(card.deadline) && <button
-            className={css.controlBtn}
-            type="button"
-            >
+          {deadlineAlarm(card.deadline) && (
+            <button className={css.controlBtn} type="button">
               <svg className={css.iconBell}>
                 <use href={`${sprite}#icon-bell`}></use>
               </svg>
-          </button>}
+            </button>
+          )}
           <ul className={css.controlList}>
-            {columns.length > 1 && <li>
-              <button
-                className={css.controlBtn}
-                type="button"
-                onClick={handleMove}
-              >
-                <svg className={css.controlIcon}>
-                  <use href={`${sprite}#icon-move`}></use>
-                </svg>
-              </button>
-            </li>}
+            {columns.length > 1 && (
+              <li>
+                <button
+                  className={css.controlBtn}
+                  type="button"
+                  onClick={handleMove}
+                >
+                  <svg className={css.controlIcon}>
+                    <use href={`${sprite}#icon-move`}></use>
+                  </svg>
+                </button>
+              </li>
+            )}
             <li>
               <button
                 className={css.controlBtn}
@@ -129,7 +136,7 @@ function Card({ card }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Card;

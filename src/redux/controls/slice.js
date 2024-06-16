@@ -16,6 +16,10 @@ const slice = createSlice({
     isAddCardOpen: false,
     isProgressOpen: false,
     isNeedHelpModalOpen: false,
+    isConfirmDeleteOpen: false,
+    isConfirmBoardDelete: false,
+    isConfirmColumnDelete: false,
+    isConfirmCardDelete: false,
   },
   reducers: {
     setSideBarOpen(state, action) {
@@ -61,6 +65,19 @@ const slice = createSlice({
       state.isNeedHelpModalOpen = action.payload;
       state.isBackdrop = action.payload;
     },
+    setIsConfirmDeleteOpen(state, action) {
+      state.isConfirmDeleteOpen = action.payload;
+      state.isBackdrop = action.payload;
+    },
+    setIsConfirmBoardDelete(state, action) {
+      state.isConfirmBoardDelete = action.payload;
+    },
+    setIsConfirmColumnDelete(state, action) {
+      state.isConfirmColumnDelete = action.payload;
+    },
+    setIsConfirmCardDelete(state, action) {
+      state.isConfirmCardDelete = action.payload;
+    },
   },
 });
 
@@ -77,6 +94,10 @@ export const {
   setIsAddCardOpen,
   setIsProgressOpen,
   setIsNeedHelpModalOpen,
+  setIsConfirmBoardDelete,
+  setIsConfirmColumnDelete,
+  setIsConfirmCardDelete,
+  setIsConfirmDeleteOpen,
 } = slice.actions;
 
 export default slice.reducer;

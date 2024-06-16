@@ -8,17 +8,16 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setBoardModalOpen,
   setIsBoardEdit,
+  setIsConfirmBoardDelete,
+  setIsConfirmDeleteOpen,
   setSideBarOpen,
 } from "../../../redux/controls/slice";
 import { selectBoards, selectTheme } from "../../../redux/auth/selectors";
 import { motion } from "framer-motion";
-import { remove } from "../../../redux/board/operations";
 
 export default function BoardsList() {
   const theme = useSelector(selectTheme);
   const list = useSelector(selectBoards);
-
-  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -33,16 +32,11 @@ export default function BoardsList() {
     }, 200);
   };
 
-  const handleDelete = async (boardId) => {
-    const previosBoardIndex = list.findIndex((el) => el._id === boardId) - 1;
-    const previosBoardId =
-      previosBoardIndex !== -1 ? list[previosBoardIndex]._id : null;
-
-    const action = await dispatch(remove(boardId));
-
-    if (remove.fulfilled.match(action)) {
-      previosBoardId ? navigate(`/home/${previosBoardId}`) : navigate(`/home`);
-    }
+  const handleDelete = () => {
+    setTimeout(() => {
+      dispatch(setIsConfirmBoardDelete(true));
+      dispatch(setIsConfirmDeleteOpen(true));
+    }, 200);
   };
 
   return (
@@ -83,7 +77,7 @@ export default function BoardsList() {
                           <li>
                             <button
                               type="button"
-                              onMouseDown={() => handleDelete(item._id)}
+                              onClick={handleDelete}
                               className={css.itemBtn}
                             >
                               <svg className={clsx(css.btnIcon, css[theme])}>
