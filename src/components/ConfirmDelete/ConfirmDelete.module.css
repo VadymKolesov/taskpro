@@ -1,13 +1,21 @@
 .wrapper {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    width: 200px;
-    height: 130px;
+    position: absolute;
+    width: 240px;
     padding: 24px;
     border-radius: 8px;
     z-index: 999;
     transform: translate(-50%, -50%)
+}
+
+.list {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.title, .elementName {
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .wrapper.dark {
@@ -22,21 +30,15 @@
     background-color: var(--white);
 }
 
-.title {
-    font-size: 18px;
-    margin-bottom: 26px;
-    font-weight: 500;
-}
-
-.title.dark{
+.title.dark, .elementName.dark{
     color: var(--white);
 }
 
-.title.light{
+.title.light .elementName.light{
     color: var(--dark-bg-medium);
 }
 
-.title.violet{
+.title.violet .elementName.violet{
     color: var(--dark-bg-medium);
 }
 
@@ -93,9 +95,4 @@
 
 .btn.del.violet:hover {
     color: var(--violet-btn-hover);
-}
-
-.list {
-    display: flex;
-    justify-content: space-between;
 }

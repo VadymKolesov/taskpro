@@ -19,6 +19,10 @@ import {
   setIsAddCardOpen,
   setIsProgressOpen,
   setIsNeedHelpModalOpen,
+  setIsConfirmBoardDelete,
+  setIsConfirmColumnDelete,
+  setIsConfirmCardDelete,
+  setIsConfirmDeleteOpen,
 } from "../../redux/controls/slice";
 
 import {
@@ -29,10 +33,15 @@ import {
   selectIsAddCardOpen,
   selectIsProgressOpen,
   selectIsNeedHelpModalOpen,
+  selectIsConfirmBoardDelete,
+  selectIsConfirmColumnDelete,
+  selectIsConfirmCardDelete,
+  selectIsConfirmDeleteOpen,
 } from "../../redux/controls/selectors";
 import { resetCurrentColumn } from "../../redux/column/slice";
 import { resetCurrentCard } from "../../redux/card/slice";
 import { selectIsSent } from "../../redux/needHelp/selectors";
+import ConfirmDelete from "../ConfirmDelete/ConfirmDelete";
 
 function AnimateModals() {
   const isProfileModalOpen = useSelector(selectIsProfileModalsOpen);
@@ -43,7 +52,10 @@ function AnimateModals() {
   const isProgressOpen = useSelector(selectIsProgressOpen);
   const isNeedHelpModalOpen = useSelector(selectIsNeedHelpModalOpen);
   const isSent = useSelector(selectIsSent);
-
+  const isConfirmDeleteOpen = useSelector(selectIsConfirmDeleteOpen);
+  const isConfirmBoardDelete = useSelector(selectIsConfirmBoardDelete);
+  const isConfirmColumnDelete = useSelector(selectIsConfirmColumnDelete);
+  const isConfirmCardDelete = useSelector(selectIsConfirmCardDelete);
   const dispatch = useDispatch();
 
   const handleProfileModalClose = () => {
@@ -64,6 +76,13 @@ function AnimateModals() {
   const handleAddCardClose = () => {
     isAddCardOpen && dispatch(setIsAddCardOpen(false));
     isAddCardOpen && dispatch(resetCurrentCard());
+  };
+
+  const handleConfirmBoardClose = () => {
+    isConfirmBoardDelete && dispatch(setIsConfirmBoardDelete(false));
+    isConfirmColumnDelete && dispatch(setIsConfirmColumnDelete(false));
+    isConfirmCardDelete && dispatch(setIsConfirmCardDelete(false));
+    dispatch(setIsConfirmDeleteOpen(false));
   };
 
   const handleProgressClose = () => {
@@ -217,6 +236,26 @@ function AnimateModals() {
                 transition={{ duration: 0.15 }}
               >
                 {isSent ? <SentMessage /> : <HelpForm />}
+              </motion.div>
+            </ClickOutsideComponent>
+          </Backdrop>
+        </motion.div>
+      )}
+      {isConfirmDeleteOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.17 }}
+        >
+          <Backdrop>
+            <ClickOutsideComponent onClickOutside={handleConfirmBoardClose}>
+              <motion.div
+                animate={{ scale: [1.02, 1.05, 1, 1] }}
+                exit={{ scale: [1, 1.05, 0.9] }}
+                transition={{ duration: 0.15 }}
+              >
+                <ConfirmDelete />
               </motion.div>
             </ClickOutsideComponent>
           </Backdrop>
