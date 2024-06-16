@@ -84,7 +84,7 @@
   background-color: var(--frozen);
 }
 
-.board.light .columnsCont::-webkit-scrollbar {
+.board.light .columnsCont::-webkit-scrollbar-track {
   background-color: var(--white);
 }
 
@@ -96,7 +96,7 @@
   background-color: var(--violet-bg-easy);
 }
 
-.board.violet .columnsCont::-webkit-scrollbar {
+.board.violet .columnsCont::-webkit-scrollbar-track {
   background-color: var(--white);
 }
 

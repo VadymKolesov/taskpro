@@ -34,8 +34,6 @@ export default function ConfirmDelete() {
   const isConfirmColumnDelete = useSelector(selectIsConfirmColumnDelete);
   const isConfirmCardDelete = useSelector(selectIsConfirmCardDelete);
 
-  const elementName = clsx(css.elementName, css[theme]);
-
   async function handleBoardDelete() {
     const previosBoardIndex = list.findIndex((el) => el._id === board._id) - 1;
     const previosBoardId =
@@ -75,14 +73,11 @@ export default function ConfirmDelete() {
   return (
     <div className={clsx(css.wrapper, css[theme])}>
       <p className={clsx(css.title, css[theme])}>
-        Delete this
-        {isConfirmBoardDelete && " board:"}
-        {isConfirmColumnDelete && " column:"}
-        {isConfirmCardDelete && " card:"}
+        Delete
+        {isConfirmBoardDelete && ` board "${board.name}"?`}
+        {isConfirmColumnDelete && ` column "${column.name}"?`}
+        {isConfirmCardDelete && ` card "${card.title}"?`}
       </p>
-      {isConfirmBoardDelete && <p className={elementName}>{board.name}?</p>}
-      {isConfirmColumnDelete && <p className={elementName}>{column.name}?</p>}
-      {isConfirmCardDelete && <p className={elementName}>{card.title}?</p>}
       <ul className={css.list}>
         <li className={css.item}>
           <button className={clsx(css.btn, css[theme])} onClick={handleCancel}>

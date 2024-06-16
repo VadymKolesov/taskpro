@@ -1,4 +1,4 @@
-.filterBtn{
+.filterBtn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,17 +14,34 @@
   opacity: 0.8;
 }
 
-.filterIcon{
+.filterIcon {
   width: 16px;
   height: 16px;
   stroke: var(--white);
 }
 
-.filterBtn.light, .filterBtn.violet{
+.filterBtn.light,
+.filterBtn.violet {
   color: var(--dark-bg-medium);
 }
 
 .filterBtn.light .filterIcon,
-.filterBtn.violet .filterIcon{
+.filterBtn.violet .filterIcon {
+  stroke: var(--dark-bg-medium);
+}
+
+.filterBtn.lightText {
+  color: var(--white);
+}
+
+.filterBtn.lightText .filterIcon {
+  stroke: var(--white);
+}
+
+.filterBtn.darkText {
+  color: var(--dark-bg-medium);
+}
+
+.filterBtn.darkText .filterIcon {
   stroke: var(--dark-bg-medium);
 }

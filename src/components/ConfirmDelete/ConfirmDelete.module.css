@@ -1,98 +1,99 @@
 .wrapper {
-    position: absolute;
-    width: 240px;
-    padding: 24px;
-    border-radius: 8px;
-    z-index: 999;
-    transform: translate(-50%, -50%)
+  position: absolute;
+  padding: 24px;
+  border-radius: 12px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .list {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.title, .elementName {
-    font-size: 18px;
-    font-weight: 500;
+.title,
+.elementName {
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .wrapper.dark {
-    background-color: var(--dark-modal-bg);
+  background-color: var(--dark-modal-bg);
 }
 
 .wrapper.light {
-    background-color: var(--white);
+  background-color: var(--white);
 }
 
 .wrapper.violet {
-    background-color: var(--white);
+  background-color: var(--white);
 }
 
-.title.dark, .elementName.dark{
-    color: var(--white);
+.title.dark,
+.elementName.dark {
+  color: var(--white);
 }
 
-.title.light .elementName.light{
-    color: var(--dark-bg-medium);
+.title.light .elementName.light {
+  color: var(--dark-bg-medium);
 }
 
-.title.violet .elementName.violet{
-    color: var(--dark-bg-medium);
+.title.violet .elementName.violet {
+  color: var(--dark-bg-medium);
 }
-
 
 .btn {
-    background-color: transparent;
-    font-size: 16px;
-    font-weight: 500;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 500;
 }
 /* dark */
-.btn.dark{
-    color: rgba(255, 255, 255, 0.7);
+.btn.dark {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .btn.dark:hover {
-    color: var(--frozen);
+  color: var(--frozen);
 }
 
 .btn.del.dark {
-    color: var(--green-hover);
+  color: var(--green-hover);
 }
 
 .btn.del.dark:hover {
-    color: var(--green);
+  color: var(--green);
 }
 /* light */
-.btn.light{
-    color: var(--dark-bg-medium);
+.btn.light {
+  color: var(--dark-bg-medium);
 }
 
 .btn.light:hover {
-    color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .btn.del.light {
-    color: var(--green-hover);
+  color: var(--green-hover);
 }
 
 .btn.del.light:hover {
-    color: var(--green);
+  color: var(--green);
 }
 /* violet */
-.btn.violet{
-    color: var(--dark-bg-medium);
+.btn.violet {
+  color: var(--dark-bg-medium);
 }
 
 .btn.violet:hover {
-    color: rgba(0, 0, 0, 0.4);
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .btn.del.violet {
-    color: var(--violet-bg-hard);
+  color: var(--violet-bg-hard);
 }
 
 .btn.del.violet:hover {
-    color: var(--violet-btn-hover);
+  color: var(--violet-btn-hover);
 }
