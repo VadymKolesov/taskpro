@@ -8,6 +8,7 @@ import { setCurrentCard } from "../../../redux/card/slice";
 import { selectTheme } from "../../../redux/auth/selectors";
 import { selectColumns } from "../../../redux/board/selectors";
 import { setCurrentColumn } from "../../../redux/column/slice";
+import { useState } from "react";
 
 function deadlineDateFormat(deadline) {
   const date = new Date(+deadline);
@@ -24,9 +25,16 @@ function deadlineAlarm(deadline) {
 }
 
 function Card({ card }) {
+  const [isTextVisible, setIsTextVisible] = useState(false);
   const theme = useSelector(selectTheme)
   const columns = useSelector(selectColumns);
   const dispatch = useDispatch();
+
+  function handleSwitchTextVisible(event) {
+    if (event.target === event.currentTarget) {
+      setIsTextVisible(!isTextVisible);
+    }
+  }
   
   function handleMove() {
     dispatch(setCurrentColumn({_id: card.columnId }))
@@ -45,10 +53,18 @@ function Card({ card }) {
   }
 
   return (
-    <div className={clsx(css.card, css[theme])}>
+    <div
+      className={clsx(css.card, css[theme], isTextVisible && css.active)}
+      onClick={handleSwitchTextVisible}
+    >
       <div className={clsx(css.indicator, css[card.priority])}></div>
       <h3 className={css.title}>{card.title}</h3>
-      <p className={css.description}>{card.description}</p>
+      <p className={css.description}>
+        {card.description}
+        <span className={css.cutDescription}>
+          {card.description}
+        </span>
+      </p>
       <hr className={css.line} />
       <div className={css.cardInfo}>
         <ul className={css.infoList}>

@@ -3,7 +3,7 @@
 .btn {
   display: flex;
   gap: 8px;
-  width: 334px;
+  width: 87vw;
   height: 56px;
   justify-content: center;
   align-items: center;
@@ -84,4 +84,11 @@
 
 .plusIcon.violet {
   stroke: var(--white);
+}
+
+
+@media screen and (min-width: 375px) {
+  .btn{
+    width: 334px;
+  }
 }
