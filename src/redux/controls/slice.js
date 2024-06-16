@@ -15,6 +15,7 @@ const slice = createSlice({
     isAddColumnOpen: false,
     isAddCardOpen: false,
     isProgressOpen: false,
+    isNeedHelpModalOpen: false,
   },
   reducers: {
     setSideBarOpen(state, action) {
@@ -56,6 +57,10 @@ const slice = createSlice({
       state.isProgressOpen = action.payload;
       state.isBackdrop = action.payload;
     },
+    setIsNeedHelpModalOpen(state, action) {
+      state.isNeedHelpModalOpen = action.payload;
+      state.isBackdrop = action.payload;
+    },
   },
 });
 
@@ -71,6 +76,7 @@ export const {
   setIsAddColumnOpen,
   setIsAddCardOpen,
   setIsProgressOpen,
+  setIsNeedHelpModalOpen,
 } = slice.actions;
 
 export default slice.reducer;

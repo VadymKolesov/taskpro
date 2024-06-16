@@ -3,16 +3,22 @@ import clsx from "clsx";
 import cactus from "../../../assets/cactus.png";
 import sprite from "../../../assets/sprite.svg";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../../redux/auth/selectors";
+import {
+  setIsNeedHelpModalOpen,
+  setSideBarOpen,
+} from "../../../redux/controls/slice";
 
 export default function NeedHelpItem() {
+  const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
 
   const [isHelpItemOpen, setIsHelpItemOpen] = useState(false);
 
   const handleNeedHelp = () => {
-    console.log("help");
+    dispatch(setSideBarOpen(false));
+    dispatch(setIsNeedHelpModalOpen(true));
   };
 
   const handleOpen = () => {

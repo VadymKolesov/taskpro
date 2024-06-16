@@ -6,6 +6,8 @@ import FilterModal from "../../components/Filter/FilterModal";
 import AddColumnPopUp from "../AddColumnPopUp/AddColumnPopUp";
 import CardPopUp from "../CardPopUp/CardPopUp";
 import ProgressPopUp from "../../components/ProgressPopUp/ProgressPopUp";
+import HelpForm from "../HelpForm/HelpForm";
+import SentMessage from "../SentMessage/SentMessage";
 import { motion, AnimatePresence } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -16,6 +18,7 @@ import {
   setProfileModalOpen,
   setIsAddCardOpen,
   setIsProgressOpen,
+  setIsNeedHelpModalOpen,
 } from "../../redux/controls/slice";
 
 import {
@@ -25,9 +28,11 @@ import {
   selectIsProfileModalsOpen,
   selectIsAddCardOpen,
   selectIsProgressOpen,
+  selectIsNeedHelpModalOpen,
 } from "../../redux/controls/selectors";
 import { resetCurrentColumn } from "../../redux/column/slice";
 import { resetCurrentCard } from "../../redux/card/slice";
+import { selectIsSent } from "../../redux/needHelp/selectors";
 
 function AnimateModals() {
   const isProfileModalOpen = useSelector(selectIsProfileModalsOpen);
@@ -36,6 +41,8 @@ function AnimateModals() {
   const isAddColumnOpen = useSelector(selectIsAddColumnOpen);
   const isAddCardOpen = useSelector(selectIsAddCardOpen);
   const isProgressOpen = useSelector(selectIsProgressOpen);
+  const isNeedHelpModalOpen = useSelector(selectIsNeedHelpModalOpen);
+  const isSent = useSelector(selectIsSent);
 
   const dispatch = useDispatch();
 
@@ -61,7 +68,16 @@ function AnimateModals() {
 
   const handleProgressClose = () => {
     isProgressOpen && dispatch(setIsProgressOpen(false));
-    setTimeout(() => { dispatch(resetCurrentColumn())}, 200);
+    setTimeout(() => {
+      dispatch(resetCurrentColumn());
+    }, 200);
+  };
+
+  const handleNeedHelpModalClose = () => {
+    isNeedHelpModalOpen && dispatch(setIsNeedHelpModalOpen(false));
+    setTimeout(() => {
+      dispatch(resetCurrentColumn());
+    }, 200);
   };
 
   return (
@@ -74,9 +90,7 @@ function AnimateModals() {
           transition={{ duration: 0.17 }}
         >
           <Backdrop>
-            <ClickOutsideComponent
-              onClickOutside={handleProfileModalClose}
-            >
+            <ClickOutsideComponent onClickOutside={handleProfileModalClose}>
               <motion.div
                 animate={{ scale: [1.02, 1.05, 1, 1] }}
                 exit={{ scale: [1, 1.05, 0.9] }}
@@ -102,7 +116,7 @@ function AnimateModals() {
                 exit={{ scale: [1, 1.05, 0.9] }}
                 transition={{ duration: 0.15 }}
               >
-                <AddBoardPopUp/>
+                <AddBoardPopUp />
               </motion.div>
             </ClickOutsideComponent>
           </Backdrop>
@@ -122,7 +136,7 @@ function AnimateModals() {
                 exit={{ scale: [1, 1.05, 0.9] }}
                 transition={{ duration: 0.15 }}
               >
-                <FilterModal/>
+                <FilterModal />
               </motion.div>
             </ClickOutsideComponent>
           </Backdrop>
@@ -136,15 +150,13 @@ function AnimateModals() {
           transition={{ duration: 0.17 }}
         >
           <Backdrop>
-            <ClickOutsideComponent
-              onClickOutside={handleAddColumnClose}
-            >
+            <ClickOutsideComponent onClickOutside={handleAddColumnClose}>
               <motion.div
                 animate={{ scale: [1.02, 1.05, 1, 1] }}
                 exit={{ scale: [1, 1.05, 0.9] }}
                 transition={{ duration: 0.15 }}
               >
-                <AddColumnPopUp/>
+                <AddColumnPopUp />
               </motion.div>
             </ClickOutsideComponent>
           </Backdrop>
@@ -158,15 +170,13 @@ function AnimateModals() {
           transition={{ duration: 0.17 }}
         >
           <Backdrop>
-            <ClickOutsideComponent
-              onClickOutside={handleAddCardClose}
-            >
+            <ClickOutsideComponent onClickOutside={handleAddCardClose}>
               <motion.div
                 animate={{ scale: [1.02, 1.05, 1, 1] }}
                 exit={{ scale: [1, 1.05, 0.9] }}
                 transition={{ duration: 0.15 }}
               >
-                <CardPopUp/>
+                <CardPopUp />
               </motion.div>
             </ClickOutsideComponent>
           </Backdrop>
@@ -180,22 +190,40 @@ function AnimateModals() {
           transition={{ duration: 0.17 }}
         >
           <Backdrop>
-            <ClickOutsideComponent
-              onClickOutside={handleProgressClose}
-            >
+            <ClickOutsideComponent onClickOutside={handleProgressClose}>
               <motion.div
                 animate={{ scale: [1.02, 1.05, 1, 1] }}
                 exit={{ scale: [1, 1.05, 0.9] }}
                 transition={{ duration: 0.15 }}
               >
-                <ProgressPopUp/>
+                <ProgressPopUp />
+              </motion.div>
+            </ClickOutsideComponent>
+          </Backdrop>
+        </motion.div>
+      )}
+      {isNeedHelpModalOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.17 }}
+        >
+          <Backdrop>
+            <ClickOutsideComponent onClickOutside={handleNeedHelpModalClose}>
+              <motion.div
+                animate={{ scale: [1.02, 1.05, 1, 1] }}
+                exit={{ scale: [1, 1.05, 0.9] }}
+                transition={{ duration: 0.15 }}
+              >
+                {isSent ? <SentMessage /> : <HelpForm />}
               </motion.div>
             </ClickOutsideComponent>
           </Backdrop>
         </motion.div>
       )}
     </AnimatePresence>
-  )
+  );
 }
 
 export default AnimateModals;
