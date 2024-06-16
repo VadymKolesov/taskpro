@@ -1,18 +1,20 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate, useSearchParams } from "react-router-dom";
 import { setTokenByGoogleAuth } from "../../redux/auth/slice";
+import { current } from "@reduxjs/toolkit";
+import { selectIsRefreshing } from "../../redux/auth/selectors";
 
 export default function GoogleRedirectPage() {
+  const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [params] = useSearchParams();
   const token = params.get("token");
 
   useEffect(() => {
     dispatch(setTokenByGoogleAuth(token));
-    navigate("/home");
+    dispatch(current());
   }, [dispatch]);
 
-  return <h1>Loading...</h1>;
+  return <>{isRefreshing ? <h1>Loading...</h1> : <Navigate to="/home" />}</>;
 }
