@@ -79,7 +79,9 @@ export const addColumn = createAsyncThunk(
   "board/addColumn",
   async (data, thunkApi) => {
     try {
-      const response = await axios.post(`/columns/${data.boardId}`, { name: data.name });
+      const response = await axios.post(`/columns/${data.boardId}`, {
+        name: data.name,
+      });
       return response.data;
     } catch (error) {
       const errorMessage =
@@ -95,7 +97,27 @@ export const updateColumn = createAsyncThunk(
   "board/updateColumn",
   async (data, thunkApi) => {
     try {
-      const response = await axios.patch(`/columns/${data.columnId}`, { name: data.name });
+      const response = await axios.patch(`/columns/${data.columnId}`, {
+        name: data.name,
+      });
+      return response.data;
+    } catch (error) {
+      const errorMessage =
+        error.response && error.response.data
+          ? error.response.data.message
+          : error.message;
+      return thunkApi.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const updateColumnCards = createAsyncThunk(
+  "board/updateColumnCards",
+  async (data, thunkApi) => {
+    try {
+      const response = await axios.put(`/columns/${data.columnId}`, {
+        cards: data.cards,
+      });
       return response.data;
     } catch (error) {
       const errorMessage =

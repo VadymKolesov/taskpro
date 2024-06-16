@@ -1,7 +1,7 @@
 .card {
   position: relative;
   overflow: hidden;
-  width: 87vw;
+  width: 100%;
   padding: 14px 20px 14px 24px;
   border-radius: 8px;
   letter-spacing: -0.018em;
