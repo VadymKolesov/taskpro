@@ -17,6 +17,7 @@ import controlReducer from "./controls/slice";
 import boardReducer from "./board/slice";
 import columnReducer from "./column/slice";
 import cardReducer from "./card/slice";
+import helpReducer from "./needHelp/slice";
 
 const authPersistConfig = {
   key: "auth",
@@ -35,6 +36,7 @@ export const store = configureStore({
     board: boardReducer,
     column: columnReducer,
     card: cardReducer,
+    help: helpReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
