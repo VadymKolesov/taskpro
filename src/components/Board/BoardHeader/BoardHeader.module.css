@@ -1,15 +1,15 @@
-.boardTitle{
+.boardTitle {
   padding: 0 20px;
-  color: var(--white);
+  color: var(--dark-bg-medium);
   font-size: 14px;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: -0.018em;
-  transition: color .3s ease;
+  transition: color 0.3s ease;
 }
 
 @media screen and (min-width: 768px) {
-  .boardTitle{
+  .boardTitle {
     padding: 0 32px;
     font-size: 18px;
   }
@@ -21,10 +21,6 @@
   }
 }
 
-.boardTitle.dark{
+.boardTitle.lightText {
   color: var(--white);
-}
-
-.boardTitle.light, .boardTitle.violet {
-  color: var(--dark-bg-medium);
 }

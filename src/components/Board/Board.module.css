@@ -1,4 +1,4 @@
-.board{
+.board {
   position: relative;
   display: grid;
   grid-template-rows: 21px 1fr;
@@ -9,68 +9,74 @@
   transition: background-color 0.3s ease;
 }
 
-.filter{
+.boardWithBg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.filter {
   position: absolute;
   top: 14px;
   right: 20px;
 }
 
-.columnsCont{
+.columnsCont {
   position: relative;
   width: 100%;
   overflow-x: auto;
 }
 
-.columnsCont::-webkit-scrollbar-track{
+.columnsCont::-webkit-scrollbar-track {
   border-radius: 12px;
   margin: 24px;
   transition: background-color 0.3s ease;
 }
 
-.columnsCont::-webkit-scrollbar{
+.columnsCont::-webkit-scrollbar {
   height: 12px;
 }
 
-.columnsCont::-webkit-scrollbar-thumb{
+.columnsCont::-webkit-scrollbar-thumb {
   border-radius: 12px;
   background-color: rgba(255, 255, 255, 0.1);
   transition: background-color 0.3s ease;
 }
 
 @media screen and (min-width: 768px) {
-  .board{
+  .board {
     grid-template-rows: 28px 1fr;
     gap: 26px;
     padding: 26px 0 32px;
   }
 
-  .filter{
+  .filter {
     top: 20px;
     right: 32px;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .board{
+  .board {
     padding: 10px 0 8px;
     gap: 10px;
   }
 
-  .filter{
+  .filter {
     top: 14px;
     right: 24px;
   }
 }
 
-.board.dark{
+.board.dark {
   background-color: var(--dark-bg-easy);
 }
 
-.board.dark .columnsCont::-webkit-scrollbar-track{
+.board.dark .columnsCont::-webkit-scrollbar-track {
   background-color: var(--dark-bg-medium);
 }
 
-.board.dark .columnsCont::-webkit-scrollbar-thumb{
+.board.dark .columnsCont::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -83,7 +89,7 @@
 }
 
 .board.light .columnsCont::-webkit-scrollbar-thumb {
-  background-color: #E8E8E8;
+  background-color: #e8e8e8;
 }
 
 .board.violet {
