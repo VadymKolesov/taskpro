@@ -9,6 +9,7 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/auth/operations";
 import { selectError } from "../../redux/auth/selectors";
+import { FaGoogle } from "react-icons/fa";
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -82,12 +83,6 @@ export default function LoginForm() {
             isIcon={false}
             verticalPadding="14px"
           />
-
-          <button type="button" className={css.googleBtn}>
-            <a href="https://taskpro-api-laom.onrender.com/api/auth/google">
-              Sign in with Google
-            </a>
-          </button>
         </Form>
       </Formik>
     </>

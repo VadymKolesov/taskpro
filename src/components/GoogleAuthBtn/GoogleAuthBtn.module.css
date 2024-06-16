@@ -1,0 +1,21 @@
+.googleBtn {
+  text-decoration: none;
+  color: var(--dark-bg-hard);
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 14px;
+  border-radius: 8px;
+  gap: 10px;
+  background-color: var(--white);
+  transition: background-color 0.1s ease-in-out;
+}
+
+.googleIcon {
+  fill: var(--dark-bg-hard);
+}
+
+.googleBtn:hover {
+  background-color: var(--frozen);
+}
