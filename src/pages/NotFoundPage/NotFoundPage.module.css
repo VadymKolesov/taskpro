@@ -1,0 +1,107 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background: var(--dark-bg-easy);
+  padding: 40px 20px;
+  margin: auto;
+}
+
+.page.light {
+  background: var(--light-bg-easy);
+}
+
+.page.violet {
+  background: var(--violet-bg-easy);
+}
+
+.nf_img {
+  width: 220px;
+  margin-bottom: 20px;
+}
+
+.header {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--green);
+  margin-bottom: 12px;
+}
+
+.header.light {
+  color: var(--green-hover);
+}
+
+.header.violet {
+  color: var(--violet-bg-hard);
+}
+
+.text {
+  font-size: large;
+  color: var(--white);
+  font-weight: 500;
+
+  margin-bottom: 40px;
+}
+
+.text.light {
+  color: var(--black);
+}
+
+.text.violet {
+  color: var(--black);
+}
+
+.button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  background-color: var(--green);
+  transition: background-color 100ms ease-in-out, color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--green-hover);
+}
+
+.button.dark {
+  background-color: var(--green);
+  color: var(--dark-bg-medium);
+}
+
+.button:hover.dark {
+  background-color: var(--green-hover);
+}
+
+.button.light {
+  background-color: var(--green);
+  color: var(--dark-bg-medium);
+}
+
+.button:hover.light {
+  background-color: var(--green-hover);
+}
+
+.button.violet {
+  background-color: var(--violet-bg-hard);
+  color: var(--white);
+}
+
+.button:hover.violet {
+  background-color: var(--violet-btn-hover);
+}
+
+@media screen and (min-width: 375px) {
+  .button {
+    width: 335px;
+  }
+}
