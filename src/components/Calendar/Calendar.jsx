@@ -6,10 +6,11 @@ import clsx from "clsx";
 import "./Calendar.css";
 import { useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
+import { addDays } from "date-fns";
 
-export default function Calendar({deadline, setDeadline}) {
+export default function Calendar({ deadline, setDeadline }) {
   const theme = useSelector(selectTheme);
-  
+
   const handleSetDate = (date) => {
     setDeadline(date.getTime());
   };
@@ -26,6 +27,7 @@ export default function Calendar({deadline, setDeadline}) {
         onChange={(date) => handleSetDate(date)}
         dateFormat="eeee, MMMM d"
         customInput={<ForwardedCustomInput />}
+        minDate={addDays(new Date(), 0)}
       />
     </div>
   );
