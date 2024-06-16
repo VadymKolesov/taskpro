@@ -42,6 +42,7 @@ import { resetCurrentColumn } from "../../redux/column/slice";
 import { resetCurrentCard } from "../../redux/card/slice";
 import { selectIsSent } from "../../redux/needHelp/selectors";
 import ConfirmDelete from "../ConfirmDelete/ConfirmDelete";
+import EscHandler from "../EscHandler/EscHandler";
 
 function AnimateModals() {
   const isProfileModalOpen = useSelector(selectIsProfileModalsOpen);
@@ -260,6 +261,26 @@ function AnimateModals() {
             </ClickOutsideComponent>
           </Backdrop>
         </motion.div>
+      )}
+      {isProfileModalOpen && (
+        <EscHandler key={"esc"} onEsc={handleProfileModalClose} />
+      )}
+      {isBoardModalOpen && (
+        <EscHandler key={"esc"} onEsc={handleBoardModalClose} />
+      )}
+      {isFilterModalOpen && (
+        <EscHandler key={"esc"} onEsc={handleFilterModalClose} />
+      )}
+      {isAddColumnOpen && (
+        <EscHandler key={"esc"} onEsc={handleAddColumnClose} />
+      )}
+      {isAddCardOpen && <EscHandler key={"esc"} onEsc={handleAddCardClose} />}
+      {isProgressOpen && <EscHandler key={"esc"} onEsc={handleProgressClose} />}
+      {isNeedHelpModalOpen && (
+        <EscHandler key={"esc"} onEsc={handleNeedHelpModalClose} />
+      )}
+      {isConfirmDeleteOpen && (
+        <EscHandler key={"esc"} onEsc={handleConfirmBoardClose} />
       )}
     </AnimatePresence>
   );
