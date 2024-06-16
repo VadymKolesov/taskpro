@@ -131,7 +131,7 @@
   font-weight: 400;
   line-height: 1.5;
   margin: 0;
-  transition: color 0.1s ease-in-out, backdround-color 1s ease-in-out;
+  transition: color 0.1s ease-in-out, background-color 1s ease-in-out;
 }
 
 /* Days hover */
@@ -148,14 +148,22 @@
 .react-datepicker__day--selected {
   background-color: var(--green);
   color: var(--dark-bg-easy);
-  transition: color 0.3s ease, backdround-color 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 /* Days of not current month */
-.react-datepicker__day.react-datepicker__day--outside-month {
+.react-datepicker__day.react-datepicker__day--outside-month,
+.react-datepicker__day--disabled {
   color: var(--white);
   opacity: 0.2;
   transition: color 0.3s ease;
+}
+
+/* Disable hover effect for outside month and disabled days */
+.react-datepicker__day.react-datepicker__day--outside-month:hover,
+.react-datepicker__day--disabled:hover {
+  background-color: transparent;
+  color: var(--white);
 }
 
 /* DATEPICKER LIGHT/VIOLET THEME */
