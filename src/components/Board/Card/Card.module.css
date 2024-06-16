@@ -1,21 +1,20 @@
-.card{
+.card {
   position: relative;
   overflow: hidden;
   width: 87vw;
   padding: 14px 20px 14px 24px;
   border-radius: 8px;
   letter-spacing: -0.018em;
-  cursor: pointer;
-  transition: background-color .3s ease;
+  transition: background-color 0.3s ease;
 }
 
-.indicator{
+.indicator {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 4px;
-  transition: background-color .3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .indicator.without {
@@ -35,7 +34,7 @@
   background-color: var(--green);
 }
 
-.title{
+.title {
   width: 100%;
   height: 21px;
   margin-bottom: 8px;
@@ -47,10 +46,10 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   pointer-events: none;
-  transition: color .3s ease;
+  transition: color 0.3s ease;
 }
 
-.description{
+.description {
   position: relative;
   display: -webkit-box;
   width: 100%;
@@ -63,10 +62,10 @@
   line-height: 1.5;
   overflow: hidden;
   pointer-events: none;
-  transition: color .3s ease, opacity .3s ease, max-height .5s ease-in-out;
+  transition: color 0.3s ease, opacity 0.3s ease, max-height 0.3s ease;
 }
 
-.cutDescription{
+.cutDescription {
   display: -webkit-box;
   position: absolute;
   top: 0;
@@ -75,135 +74,137 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   opacity: 1;
-  transition: opacity 0.1s linear .5s, background-color .3s ease;
+  transition: opacity 0.1s linear 0.5s, background-color 0.3s ease;
 }
 
 .card:hover .description,
-.card.active .description{
+.card.active .description {
   max-height: 150px;
 }
 
 .card:hover .cutDescription,
-.card.active .cutDescription{
+.card.active .cutDescription {
   opacity: 0;
   transition: opacity 0.1s linear;
 }
 
 @keyframes win {
-  0%{ 
-  }100%{
+  0% {
+  }
+  100% {
     -webkit-line-clamp: 2;
   }
-  
 }
 
-.line{
+.line {
   border: none;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin: 14px 0 15px;
-  transition: border .3s ease;
+  transition: border 0.3s ease;
 }
 
-.cardInfo{
+.cardInfo {
   display: flex;
   justify-content: space-between;
   align-items: end;
   pointer-events: none;
 }
 
-.infoList{
+.infoList {
   display: flex;
   align-items: center;
   gap: 14px;
 }
 
-.infoListItem{
+.infoListItem {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.infoListItem span{
+.infoListItem span {
   color: var(--white);
   opacity: 0.5;
   font-size: 8px;
   font-weight: 400;
   line-height: 1.5;
-  transition: color .3s ease;
+  transition: color 0.3s ease;
 }
 
-.infoListItem p{
+.infoListItem p {
   color: var(--white);
   font-size: 10px;
   font-weight: 400;
   line-height: 1.5;
-  transition: color .3s ease;
+  transition: color 0.3s ease;
 }
 
-.priority{
+.priority {
   display: flex;
   align-items: center;
   gap: 4px;
   text-transform: capitalize;
 }
 
-.priorityIcon{
+.priorityIcon {
   width: 13px;
   height: 13px;
-  transition: fill .3s ease;
+  transition: fill 0.3s ease;
 }
 
-.priorityIcon.without{
+.priorityIcon.without {
   fill: var(--white);
   opacity: 0.3;
 }
 
-.priorityIcon.low{
+.priorityIcon.low {
   fill: var(--indigo);
 }
 
-.priorityIcon.medium{
+.priorityIcon.medium {
   fill: var(--pink);
 }
 
-.priorityIcon.high{
+.priorityIcon.high {
   fill: var(--green);
 }
 
-.controlCont{
+.controlCont {
   display: flex;
   gap: 12px;
   pointer-events: all;
 }
 
-.controlList{
+.controlList {
   display: flex;
   gap: 8px;
 }
 
-.controlList li{
+.controlList li {
   line-height: 0;
 }
 
-.controlBtn{
+.controlBtn {
   width: 16px;
   height: 16px;
   background-color: transparent;
 }
 
-.controlIcon{
+.controlIcon {
   width: 16px;
   height: 16px;
   opacity: 0.5;
   stroke: var(--white);
-  transition: opacity .1s ease-in-out, stroke .3s ease;
+  transition: opacity 0.1s ease-in-out, stroke 0.3s ease;
 }
 
-.controlIcon:hover, .controlBtn:focus .controlIcon{
+.controlIcon:hover,
+.controlBtn:focus .controlIcon {
   opacity: 1;
 }
 
-.iconBell{
+.iconBell {
+  cursor: default;
   width: 16px;
   height: 16px;
   stroke: var(--green);
@@ -212,24 +213,25 @@
 }
 
 @media screen and (min-width: 375px) {
-  .card{
+  .card {
     width: 334px;
   }
 }
 
-.card.dark, .card.dark .cutDescription{
+.card.dark,
+.card.dark .cutDescription {
   background-color: var(--dark-bg-hard);
 }
 
-.card.dark .indicator.without{
+.card.dark .indicator.without {
   background-color: var(--white);
 }
 
-.card.dark .title{
+.card.dark .title {
   color: var(--white);
 }
 
-.card.dark .description{
+.card.dark .description {
   color: var(--white);
 }
 
@@ -237,7 +239,8 @@
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-.card.dark .infoListItem span, .card.dark .infoListItem p {
+.card.dark .infoListItem span,
+.card.dark .infoListItem p {
   color: var(--white);
 }
 
@@ -245,56 +248,63 @@
   fill: rgba(255, 255, 255, 0.3);
 }
 
-.card.dark .controlIcon{
+.card.dark .controlIcon {
   stroke: var(--white);
 }
 
 .card.dark .iconBell,
-.card.light .iconBell{
+.card.light .iconBell {
   stroke: var(--green);
   filter: drop-shadow(0px 0px 5px var(--green));
 }
 
 /* light/violet */
-.card.light, .card.violet,
+.card.light,
+.card.violet,
 .card.light .cutDescription,
-.card.violet .cutDescription{
+.card.violet .cutDescription {
   background-color: var(--white);
 }
 
-.card.light .indicator.without, .card.violet .indicator.without{
+.card.light .indicator.without,
+.card.violet .indicator.without {
   background-color: var(--dark-bg-medium);
 }
 
-.card.light .title, .card.violet .title {
+.card.light .title,
+.card.violet .title {
   color: var(--dark-bg-medium);
 }
 
-.card.light .description, .card.violet .description {
+.card.light .description,
+.card.violet .description {
   color: var(--dark-bg-medium);
   opacity: 0.7;
 }
 
-.card.light .line, .card.violet .line {
+.card.light .line,
+.card.violet .line {
   border-color: rgba(22, 22, 22, 0.1);
 }
 
 .card.light .infoListItem span,
 .card.light .infoListItem p,
 .card.violet .infoListItem span,
-.card.violet .infoListItem p{
+.card.violet .infoListItem p {
   color: var(--dark-bg-medium);
 }
 
-.card.light .priorityIcon.without, .card.violet .priorityIcon.without{
+.card.light .priorityIcon.without,
+.card.violet .priorityIcon.without {
   fill: var(--dark-bg-medium);
 }
 
-.card.light .controlIcon, .card.violet .controlIcon{
+.card.light .controlIcon,
+.card.violet .controlIcon {
   stroke: var(--dark-bg-medium);
 }
 
-.card.violet .iconBell{
+.card.violet .iconBell {
   stroke: var(--violet-bg-hard);
-  filter: drop-shadow(0px 0px 5px var(--violet-bg-hard))
+  filter: drop-shadow(0px 0px 5px var(--violet-bg-hard));
 }
