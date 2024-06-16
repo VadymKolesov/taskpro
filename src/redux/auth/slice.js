@@ -24,6 +24,11 @@ const slice = createSlice({
     isLoading: false,
     error: null,
   },
+  reducers: {
+    setTokenByGoogleAuth(state, action) {
+      state.token = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(register.pending, (state) => {
@@ -153,6 +158,7 @@ const slice = createSlice({
   },
 });
 
-export const { addBoard, removeBoard, updateBoard } = slice.actions;
+export const { addBoard, removeBoard, updateBoard, setTokenByGoogleAuth } =
+  slice.actions;
 
 export default slice.reducer;

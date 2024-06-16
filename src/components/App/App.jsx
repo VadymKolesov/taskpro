@@ -17,6 +17,9 @@ const RestrictedRoute = lazy(() =>
 const NotFoundPage = lazy(() =>
   import("../../pages/NotFoundPage/NotFoundPage")
 );
+const GoogleRedirectPage = lazy(() =>
+  import("../../pages/GoogleRedirectPage/GoogleRedirectPage")
+);
 const EditProfile = lazy(() => import("../EditProfile/EditProfile"));
 
 export default function App() {
@@ -55,6 +58,7 @@ export default function App() {
           />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="/google-redirect" element={<GoogleRedirectPage />} />
         <Route path="edit" element={<EditProfile />} /> {/* my test route */}
       </Routes>
     </Suspense>

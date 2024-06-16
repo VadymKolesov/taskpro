@@ -19,9 +19,9 @@ function Board() {
     const width = window.innerWidth;
     let size = "mobile";
 
-    if (width > 767) {
+    if (width > 767 && width < 1440) {
       size = "tablet";
-    } else if (width > 1439) {
+    } else if (width >= 1440) {
       size = "desktop";
     }
 

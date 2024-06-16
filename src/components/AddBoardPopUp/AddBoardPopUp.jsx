@@ -9,7 +9,9 @@ import { setBoardModalOpen } from "../../redux/controls/slice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
 import { selectIsBoardEdit } from "../../redux/controls/selectors";
-import noBg from "../../assets/boards-bg/no-bg.svg";
+import noBgDark from "../../assets/boards-bg/no-bg-dark.svg";
+import noBgLight from "../../assets/boards-bg/no-bg-light.svg";
+import noBgViolet from "../../assets/boards-bg/no-bg-violet.svg";
 import { create, update } from "../../redux/board/operations";
 import { selectBoard } from "../../redux/board/selectors";
 import { useNavigate } from "react-router-dom";
@@ -66,7 +68,15 @@ export default function AddBoardPopUp() {
   ];
 
   const backgrounds = [
-    { id: "0", url: noBg },
+    {
+      id: "0",
+      url:
+        theme === "dark"
+          ? noBgDark
+          : theme === "light"
+          ? noBgLight
+          : noBgViolet,
+    },
     { id: "1", url: background["1"].mobile },
     { id: "2", url: background["2"].mobile },
     { id: "3", url: background["3"].mobile },

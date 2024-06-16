@@ -32,19 +32,19 @@ import bgTablet15 from "../../../assets/boards-bg/tablet/backgound-tablet-15.jpg
 
 import bgDesktop1 from "../../../assets/boards-bg/desktop/backgound-desktop-1.jpg";
 import bgDesktop2 from "../../../assets/boards-bg/desktop/backgound-desktop-2.jpg";
-import bgDesktop3 from "../../../assets/boards-bg/desktop/backgound-desktop-1.jpg";
-import bgDesktop4 from "../../../assets/boards-bg/desktop/backgound-desktop-2.jpg";
-import bgDesktop5 from "../../../assets/boards-bg/desktop/backgound-desktop-1.jpg";
-import bgDesktop6 from "../../../assets/boards-bg/desktop/backgound-desktop-2.jpg";
-import bgDesktop7 from "../../../assets/boards-bg/desktop/backgound-desktop-1.jpg";
-import bgDesktop8 from "../../../assets/boards-bg/desktop/backgound-desktop-2.jpg";
-import bgDesktop9 from "../../../assets/boards-bg/desktop/backgound-desktop-1.jpg";
-import bgDesktop10 from "../../../assets/boards-bg/desktop/backgound-desktop-2.jpg";
-import bgDesktop11 from "../../../assets/boards-bg/desktop/backgound-desktop-1.jpg";
-import bgDesktop12 from "../../../assets/boards-bg/desktop/backgound-desktop-2.jpg";
-import bgDesktop13 from "../../../assets/boards-bg/desktop/backgound-desktop-1.jpg";
-import bgDesktop14 from "../../../assets/boards-bg/desktop/backgound-desktop-2.jpg";
-import bgDesktop15 from "../../../assets/boards-bg/desktop/backgound-desktop-1.jpg";
+import bgDesktop3 from "../../../assets/boards-bg/desktop/backgound-desktop-3.jpg";
+import bgDesktop4 from "../../../assets/boards-bg/desktop/backgound-desktop-4.jpg";
+import bgDesktop5 from "../../../assets/boards-bg/desktop/backgound-desktop-5.jpg";
+import bgDesktop6 from "../../../assets/boards-bg/desktop/backgound-desktop-6.jpg";
+import bgDesktop7 from "../../../assets/boards-bg/desktop/backgound-desktop-7.jpg";
+import bgDesktop8 from "../../../assets/boards-bg/desktop/backgound-desktop-8.jpg";
+import bgDesktop9 from "../../../assets/boards-bg/desktop/backgound-desktop-9.jpg";
+import bgDesktop10 from "../../../assets/boards-bg/desktop/backgound-desktop-10.jpg";
+import bgDesktop11 from "../../../assets/boards-bg/desktop/backgound-desktop-11.jpg";
+import bgDesktop12 from "../../../assets/boards-bg/desktop/backgound-desktop-12.jpg";
+import bgDesktop13 from "../../../assets/boards-bg/desktop/backgound-desktop-13.jpg";
+import bgDesktop14 from "../../../assets/boards-bg/desktop/backgound-desktop-14.jpg";
+import bgDesktop15 from "../../../assets/boards-bg/desktop/backgound-desktop-15.jpg";
 
 export const background = {
   1: {

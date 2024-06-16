@@ -31,53 +31,65 @@ export default function LoginForm() {
   });
 
   return (
-    <Formik
-      initialValues={{
-        email: "",
-        password: "",
-      }}
-      validationSchema={schema}
-      onSubmit={handlerSubmit}
-    >
-      <Form className={css.form} autoComplete="off">
-        <AuthNav />
-        {error && <p className={clsx(css.error, css.message)}>{error}</p>}
-        <ul className={css.fieldsList}>
-          <li>
-            <Field
-              className={css.input}
-              type="text"
-              name="email"
-              placeholder="Enter your email"
-            />
-            <ErrorMessage name="email" component="p" className={css.error} />
-          </li>
-          <li>
-            <span>
+    <>
+      <Formik
+        initialValues={{
+          email: "",
+          password: "",
+        }}
+        validationSchema={schema}
+        onSubmit={handlerSubmit}
+      >
+        <Form className={css.form} autoComplete="off">
+          <AuthNav />
+          {error && <p className={clsx(css.error, css.message)}>{error}</p>}
+          <ul className={css.fieldsList}>
+            <li>
               <Field
                 className={css.input}
-                type={isShown ? "text" : "password"}
-                name="password"
-                placeholder="Confirm a password"
+                type="text"
+                name="email"
+                placeholder="Enter your email"
               />
-              <svg
-                className={clsx(css.iconEye, isShown && css.isShownIcon)}
-                onClick={handleShowPassword}
-              >
-                <use href={`${sprite}#icon-eye`}></use>
-              </svg>
-            </span>
-            <ErrorMessage name="password" component="p" className={css.error} />
-          </li>
-        </ul>
+              <ErrorMessage name="email" component="p" className={css.error} />
+            </li>
+            <li>
+              <span>
+                <Field
+                  className={css.input}
+                  type={isShown ? "text" : "password"}
+                  name="password"
+                  placeholder="Confirm a password"
+                />
+                <svg
+                  className={clsx(css.iconEye, isShown && css.isShownIcon)}
+                  onClick={handleShowPassword}
+                >
+                  <use href={`${sprite}#icon-eye`}></use>
+                </svg>
+              </span>
+              <ErrorMessage
+                name="password"
+                component="p"
+                className={css.error}
+              />
+            </li>
+          </ul>
 
-        <Button
-          type="submit"
-          text="Log In Now"
-          isIcon={false}
-          verticalPadding="14px"
-        />
-      </Form>
-    </Formik>
+          <Button
+            type="submit"
+            text="Log In Now"
+            isIcon={false}
+            verticalPadding="14px"
+          />
+
+          <button type="button" className={css.googleBtn}>
+            <a href="https://taskpro-api-laom.onrender.com/api/auth/google">
+              Sign in with Google
+            </a>
+          </button>
+        </Form>
+      </Formik>
+    </>
   );
 }

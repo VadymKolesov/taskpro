@@ -12,11 +12,18 @@ function BoardHeader() {
     board.backgroundName
   );
 
+  const isDarkText = ["3", "4", "5", "7", "9", "10", "11", "14"].includes(
+    board.backgroundName
+  );
+
   return (
     <h1
-      className={clsx(css.boardTitle, css[theme], {
-        [css.lightText]: isLightText || board.backgroundName === "0",
-      })}
+      className={clsx(
+        css.boardTitle,
+        css[theme],
+        board.backgroundName !== "0" && isLightText && css.lightText,
+        board.backgroundName !== "0" && isDarkText && css.darkText
+      )}
     >
       {board.name}
     </h1>

@@ -8,6 +8,15 @@
   transition: color 0.3s ease;
 }
 
+.boardTitle.dark {
+  color: var(--white);
+}
+
+.boardTitle.light,
+.boardTitle.violet {
+  color: var(--dark-bg-medium);
+}
+
 @media screen and (min-width: 768px) {
   .boardTitle {
     padding: 0 32px;
@@ -23,4 +32,8 @@
 
 .boardTitle.lightText {
   color: var(--white);
+}
+
+.boardTitle.darkText {
+  color: var(--dark-bg-medium);
 }
