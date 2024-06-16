@@ -239,6 +239,12 @@
   line-height: 1.5;
 }
 
+@media screen and (max-width: 374px) {
+    .EPContainer {
+      width: 89vw;
+    }
+}
+
 @media screen and (min-width: 375px) and (max-width: 767px) {
   .EPContainer {
     width: 335px;
