@@ -11,6 +11,7 @@ export default function GoogleRedirectPage() {
 
   useEffect(() => {
     dispatch(setTokenByGoogleAuth(token));
+    navigate("/home");
   }, [dispatch]);
 
   return <h1>Loading...</h1>;
