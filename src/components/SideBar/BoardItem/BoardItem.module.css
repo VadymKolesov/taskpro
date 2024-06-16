@@ -23,6 +23,11 @@
 }
 
 .name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 140px;
+  height: 21px;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.02em;

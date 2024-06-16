@@ -6,14 +6,13 @@ import clsx from "clsx";
 import "./Calendar.css";
 import { useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
+import { addDays } from "date-fns";
 
-export default function Calendar() {
+export default function Calendar({ deadline, setDeadline }) {
   const theme = useSelector(selectTheme);
-  const [selectedDate, setSelectedDate] = useState(new Date());
 
   const handleSetDate = (date) => {
-    setSelectedDate(date);
-    console.log(selectedDate.getTime());
+    setDeadline(date.getTime());
   };
 
   const datepickerWrapper = clsx(
@@ -24,10 +23,11 @@ export default function Calendar() {
   return (
     <div className={datepickerWrapper}>
       <DatePicker
-        selected={selectedDate}
+        selected={deadline}
         onChange={(date) => handleSetDate(date)}
         dateFormat="eeee, MMMM d"
         customInput={<ForwardedCustomInput />}
+        minDate={addDays(new Date(), 0)}
       />
     </div>
   );

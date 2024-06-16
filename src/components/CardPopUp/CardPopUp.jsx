@@ -4,32 +4,60 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import Button from "../Button/Button";
 import sprite from "../../assets/sprite.svg";
 import * as Yup from "yup";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
 import Calendar from "../Calendar/Calendar";
+import { setIsAddCardOpen } from "../../redux/controls/slice";
+import { useEffect, useState } from "react";
+import { selectIsCardEdit } from "../../redux/controls/selectors";
+import { addCard, updateCard } from "../../redux/board/operations";
+import { selectCurrentColumn } from "../../redux/column/selectors";
+import { selectCurrentCard } from "../../redux/card/selectors";
+import { resetCurrentCard } from "../../redux/card/slice";
 
-export default function CardPopUp({ isEdit }) {
+export default function CardPopUp() {
   const theme = useSelector(selectTheme);
+  const dispatch = useDispatch();
+  const [deadline, setDeadline] = useState(Date.now());
+  const isEdit = useSelector(selectIsCardEdit);
+  const column = useSelector(selectCurrentColumn);
+  const card = useSelector(selectCurrentCard);
+
+  useEffect(() => {
+    isEdit && setDeadline(+card.deadline);
+  }, [isEdit, card]);
 
   const schema = Yup.object({
-    title: Yup.string().required("Title is required"),
-    description: Yup.string().required("Description is required"),
+    title: Yup.string()
+      .required("Title is required")
+      .max(50, "Title must contain less than 50 characters"),
+    description: Yup.string()
+      .required("Description is required")
+      .max(300, "Description must contain less than 300 characters"),
     priority: Yup.string().required("Priority is required"),
   });
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
+    const newCard = { ...values, deadline: deadline.toString() };
+    if (!isEdit) {
+      dispatch(addCard({ columnId: column._id, card: newCard }));
+    } else {
+      dispatch(updateCard({ cardId: card._id, card: newCard }));
+      dispatch(resetCurrentCard());
+    }
+    dispatch(setIsAddCardOpen(false));
     actions.resetForm();
   };
 
   const handleClose = () => {
-    console.log("close");
+    dispatch(setIsAddCardOpen(false));
+    dispatch(resetCurrentCard());
   };
 
   const initialValues = {
-    title: !isEdit && "",
-    description: !isEdit && "",
-    priority: !isEdit && "low",
+    title: !isEdit ? "" : card.title,
+    description: !isEdit ? "" : card.description,
+    priority: !isEdit ? "low" : card.priority,
   };
 
   return (
@@ -161,7 +189,7 @@ export default function CardPopUp({ isEdit }) {
             />
             <div className={css.customInputCont}>
               <label className={clsx(css.label, css[theme])}>Deadline</label>
-              <Calendar />
+              <Calendar deadline={deadline} setDeadline={setDeadline} />
             </div>
           </div>
 

@@ -1,106 +1,66 @@
-import css from "./BoardsList.module.css";
-import BoardItem from "../BoardItem/BoardItem";
-import { NavLink, useNavigate } from "react-router-dom";
-import { nanoid } from "nanoid";
-import clsx from "clsx";
-import sprite from "../../../assets/sprite.svg";
+import { Suspense, lazy, useEffect } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { current } from "../../redux/auth/operations";
+import { selectIsRefreshing, selectTheme } from "../../redux/auth/selectors";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setBoardModalOpen,
-  setIsBoardEdit,
-  setSideBarOpen,
-} from "../../../redux/controls/slice";
-import { selectBoards, selectTheme } from "../../../redux/auth/selectors";
-import { motion } from "framer-motion";
-import { remove } from "../../../redux/board/operations";
+import css from "./App.module.css";
+import clsx from "clsx";
 
-export default function BoardsList() {
+const WelcomePage = lazy(() => import("../../pages/WelcomePage/WelcomePage"));
+const AuthPage = lazy(() => import("../../pages/AuthPage/AuthPage"));
+const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
+const ScreensPage = lazy(() => import("../../pages/ScreensPage/ScreensPage"));
+const PrivateRoute = lazy(() => import("../PrivateRoute/PrivateRoute"));
+const RestrictedRoute = lazy(() =>
+  import("../RestrictedRoute/RestrictedRoute")
+);
+const NotFoundPage = lazy(() =>
+  import("../../pages/NotFoundPage/NotFoundPage")
+);
+const GoogleRedirectPage = lazy(() =>
+  import("../../pages/GoogleRedirectPage/GoogleRedirectPage")
+);
+const EditProfile = lazy(() => import("../EditProfile/EditProfile"));
+
+export default function App() {
   const theme = useSelector(selectTheme);
-  const list = useSelector(selectBoards);
-
-  const navigate = useNavigate();
-
   const dispatch = useDispatch();
 
-  const handleSidebarClose = () => {
-    dispatch(setSideBarOpen(false));
-  };
+  useEffect(() => {
+    dispatch(current());
+  }, [dispatch]);
 
-  const handleUpdate = () => {
-    setTimeout(() => {
-      dispatch(setIsBoardEdit(true));
-      dispatch(setBoardModalOpen(true));
-    }, 200);
-  };
+  const isRefreshing = useSelector(selectIsRefreshing);
 
-  const handleDelete = async (boardId) => {
-    const previosBoardIndex = list.findIndex((el) => el._id === boardId) - 1;
-    const previosBoardId =
-      previosBoardIndex !== -1 ? list[previosBoardIndex]._id : null;
-
-    const action = await dispatch(remove(boardId));
-
-    if (remove.fulfilled.match(action)) {
-      previosBoardId ? navigate(`/home/${previosBoardId}`) : navigate(`/home`);
-    }
-  };
-
-  return (
-    <ul className={css.list}>
-      {Array.isArray(list) &&
-        list.map((item) => {
-          return (
-            <motion.li
-              whileTap={{ scale: 0.97 }}
-              key={nanoid()}
-              className={css.item}
-            >
-              <NavLink
-                to={`${item._id}`}
-                className={({ isActive }) =>
-                  clsx(css.link, isActive && css.isActive, css[theme])
-                }
-                onClick={handleSidebarClose}
-              >
-                {({ isActive }) => (
-                  <>
-                    <BoardItem board={item} />
-
-                    {isActive && (
-                      <div className={css.controls}>
-                        <ul className={css.controlsList}>
-                          <li>
-                            <button
-                              type="button"
-                              onClick={() => handleUpdate(item._id)}
-                              className={css.itemBtn}
-                            >
-                              <svg className={clsx(css.btnIcon, css[theme])}>
-                                <use href={`${sprite}#icon-pencil`}></use>
-                              </svg>
-                            </button>
-                          </li>
-                          <li>
-                            <button
-                              type="button"
-                              onMouseDown={() => handleDelete(item._id)}
-                              className={css.itemBtn}
-                            >
-                              <svg className={clsx(css.btnIcon, css[theme])}>
-                                <use href={`${sprite}#icon-trash`}></use>
-                              </svg>
-                            </button>
-                          </li>
-                        </ul>
-                        <div className={clsx(css.border, css[theme])}></div>
-                      </div>
-                    )}
-                  </>
-                )}
-              </NavLink>
-            </motion.li>
-          );
-        })}
-    </ul>
+  return isRefreshing ? (
+    <div className={clsx(css.loadBackground, css[theme])}>
+      <div className={clsx(css.loader, css[theme])}></div>
+    </div>
+  ) : (
+    <Suspense fallback={null}>
+      <Routes>
+        <Route
+          path="/"
+          element={<RestrictedRoute component={<Navigate to="/welcome" />} />}
+        />
+        <Route
+          path="/welcome"
+          element={<RestrictedRoute component={<WelcomePage />} />}
+        />
+        <Route
+          path="/auth/:id"
+          element={<RestrictedRoute component={<AuthPage />} />}
+        />
+        <Route path="/home" element={<PrivateRoute component={<HomePage />} />}>
+          <Route
+            path=":boardName"
+            element={<PrivateRoute component={<ScreensPage />} />}
+          />
+        </Route>
+        <Route path="*" element={<NotFoundPage />} />
+        <Route path="/google-redirect" element={<GoogleRedirectPage />} />
+        <Route path="edit" element={<EditProfile />} /> {/* my test route */}
+      </Routes>
+    </Suspense>
   );
 }

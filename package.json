@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^2.2.5",
     "axios": "^1.7.2",
     "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
     "formik": "^2.4.6",
     "framer-motion": "^11.2.10",
     "nanoid": "^5.0.7",

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 import {
   register,
   login,
@@ -23,6 +24,13 @@ const slice = createSlice({
     isRefreshing: false,
     isLoading: false,
     error: null,
+  },
+  reducers: {
+    setTokenByGoogleAuth(state, action) {
+      state.token = action.payload;
+      axios.defaults.headers.common["Authorization"] =
+        "Bearer " + action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -153,6 +161,7 @@ const slice = createSlice({
   },
 });
 
-export const { setIsAuth } = slice.actions;
+export const { addBoard, removeBoard, updateBoard, setTokenByGoogleAuth } =
+  slice.actions;
 
 export default slice.reducer;

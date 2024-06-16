@@ -5,5 +5,5 @@ import { Navigate } from "react-router-dom";
 export default function PrivateRoute({ component: Component }) {
   const isAuth = useSelector(selectIsAuth);
 
-  return !isAuth ? <Navigate to="/auth/login" /> : Component;
+  return !isAuth ? <Navigate to="/welcome" /> : Component;
 }

@@ -1,3 +1,4 @@
+// import React from "react";
 import css from "./AddBoardPopUp.module.css";
 import clsx from "clsx";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -5,37 +6,49 @@ import Button from "../Button/Button";
 import sprite from "../../assets/sprite.svg";
 import * as Yup from "yup";
 import { setBoardModalOpen } from "../../redux/controls/slice";
-import { selectTheme } from "../../redux/auth/selectors";
 import { useDispatch, useSelector } from "react-redux";
+import { selectTheme } from "../../redux/auth/selectors";
+import { selectIsBoardEdit } from "../../redux/controls/selectors";
+import noBgDark from "../../assets/boards-bg/no-bg-dark.svg";
+import noBgLight from "../../assets/boards-bg/no-bg-light.svg";
+import noBgViolet from "../../assets/boards-bg/no-bg-violet.svg";
+import { create, update } from "../../redux/board/operations";
+import { selectBoard } from "../../redux/board/selectors";
+import { useNavigate } from "react-router-dom";
+import { background } from "../Board/BoardBg/BoardBg";
 
-import bg1 from "../../assets/boards-bg/mobile/backgound-mobile-1.jpg";
-import bg2 from "../../assets/boards-bg/mobile/backgound-mobile-2.jpg";
-import bg3 from "../../assets/boards-bg/mobile/backgound-mobile-3.jpg";
-import bg4 from "../../assets/boards-bg/mobile/backgound-mobile-4.jpg";
-import bg5 from "../../assets/boards-bg/mobile/backgound-mobile-5.jpg";
-import bg6 from "../../assets/boards-bg/mobile/backgound-mobile-6.jpg";
-import bg7 from "../../assets/boards-bg/mobile/backgound-mobile-7.jpg";
-import bg8 from "../../assets/boards-bg/mobile/backgound-mobile-8.jpg";
-import bg9 from "../../assets/boards-bg/mobile/backgound-mobile-9.jpg";
-import bg10 from "../../assets/boards-bg/mobile/backgound-mobile-10.jpg";
-import bg11 from "../../assets/boards-bg/mobile/backgound-mobile-11.jpg";
-import bg12 from "../../assets/boards-bg/mobile/backgound-mobile-12.jpg";
-import bg13 from "../../assets/boards-bg/mobile/backgound-mobile-13.jpg";
-import bg14 from "../../assets/boards-bg/mobile/backgound-mobile-14.jpg";
-import bg15 from "../../assets/boards-bg/mobile/backgound-mobile-15.jpg";
-import noBg from "../../assets/boards-bg/no-bg.svg";
-
-export default function AddBoardPopUp({ isEdit }) {
+export default function AddBoardPopUp() {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
+  const isEdit = useSelector(selectIsBoardEdit);
+  const board = useSelector(selectBoard);
+  const navigate = useNavigate();
 
   const schema = Yup.object({
-    name: Yup.string().required("Title is required"),
+    name: Yup.string()
+      .required("Title is required")
+      .max(18, "Title must contain less than 18 characters"),
     iconName: Yup.string().required("Icon is required"),
+    backgroundName: Yup.string().required("Background is required"),
   });
 
-  const handleSubmit = (values, actions) => {
-    isEdit ? console.log(`Edit ${values}`) : console.log(values);
+  const handleSubmit = async (values, actions) => {
+    if (isEdit) {
+      dispatch(
+        update({
+          id: board._id,
+          board: { ...values },
+        })
+      );
+    } else {
+      const action = await dispatch(create(values));
+
+      if (create.fulfilled.match(action)) {
+        const newBoardId = action.payload._id;
+        navigate(`/home/${newBoardId}`);
+      }
+    }
+    dispatch(setBoardModalOpen(false));
     actions.resetForm();
   };
 
@@ -55,28 +68,36 @@ export default function AddBoardPopUp({ isEdit }) {
   ];
 
   const backgrounds = [
-    { id: "0", url: noBg },
-    { id: "1", url: bg1 },
-    { id: "2", url: bg2 },
-    { id: "3", url: bg3 },
-    { id: "4", url: bg4 },
-    { id: "5", url: bg5 },
-    { id: "6", url: bg6 },
-    { id: "7", url: bg7 },
-    { id: "8", url: bg8 },
-    { id: "9", url: bg9 },
-    { id: "10", url: bg10 },
-    { id: "11", url: bg11 },
-    { id: "12", url: bg12 },
-    { id: "13", url: bg13 },
-    { id: "14", url: bg14 },
-    { id: "15", url: bg15 },
+    {
+      id: "0",
+      url:
+        theme === "dark"
+          ? noBgDark
+          : theme === "light"
+          ? noBgLight
+          : noBgViolet,
+    },
+    { id: "1", url: background["1"].mobile },
+    { id: "2", url: background["2"].mobile },
+    { id: "3", url: background["3"].mobile },
+    { id: "4", url: background["4"].mobile },
+    { id: "5", url: background["5"].mobile },
+    { id: "6", url: background["6"].mobile },
+    { id: "7", url: background["7"].mobile },
+    { id: "8", url: background["8"].mobile },
+    { id: "9", url: background["9"].mobile },
+    { id: "10", url: background["10"].mobile },
+    { id: "11", url: background["11"].mobile },
+    { id: "12", url: background["12"].mobile },
+    { id: "13", url: background["13"].mobile },
+    { id: "14", url: background["14"].mobile },
+    { id: "15", url: background["15"].mobile },
   ];
 
   const initialValues = {
-    name: !isEdit && "",
-    iconName: !isEdit && "icon-project-1",
-    backgroundName: !isEdit && "0",
+    name: !isEdit ? "" : board.name,
+    iconName: !isEdit ? "icon-project-1" : board.iconName,
+    backgroundName: !isEdit ? "0" : board.backgroundName,
   };
 
   return (

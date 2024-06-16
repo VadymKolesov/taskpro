@@ -6,8 +6,8 @@
 .react-datepicker {
   position: absolute;
   left: 0;
-  top: 0;
-  transform: translate(-22%, 0);
+  bottom: 63px;
+  transform: translate(-24%, 0);
   border: 1px solid var(--green);
   border-radius: 8px;
   background-color: var(--dark-bg-easy);

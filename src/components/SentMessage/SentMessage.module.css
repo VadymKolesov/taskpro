@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  border-radius: 12px;
+  gap: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.icon {
+  transition: fill 0.3s ease;
+}
+
+.message {
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.container.dark {
+  background-color: var(--dark-bg-easy);
+}
+
+.container.light {
+  background-color: var(--light-bg-medium);
+}
+
+.container.violet {
+  background-color: var(--light-bg-medium);
+}
+
+.icon.dark {
+  fill: var(--green);
+}
+
+.icon.light {
+  fill: var(--green-hover);
+}
+
+.icon.violet {
+  fill: var(--violet-bg-hard);
+}
+
+.message.dark {
+  color: var(--green);
+}
+
+.message.light {
+  color: var(--green-hover);
+}
+
+.message.violet {
+  color: var(--violet-bg-hard);
+}

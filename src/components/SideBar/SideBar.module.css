@@ -100,7 +100,7 @@
   margin-top: auto;
 }
 
-@media screen and (min-width: 1180px) {
+@media screen and (min-width: 1440px) {
   .wrapper {
     position: relative;
     left: 0;

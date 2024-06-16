@@ -1,0 +1,105 @@
+.board {
+  position: relative;
+  display: grid;
+  grid-template-rows: 21px 1fr;
+  gap: 39px;
+  padding: 14px 0 24px;
+  height: 100%;
+  background-color: var(--dark-bg-easy);
+  transition: background-color 0.3s ease;
+}
+
+.boardWithBg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.filter {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+}
+
+.columnsCont {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.columnsCont::-webkit-scrollbar-track {
+  border-radius: 12px;
+  margin: 24px;
+  transition: background-color 0.3s ease;
+}
+
+.columnsCont::-webkit-scrollbar {
+  height: 12px;
+}
+
+.columnsCont::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+@media screen and (min-width: 768px) {
+  .board {
+    grid-template-rows: 28px 1fr;
+    gap: 26px;
+    padding: 26px 0 32px;
+  }
+
+  .filter {
+    top: 20px;
+    right: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .board {
+    padding: 10px 0 8px;
+    gap: 10px;
+  }
+
+  .filter {
+    top: 14px;
+    right: 24px;
+  }
+}
+
+.board.dark {
+  background-color: var(--dark-bg-easy);
+}
+
+.board.dark .columnsCont::-webkit-scrollbar-track {
+  background-color: var(--dark-bg-medium);
+}
+
+.board.dark .columnsCont::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.board.light {
+  background-color: var(--frozen);
+}
+
+.board.light .columnsCont::-webkit-scrollbar {
+  background-color: var(--white);
+}
+
+.board.light .columnsCont::-webkit-scrollbar-thumb {
+  background-color: #e8e8e8;
+}
+
+.board.violet {
+  background-color: var(--violet-bg-easy);
+}
+
+.board.violet .columnsCont::-webkit-scrollbar {
+  background-color: var(--white);
+}
+
+.board.violet .columnsCont::-webkit-scrollbar-thumb {
+  background-color: var(--violet);
+}

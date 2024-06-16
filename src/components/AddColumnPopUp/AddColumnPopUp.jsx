@@ -4,43 +4,66 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import Button from "../Button/Button";
 import sprite from "../../assets/sprite.svg";
 import * as Yup from "yup";
-import { getThemeStyle } from "../../scripts/getThemeStyle";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
+import { setIsAddColumnOpen } from "../../redux/controls/slice";
+import { selectIsColumnEdit } from "../../redux/controls/selectors";
+import { addColumn, updateColumn } from "../../redux/board/operations";
+import { selectBoard } from "../../redux/board/selectors";
+import { selectCurrentColumn } from "../../redux/column/selectors";
+import { resetCurrentColumn } from "../../redux/column/slice";
 
-export default function AddColumnPopUp({ isEdit, inputValue }) {
-  const userTheme = useSelector(selectTheme);
-  const theme = getThemeStyle(css, userTheme);
+export default function AddColumnPopUp() {
+  const theme = useSelector(selectTheme);
+  const dispatch = useDispatch();
+  const isEdit = useSelector(selectIsColumnEdit);
+  const board = useSelector(selectBoard);
+  const column = useSelector(selectCurrentColumn);
 
   const schema = Yup.object({
     name: Yup.string()
       .required("Title is required")
-      .not([inputValue], "This title already use"),
+      .max(30, "Title must contain less than 30 characters"),
   });
 
   const handleSubmit = (values, actions) => {
-    isEdit
-      ? console.log(`Edit ${values.name}`)
-      : console.log(`Add ${values.name}`);
+    if (!isEdit) {
+      dispatch(
+        addColumn({
+          boardId: board._id,
+          ...values,
+        })
+      );
+    } else {
+      dispatch(
+        updateColumn({
+          columnId: column._id,
+          ...values,
+        })
+      );
+      dispatch(resetCurrentColumn());
+    }
+    dispatch(setIsAddColumnOpen(false));
     actions.resetForm();
   };
 
   const handleClose = () => {
-    console.log("close");
+    dispatch(setIsAddColumnOpen(false));
+    dispatch(resetCurrentColumn());
   };
 
   return (
-    <div className={clsx(css.cont, theme)}>
-      <button className={clsx(css.closeBtn, theme)} onClick={handleClose}>
-        <svg className={clsx(css.closeIcon, theme)}>
+    <div className={clsx(css.cont, css[theme])}>
+      <button className={clsx(css.closeBtn, css[theme])} onClick={handleClose}>
+        <svg className={clsx(css.closeIcon, css[theme])}>
           <use href={`${sprite}#icon-x-close`}></use>
         </svg>
       </button>
-      <p className={clsx(css.text, theme)}>
+      <p className={clsx(css.text, css[theme])}>
         {isEdit ? "Edit column" : "Add column"}
       </p>
       <Formik
-        initialValues={{ name: inputValue }}
+        initialValues={{ name: !isEdit ? "" : column.name }}
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
@@ -48,13 +71,13 @@ export default function AddColumnPopUp({ isEdit, inputValue }) {
           <Field
             type="text"
             name="name"
-            className={clsx(css.input, theme)}
+            className={clsx(css.input, css[theme])}
             placeholder="Title"
           />
           <ErrorMessage
             name="name"
             component="p"
-            className={clsx(css.error, theme)}
+            className={clsx(css.error, css[theme])}
           />
           <Button
             text={isEdit ? "Edit" : "Add"}

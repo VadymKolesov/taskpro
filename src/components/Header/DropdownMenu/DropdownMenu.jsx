@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import css from "./DropdownMenu.module.css";
-import { getThemeStyle } from "../../../scripts/getThemeStyle";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsThemeDropDownOpen } from "../../../redux/controls/selectors";
 import { setThemeDropDownOpen } from "../../../redux/controls/slice";
@@ -20,7 +19,7 @@ function DropdownMenu() {
   const lightTheme = clsx(css.dropdownItem, theme === "light" && css.active);
   const darkTheme = clsx(css.dropdownItem, theme === "dark" && css.active);
   const violetTheme = clsx(css.dropdownItem, theme === "violet" && css.active);
-  const dropdownWrap = clsx(css.dropdownWrap, getThemeStyle(css, theme));
+  const dropdownWrap = clsx(css.dropdownWrap, css[theme]);
 
   return (
     <div className={dropdownWrap}>
