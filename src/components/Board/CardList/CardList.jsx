@@ -4,26 +4,34 @@ import css from "./CardList.module.css";
 import clsx from "clsx";
 import { selectTheme } from "../../../redux/auth/selectors";
 import { Reorder } from "framer-motion";
-import { useEffect, useState } from "react";
 import { updateColumnCards } from "../../../redux/board/operations";
 import { useDispatch } from "react-redux";
+import { setCards } from "../../../redux/board/slice";
+import { selectColumnsWithFilteredCards } from "../../../redux/board/selectors";
+import { useEffect, useState } from "react";
 
-function CardList({ cards }) {
+function CardList({ columnId }) {
   const theme = useSelector(selectTheme);
+  const columns = useSelector(selectColumnsWithFilteredCards);
+  const columnIndex = columns.findIndex((el) => el._id === columnId);
+  const cards = columns[columnIndex].cards;
   const dispatch = useDispatch();
 
-  const [items, setItems] = useState(cards);
+  const [localCards, setLocalCards] = useState(cards);
 
   useEffect(() => {
-    setItems(items);
-  }, [items]);
+    setLocalCards(cards);
+  }, [cards]);
 
-  const handleReorder = (values) => {
-    const columnId = values[0].columnId;
-    const cardsIds = values.map((value) => {
-      return value._id;
-    });
-    setItems(values);
+  const handleReorder = (newCards) => {
+    setLocalCards(newCards);
+  };
+
+  const handleDragEnd = () => {
+    const columnId = localCards[0]?.columnId;
+    const cardsIds = localCards.map((card) => card._id);
+
+    dispatch(setCards({ columnIndex, values: localCards }));
     dispatch(updateColumnCards({ columnId, cards: cardsIds }));
   };
 
@@ -31,12 +39,17 @@ function CardList({ cards }) {
     <div className={clsx(css.cardListCont, css[theme])}>
       <Reorder.Group
         axis="y"
-        values={items}
+        values={localCards}
         onReorder={handleReorder}
         className={css.cardList}
       >
-        {items.map((card) => (
-          <Reorder.Item value={card} className={css.card} key={card._id}>
+        {localCards.map((card) => (
+          <Reorder.Item
+            onDragEnd={handleDragEnd}
+            value={card}
+            className={css.card}
+            key={card._id}
+          >
             <Card card={card} />
           </Reorder.Item>
         ))}

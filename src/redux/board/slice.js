@@ -29,6 +29,14 @@ const slice = createSlice({
     isBoardRefreshing: false,
     error: null,
   },
+  reducers: {
+    setCards(state, action) {
+      const { columnIndex, values } = action.payload;
+      state.columns = state.columns.map((column, index) =>
+        index === columnIndex ? { ...column, cards: values } : column
+      );
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(boards.pending, (state) => {
@@ -229,5 +237,7 @@ const slice = createSlice({
       });
   },
 });
+
+export const { setCards } = slice.actions;
 
 export default slice.reducer;

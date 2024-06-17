@@ -11,16 +11,19 @@ function ColumnsList() {
 
   return (
     <ul className={css.columnsList}>
-      {Array.isArray(columns) && columns.map(column => 
-      (<li className={css.column} key={column._id}>
-        <ColumnHeader column={column} />
-        <CardList cards={column.cards} />
-        <AddCardBtn column={column}/>
-      </li>)
-      )}
-      <li><AddColumnBtn/></li>
+      {Array.isArray(columns) &&
+        columns.map((column) => (
+          <li className={css.column} key={column._id}>
+            <ColumnHeader column={column} />
+            <CardList columnId={column._id} />
+            <AddCardBtn column={column} />
+          </li>
+        ))}
+      <li>
+        <AddColumnBtn />
+      </li>
     </ul>
-  )
+  );
 }
 
 export default ColumnsList;
