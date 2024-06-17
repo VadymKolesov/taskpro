@@ -9,9 +9,11 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import { selectError } from "../../redux/auth/selectors";
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const error = useSelector(selectError);
 
@@ -20,6 +22,7 @@ export default function RegisterForm() {
   const handlerSubmit = (values, actions) => {
     dispatch(register(values));
     actions.resetForm();
+    navigate("/verify");
   };
 
   const handleShowPassword = () => {

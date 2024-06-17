@@ -21,6 +21,7 @@ const GoogleRedirectPage = lazy(() =>
   import("../../pages/GoogleRedirectPage/GoogleRedirectPage")
 );
 const EditProfile = lazy(() => import("../EditProfile/EditProfile"));
+const VerifyPage = lazy(() => import("../../pages/VerifyPage/VerifyPage"));
 
 export default function App() {
   const theme = useSelector(selectTheme);
@@ -60,6 +61,10 @@ export default function App() {
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/google-redirect" element={<GoogleRedirectPage />} />
         <Route path="edit" element={<EditProfile />} /> {/* my test route */}
+        <Route
+          path="/verify"
+          element={<RestrictedRoute component={<VerifyPage />} />}
+        />
       </Routes>
     </Suspense>
   );

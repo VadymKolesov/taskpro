@@ -16,7 +16,7 @@ const slice = createSlice({
     user: {
       name: null,
       email: null,
-      theme: null,
+      theme: "dark",
       avatarUrl: null,
     },
     token: null,
@@ -39,8 +39,6 @@ const slice = createSlice({
         state.error = null;
       })
       .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
         state.isRefreshing = false;
         state.error = null;
       })
