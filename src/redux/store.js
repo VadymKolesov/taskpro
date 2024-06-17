@@ -22,7 +22,7 @@ import helpReducer from "./needHelp/slice";
 const authPersistConfig = {
   key: "auth",
   storage,
-  whitelist: ["token"],
+  whitelist: ["token", "resend"],
 };
 
 const authPersistReducer = persistReducer(authPersistConfig, authReducer);

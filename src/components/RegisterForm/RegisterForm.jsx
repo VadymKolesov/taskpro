@@ -22,7 +22,7 @@ export default function RegisterForm() {
   const handlerSubmit = (values, actions) => {
     dispatch(register(values));
     actions.resetForm();
-    navigate("/verify");
+    navigate(`/verify/${values.email}`);
   };
 
   const handleShowPassword = () => {

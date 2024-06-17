@@ -13,3 +13,7 @@ export const selectError = (state) => state.auth.error;
 export const selectRequestedPath = (state) => state.auth.requestedPath;
 
 export const selectBoards = (state) => state.board.boards;
+
+export const selectResend = (state) => state.auth.resend;
+
+export const selectIsSendLoading = (state) => state.auth.isSendLoading;

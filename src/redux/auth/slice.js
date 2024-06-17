@@ -8,6 +8,7 @@ import {
   changeTheme,
   updateUser,
   updateAvatar,
+  resendEmail,
 } from "./operations";
 
 const slice = createSlice({
@@ -23,13 +24,19 @@ const slice = createSlice({
     isAuth: false,
     isRefreshing: false,
     isLoading: false,
+    isSendLoading: false,
     error: null,
+    resend: false,
   },
   reducers: {
     setTokenByGoogleAuth(state, action) {
+      state.resend = false;
       state.token = action.payload;
       axios.defaults.headers.common["Authorization"] =
         "Bearer " + action.payload;
+    },
+    setResend(state, action) {
+      state.resend = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -38,7 +45,8 @@ const slice = createSlice({
         state.isRefreshing = true;
         state.error = null;
       })
-      .addCase(register.fulfilled, (state, action) => {
+      .addCase(register.fulfilled, (state) => {
+        state.resend = Date.now();
         state.isRefreshing = false;
         state.error = null;
       })
@@ -64,6 +72,7 @@ const slice = createSlice({
         state.isAuth = true;
         state.isRefreshing = false;
         state.error = null;
+        state.resend = false;
       })
       .addCase(login.rejected, (state, action) => {
         state.user = {
@@ -92,6 +101,7 @@ const slice = createSlice({
         state.isAuth = false;
         state.isRefreshing = false;
         state.error = null;
+        state.resend = false;
       })
       .addCase(logout.rejected, (state, action) => {
         state.isRefreshing = false;
@@ -106,6 +116,7 @@ const slice = createSlice({
         state.isAuth = true;
         state.isRefreshing = false;
         state.error = null;
+        state.resend = false;
       })
       .addCase(current.rejected, (state, action) => {
         state.user = {
@@ -155,11 +166,28 @@ const slice = createSlice({
       .addCase(updateAvatar.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+      .addCase(resendEmail.pending, (state) => {
+        state.isSendLoading = true;
+        state.error = null;
+      })
+      .addCase(resendEmail.fulfilled, (state) => {
+        state.isSendLoading = false;
+        state.error = null;
+      })
+      .addCase(resendEmail.rejected, (state, action) => {
+        state.isSendLoading = false;
+        state.error = action.payload;
       });
   },
 });
 
-export const { addBoard, removeBoard, updateBoard, setTokenByGoogleAuth } =
-  slice.actions;
+export const {
+  addBoard,
+  removeBoard,
+  updateBoard,
+  setTokenByGoogleAuth,
+  setResend,
+} = slice.actions;
 
 export default slice.reducer;

@@ -62,7 +62,7 @@ export default function App() {
         <Route path="/google-redirect" element={<GoogleRedirectPage />} />
         <Route path="edit" element={<EditProfile />} /> {/* my test route */}
         <Route
-          path="/verify"
+          path="/verify/:email"
           element={<RestrictedRoute component={<VerifyPage />} />}
         />
       </Routes>

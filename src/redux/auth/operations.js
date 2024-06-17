@@ -132,3 +132,19 @@ export const updateAvatar = createAsyncThunk(
     }
   }
 );
+
+export const resendEmail = createAsyncThunk(
+  "auth/resendEmail",
+  async (data, thunkApi) => {
+    try {
+      const response = await axios.post("/auth/verify", data);
+      return response.data;
+    } catch (error) {
+      const errorMessage =
+        error.response && error.response.data
+          ? error.response.data.message
+          : error.message;
+      return thunkApi.rejectWithValue(errorMessage);
+    }
+  }
+);
