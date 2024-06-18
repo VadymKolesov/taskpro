@@ -9,16 +9,12 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--dark-bg-easy);
+  background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
   pointer-events: none;
   z-index: 1;
-  transition: opacity 0.3s ease;
-}
-
-.isShown {
-  opacity: 0.5;
-  pointer-events: all;
+  backdrop-filter: blur(0px);
+  transition: opacity 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 .main {
@@ -32,4 +28,24 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+}
+
+@media screen and (max-width: 1440px) {
+  .isShown {
+    opacity: 1;
+    pointer-events: all;
+    backdrop-filter: blur(8px);
+  }
+
+  .backdrop.dark {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .backdrop.light {
+    background-color: rgba(233, 233, 233, 0.5);
+  }
+
+  .backdrop.violet {
+    background-color: rgba(233, 233, 233, 0.5);
+  }
 }

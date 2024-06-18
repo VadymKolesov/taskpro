@@ -35,6 +35,19 @@ a {
 body {
   padding: 0;
   margin: 0;
+  background-color: var(--dark-bg-medium);
+}
+
+body.dark {
+  background-color: var(--dark-bg-medium);
+}
+
+body.light {
+  background-color: var(--frozen);
+}
+
+body.violet {
+  background-color: var(--violet-bg-easy);
 }
 
 textarea {

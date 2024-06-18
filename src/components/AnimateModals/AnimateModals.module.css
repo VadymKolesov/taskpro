@@ -1,0 +1,24 @@
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(8px);
+}
+
+.backdrop.dark {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.backdrop.light {
+  background-color: rgba(233, 233, 233, 0.5);
+}
+
+.backdrop.violet {
+  background-color: rgba(233, 233, 233, 0.5);
+}

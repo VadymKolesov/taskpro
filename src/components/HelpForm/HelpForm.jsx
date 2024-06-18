@@ -5,17 +5,11 @@ import * as Yup from "yup";
 import Button from "../Button/Button";
 import sprite from "../../assets/sprite.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { selectTheme } from "../../redux/auth/selectors";
+import { selectTheme, selectUser } from "../../redux/auth/selectors";
 import { setIsNeedHelpModalOpen } from "../../redux/controls/slice";
-import {
-  selectIsLoading,
-  selectError,
-  selectIsSent,
-} from "../../redux/needHelp/selectors";
+import { selectIsLoading, selectError } from "../../redux/needHelp/selectors";
 import { help } from "../../redux/needHelp/operations";
-import { setIsSent } from "../../redux/needHelp/slice";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect } from "react";
 
 const HelpFormSchema = Yup.object({
   email: Yup.string()
@@ -29,8 +23,8 @@ const HelpFormSchema = Yup.object({
 
 export default function HelpForm() {
   const isLoading = useSelector(selectIsLoading);
-  const isSent = useSelector(selectIsSent);
   const error = useSelector(selectError);
+  const { email } = useSelector(selectUser);
 
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
@@ -49,7 +43,7 @@ export default function HelpForm() {
       {!isLoading ? (
         <Formik
           initialValues={{
-            email: "",
+            email: email,
             comment: "",
           }}
           validationSchema={HelpFormSchema}

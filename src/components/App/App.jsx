@@ -29,7 +29,8 @@ export default function App() {
 
   useEffect(() => {
     dispatch(current());
-  }, [dispatch]);
+    document.body.classList.add(theme);
+  }, [dispatch, theme]);
 
   const isRefreshing = useSelector(selectIsRefreshing);
 

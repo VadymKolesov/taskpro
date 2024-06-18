@@ -11,12 +11,14 @@ import clsx from "clsx";
 import { useEffect } from "react";
 import { boards } from "../../redux/board/operations";
 import HomePageScreen from "../../components/HomePageScreen/HomePageScreen";
+import { selectTheme } from "../../redux/auth/selectors";
 
 export default function HomePage() {
   const dispatch = useDispatch();
   const location = useLocation();
   const isHomePage = location.pathname === "/home";
   const sideBarIsOpen = useSelector(selectSideBarIsOpen);
+  const theme = useSelector(selectTheme);
 
   const handleCloseSideBar = () => {
     sideBarIsOpen && dispatch(setSideBarOpen(false));
@@ -31,7 +33,9 @@ export default function HomePage() {
       <ClickOutsideComponent onClickOutside={handleCloseSideBar}>
         <SideBar />
       </ClickOutsideComponent>
-      <div className={clsx(css.backdrop, sideBarIsOpen && css.isShown)}></div>
+      <div
+        className={clsx(css.backdrop, sideBarIsOpen && css.isShown, css[theme])}
+      ></div>
 
       <div className={css.main}>
         <Header />

@@ -1,4 +1,3 @@
-import Backdrop from "../../components/Backdrop/Backdrop";
 import EditProfile from "../../components/EditProfile/EditProfile";
 import AddBoardPopUp from "../../components/AddBoardPopUp/AddBoardPopUp";
 import ClickOutsideComponent from "../../helpers/ClickOutsideComponent";
@@ -10,6 +9,7 @@ import HelpForm from "../HelpForm/HelpForm";
 import SentMessage from "../SentMessage/SentMessage";
 import { motion, AnimatePresence } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
+import css from "./AnimateModals.module.css";
 
 import {
   setBoardModalOpen,
@@ -45,9 +45,8 @@ import { resetCurrentCard } from "../../redux/card/slice";
 import { selectIsSent } from "../../redux/needHelp/selectors";
 import ConfirmDelete from "../ConfirmDelete/ConfirmDelete";
 import EscHandler from "../EscHandler/EscHandler";
-import { selectBoard } from "../../redux/board/selectors";
-import { selectCurrentColumn } from "../../redux/column/selectors";
-import { selectCurrentCard } from "../../redux/card/selectors";
+import clsx from "clsx";
+import { selectTheme } from "../../redux/auth/selectors";
 
 function AnimateModals() {
   const isProfileModalOpen = useSelector(selectIsProfileModalsOpen);
@@ -63,20 +62,9 @@ function AnimateModals() {
   const isConfirmColumnDelete = useSelector(selectIsConfirmColumnDelete);
   const isConfirmCardDelete = useSelector(selectIsConfirmCardDelete);
   const deleteModalText = useSelector(selectDeleteModalText);
-
-  const board = useSelector(selectBoard);
-  const column = useSelector(selectCurrentColumn);
-  const card = useSelector(selectCurrentCard);
+  const theme = useSelector(selectTheme);
 
   const dispatch = useDispatch();
-  const deleteText = `Delete "${
-    isConfirmBoardDelete &&
-    `board ${board.name}` &&
-    isConfirmColumnDelete &&
-    `column ${column.name}` &&
-    isConfirmCardDelete &&
-    `column ${card.name}`
-  }"?`;
 
   const handleProfileModalClose = () => {
     isProfileModalOpen && dispatch(setProfileModalOpen(false));
@@ -124,162 +112,154 @@ function AnimateModals() {
     <AnimatePresence>
       {isProfileModalOpen && (
         <motion.div
+          className={clsx(css.backdrop, css[theme])}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.17 }}
         >
-          <Backdrop>
-            <ClickOutsideComponent onClickOutside={handleProfileModalClose}>
-              <motion.div
-                animate={{ scale: [1.02, 1.05, 1, 1] }}
-                exit={{ scale: [1, 1.05, 0.9] }}
-                transition={{ duration: 0.15 }}
-              >
-                <EditProfile />
-              </motion.div>
-            </ClickOutsideComponent>
-          </Backdrop>
+          <ClickOutsideComponent onClickOutside={handleProfileModalClose}>
+            <motion.div
+              animate={{ scale: [1.02, 1.05, 1, 1] }}
+              exit={{ scale: [1, 1.05, 0.9] }}
+              transition={{ duration: 0.15 }}
+            >
+              <EditProfile />
+            </motion.div>
+          </ClickOutsideComponent>
         </motion.div>
       )}
       {isBoardModalOpen && (
         <motion.div
+          className={clsx(css.backdrop, css[theme])}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.17 }}
         >
-          <Backdrop>
-            <ClickOutsideComponent onClickOutside={handleBoardModalClose}>
-              <motion.div
-                animate={{ scale: [1.02, 1.05, 1, 1] }}
-                exit={{ scale: [1, 1.05, 0.9] }}
-                transition={{ duration: 0.15 }}
-              >
-                <AddBoardPopUp />
-              </motion.div>
-            </ClickOutsideComponent>
-          </Backdrop>
+          <ClickOutsideComponent onClickOutside={handleBoardModalClose}>
+            <motion.div
+              animate={{ scale: [1.02, 1.05, 1, 1] }}
+              exit={{ scale: [1, 1.05, 0.9] }}
+              transition={{ duration: 0.15 }}
+            >
+              <AddBoardPopUp />
+            </motion.div>
+          </ClickOutsideComponent>
         </motion.div>
       )}
       {isFilterModalOpen && (
         <motion.div
+          className={clsx(css.backdrop, css[theme])}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.17 }}
         >
-          <Backdrop>
-            <ClickOutsideComponent onClickOutside={handleFilterModalClose}>
-              <motion.div
-                animate={{ scale: [1.02, 1.05, 1, 1] }}
-                exit={{ scale: [1, 1.05, 0.9] }}
-                transition={{ duration: 0.15 }}
-              >
-                <FilterModal />
-              </motion.div>
-            </ClickOutsideComponent>
-          </Backdrop>
+          <ClickOutsideComponent onClickOutside={handleFilterModalClose}>
+            <motion.div
+              animate={{ scale: [1.02, 1.05, 1, 1] }}
+              exit={{ scale: [1, 1.05, 0.9] }}
+              transition={{ duration: 0.15 }}
+            >
+              <FilterModal />
+            </motion.div>
+          </ClickOutsideComponent>
         </motion.div>
       )}
       {isAddColumnOpen && (
         <motion.div
+          className={clsx(css.backdrop, css[theme])}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.17 }}
         >
-          <Backdrop>
-            <ClickOutsideComponent onClickOutside={handleAddColumnClose}>
-              <motion.div
-                animate={{ scale: [1.02, 1.05, 1, 1] }}
-                exit={{ scale: [1, 1.05, 0.9] }}
-                transition={{ duration: 0.15 }}
-              >
-                <AddColumnPopUp />
-              </motion.div>
-            </ClickOutsideComponent>
-          </Backdrop>
+          <ClickOutsideComponent onClickOutside={handleAddColumnClose}>
+            <motion.div
+              animate={{ scale: [1.02, 1.05, 1, 1] }}
+              exit={{ scale: [1, 1.05, 0.9] }}
+              transition={{ duration: 0.15 }}
+            >
+              <AddColumnPopUp />
+            </motion.div>
+          </ClickOutsideComponent>
         </motion.div>
       )}
       {isAddCardOpen && (
         <motion.div
+          className={clsx(css.backdrop, css[theme])}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.17 }}
         >
-          <Backdrop>
-            <ClickOutsideComponent onClickOutside={handleAddCardClose}>
-              <motion.div
-                animate={{ scale: [1.02, 1.05, 1, 1] }}
-                exit={{ scale: [1, 1.05, 0.9] }}
-                transition={{ duration: 0.15 }}
-              >
-                <CardPopUp />
-              </motion.div>
-            </ClickOutsideComponent>
-          </Backdrop>
+          <ClickOutsideComponent onClickOutside={handleAddCardClose}>
+            <motion.div
+              animate={{ scale: [1.02, 1.05, 1, 1] }}
+              exit={{ scale: [1, 1.05, 0.9] }}
+              transition={{ duration: 0.15 }}
+            >
+              <CardPopUp />
+            </motion.div>
+          </ClickOutsideComponent>
         </motion.div>
       )}
       {isProgressOpen && (
         <motion.div
+          className={clsx(css.backdrop, css[theme])}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.17 }}
         >
-          <Backdrop>
-            <ClickOutsideComponent onClickOutside={handleProgressClose}>
-              <motion.div
-                animate={{ scale: [1.02, 1.05, 1, 1] }}
-                exit={{ scale: [1, 1.05, 0.9] }}
-                transition={{ duration: 0.15 }}
-              >
-                <ProgressPopUp />
-              </motion.div>
-            </ClickOutsideComponent>
-          </Backdrop>
+          <ClickOutsideComponent onClickOutside={handleProgressClose}>
+            <motion.div
+              animate={{ scale: [1.02, 1.05, 1, 1] }}
+              exit={{ scale: [1, 1.05, 0.9] }}
+              transition={{ duration: 0.15 }}
+            >
+              <ProgressPopUp />
+            </motion.div>
+          </ClickOutsideComponent>
         </motion.div>
       )}
       {isNeedHelpModalOpen && (
         <motion.div
+          className={clsx(css.backdrop, css[theme])}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.17 }}
         >
-          <Backdrop>
-            <ClickOutsideComponent onClickOutside={handleNeedHelpModalClose}>
-              <motion.div
-                animate={{ scale: [1.02, 1.05, 1, 1] }}
-                exit={{ scale: [1, 1.05, 0.9] }}
-                transition={{ duration: 0.15 }}
-              >
-                {isSent ? <SentMessage /> : <HelpForm />}
-              </motion.div>
-            </ClickOutsideComponent>
-          </Backdrop>
+          <ClickOutsideComponent onClickOutside={handleNeedHelpModalClose}>
+            <motion.div
+              animate={{ scale: [1.02, 1.05, 1, 1] }}
+              exit={{ scale: [1, 1.05, 0.9] }}
+              transition={{ duration: 0.15 }}
+            >
+              {isSent ? <SentMessage /> : <HelpForm />}
+            </motion.div>
+          </ClickOutsideComponent>
         </motion.div>
       )}
       {isConfirmDeleteOpen && (
         <motion.div
+          className={clsx(css.backdrop, css[theme])}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.17 }}
         >
-          <Backdrop>
-            <ClickOutsideComponent onClickOutside={handleConfirmBoardClose}>
-              <motion.div
-                animate={{ scale: [1.02, 1.05, 1, 1] }}
-                exit={{ scale: [1, 1.05, 0.9] }}
-                transition={{ duration: 0.15 }}
-              >
-                <ConfirmDelete text={deleteModalText} />
-              </motion.div>
-            </ClickOutsideComponent>
-          </Backdrop>
+          <ClickOutsideComponent onClickOutside={handleConfirmBoardClose}>
+            <motion.div
+              animate={{ scale: [1.02, 1.05, 1, 1] }}
+              exit={{ scale: [1, 1.05, 0.9] }}
+              transition={{ duration: 0.15 }}
+            >
+              <ConfirmDelete text={deleteModalText} />
+            </motion.div>
+          </ClickOutsideComponent>
         </motion.div>
       )}
       {isProfileModalOpen && (
