@@ -4,6 +4,7 @@ import sprite from "../../../assets/sprite.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../../redux/auth/selectors";
 import {
+  setDeleteModalText,
   setIsAddColumnOpen,
   setIsColumnEdit,
   setIsConfirmColumnDelete,
@@ -33,6 +34,7 @@ function ColumnHeader({ column }) {
         name: column.name,
       })
     );
+    dispatch(setDeleteModalText(`Delete column "${column.name}"?`));
     dispatch(setIsConfirmDeleteOpen(true));
     dispatch(setIsConfirmColumnDelete(true));
   };

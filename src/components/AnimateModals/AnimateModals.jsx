@@ -23,6 +23,7 @@ import {
   setIsConfirmColumnDelete,
   setIsConfirmCardDelete,
   setIsConfirmDeleteOpen,
+  setDeleteModalText,
 } from "../../redux/controls/slice";
 
 import {
@@ -37,12 +38,16 @@ import {
   selectIsConfirmColumnDelete,
   selectIsConfirmCardDelete,
   selectIsConfirmDeleteOpen,
+  selectDeleteModalText,
 } from "../../redux/controls/selectors";
 import { resetCurrentColumn } from "../../redux/column/slice";
 import { resetCurrentCard } from "../../redux/card/slice";
 import { selectIsSent } from "../../redux/needHelp/selectors";
 import ConfirmDelete from "../ConfirmDelete/ConfirmDelete";
 import EscHandler from "../EscHandler/EscHandler";
+import { selectBoard } from "../../redux/board/selectors";
+import { selectCurrentColumn } from "../../redux/column/selectors";
+import { selectCurrentCard } from "../../redux/card/selectors";
 
 function AnimateModals() {
   const isProfileModalOpen = useSelector(selectIsProfileModalsOpen);
@@ -57,7 +62,21 @@ function AnimateModals() {
   const isConfirmBoardDelete = useSelector(selectIsConfirmBoardDelete);
   const isConfirmColumnDelete = useSelector(selectIsConfirmColumnDelete);
   const isConfirmCardDelete = useSelector(selectIsConfirmCardDelete);
+  const deleteModalText = useSelector(selectDeleteModalText);
+
+  const board = useSelector(selectBoard);
+  const column = useSelector(selectCurrentColumn);
+  const card = useSelector(selectCurrentCard);
+
   const dispatch = useDispatch();
+  const deleteText = `Delete "${
+    isConfirmBoardDelete &&
+    `board ${board.name}` &&
+    isConfirmColumnDelete &&
+    `column ${column.name}` &&
+    isConfirmCardDelete &&
+    `column ${card.name}`
+  }"?`;
 
   const handleProfileModalClose = () => {
     isProfileModalOpen && dispatch(setProfileModalOpen(false));
@@ -83,6 +102,7 @@ function AnimateModals() {
     isConfirmBoardDelete && dispatch(setIsConfirmBoardDelete(false));
     isConfirmColumnDelete && dispatch(setIsConfirmColumnDelete(false));
     isConfirmCardDelete && dispatch(setIsConfirmCardDelete(false));
+    dispatch(setDeleteModalText(null));
     dispatch(setIsConfirmDeleteOpen(false));
   };
 
@@ -256,7 +276,7 @@ function AnimateModals() {
                 exit={{ scale: [1, 1.05, 0.9] }}
                 transition={{ duration: 0.15 }}
               >
-                <ConfirmDelete />
+                <ConfirmDelete text={deleteModalText} />
               </motion.div>
             </ClickOutsideComponent>
           </Backdrop>

@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { useDispatch, useSelector } from "react-redux";
 import { removeCard } from "../../../redux/board/operations";
 import {
+  setDeleteModalText,
   setIsAddCardOpen,
   setIsCardEdit,
   setIsConfirmCardDelete,
@@ -58,6 +59,7 @@ function Card({ card }) {
     dispatch(setCurrentCard(card));
     dispatch(setIsConfirmDeleteOpen(true));
     dispatch(setIsConfirmCardDelete(true));
+    dispatch(setDeleteModalText(`Delete card "${card.title}"?`));
   }
 
   return (

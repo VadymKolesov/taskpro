@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {
   setBoardModalOpen,
+  setDeleteModalText,
   setIsBoardEdit,
   setIsConfirmBoardDelete,
   setIsConfirmDeleteOpen,
@@ -25,6 +26,7 @@ export default function BoardItem({ board }) {
 
   const handleDelete = () => {
     setTimeout(() => {
+      dispatch(setDeleteModalText(`Delete board "${board.name}"?`));
       dispatch(setIsConfirmBoardDelete(true));
       dispatch(setIsConfirmDeleteOpen(true));
     }, 200);

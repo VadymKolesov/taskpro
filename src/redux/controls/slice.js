@@ -20,6 +20,7 @@ const slice = createSlice({
     isConfirmBoardDelete: false,
     isConfirmColumnDelete: false,
     isConfirmCardDelete: false,
+    deleteModalText: null,
   },
   reducers: {
     setSideBarOpen(state, action) {
@@ -78,6 +79,9 @@ const slice = createSlice({
     setIsConfirmCardDelete(state, action) {
       state.isConfirmCardDelete = action.payload;
     },
+    setDeleteModalText(state, action) {
+      state.deleteModalText = action.payload;
+    },
   },
 });
 
@@ -98,6 +102,7 @@ export const {
   setIsConfirmColumnDelete,
   setIsConfirmCardDelete,
   setIsConfirmDeleteOpen,
+  setDeleteModalText,
 } = slice.actions;
 
 export default slice.reducer;

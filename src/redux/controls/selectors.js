@@ -27,10 +27,16 @@ export const selectIsProgressOpen = (state) => state.controls.isProgressOpen;
 export const selectIsNeedHelpModalOpen = (state) =>
   state.controls.isNeedHelpModalOpen;
 
-export const selectIsConfirmDeleteOpen = (state) => state.controls.isConfirmDeleteOpen;
+export const selectIsConfirmDeleteOpen = (state) =>
+  state.controls.isConfirmDeleteOpen;
 
-export const selectIsConfirmBoardDelete = (state) => state.controls.isConfirmBoardDelete;
+export const selectIsConfirmBoardDelete = (state) =>
+  state.controls.isConfirmBoardDelete;
 
-export const selectIsConfirmColumnDelete = (state) => state.controls.isConfirmColumnDelete;
+export const selectIsConfirmColumnDelete = (state) =>
+  state.controls.isConfirmColumnDelete;
 
-export const selectIsConfirmCardDelete = (state) => state.controls.isConfirmCardDelete;
+export const selectIsConfirmCardDelete = (state) =>
+  state.controls.isConfirmCardDelete;
+
+export const selectDeleteModalText = (state) => state.controls.deleteModalText;

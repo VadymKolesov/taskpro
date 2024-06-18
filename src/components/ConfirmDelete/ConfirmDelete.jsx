@@ -9,6 +9,7 @@ import {
 } from "../../redux/controls/selectors";
 
 import {
+  setDeleteModalText,
   setIsConfirmBoardDelete,
   setIsConfirmCardDelete,
   setIsConfirmColumnDelete,
@@ -22,7 +23,7 @@ import { useNavigate } from "react-router-dom";
 import css from "./ConfirmDelete.module.css";
 import clsx from "clsx";
 
-export default function ConfirmDelete() {
+export default function ConfirmDelete({ text }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const theme = useSelector(selectTheme);
@@ -67,17 +68,13 @@ export default function ConfirmDelete() {
     isConfirmBoardDelete && dispatch(setIsConfirmBoardDelete(false));
     isConfirmColumnDelete && dispatch(setIsConfirmColumnDelete(false));
     isConfirmCardDelete && dispatch(setIsConfirmCardDelete(false));
+    dispatch(setDeleteModalText(null));
     dispatch(setIsConfirmDeleteOpen(false));
   }
 
   return (
     <div className={clsx(css.wrapper, css[theme])}>
-      <p className={clsx(css.title, css[theme])}>
-        Delete
-        {isConfirmBoardDelete && ` board "${board.name}"?`}
-        {isConfirmColumnDelete && ` column "${column.name}"?`}
-        {isConfirmCardDelete && ` card "${card.title}"?`}
-      </p>
+      <p className={clsx(css.title, css[theme])}>{text}</p>
       <ul className={css.list}>
         <li className={css.item}>
           <button className={clsx(css.btn, css[theme])} onClick={handleCancel}>
