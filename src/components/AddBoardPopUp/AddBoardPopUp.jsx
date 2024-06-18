@@ -16,6 +16,7 @@ import { create, update } from "../../redux/board/operations";
 import { selectBoard } from "../../redux/board/selectors";
 import { useNavigate } from "react-router-dom";
 import { background } from "../Board/BoardBg/BoardBg";
+import { useEffect, useState } from "react";
 
 export default function AddBoardPopUp() {
   const dispatch = useDispatch();
@@ -23,6 +24,19 @@ export default function AddBoardPopUp() {
   const isEdit = useSelector(selectIsBoardEdit);
   const board = useSelector(selectBoard);
   const navigate = useNavigate();
+
+  const [pixelRatio, setPixelRatio] = useState("1x");
+
+  useEffect(() => {
+    const ratio = window.devicePixelRatio;
+    if (ratio >= 4) {
+      setPixelRatio("4x");
+    } else if (ratio >= 2) {
+      setPixelRatio("2x");
+    } else {
+      setPixelRatio("1x");
+    }
+  }, []);
 
   const schema = Yup.object({
     name: Yup.string()
@@ -77,21 +91,21 @@ export default function AddBoardPopUp() {
           ? noBgLight
           : noBgViolet,
     },
-    { id: "1", url: background["1"].mobile },
-    { id: "2", url: background["2"].mobile },
-    { id: "3", url: background["3"].mobile },
-    { id: "4", url: background["4"].mobile },
-    { id: "5", url: background["5"].mobile },
-    { id: "6", url: background["6"].mobile },
-    { id: "7", url: background["7"].mobile },
-    { id: "8", url: background["8"].mobile },
-    { id: "9", url: background["9"].mobile },
-    { id: "10", url: background["10"].mobile },
-    { id: "11", url: background["11"].mobile },
-    { id: "12", url: background["12"].mobile },
-    { id: "13", url: background["13"].mobile },
-    { id: "14", url: background["14"].mobile },
-    { id: "15", url: background["15"].mobile },
+    { id: "1", url: background["1"].mobile[pixelRatio] },
+    { id: "2", url: background["2"].mobile[pixelRatio] },
+    { id: "3", url: background["3"].mobile[pixelRatio] },
+    { id: "4", url: background["4"].mobile[pixelRatio] },
+    { id: "5", url: background["5"].mobile[pixelRatio] },
+    { id: "6", url: background["6"].mobile[pixelRatio] },
+    { id: "7", url: background["7"].mobile[pixelRatio] },
+    { id: "8", url: background["8"].mobile[pixelRatio] },
+    { id: "9", url: background["9"].mobile[pixelRatio] },
+    { id: "10", url: background["10"].mobile[pixelRatio] },
+    { id: "11", url: background["11"].mobile[pixelRatio] },
+    { id: "12", url: background["12"].mobile[pixelRatio] },
+    { id: "13", url: background["13"].mobile[pixelRatio] },
+    { id: "14", url: background["14"].mobile[pixelRatio] },
+    { id: "15", url: background["15"].mobile[pixelRatio] },
   ];
 
   const initialValues = {
@@ -157,40 +171,36 @@ export default function AddBoardPopUp() {
               </li>
               <li>
                 <p className={clsx(css.groupTitle, css[theme])}>Background</p>
-                <div className={css.backgroundsContainer}>
-                  {backgrounds.map((background) => (
-                    <label key={background.id}>
-                      <img
-                        src={background.url}
-                        alt="Background thumbnail"
+                <div className={css.bgsContainer}>
+                  {backgrounds.map((bg) => (
+                    <label key={bg.id}>
+                      <div
                         className={clsx(
-                          css.background,
-                          css[theme],
-                          values.backgroundName === background.id &&
-                            css.selectedBg
+                          css.bg,
+                          values.backgroundName === bg.id && css.selectedBg
                         )}
+                        style={{ backgroundImage: `url(${bg.url})` }}
                       />
                       <Field
                         name="backgroundName"
                         type="radio"
-                        value={background.id}
+                        value={bg.id}
                         className={css.radio}
-                        checked={values.backgroundName === background.id}
-                        onChange={() =>
-                          setFieldValue("backgroundName", background.id)
-                        }
+                        checked={values.backgroundName === bg.id}
+                        onChange={() => setFieldValue("backgroundName", bg.id)}
                       />
                     </label>
                   ))}
                 </div>
               </li>
             </ul>
-            <Button
-              text={isEdit ? "Edit" : "Create"}
-              isIcon={true}
-              verticalPadding="10px"
-              type="submit"
-            />
+            <div className={css.btnContainer}>
+              <Button
+                type="submit"
+                className={clsx(css.btn, css[theme])}
+                text={isEdit ? "Save Changes" : "Create"}
+              />
+            </div>
           </Form>
         )}
       </Formik>

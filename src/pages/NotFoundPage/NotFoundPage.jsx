@@ -1,6 +1,5 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import cactus_icon from "../../assets/cactus_nf.png";
-import Button from "../../components/Button/Button";
 import { useSelector } from "react-redux";
 import { selectTheme } from "../../redux/auth/selectors";
 import clsx from "clsx";
