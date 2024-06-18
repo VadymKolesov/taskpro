@@ -17,6 +17,8 @@ import { selectBoard } from "../../redux/board/selectors";
 import { useNavigate } from "react-router-dom";
 import { background } from "../Board/BoardBg/BoardBg";
 import { useEffect, useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export default function AddBoardPopUp() {
   const dispatch = useDispatch();
@@ -174,12 +176,15 @@ export default function AddBoardPopUp() {
                 <div className={css.bgsContainer}>
                   {backgrounds.map((bg) => (
                     <label key={bg.id}>
-                      <div
+                      <LazyLoadImage
+                        effect="blur"
+                        src={bg.url}
+                        alt={`background-${bg.id}`}
                         className={clsx(
                           css.bg,
                           values.backgroundName === bg.id && css.selectedBg
                         )}
-                        style={{ backgroundImage: `url(${bg.url})` }}
+                        onClick={() => setFieldValue("backgroundName", bg.id)}
                       />
                       <Field
                         name="backgroundName"
