@@ -17,7 +17,9 @@ function Board() {
 
   const updateBgImg = useCallback(() => {
     const width = window.innerWidth;
+    const pixelRatio = window.devicePixelRatio;
     let size = "mobile";
+    let resolution = "1x";
 
     if (width > 767 && width < 1440) {
       size = "tablet";
@@ -25,9 +27,15 @@ function Board() {
       size = "desktop";
     }
 
+    if (pixelRatio >= 2 && pixelRatio < 3) {
+      resolution = "2x";
+    } else if (pixelRatio >= 3) {
+      resolution = "4x";
+    }
+
     const selectedBackground = background[board.backgroundName];
     if (selectedBackground) {
-      setBgImg(selectedBackground[size]);
+      setBgImg(selectedBackground[size][resolution]);
     }
   }, [board.backgroundName]);
 
