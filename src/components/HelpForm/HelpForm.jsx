@@ -49,7 +49,7 @@ export default function HelpForm() {
           validationSchema={HelpFormSchema}
           onSubmit={handleSubmit}
         >
-          <Form className={clsx(css.form, css[theme])}>
+          <Form className={clsx(css.form, css[theme])} autoComplete="true">
             <svg
               className={clsx(css.closeIcon, css[theme])}
               onClick={handleClose}
@@ -63,7 +63,7 @@ export default function HelpForm() {
             <ul className={css.fieldsList}>
               <li>
                 <Field
-                  type="text"
+                  type="email"
                   name="email"
                   className={clsx(css.input, css[theme])}
                   placeholder="Email address"

@@ -31,6 +31,8 @@
 
 .textSpan {
   transition: color 0.3s easy;
+  cursor: pointer;
+  transition: color 100ms ease-in-out;
 }
 
 .textSpan.dark,
@@ -38,8 +40,17 @@
   color: var(--green);
 }
 
+.textSpan:hover.dark,
+.textSpan:hover.light {
+  color: var(--green-hover);
+}
+
 .textSpan.violet {
   color: var(--violet-bg-hard);
+}
+
+.textSpan:hover.violet {
+  color: var(--violet-plus-hover);
 }
 
 @media screen and (max-width: 767px) {

@@ -48,7 +48,7 @@ export default function RegisterForm() {
       validationSchema={schema}
       onSubmit={handlerSubmit}
     >
-      <Form className={css.form} autoComplete="off">
+      <Form className={css.form} autoComplete="true">
         <AuthNav />
         {error && <p className={clsx(css.error, css.message)}>{error}</p>}
         <ul className={css.fieldsList}>
@@ -64,7 +64,7 @@ export default function RegisterForm() {
           <li>
             <Field
               className={css.input}
-              type="text"
+              type="email"
               name="email"
               placeholder="Enter your email"
             />
