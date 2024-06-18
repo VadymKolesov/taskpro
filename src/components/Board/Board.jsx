@@ -19,7 +19,7 @@ function Board() {
     const width = window.innerWidth;
     const pixelRatio = window.devicePixelRatio;
     let size = "mobile";
-    let resolution = "";
+    let resolution = "1x";
 
     if (width > 767 && width < 1440) {
       size = "tablet";
@@ -27,9 +27,9 @@ function Board() {
       size = "desktop";
     }
 
-    if (pixelRatio > 1 && pixelRatio <= 2) {
+    if (pixelRatio >= 2 && pixelRatio < 3) {
       resolution = "2x";
-    } else if (pixelRatio > 2) {
+    } else if (pixelRatio >= 3) {
       resolution = "4x";
     }
 
