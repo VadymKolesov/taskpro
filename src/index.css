@@ -35,11 +35,11 @@ a {
 body {
   padding: 0;
   margin: 0;
-  background-color: var(--dark-bg-medium);
+  background-color: var(--dark-bg-easy);
 }
 
 body.dark {
-  background-color: var(--dark-bg-medium);
+  background-color: var(--dark-bg-easy);
 }
 
 body.light {
