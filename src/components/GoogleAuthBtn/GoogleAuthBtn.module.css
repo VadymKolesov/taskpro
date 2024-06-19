@@ -19,3 +19,9 @@
 .googleBtn:hover {
   background-color: var(--frozen);
 }
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+  .googleBtn {
+    margin-top: 40px;
+  }
+}
