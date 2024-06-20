@@ -68,7 +68,7 @@
   letter-spacing: 0.02em;
   line-height: 1.5;
   color: var(--white);
-  transition: background-color 100ms ease-in-out;
+  transition: background-color 100ms ease-in-out, scale 100ms ease-in-out;
 }
 
 .welcome_login {
@@ -81,8 +81,10 @@
 }
 
 .welcome_register:hover,
-.welcome_register:focus {
-  background-color: #2c2c2c;
+.welcome_register:focus,
+.welcome_login:hover,
+.welcome_login:focus {
+  scale: 1.02;
 }
 
 @media screen and (min-width: 375px) and (max-width: 767px) {

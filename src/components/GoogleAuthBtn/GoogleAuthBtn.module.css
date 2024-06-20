@@ -55,10 +55,6 @@
   width: 20px;
 }
 
-.googleBtn:hover {
-  background-color: var(--frozen);
-}
-
 @media screen and (max-width: 768px) {
   .separator::after {
     min-width: 0;

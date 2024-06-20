@@ -123,11 +123,7 @@ export default function AddBoardPopUp() {
               className={clsx(css.input, css[theme])}
               placeholder="Title"
             />
-            <ErrorMessage
-              name="name"
-              component="p"
-              className={clsx(css.error, css[theme])}
-            />
+            <ErrorMessage name="name" component="p" className={css.error} />
             <ul className={css.imgContainer}>
               <li>
                 <p className={clsx(css.groupTitle, css[theme])}>Icons</p>

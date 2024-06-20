@@ -195,18 +195,7 @@
 .error {
   font-size: 12px;
   font-weight: 400;
-}
-
-.error.dark {
-  color: var(--green);
-}
-
-.error.light {
-  color: var(--green-hover);
-}
-
-.error.violet {
-  color: var(--violet-bg-hard);
+  color: var(--error-red);
 }
 
 /* LABEL */

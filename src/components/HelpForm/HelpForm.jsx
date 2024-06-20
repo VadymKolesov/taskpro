@@ -58,7 +58,7 @@ export default function HelpForm() {
             </svg>
             <h2 className={clsx(css.title, css[theme])}>Need help</h2>
 
-            {error && <p className={clsx(css.error, css[theme])}>{error}</p>}
+            {error && <p className={css.error}>{error}</p>}
 
             <ul className={css.fieldsList}>
               <li>
@@ -71,7 +71,7 @@ export default function HelpForm() {
                 <ErrorMessage
                   name="email"
                   component="p"
-                  className={clsx(css.error, css[theme])}
+                  className={css.error}
                 />
               </li>
               <li>
@@ -84,7 +84,7 @@ export default function HelpForm() {
                 <ErrorMessage
                   name="comment"
                   component="p"
-                  className={clsx(css.error, css[theme])}
+                  className={css.error}
                 />
               </li>
             </ul>

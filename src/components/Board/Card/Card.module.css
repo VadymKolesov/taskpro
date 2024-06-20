@@ -207,9 +207,17 @@
   cursor: default;
   width: 16px;
   height: 16px;
-  stroke: var(--green);
-  filter: drop-shadow(0px 0px 5px var(--green));
+  stroke: var(--green-hover);
+  filter: drop-shadow(0px 0px 5px var(--green-hover));
   transition: stroke 0.3s ease;
+}
+
+.iconOverdue {
+  cursor: default;
+  width: 16px;
+  height: 16px;
+  stroke: var(--error-red);
+  filter: drop-shadow(0px 0px 5px var(--error-red));
 }
 
 @media screen and (min-width: 375px) {
@@ -252,10 +260,14 @@
   stroke: var(--white);
 }
 
-.card.dark .iconBell,
-.card.light .iconBell {
+.card.dark .iconBell {
   stroke: var(--green);
   filter: drop-shadow(0px 0px 5px var(--green));
+}
+
+.card.light .iconBell {
+  stroke: var(--green-hover);
+  filter: drop-shadow(0px 0px 5px var(--green-hover));
 }
 
 /* light/violet */

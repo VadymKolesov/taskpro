@@ -160,18 +160,12 @@ export default function EditProfile() {
             </label>
           </div>
           {error && (
-            <p
-              className={clsx(css.error, css[theme])}
-              style={{ paddingBottom: "14px" }}
-            >
+            <p className={css.error} style={{ paddingBottom: "14px" }}>
               {error}
             </p>
           )}
           {isSamevalues && (
-            <p
-              className={clsx(css.error, css[theme])}
-              style={{ paddingBottom: "14px" }}
-            >
+            <p className={css.error} style={{ paddingBottom: "14px" }}>
               To change the information, enter a new value
             </p>
           )}
@@ -194,7 +188,7 @@ export default function EditProfile() {
                     <ErrorMessage
                       name="name"
                       component="p"
-                      className={clsx(css.error, css[theme])}
+                      className={css.error}
                     />
                   </li>
                   <li className={css.inputGroup}>
@@ -207,7 +201,7 @@ export default function EditProfile() {
                     <ErrorMessage
                       name="email"
                       component="p"
-                      className={clsx(css.error, css[theme])}
+                      className={css.error}
                     />
                   </li>
                   <li className={css.inputGroup}>
@@ -232,7 +226,7 @@ export default function EditProfile() {
                     <ErrorMessage
                       name="password"
                       component="p"
-                      className={clsx(css.error, css[theme])}
+                      className={css.error}
                     />
                   </li>
                 </ul>

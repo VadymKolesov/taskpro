@@ -219,20 +219,10 @@
   margin-top: 2px;
   font-weight: 400;
   transition: color 100ms ease-in-out;
+  color: var(--error-red);
   margin-top: 14px;
 }
 
-.error.dark {
-  color: var(--green);
-}
-
-.error.light {
-  color: var(--green-dark-hover);
-}
-
-.error.violet {
-  color: var(--violet-bg-hard);
-}
 .inputField::placeholder {
   font-size: 14px;
   font-weight: 400;

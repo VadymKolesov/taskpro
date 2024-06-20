@@ -63,7 +63,7 @@
 }
 
 .error {
-  color: var(--green);
+  color: var(--error-red);
   font-size: 12px;
   margin-top: 14px;
   font-weight: 400;

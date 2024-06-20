@@ -74,11 +74,7 @@ export default function AddColumnPopUp() {
             className={clsx(css.input, css[theme])}
             placeholder="Title"
           />
-          <ErrorMessage
-            name="name"
-            component="p"
-            className={clsx(css.error, css[theme])}
-          />
+          <ErrorMessage name="name" component="p" className={css.error} />
           <Button
             text={isEdit ? "Edit" : "Add"}
             isIcon={true}

@@ -27,8 +27,13 @@ function deadlineDateFormat(deadline) {
 }
 
 function deadlineAlarm(deadline) {
-  const difference = +deadline - Date.now();
-  return difference < 86400000;
+  const difference = deadline - Date.now();
+  if (difference < 86400000 && difference > -86400000) {
+    return "bell";
+  } else if (difference < -86400000) {
+    return "overdue";
+  }
+  return;
 }
 
 function Card({ card }) {
@@ -91,13 +96,19 @@ function Card({ card }) {
           </li>
         </ul>
         <div className={css.controlCont}>
-          {deadlineAlarm(card.deadline) && (
-            <button className={css.controlBtn} type="button">
+          {deadlineAlarm(card.deadline) === "bell" ? (
+            <div className={css.controlBtn}>
               <svg className={css.iconBell}>
                 <use href={`${sprite}#icon-bell`}></use>
               </svg>
-            </button>
-          )}
+            </div>
+          ) : deadlineAlarm(card.deadline) === "overdue" ? (
+            <div className={css.controlBtn}>
+              <svg className={css.iconOverdue}>
+                <use href={`${sprite}#icon-x-close`}></use>
+              </svg>
+            </div>
+          ) : null}
           <ul className={css.controlList}>
             {columns.length > 1 && (
               <li>

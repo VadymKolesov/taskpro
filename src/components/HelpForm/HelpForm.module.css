@@ -143,19 +143,8 @@
   font-size: 12px;
   margin-top: 14px;
   font-weight: 400;
+  color: var(--error-red);
   transition: color 0.3s ease;
-}
-
-.error.dark {
-  color: var(--green);
-}
-
-.error.light {
-  color: var(--green-hover);
-}
-
-.error.violet {
-  color: var(--violet-bg-hard);
 }
 
 @media screen and (min-width: 375px) and (max-width: 767px) {

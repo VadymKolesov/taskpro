@@ -84,11 +84,7 @@ export default function CardPopUp() {
               className={clsx(css.input, css[theme])}
               placeholder="Title"
             />
-            <ErrorMessage
-              name="title"
-              component="p"
-              className={clsx(css.error, css[theme])}
-            />
+            <ErrorMessage name="title" component="p" className={css.error} />
             <Field
               as="textarea"
               type="text"
@@ -99,7 +95,7 @@ export default function CardPopUp() {
             <ErrorMessage
               name="description"
               component="p"
-              className={clsx(css.error, css[theme])}
+              className={css.error}
             />
           </div>
           <div className={css.inputCont}>
@@ -182,11 +178,7 @@ export default function CardPopUp() {
                 </li>
               </ul>
             </div>
-            <ErrorMessage
-              name="color"
-              component="p"
-              className={clsx(css.error, css[theme])}
-            />
+            <ErrorMessage name="color" component="p" className={css.error} />
             <div className={css.customInputCont}>
               <label className={clsx(css.label, css[theme])}>Deadline</label>
               <Calendar deadline={deadline} setDeadline={setDeadline} />
