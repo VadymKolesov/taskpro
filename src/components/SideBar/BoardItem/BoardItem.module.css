@@ -26,6 +26,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
   width: 140px;
   height: 21px;
   font-size: 14px;
@@ -144,6 +146,12 @@
 
 .border.violet {
   background-color: var(--white);
+}
+
+@media screen and (min-width: 1024px) {
+  .wrapper {
+    gap: 8px;
+  }
 }
 
 @media screen and (min-width: 1440px) {

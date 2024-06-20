@@ -1,7 +1,6 @@
 /* cont */
 
 .cont {
-  width: 135px;
   border-radius: 8px;
   padding: 18px;
   display: flex;
@@ -10,8 +9,8 @@
   transition: background-color 0.3s ease;
 }
 
-.columnName{
-  width: 78px;
+.columnName {
+  max-width: 350px;
   height: 20px;
   overflow: hidden;
   white-space: nowrap;
@@ -36,7 +35,7 @@
   padding: 0;
   display: flex;
   align-items: center;
-  display: flex;
+  gap: 12px;
   justify-content: space-between;
   width: 100%;
   transition: color 100ms ease-in-out, opacity 100ms ease-in-out,
