@@ -37,12 +37,12 @@
 
 .textSpan.dark,
 .textSpan.light {
-  color: var(--green);
+  color: var(--green-hover);
 }
 
 .textSpan:hover.dark,
 .textSpan:hover.light {
-  color: var(--green-hover);
+  color: var(--green-dark-hover);
 }
 
 .textSpan.violet {

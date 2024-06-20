@@ -57,13 +57,19 @@
 
 .dropdownWrap.light .dropdownItem,
 .dropdownWrap.violet .dropdownItem {
-  opacity: 1;
+  opacity: 0.5;
   color: var(--dark-bg-medium);
+  transition: opacity 100 ms ease-in-out;
+}
+
+.dropdownWrap.light .dropdownItem:hover,
+.dropdownWrap.violet .dropdownItem:hover {
+  opacity: 1;
 }
 
 .dropdownWrap.light .dropdownItem.active,
 .dropdownItem.active {
-  color: var(--green);
+  color: var(--green-hover);
   opacity: 1;
   pointer-events: none;
 }

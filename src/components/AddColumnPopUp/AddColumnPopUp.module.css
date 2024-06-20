@@ -147,7 +147,7 @@
 }
 
 .input.light {
-  border-color: var(--green);
+  border-color: var(--green-dark-hover);
   background-color: transparent;
   color: var(--dark-bg-medium);
 }
@@ -169,7 +169,7 @@
 }
 
 .error.light {
-  color: var(--green-hover);
+  color: var(--green-dark-hover);
 }
 
 .error.violet {

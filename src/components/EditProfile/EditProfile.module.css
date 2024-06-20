@@ -152,7 +152,7 @@
 }
 
 .inputField.light {
-  border-color: var(--green);
+  border-color: var(--green-dark-hover);
   color: var(--dark-bg-medium);
 }
 
@@ -227,7 +227,7 @@
 }
 
 .error.light {
-  color: var(--green-hover);
+  color: var(--green-dark-hover);
 }
 
 .error.violet {
@@ -240,9 +240,9 @@
 }
 
 @media screen and (max-width: 374px) {
-    .EPContainer {
-      width: 89vw;
-    }
+  .EPContainer {
+    width: 89vw;
+  }
 }
 
 @media screen and (min-width: 375px) and (max-width: 767px) {

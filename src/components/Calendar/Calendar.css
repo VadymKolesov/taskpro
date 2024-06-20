@@ -131,7 +131,7 @@
   font-weight: 400;
   line-height: 1.5;
   margin: 0;
-  transition: color 0.1s ease-in-out, background-color 1s ease-in-out;
+  transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out;
 }
 
 /* Days hover */

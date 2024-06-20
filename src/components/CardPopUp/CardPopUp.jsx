@@ -57,7 +57,7 @@ export default function CardPopUp() {
   const initialValues = {
     title: !isEdit ? "" : card.title,
     description: !isEdit ? "" : card.description,
-    priority: !isEdit ? "low" : card.priority,
+    priority: !isEdit ? "without" : card.priority,
   };
 
   return (
